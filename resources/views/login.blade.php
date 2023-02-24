@@ -15,6 +15,7 @@
     <div class="box">
      <div class="container login-panel">
          <div class="top">
+            <span class="text-login">Selamat Datang!    </span>
              <span class="text-login">Silahkan Login Terlebih dahulu</span>
              <header class="header-login">Login</header>
          </div>
