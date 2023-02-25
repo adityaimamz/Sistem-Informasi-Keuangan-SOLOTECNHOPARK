@@ -8,7 +8,7 @@
      <link rel="stylesheet" href="/css/style.css" />
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-     <title>Ludiflex | Login</title>
+     <title>Login</title>
 
  </head>
  <body>
@@ -20,7 +20,7 @@
              <header class="header-login">Login</header>
          </div>
 
-         <div class="input-field">
+         <div class="input-field has-feedback">
              <input type="text" class="input" placeholder="Username" id="">
              <i class='bx bx-user logo' ></i>
          </div>
@@ -32,7 +32,7 @@
 
          <div class="input-field">
             <button class="button2">
-                Hover me
+                Masuk
             </button>
          </div>
      </div>
