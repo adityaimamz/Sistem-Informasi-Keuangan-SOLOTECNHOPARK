@@ -12,6 +12,23 @@
 
  </head>
  <body>
+    <center>
+
+        <br />
+
+        <?php
+        if (isset($_GET['alert'])) {
+          if ($_GET['alert'] == "gagal") {
+            echo "<div class='alert alert-danger'>LOGIN GAGAL! USERNAME DAN PASSWORD SALAH!</div>";
+          } else if ($_GET['alert'] == "logout") {
+            echo "<div class='alert alert-success'>ANDA TELAH BERHASIL LOGOUT</div>";
+          } else if ($_GET['alert'] == "belum_login") {
+            echo "<div class='alert alert-warning'>ANDA HARUS LOGIN UNTUK MENGAKSES DASHBOARD</div>";
+          }
+        }
+        ?>
+      </center>
+
     <div class="box">
      <div class="container login-panel">
          <div class="top">
@@ -19,22 +36,23 @@
              <span class="text-login">Silahkan Login Terlebih dahulu</span>
              <header class="header-login">Login</header>
          </div>
-
+         <form action="periksa_login.php" method="POST">
          <div class="input-field has-feedback">
-             <input type="text" class="input" placeholder="Username" id="">
+             <input type="text" class="input form-control" placeholder="Username" id="" required="required" autocomplete="off">
              <i class='bx bx-user logo' ></i>
          </div>
 
          <div class="input-field">
-             <input type="Password" class="input" placeholder="Password" id="">
+             <input type="Password" class="input form-control" placeholder="Password" id="" required="required" autocomplete="off">
              <i class='bx bx-lock-alt logo'></i>
          </div>
 
          <div class="input-field">
-            <button class="button2">
+            <button type="submit" class="button2">
                 Masuk
             </button>
          </div>
+         </form>
      </div>
  </div>
  </body>
