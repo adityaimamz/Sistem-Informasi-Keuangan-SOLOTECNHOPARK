@@ -98,19 +98,19 @@
             </a>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="kategori.php">
               <i class="fa fa-folder"></i> <span>DATA KATEGORI</span>
             </a>
-          </li>
+          </li> -->
 
-          <li>
+          <!-- <li>
             <a href="transaksi.php">
               <i class="fa fa-folder"></i> <span>DATA TRANSAKSI</span>
             </a>
-          </li>
+          </li> -->
 
-          <li class="treeview">
+          <!-- <li class="treeview">
             <a href="#">
               <i class="fa fa-hand-paper-o"></i>
               <span>HUTANG PIUTANG</span>
@@ -122,13 +122,13 @@
               <li><a href="hutang.php"><i class="fa fa-circle-o"></i> Catatan Hutang</a></li>
               <li><a href="piutang.php"><i class="fa fa-circle-o"></i> Catatan Piutang</a></li>
             </ul>
-          </li>
-
+          </li> -->
+<!-- 
           <li>
             <a href="bank.php">
               <i class="fa fa-building"></i> <span>REKENING BANK</span>
             </a>
-          </li>
+          </li> -->
           
           <li>
             <a href="laporan.php">
@@ -136,11 +136,11 @@
             </a>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="gantipassword.php">
               <i class="fa fa-lock"></i> <span>GANTI PASSWORD</span>
             </a>
-          </li>
+          </li> -->
 
           <li>
             <a href="logout.php">
