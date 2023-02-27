@@ -242,7 +242,7 @@
 
               <br/>
 
-              <h4 class="text-center">PROGRESS REALISASI PENGELUARAN/BELANJA UPT KST SOLO TECHNOPARK PER BULAN TAHUN 2023 </h4>
+              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per Bulan Tahun 2023 </h4>
               <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
 
             </div>
