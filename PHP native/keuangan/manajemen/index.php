@@ -227,7 +227,7 @@
             <div class="chart tab-pane active" id="tab1">
 
               
-              <h4 class="text-center">Realisai Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
+            <h4 class="text-center">Realisai Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
               <canvas id="grafik1" style="position: relative; height: 300px;"></canvas>
 
               <br/>
@@ -237,12 +237,12 @@
 
               <br/>
 
-              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per Divisi Tahun 2023 </h4>
+              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per Divisi <b>Tahun</b> 2023 </h4>
               <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
 
               <br/>
 
-              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per Bulan Tahun 2023 </h4>
+              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
               <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
 
             </div>

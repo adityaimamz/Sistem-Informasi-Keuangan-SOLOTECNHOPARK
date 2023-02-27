@@ -71,12 +71,31 @@
                     </div>
                     <div class="modal-body">
 
-                                            <div class="form-group">
+                       <div class="form-group">
                         <label>Sumber Dana</label>
-                        <select name="bulan" class="form-control" required="required">
+                        <select name="sumber_dana" class="form-control" required="required">
                           <option value="">- Pilih -</option>
                           <option value="Januari">APBD</option>
                           <option value="Februari">BLUD</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>DIVISI</label>
+                        <select name="divisi" class="form-control" required="required">
+                          <option value="">- Pilih -</option>
+                          <option value="Januari">ANGGARAN</option>
+                          <option value="Februari">AKUNTANSI</option>
+                          <option value="Maret">PENGELOLAAN ASET</option>
+                          <option value="April">DIKLAT</option>
+                          <option value="Mei">Mei</option>
+                          <option value="Juni">Juni</option>
+                          <option value="Juli">Juli</option>
+                          <option value="Agustus">Agustus</option>
+                          <option value="September">September</option>
+                          <option value="Oktober">Oktober</option>
+                          <option value="November">November</option>
+                          <option value="Desember">Desember</option>
                         </select>
                       </div>
 
@@ -100,48 +119,26 @@
                       </div>
 
                       <div class="form-group">
-                        <label>NO TANDA TERIMA</label>
-                        <input type="number" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan Nominal ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>METODE PEMBAYARAN</label>
-                        <select name="metode" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <?php 
-                          include '../koneksi.php';
-                          $metode = mysqli_query($koneksi,"SELECT * FROM metode_bayar ORDER BY Jenis ASC");
-                          while($k = mysqli_fetch_array($metode)){
-                            ?>
-                            <option value="<?php echo $k['Id_metode']; ?>"><?php echo $k['Jenis']; ?></option>
-                            <?php 
-                          }
-                          ?>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>TANGGAL</label>
+                        <label>TANGGAL SPJ</label>
                         <input type="text" name="tanggal" required="required" class="form-control datepicker2">
                       </div>
 
                       <div class="form-group">
-                        <label>NAMA</label>
-                        <input type="text" name="nama" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <label>Sumber Dana</label>
+                        <select name="sumber_dana" class="form-control" required="required">
+                          <option value="">- Pilih -</option>
+                          <option value="Januari">BARANG/JASA</option>
+                          <option value="Februari">MODAL</option>
+                        </select>
                       </div>
 
                       <div class="form-group">
-                        <label>ALAMAT/ASAL INSTANSI</label>
-                        <input type="text" name="alamat" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <label>RINCIAN BELANJA</label>
+                        <input type="text" name="belanja" required="required" class="form-control" placeholder="Masukkan Rincian ..">
                       </div>
 
                       <div class="form-group">
-                        <label>KEPERLUAN</label>
-                        <input type="text" name="keperluan" required="required" class="form-control" placeholder="Masukkan Nominal ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>BESARAN (RUPIAH)</label>
+                        <label>JUMLAH (RUPIAH)</label>
                         <input type="number" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
@@ -167,15 +164,13 @@
                 <thead>
                   <tr>
                     <th>NO</th>
-                    <th>TANGGAL</th>
+                    <th>SUMBER DANA</th>
+                    <th>DIVISI</th>
                     <th>BULAN</th>
-                    <th>NO TANDA TERIMA</th>
-                    <th>METODE BAYAR</th>
-                    <th>NAMA</th>
-                    <th>ASAL INSTANSI</th>
-                    <th>KEPERLUAN</th>
-                    <th>BESARAN</th>
-                    <th>OPSI</th>
+                    <th>TANGGAL SPJ</th>
+                    <th>JENIS BELANJA</th>
+                    <th>JUMLAH (RUPIAH)</th>
+                    <th>SCAN BUKTI SPJ</th>
                   </tr>
                 </thead>
 
