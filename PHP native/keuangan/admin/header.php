@@ -101,6 +101,21 @@
           <li class="treeview">
             <a href="#">
               <i class="fa fa-users"></i>
+              <span>DATA MASTER</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="divisi.php"><i class="fa fa-circle-o"></i> Data Divisi</a></li>
+              <li><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>
+              <li><a href="metode.php"><i class="fa fa-circle-o"></i> Data Metode</a></li>
+            </ul>
+          </li>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-users"></i>
               <span>PENERIMAAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
