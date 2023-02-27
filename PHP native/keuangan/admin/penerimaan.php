@@ -92,7 +92,7 @@
 
                       <div class="form-group">
                         <label>NO TANDA TERIMA</label>
-                        <input type="number" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="number" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan No Tanda Terima ..">
                       </div>
 
                       <div class="form-group">
@@ -118,17 +118,17 @@
 
                       <div class="form-group">
                         <label>NAMA</label>
-                        <input type="text" name="nama" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="text" name="nama" required="required" class="form-control" placeholder="Masukkan Nama ..">
                       </div>
 
                       <div class="form-group">
                         <label>ALAMAT/ASAL INSTANSI</label>
-                        <input type="text" name="alamat" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="text" name="alamat" required="required" class="form-control" placeholder="Masukkan Alamat/Asak Instansi ..">
                       </div>
 
                       <div class="form-group">
                         <label>KEPERLUAN</label>
-                        <input type="text" name="keperluan" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="text" name="keperluan" required="required" class="form-control" placeholder="Masukkan Keperluan ..">
                       </div>
 
                       <div class="form-group">
@@ -254,27 +254,27 @@
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>TANGGAL</label>
-                                    <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal'] ?>">
+                                    <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Masukkan Tanggal .." value="<?php echo $d['Tanggal'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>NAMA</label>
-                                    <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Nama_pembayar'] ?>">
+                                    <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama_pembayar'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>ALAMAT/ASAL INSTANSI</label>
-                                    <input type="text" style="width:100%" name="alamat" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Alamat_instansi'] ?>">
+                                    <input type="text" style="width:100%" name="alamat" required="required" class="form-control" placeholder="Masukkan Asal Instansi .." value="<?php echo $d['Alamat_instansi'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>KEPERLUAN</label>
-                                    <input type="text" style="width:100%" name="keperluan" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Keperluan'] ?>">
+                                    <input type="text" style="width:100%" name="keperluan" required="required" class="form-control" placeholder="Masukkan Keperluan .." value="<?php echo $d['Keperluan'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>BESARAN (RUPIAH)</label>
-                                    <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Besaran_biaya'] ?>">
+                                    <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Besaran .." value="<?php echo $d['Besaran_biaya'] ?>">
                                   </div>
 
 
