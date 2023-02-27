@@ -83,14 +83,14 @@
             // $profil = mysqli_fetch_assoc($profil);
             ?>
           </div>
-          <div class="pull-left info">
+          <!-- <div class="pull-left info">
             <p><?php echo $_SESSION['nama']; ?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
-        </div>
+        </div> -->
 
         <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">MAIN NAVIGATION</li>
+          <li class="header">NAVIGASI</li>
 
           <li>
             <a href="index.php">
