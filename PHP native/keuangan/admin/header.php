@@ -59,14 +59,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php 
                 $id_user = $_SESSION['id'];
-                $profil = mysqli_query($koneksi,"select * from user where user_id='$id_user'");
-                $profil = mysqli_fetch_assoc($profil);
-                if($profil['user_foto'] == ""){ 
-                  ?>
-                  <img src="../gambar/sistem/user.png" class="user-image">
-                <?php }else{ ?>
-                  <img src="../gambar/user/<?php echo $profil['user_foto'] ?>" class="user-image">
-                <?php } ?>
+                $profil = mysqli_query($koneksi,"select * from master_user where Id_user='$id_user'");
+                // $profil = mysqli_fetch_assoc($profil);
+                ?>
                 <span class="hidden-xs"><?php echo $_SESSION['nama']; ?> - <?php echo $_SESSION['level']; ?></span>
               </a>
             </li>
@@ -84,14 +79,9 @@
           <div class="pull-left image">
             <?php 
             $id_user = $_SESSION['id'];
-            $profil = mysqli_query($koneksi,"select * from user where user_id='$id_user'");
-            $profil = mysqli_fetch_assoc($profil);
-            if($profil['user_foto'] == ""){ 
-              ?>
-              <img src="../gambar/sistem/user.png" class="img-circle">
-            <?php }else{ ?>
-              <img src="../gambar/user/<?php echo $profil['user_foto'] ?>" class="img-circle" style="max-height:45px">
-            <?php } ?>
+            $profil = mysqli_query($koneksi,"select * from master_user where Id_user='$id_user'");
+            // $profil = mysqli_fetch_assoc($profil);
+            ?>
           </div>
           <div class="pull-left info">
             <p><?php echo $_SESSION['nama']; ?></p>
@@ -108,42 +98,24 @@
             </a>
           </li>
 
-          <li>
-            <a href="kategori.php">
-              <i class="fa fa-folder"></i> <span>DATA KATEGORI</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="transaksi.php">
-              <i class="fa fa-folder"></i> <span>DATA TRANSAKSI</span>
-            </a>
-          </li>
-
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-hand-paper-o"></i>
-              <span>HUTANG PIUTANG</span>
+              <i class="fa fa-users"></i>
+              <span>PENERIMAAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="hutang.php"><i class="fa fa-circle-o"></i> Catatan Hutang</a></li>
-              <li><a href="piutang.php"><i class="fa fa-circle-o"></i> Catatan Piutang</a></li>
+              <li><a href="user.php"><i class="fa fa-circle-o"></i> Data Pengguna</a></li>
+              <li><a href="user_tambah.php"><i class="fa fa-circle-o"></i> Tambah Pengguna</a></li>
             </ul>
-          </li>
-
-          <li>
-            <a href="bank.php">
-              <i class="fa fa-building"></i> <span>REKENING BANK</span>
-            </a>
           </li>
 
           <li class="treeview">
             <a href="#">
               <i class="fa fa-users"></i>
-              <span>DATA PENGGUNA</span>
+              <span>PENGELUARAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -157,12 +129,6 @@
           <li>
             <a href="laporan.php">
               <i class="fa fa-file"></i> <span>LAPORAN</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="gantipassword.php">
-              <i class="fa fa-lock"></i> <span>GANTI PASSWORD</span>
             </a>
           </li>
 

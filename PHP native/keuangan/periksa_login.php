@@ -6,21 +6,21 @@ include 'koneksi.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-$login = mysqli_query($koneksi, "SELECT * FROM user WHERE user_username='$username' AND user_password='$password'");
+$login = mysqli_query($koneksi, "SELECT * FROM master_user WHERE Username='$username' AND Password='$password'");
 $cek = mysqli_num_rows($login);
 
 if($cek > 0){
 	session_start();
 	$data = mysqli_fetch_assoc($login);
-	$_SESSION['id'] = $data['user_id'];
-	$_SESSION['nama'] = $data['user_nama'];
-	$_SESSION['username'] = $data['user_username'];
-	$_SESSION['level'] = $data['user_level'];
+	$_SESSION['id'] = $data['Id_user'];
+	$_SESSION['nama'] = $data['Nama'];
+	$_SESSION['username'] = $data['Username'];
+	$_SESSION['level'] = $data['Level'];
 
-	if($data['user_level'] == "administrator"){
+	if($data['Level'] == "admin"){
 		$_SESSION['status'] = "administrator_logedin";
 		header("location:admin/");
-	}else if($data['user_level'] == "manajemen"){
+	}else if($data['Level'] == "manager"){
 		$_SESSION['status'] = "manajemen_logedin";
 		header("location:manajemen/");
 	}else{
