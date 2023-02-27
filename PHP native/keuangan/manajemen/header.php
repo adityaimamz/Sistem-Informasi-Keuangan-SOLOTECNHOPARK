@@ -75,7 +75,7 @@
 
     <aside class="main-sidebar">
       <section class="sidebar">
-        <div class="user-panel">
+        <div class="user-panel navbarrr">
           <div class="pull-left image">
             <?php 
             $id_user = $_SESSION['id'];
