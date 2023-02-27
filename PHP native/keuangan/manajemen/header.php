@@ -59,14 +59,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php 
                 $id_user = $_SESSION['id'];
-                $profil = mysqli_query($koneksi,"select * from user where user_id='$id_user'");
-                $profil = mysqli_fetch_assoc($profil);
-                if($profil['user_foto'] == ""){ 
-                  ?>
-                  <img src="../gambar/sistem/user.png" class="user-image">
-                <?php }else{ ?>
-                  <img src="../gambar/user/<?php echo $profil['user_foto'] ?>" class="user-image">
-                <?php } ?>
+                $profil = mysqli_query($koneksi,"select * from master_user where Id_user='$id_user'");
+                // $profil = mysqli_fetch_assoc($profil);
+                ?>
                 <span class="hidden-xs"><?php echo $_SESSION['nama']; ?> - <?php echo $_SESSION['level']; ?></span>
               </a>
             </li>
@@ -84,14 +79,9 @@
           <div class="pull-left image">
             <?php 
             $id_user = $_SESSION['id'];
-            $profil = mysqli_query($koneksi,"select * from user where user_id='$id_user'");
-            $profil = mysqli_fetch_assoc($profil);
-            if($profil['user_foto'] == ""){ 
-              ?>
-              <img src="../gambar/sistem/user.png" class="img-circle">
-            <?php }else{ ?>
-              <img src="../gambar/user/<?php echo $profil['user_foto'] ?>" class="img-circle" style="max-height:45px">
-            <?php } ?>
+            $profil = mysqli_query($koneksi,"select * from master_user where Id_user='$id_user'");
+            // $profil = mysqli_fetch_assoc($profil);
+            ?>
           </div>
           <div class="pull-left info">
             <p><?php echo $_SESSION['nama']; ?></p>
