@@ -22,16 +22,16 @@
         <div class="small-box bg-green">
           <div class="inner">
             <?php 
-            // $tanggal = date('Y-m-d');
-            // $pemasukan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pemasukan FROM transaksi WHERE transaksi_jenis='Pemasukan' and transaksi_tanggal='$tanggal'");
-            // $p = mysqli_fetch_assoc($pemasukan);
+            $tanggal = date('Y-m-d');
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pemasukan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>Pemasukan Hari Ini</p>
+            <p>penerimaan Hari Ini</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -44,16 +44,16 @@
         <div class="small-box bg-blue">
           <div class="inner">
             <?php 
-            // $bulan = date('m');
-            // $pemasukan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pemasukan FROM transaksi WHERE transaksi_jenis='Pemasukan' and month(transaksi_tanggal)='$bulan'");
-            // $p = mysqli_fetch_assoc($pemasukan);
+            $bulan = date('m');
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pemasukan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>Pemasukan Bulan Ini</p>
+            <p>penerimaan Bulan Ini</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -66,16 +66,16 @@
         <div class="small-box bg-orange">
           <div class="inner">
             <?php 
-            // $tahun = date('Y');
-            // $pemasukan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pemasukan FROM transaksi WHERE transaksi_jenis='Pemasukan' and year(transaksi_tanggal)='$tahun'");
-            // $p = mysqli_fetch_assoc($pemasukan);
+            $tahun = date('Y');
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pemasukan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>Pemasukan Tahun Ini</p>
+            <p>penerimaan Tahun Ini</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -88,15 +88,15 @@
         <div class="small-box bg-black">
           <div class="inner">
             <?php 
-            // $pemasukan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pemasukan FROM transaksi WHERE transaksi_jenis='Pemasukan'");
-            // $p = mysqli_fetch_assoc($pemasukan);
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan");
+            $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pemasukan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>Seluruh Pemasukan</p>
+            <p>Seluruh Penerimaan</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -111,14 +111,14 @@
         <div class="small-box bg-red">
           <div class="inner">
             <?php 
-            // $tanggal = date('Y-m-d');
-            // $pengeluaran = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pengeluaran FROM transaksi WHERE transaksi_jenis='pengeluaran' and transaksi_tanggal='$tanggal'");
-            // $p = mysqli_fetch_assoc($pengeluaran);
+            $tanggal = date('Y-m-d');
+            $pengeluaran = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($pengeluaran);
             ?>
             
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
             <p>Pengeluaran Hari Ini</p>
@@ -134,14 +134,14 @@
         <div class="small-box bg-red">
           <div class="inner">
             <?php 
-            // $bulan = date('m');
-            // $pengeluaran = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pengeluaran FROM transaksi WHERE transaksi_jenis='pengeluaran' and month(transaksi_tanggal)='$bulan'");
-            // $p = mysqli_fetch_assoc($pengeluaran);
+            $bulan = date('m');
+            $pengeluaran = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($pengeluaran);
             ?>
             
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
             <p>Pengeluaran Bulan Ini</p>
@@ -157,14 +157,14 @@
         <div class="small-box bg-red">
           <div class="inner">
             <?php 
-            // $tahun = date('Y');
-            // $pengeluaran = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pengeluaran FROM transaksi WHERE transaksi_jenis='pengeluaran' and year(transaksi_tanggal)='$tahun'");
-            // $p = mysqli_fetch_assoc($pengeluaran);
+            $tahun = date('Y');
+            $pengeluaran = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($pengeluaran);
             ?>
             
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
             <p>Pengeluaran Tahun Ini</p>
@@ -180,12 +180,12 @@
         <div class="small-box bg-black">
           <div class="inner">
             <?php 
-            // $pengeluaran = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) as total_pengeluaran FROM transaksi WHERE transaksi_jenis='pengeluaran'");
-            // $p = mysqli_fetch_assoc($pengeluaran);
+            $pengeluaran = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran FROM master_pengeluaran");
+            $p = mysqli_fetch_assoc($pengeluaran);
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              // echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
             <p>Seluruh Pengeluaran</p>
@@ -226,7 +226,7 @@
             <div class="chart tab-pane active" id="tab1">
 
               
-              <h4 class="text-center">Realisai Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
+              <h4 class="text-center">Realisasi Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
               <canvas id="grafik1" style="position: relative; height: 300px;"></canvas>
 
               <br/>

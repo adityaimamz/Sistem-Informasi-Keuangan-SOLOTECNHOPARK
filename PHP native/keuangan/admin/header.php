@@ -100,7 +100,7 @@
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-users"></i>
+              <i class="fa fa-folder"></i>
               <span>DATA MASTER</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
