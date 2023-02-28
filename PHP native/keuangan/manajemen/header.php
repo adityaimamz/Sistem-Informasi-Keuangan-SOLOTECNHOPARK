@@ -76,7 +76,7 @@
     <aside class="main-sidebar">
       <section class="sidebar">
         <div class="user-panel navbarrr">
-          <div class="pull-left image">
+          <!-- <div class="pull-left image">
             <?php 
             $id_user = $_SESSION['id'];
             $profil = mysqli_query($koneksi,"select * from master_user where Id_user='$id_user'");
@@ -86,7 +86,7 @@
           <div class="pull-left info">
             <p><?php echo $_SESSION['nama']; ?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-          </div>
+          </div> -->
         </div>
 
         <ul class="sidebar-menu" data-widget="tree">
