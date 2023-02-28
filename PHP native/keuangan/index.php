@@ -20,7 +20,7 @@
 
       <center>
 
-        <h3><b>FINANCE REPORT</b></h3>
+        <h3><b>SOLO TECHNOPARK FINANCE REPORT</b></h3>
 
 
         <br />
@@ -40,12 +40,12 @@
 
       <div class="login-box-body">
 
-        <div class="text-center"> <img src="/keuangan2/assets/logo.ico" style="max-width:30%;">
+        <div class="text-center"> <img src="./assets/dist/img/logo stp-01.png" style="max-width:30%;">
           <br>
 
           <span style="color: Black;">
             <center>
-              <h4><B>Finance Apps</B></h4>
+              <h4><B>Welcome</B></h4>
             </center>
           </span></p>
           <span style="color: green;">
@@ -76,7 +76,7 @@
 
     <span style="color: white;">
       <center>
-        <h5>copyright 2020 @nblwarehouse</h5>
+        <h5>Build and developed by MSIB batch 4 interns 2023</h5>
       </center>
     </span></p>
 
