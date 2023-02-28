@@ -48,10 +48,10 @@
                     <select name="kategori" class="form-control" required="required">
                       <option value="semua">- Semua Kategori -</option>
                       <?php 
-                      $kategori = mysqli_query($koneksi,"SELECT * FROM kategori");
+                      $kategori = mysqli_query($koneksi,"SELECT * FROM master_divisi");
                       while($k = mysqli_fetch_array($kategori)){
                         ?>
-                        <option <?php if(isset($_GET['kategori'])){ if($_GET['kategori'] == $k['kategori_id']){echo "selected='selected'";}} ?>  value="<?php echo $k['kategori_id']; ?>"><?php echo $k['kategori']; ?></option>
+                        <option <?php if(isset($_GET['Nama_divisi'])){ if($_GET['Nama_divisi'] == $k['Id_divisi']){echo "selected='selected'";}} ?>  value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
                         <?php 
                       }
                       ?>
@@ -80,7 +80,7 @@
           <div class="box-body">
 
             <?php 
-            if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari']) && isset($_GET['kategori'])){
+            if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari']) && isset($_GET['Nama_divisi'])){
               $tgl_dari = $_GET['tanggal_dari'];
               $tgl_sampai = $_GET['tanggal_sampai'];
               $kategori = $_GET['kategori'];
@@ -104,12 +104,12 @@
                       <th>:</th>
                       <td>
                         <?php 
-                        if($kategori == "semua"){
+                        if($Nama_divisi == "semua"){
                           echo "SEMUA KATEGORI";
                         }else{
-                          $k = mysqli_query($koneksi,"select * from kategori where kategori_id='$kategori'");
+                          $k = mysqli_query($koneksi,"select * from master_divisi where Id_Kategori='$Nama_divisi'");
                           $kk = mysqli_fetch_assoc($k);
-                          echo $kk['kategori'];
+                          echo $kk['Nama_divisi'];
                         }
                         ?>
 
