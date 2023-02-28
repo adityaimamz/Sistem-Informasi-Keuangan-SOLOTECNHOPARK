@@ -130,6 +130,8 @@
         $pengeluaran = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) AS total_pengeluaran FROM transaksi WHERE transaksi_jenis='pengeluaran' AND month(transaksi_tanggal)='$bulan' AND year(transaksi_tanggal)='$thn_ini'");
         $peng = mysqli_fetch_assoc($pengeluaran);
 
+        var_dump($peng);
+
         // $total = str_replace(",", "44", number_format($peng['total_pengeluaran']));
         $total = $peng['total_pengeluaran'];
         if($peng['total_pengeluaran'] == ""){
