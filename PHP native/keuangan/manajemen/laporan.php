@@ -104,12 +104,12 @@
                       <th>:</th>
                       <td>
                         <?php 
-                        if($Nama_divisi == "semua"){
+                        if($kategori == "semua"){
                           echo "SEMUA KATEGORI";
                         }else{
                           $k = mysqli_query($koneksi,"select * from master_divisi where Id_Kategori='$Nama_divisi'");
                           $kk = mysqli_fetch_assoc($k);
-                          echo $kk['Nama_divisi'];
+                          echo $kk['kategori'];
                         }
                         ?>
 
