@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2019</strong> - Sistem Informasi Laporan Keuangan
+    <strong>Build & developed by MSIB batch 4 intern 2023</strong> - Sistem Informasi Laporan Keuangan Solo Technopark
   </footer>
 
   
@@ -102,7 +102,7 @@
       <?php
       for($bulan=1;$bulan<=12;$bulan++){
         $thn_ini = date('Y');
-        $pemasukan = mysqli_query($koneksi,"select sum(transaksi_nominal) as total_pemasukan from transaksi where transaksi_jenis='Pemasukan' and month(transaksi_tanggal)='$bulan' and year(transaksi_tanggal)='$thn_ini'");
+        $pemasukan = mysqli_query($koneksi,"select sum(Besaran_biaya) as total_pemasukan from master_penerimaan from month(Tanggal)='$bulan' and year(Tanggal)='$thn_ini'");
         $pem = mysqli_fetch_assoc($pemasukan);
 
         // $total = str_replace(",", "44", number_format($pem['total_pemasukan']));
