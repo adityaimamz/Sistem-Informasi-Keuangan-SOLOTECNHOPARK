@@ -158,6 +158,7 @@
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>NAMA</label>
+                                    <input type="hidden" name="id" value="<?php echo $d['Id_user'] ?>">
                                     <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama'] ?>">
                                   </div>
 

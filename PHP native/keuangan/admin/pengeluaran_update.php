@@ -9,5 +9,5 @@ $rincian  = $_POST['rincian'];
 $jumlah  = $_POST['jumlah'];
 $sumberdana  = $_POST['sumberdana'];
 
-mysqli_query($koneksi, "update master_pengeluaran set Id_sumberdana='$sumberdana', Id_divisi='$divisi', Jenis_belanja='$jenis', Tanggal='$tanggal', Bulan='$bulan', Rincian='$rincian', jumlah='$jumlah' where Id_pengeluaran='$id'") or die(mysqli_error($koneksi));
+mysqli_query($koneksi, "update master_pengeluaran set Id_sumberdana='$sumberdana', Id_divisi='$divisi', Jenis_belanja='$jenis', Tanggal='$tanggal', Bulan='$bulan', Rincian='$rincian', Jumlah='$jumlah' where Id_pengeluaran='$id'") or die(mysqli_error($koneksi));
 header("location:pengeluaran.php?alert=berhasilupdate");

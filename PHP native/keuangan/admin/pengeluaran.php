@@ -282,6 +282,7 @@
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <input type="hidden" name="id" value="<?php echo $d['Id_pengeluaran'] ?>">
                                     <label>JUMLAH (RUPIAH)</label>
                                     <input type="text" style="width:100%" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Jumlah'] ?>">
                                   </div>
