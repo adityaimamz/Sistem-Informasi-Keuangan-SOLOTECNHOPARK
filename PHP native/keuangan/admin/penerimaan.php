@@ -100,7 +100,7 @@
                         <select name="metode" class="form-control" required="required">
                           <option value="">- Pilih -</option>
                           <?php 
-                          include '../koneksi.php';
+                          include 'koneksi.php';
                           $metode = mysqli_query($koneksi,"SELECT * FROM metode_bayar ORDER BY Jenis ASC");
                           while($k = mysqli_fetch_array($metode)){
                             ?>

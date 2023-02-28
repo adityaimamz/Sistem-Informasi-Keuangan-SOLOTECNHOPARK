@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2023 at 05:50 AM
+-- Generation Time: Feb 28, 2023 at 05:26 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -31,7 +31,9 @@ CREATE TABLE `detail_pengeluaran` (
   `Id_detail` int(11) NOT NULL,
   `Id_pengeluaran` int(11) NOT NULL,
   `Tanggal` date NOT NULL,
-  `Bulan` varchar(20) NOT NULL
+  `Bulan` varchar(20) NOT NULL,
+  `Rincian` varchar(50) NOT NULL,
+  `Jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,6 +47,14 @@ CREATE TABLE `master_divisi` (
   `Nama_divisi` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `master_divisi`
+--
+
+INSERT INTO `master_divisi` (`Id_divisi`, `Nama_divisi`) VALUES
+(2, 'Logistik'),
+(3, 'Anggaran');
+
 -- --------------------------------------------------------
 
 --
@@ -53,7 +63,7 @@ CREATE TABLE `master_divisi` (
 
 CREATE TABLE `master_penerimaan` (
   `Id_penerimaan` int(11) NOT NULL,
-  `Id_user` int(11) NOT NULL,
+  `Id_user` int(11) DEFAULT NULL,
   `Bulan` varchar(20) NOT NULL,
   `Tanggal` date NOT NULL,
   `Nama_pembayar` varchar(50) NOT NULL,
@@ -61,9 +71,16 @@ CREATE TABLE `master_penerimaan` (
   `Alamat_instansi` varchar(50) NOT NULL,
   `No_tandaterima` int(11) NOT NULL,
   `Besaran_biaya` int(11) NOT NULL,
-  `Id_metode` int(11) NOT NULL,
-  `Bukti` varchar(60) NOT NULL
+  `Id_metode` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_penerimaan`
+--
+
+INSERT INTO `master_penerimaan` (`Id_penerimaan`, `Id_user`, `Bulan`, `Tanggal`, `Nama_pembayar`, `Keperluan`, `Alamat_instansi`, `No_tandaterima`, `Besaran_biaya`, `Id_metode`) VALUES
+(3, NULL, 'Agustus', '2023-03-02', 'nada', 'inventaris', 'Brawijaya', 453, 50000, 2),
+(6, NULL, 'April', '2023-02-28', 'Fitri', 'Booking', 'Ub', 768, 60000, 2);
 
 -- --------------------------------------------------------
 
@@ -74,8 +91,22 @@ CREATE TABLE `master_penerimaan` (
 CREATE TABLE `master_pengeluaran` (
   `Id_pengeluaran` int(11) NOT NULL,
   `Id_sumberdana` int(11) NOT NULL,
-  `Id_divisi` int(11) NOT NULL
+  `Id_divisi` int(11) NOT NULL,
+  `Jenis_belanja` varchar(20) NOT NULL,
+  `Tanggal` date NOT NULL,
+  `Bulan` varchar(20) NOT NULL,
+  `Rincian` varchar(50) NOT NULL,
+  `Jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_pengeluaran`
+--
+
+INSERT INTO `master_pengeluaran` (`Id_pengeluaran`, `Id_sumberdana`, `Id_divisi`, `Jenis_belanja`, `Tanggal`, `Bulan`, `Rincian`, `Jumlah`) VALUES
+(2, 1, 3, 'Modal', '2023-03-09', 'Maret', 'ada deh', 0),
+(3, 1, 2, 'Modal', '2023-03-07', 'Januari', 'oke', 50000),
+(4, 2, 3, 'Barang/Jasa', '2023-03-08', 'Juli', 'Beneran', 34000);
 
 -- --------------------------------------------------------
 
@@ -88,6 +119,14 @@ CREATE TABLE `master_sumberdana` (
   `Jenis` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `master_sumberdana`
+--
+
+INSERT INTO `master_sumberdana` (`Id_sumberdana`, `Jenis`) VALUES
+(1, 'APBD'),
+(2, 'BLUD');
+
 -- --------------------------------------------------------
 
 --
@@ -99,7 +138,7 @@ CREATE TABLE `master_user` (
   `Nama` varchar(50) NOT NULL,
   `Alamat` varchar(50) NOT NULL,
   `Username` varchar(20) NOT NULL,
-  `Password` varchar(20) NOT NULL,
+  `Password` varchar(100) NOT NULL,
   `Level` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -108,8 +147,9 @@ CREATE TABLE `master_user` (
 --
 
 INSERT INTO `master_user` (`Id_user`, `Nama`, `Alamat`, `Username`, `Password`, `Level`) VALUES
-(1, 'admin', 'solo', 'admin', 'admin', 'admin'),
-(2, 'manager', 'solo', 'manager', 'manager', 'manager');
+(1, 'admin', 'solo', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(2, 'manager', 'solo', 'manager', '1d0258c2440a8d19e716292b231e3190', 'manager'),
+(4, 'Fitri', 'blitar', 'fitri', '534a0b7aa872ad1340d0071cbfa38697', 'pengguna');
 
 -- --------------------------------------------------------
 
@@ -119,8 +159,17 @@ INSERT INTO `master_user` (`Id_user`, `Nama`, `Alamat`, `Username`, `Password`, 
 
 CREATE TABLE `metode_bayar` (
   `Id_metode` int(11) NOT NULL,
-  `Jenis` varchar(20) NOT NULL
+  `Jenis` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `metode_bayar`
+--
+
+INSERT INTO `metode_bayar` (`Id_metode`, `Jenis`) VALUES
+(1, 'Cash'),
+(2, 'Transfer'),
+(3, 'Cashless');
 
 --
 -- Indexes for dumped tables
@@ -182,37 +231,37 @@ ALTER TABLE `detail_pengeluaran`
 -- AUTO_INCREMENT for table `master_divisi`
 --
 ALTER TABLE `master_divisi`
-  MODIFY `Id_divisi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `master_penerimaan`
 --
 ALTER TABLE `master_penerimaan`
-  MODIFY `Id_penerimaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_penerimaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `master_pengeluaran`
 --
 ALTER TABLE `master_pengeluaran`
-  MODIFY `Id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `master_sumberdana`
 --
 ALTER TABLE `master_sumberdana`
-  MODIFY `Id_sumberdana` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_sumberdana` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `master_user`
 --
 ALTER TABLE `master_user`
-  MODIFY `Id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `metode_bayar`
 --
 ALTER TABLE `metode_bayar`
-  MODIFY `Id_metode` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_metode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

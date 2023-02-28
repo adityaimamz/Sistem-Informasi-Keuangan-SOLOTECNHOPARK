@@ -59,7 +59,7 @@
           <div class="box-body">
 
             <!-- Modal -->
-            <form action="penerimaan_proses.php" method="post" enctype="multipart/form-data">
+            <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -71,12 +71,19 @@
                     </div>
                     <div class="modal-body">
 
-                       <div class="form-group">
-                        <label>Sumber Dana</label>
-                        <select name="sumber_dana" class="form-control" required="required">
+                        <div class="form-group">
+                        <label>SUMBER DANA</label>
+                        <select name="sumberdana" class="form-control" required="required">
                           <option value="">- Pilih -</option>
-                          <option value="Januari">APBD</option>
-                          <option value="Februari">BLUD</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $sumberdana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Jenis ASC");
+                          while($k = mysqli_fetch_array($sumberdana)){
+                            ?>
+                            <option value="<?php echo $k['Id_sumberdana']; ?>"><?php echo $k['Jenis']; ?></option>
+                            <?php 
+                          }
+                          ?>
                         </select>
                       </div>
 
@@ -84,18 +91,15 @@
                         <label>DIVISI</label>
                         <select name="divisi" class="form-control" required="required">
                           <option value="">- Pilih -</option>
-                          <option value="Januari">ANGGARAN</option>
-                          <option value="Februari">AKUNTANSI</option>
-                          <option value="Maret">PENGELOLAAN ASET</option>
-                          <option value="April">DIKLAT</option>
-                          <option value="Mei">Mei</option>
-                          <option value="Juni">Juni</option>
-                          <option value="Juli">Juli</option>
-                          <option value="Agustus">Agustus</option>
-                          <option value="September">September</option>
-                          <option value="Oktober">Oktober</option>
-                          <option value="November">November</option>
-                          <option value="Desember">Desember</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Nama_divisi ASC");
+                          while($k = mysqli_fetch_array($divisi)){
+                            ?>
+                            <option value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
+                            <?php 
+                          }
+                          ?>
                         </select>
                       </div>
 
@@ -124,30 +128,24 @@
                       </div>
 
                       <div class="form-group">
-                        <label>Sumber Dana</label>
-                        <select name="sumber_dana" class="form-control" required="required">
+                        <label>JENIS BELANJA</label>
+                        <select name="jenis" class="form-control" required="required">
                           <option value="">- Pilih -</option>
-                          <option value="Januari">BARANG/JASA</option>
-                          <option value="Februari">MODAL</option>
+                          <option value="Barang/Jasa">Barang/Jasa</option>
+                          <option value="Modal">Modal</option>
                         </select>
                       </div>
 
                       <div class="form-group">
                         <label>RINCIAN BELANJA</label>
-                        <input type="text" name="belanja" required="required" class="form-control" placeholder="Masukkan Rincian ..">
+                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Rincian ..">
                       </div>
 
                       <div class="form-group">
                         <label>JUMLAH (RUPIAH)</label>
-                        <input type="number" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
-             <!--          <div class="form-group">
-                        <label>Upload File</label>
-                        <input type="file" name="trnfoto" required="required" class="form-control">
-                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
-                      </div>
- -->
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -170,7 +168,7 @@
                     <th>TANGGAL SPJ</th>
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
-                    <th>SCAN BUKTI SPJ</th>
+                    <th>RINCIAN</th>
                   </tr>
                 </thead>
 
@@ -178,43 +176,72 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM master_penerimaan order by Id_penerimaan desc");
+                  $data = mysqli_query($koneksi,"SELECT * FROM master_pengeluaran order by Id_pengeluaran desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
-                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                      <td><?php echo $d['Id_sumberdana']; ?></td>
+                      <td><?php echo $d['Id_divisi']; ?></td>
                       <td><?php echo $d['Bulan']; ?></td>
-                      <td><?php echo $d['No_tandaterima']; ?></td>
-                      <td><?php echo $d['Id_metode']; ?></td>
-                      <td><?php echo $d['Nama_pembayar']; ?></td>
-                      <td><?php echo $d['Alamat_instansi']; ?></td>
-                      <td><?php echo $d['Keperluan']; ?></td>
-                      <td><?php echo $d['Besaran_biaya']; ?></td>
+                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                      <td><?php echo $d['Jenis_belanja']; ?></td>
+                      <td><?php echo $d['Jumlah']; ?></td>
+                      <td><?php echo $d['Rincian']; ?></td>
                       <td>    
-                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                           <i class="fa fa-cog"></i>
                         </button>
 
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
 
-                        <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_transaksi_<?php echo $d['Id_penerimaan'] ?>">
+                        <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_transaksi_<?php echo $d['Id_pengeluaran'] ?>">
                           <i class="fa fa-eye"></i>
                         </button> -->
 
-                        <form action="penerimaan_update.php" method="post" enctype="multipart/form-data">
-                          <div class="modal fade" id="edit_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form action="pengeluaran_update.php" method="post" enctype="multipart/form-data">
+                          <div class="modal fade" id="edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Edit penerimaan</h4>
+                                  <h4 class="modal-title" id="exampleModalLabel">Edit pengeluaran</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
                                 <div class="modal-body">
+
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>SUMBER DANA</label>
+                                    <select name="sumberdana" style="width:100%" class="form-control" required="required">
+                                      <option value="">- Pilih -</option>
+                                      <?php 
+                                      $sumberdana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Id_sumberdana ASC");
+                                      while($k = mysqli_fetch_array($sumberdana)){
+                                        ?>
+                                        <option <?php if($d['Id_sumberdana'] == $k['Id_sumberdana']){echo "selected='selected'";} ?> value="<?php echo $k['Id_sumberdana']; ?>"><?php echo $k['Jenis']; ?></option>
+                                        <?php 
+                                      }
+                                      ?>
+                                    </select>
+                                  </div>
+
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>DIVISI</label>
+                                    <select name="divisi" style="width:100%" class="form-control" required="required">
+                                      <option value="">- Pilih -</option>
+                                      <?php 
+                                      $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Id_divisi ASC");
+                                      while($k = mysqli_fetch_array($divisi)){
+                                        ?>
+                                        <option <?php if($d['Id_divisi'] == $k['Id_divisi']){echo "selected='selected'";} ?> value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
+                                        <?php 
+                                      }
+                                      ?>
+                                    </select>
+                                  </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>BULAN</label>
@@ -236,51 +263,28 @@
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>NO TANDA TERIMA</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_penerimaan'] ?>">
-                                    <input type="number" style="width:100%" name="No_tandaterima" required="required" class="form-control datepicker2" value="<?php echo $d['No_tandaterima'] ?>">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>METODE PEMBAYARAN</label>
-                                    <select name="metode" style="width:100%" class="form-control" required="required">
-                                      <option value="">- Pilih -</option>
-                                      <?php 
-                                      $metode = mysqli_query($koneksi,"SELECT * FROM metode_bayar ORDER BY Id_metode ASC");
-                                      while($k = mysqli_fetch_array($metode)){
-                                        ?>
-                                        <option <?php if($d['Id_metode'] == $k['Id_metode']){echo "selected='selected'";} ?> value="<?php echo $k['Id_metode']; ?>"><?php echo $k['Jenis']; ?></option>
-                                        <?php 
-                                      }
-                                      ?>
-                                    </select>
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>TANGGAL</label>
                                     <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>NAMA</label>
-                                    <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Nama_pembayar'] ?>">
+                                    <label>JENIS BELANJA</label>
+                                    <select name="jenis" style="width:100%" class="form-control" required="required">
+                                      <option value="">- Pilih -</option>
+                                      <option <?php if($d['Jenis_belanja'] == "Barang/Jasa"){echo "selected='selected'";} ?> value="Barang/Jasa">Barang/Jasa</option>
+                                      <option <?php if($d['Jenis_belanja'] == "Modal"){echo "selected='selected'";} ?> value="Modal">Modal</option>
+                                    </select>
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>ALAMAT/ASAL INSTANSI</label>
-                                    <input type="text" style="width:100%" name="alamat" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Alamat_instansi'] ?>">
+                                    <label>RINCIAN BELANJA</label>
+                                    <input type="text" style="width:100%" name="rincian" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Rincian'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>KEPERLUAN</label>
-                                    <input type="text" style="width:100%" name="keperluan" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Keperluan'] ?>">
+                                    <label>JUMLAH (RUPIAH)</label>
+                                    <input type="text" style="width:100%" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Jumlah'] ?>">
                                   </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>BESARAN (RUPIAH)</label>
-                                    <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Besaran_biaya'] ?>">
-                                  </div>
-
 
                                 </div>
                                 <div class="modal-footer">
@@ -293,7 +297,7 @@
                         </form>
 
                         <!-- modal hapus -->
-                        <div class="modal fade" id="hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -309,7 +313,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <a href="penerimaan_hapus.php?id=<?php echo $d['Id_penerimaan'] ?>" class="btn btn-primary">Hapus</a>
+                                <a href="pengeluaran_hapus.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Hapus</a>
                               </div>
                             </div>
                           </div>
