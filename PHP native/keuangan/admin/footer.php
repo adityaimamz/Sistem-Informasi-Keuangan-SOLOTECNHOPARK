@@ -120,6 +120,36 @@
     ]
   }
 
+  var barChartData2 = {
+    labels : ["CASH","TRANSFER"],
+    datasets : [
+    {
+      label: 'penerimaan',
+      fillColor : "rgba(51, 240, 113, 0.61)",
+      strokeColor : "rgba(11, 246, 88, 0.61)",
+      highlightFill: "rgba(220,220,220,0.75)",
+      highlightStroke: "rgba(220,220,220,1)",
+      data : [
+      <?php
+      for($bulan=1;$bulan<=12;$bulan++){
+        $thn_ini = date('Y');
+        $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
+        $pem = mysqli_fetch_assoc($penerimaan);
+        
+        // $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
+        $total = $pem['total_penerimaan'];
+        if($pem['total_penerimaan'] == ""){
+          echo "0,";
+        }else{
+          echo $total.",";
+        }
+      }
+      ?>
+      ]
+    }
+    ]
+  }
+
   var barChartData3 = {
     labels : [
     <?php 
