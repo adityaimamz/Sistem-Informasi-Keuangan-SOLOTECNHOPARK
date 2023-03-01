@@ -120,6 +120,38 @@
     ]
   }
 
+  
+
+  var barChartData4 = {
+    labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
+    datasets : [
+    {
+      label: 'pengeluaran',
+      fillColor : "rgba(255, 51, 51, 0.8)",
+      strokeColor : "rgba(255, 51, 51, 0.8)",
+      highlightFill: "rgba(220,220,220,0.75)",
+      highlightStroke: "rgba(220,220,220,1)",
+      data : [
+      <?php
+      for($bulan=1;$bulan<=12;$bulan++){
+        $thn_ini = date('Y');
+        $penerimaan = mysqli_query($koneksi,"SELECT sum(Jumlah) AS total_penerimaan FROM master_pengeluaran WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
+        $pem = mysqli_fetch_assoc($penerimaan);
+        
+        // $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
+        $total = $pem['total_penerimaan'];
+        if($pem['total_penerimaan'] == ""){
+          echo "0,";
+        }else{
+          echo $total.",";
+        }
+      }
+      ?>
+      ]
+    }
+    ]
+  }
+
 
 
 
@@ -135,6 +167,15 @@
    });
 
 
+    var ctx = document.getElementById("grafik4").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData4, {
+     responsive : true,
+     animation: true,
+     barValueSpacing : 5,
+     barDatasetSpacing : 1,
+     tooltipFillColor: "rgba(0,0,0,0.8)",
+     multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
+   });
 
     
 
