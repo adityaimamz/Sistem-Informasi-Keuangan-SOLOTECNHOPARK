@@ -199,6 +199,13 @@
 
     </div>
 
+
+
+
+
+
+
+
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">
@@ -210,7 +217,7 @@
 
           <ul class="nav nav-tabs pull-right">
             <!-- <li><a href="#tab2" data-toggle="tab">Pemasukan</a></li> -->
-            <li class="active"><a href="#tab1" data-toggle="tab">Penerimaan & Pengeluaran</a></li>
+            <li class="active"><a href="#tab1" data-toggle="tab">Pemasukan & Pengeluaran</a></li>
             <li class="pull-left header">Grafik</li>
           </ul>
 
@@ -223,15 +230,18 @@
               <canvas id="grafik1" style="position: relative; height: 300px;"></canvas>
 
               <br/>
+              <br/>
 
               <h4 class="text-center">Grafik Penerimaan Tahun 2023 berdasarkan Metode Bayar</h4>
               <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
 
               <br/>
+              <br/>
 
               <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per Divisi <b>Tahun</b> 2023 </h4>
               <canvas id="grafik3" style="position: relative; height: 300px;"></canvas>
 
+              <br/>
               <br/>
 
               <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
