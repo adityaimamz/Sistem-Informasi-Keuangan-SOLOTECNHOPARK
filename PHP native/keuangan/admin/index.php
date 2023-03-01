@@ -198,14 +198,6 @@
       </div>
 
     </div>
-
-
-
-
-
-
-
-
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">
@@ -280,16 +272,6 @@
       <!-- right col -->
     </div>
     <!-- /.row (main row) -->
-
-
-
-
-
-
-
-
-
-
   </section>
 
 </div>

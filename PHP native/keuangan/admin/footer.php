@@ -220,9 +220,6 @@
     ]
   }
 
-
-
-
   window.onload = function(){
     var ctx = document.getElementById("grafik1").getContext("2d");
     window.myBar = new Chart(ctx).Bar(barChartData, {
@@ -253,24 +250,7 @@
      tooltipFillColor: "rgba(0,0,0,0.8)",
      multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
    });
-
-    
-
-
   }
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
 </body>
 </html>
