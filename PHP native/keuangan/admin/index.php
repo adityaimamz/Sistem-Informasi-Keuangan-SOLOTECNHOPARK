@@ -1,10 +1,11 @@
 <?php include 'header.php'; ?>
 
+
 <div class="content-wrapper">
 
   <section class="content-header">
     <h1>
-      Dashboard
+      Dashboard GO
       <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
@@ -12,7 +13,6 @@
       <li class="active">Dashboard</li>
     </ol>
   </section>
-
 
   <section class="content">
 
@@ -259,12 +259,12 @@
               <br/>
 
               <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per Divisi <b>Tahun</b> 2023 </h4>
-              <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
+              <canvas id="grafik3" style="position: relative; height: 300px;"></canvas>
 
               <br/>
 
               <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
-              <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
+              <canvas id="grafik4" style="position: relative; height: 300px;"></canvas>
 
             </div> -->
 
@@ -292,7 +292,6 @@
           </div>
           <!-- /.box-body -->
         </div>
-        
 
       </section>
       <!-- right col -->
