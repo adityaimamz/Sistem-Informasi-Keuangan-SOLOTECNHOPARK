@@ -120,7 +120,45 @@
     ]
   }
 
-  
+  var barChartData3 = {
+    labels : [
+    <?php 
+    $tahun = mysqli_query($koneksi,"select distinct year(Tanggal) as tahun from master_pengeluaran order by year(Tanggal) asc");
+    while($t = mysqli_fetch_array($tahun)){
+      ?>
+      "<?php echo $t['tahun']; ?>",
+      <?php 
+    }
+    ?>
+    ],
+    datasets : [
+    {
+      label: 'Pengeluaran',
+      fillColor : "rgba(255, 51, 51, 0.8)",
+      strokeColor : "rgba(248, 5, 5, 0.8)",
+      highlightFill : "rgba(151,187,205,0.75)",
+      highlightStroke : "rgba(254, 29, 29, 0)",
+      data : [
+      <?php
+      $tahun = mysqli_query($koneksi,"SELECT distinct year(Tanggal) as tahun from master_pengeluaran order by year(Tanggal) asc");
+      while($t = mysqli_fetch_array($tahun)){
+        $thn = $t['tahun'];
+        $pemasukan = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran from master_pengeluaran where year(Tanggal)='$thn'");
+        $pem = mysqli_fetch_assoc($pemasukan);
+        $total = $pem['total_pengeluaran'];
+        if($pem['total_pengeluaran'] == ""){
+          echo "0,";
+        }else{
+          echo $total.",";
+        }
+
+      }
+      ?>
+      ]
+    }
+    ]
+
+  }
 
   var barChartData4 = {
     labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
@@ -166,6 +204,15 @@
      multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
    });
 
+   var ctx = document.getElementById("grafik3").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData3, {
+     responsive : true,
+     animation: true,
+     barValueSpacing : 5,
+     barDatasetSpacing : 1,
+     tooltipFillColor: "rgba(0,0,0,0.8)",
+     multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
+   });
 
     var ctx = document.getElementById("grafik4").getContext("2d");
     window.myBar = new Chart(ctx).Bar(barChartData4, {

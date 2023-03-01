@@ -269,7 +269,7 @@
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>TANGGAL</label>
-                                    <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal'] ?>">
+                                    <input type="text" style="width:100%" name="tanggal" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
