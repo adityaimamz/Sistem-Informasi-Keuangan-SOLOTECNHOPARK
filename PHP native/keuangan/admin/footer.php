@@ -87,8 +87,8 @@
 
 
 <script>
-  var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
+  var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
   var barChartData = {
     labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
     datasets : [
@@ -104,7 +104,7 @@
         $thn_ini = date('Y');
         $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
         $pem = mysqli_fetch_assoc($penerimaan);
-
+        
         // $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
         $total = $pem['total_penerimaan'];
         if($pem['total_penerimaan'] == ""){
@@ -113,33 +113,6 @@
           echo $total.",";
         }
 
-      }
-      ?>
-      ]
-    },
-    {
-      label: 'Pengeluaran',
-      fillColor : "rgba(255, 51, 51, 0.8)",
-      strokeColor : "rgba(248, 5, 5, 0.8)",
-      highlightFill : "rgba(151,187,205,0.75)",
-      highlightStroke : "rgba(151,187,205,1)",
-      data : [
-      <?php
-      for($bulan=1;$bulan<=12;$bulan++){
-        $thn_ini = date('Y');
-        $pengeluaran = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) AS total_pengeluaran FROM transaksi WHERE transaksi_jenis='pengeluaran' AND month(transaksi_tanggal)='$bulan' AND year(transaksi_tanggal)='$thn_ini'");
-        $peng = mysqli_fetch_assoc($pengeluaran);
-
-        var_dump($peng);
-
-        // $total = str_replace(",", "44", number_format($peng['total_pengeluaran']));
-        $total = $peng['total_pengeluaran'];
-        if($peng['total_pengeluaran'] == ""){
-          echo "0,";
-        }else{
-
-          echo $total.",";
-        }
       }
       ?>
       ]

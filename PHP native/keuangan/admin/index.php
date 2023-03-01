@@ -13,7 +13,6 @@
     </ol>
   </section>
 
-
   <section class="content">
 
     <div class="row">
@@ -272,7 +271,6 @@
           </div>
           <!-- /.box-body -->
         </div>
-        
 
       </section>
       <!-- right col -->
