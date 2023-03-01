@@ -44,12 +44,12 @@
                 <div class="col-md-3">
 
                   <div class="form-group">
-                    <label>Kategori</label>
-                    <select name="kategori" class="form-control" required="required">
-                      <option value="semua">- Semua Kategori -</option>
+                    <label>Divisi</label>
+                    <select name="divisi" class="form-control" required="required">
+                      <option value="semua">- Semua Divisi -</option>
                       <?php 
-                      $kategori = mysqli_query($koneksi,"SELECT * FROM master_divisi");
-                      while($k = mysqli_fetch_array($kategori)){
+                      $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi");
+                      while($k = mysqli_fetch_array($divisi)){
                         ?>
                         <option <?php if(isset($_GET['Nama_divisi'])){ if($_GET['Nama_divisi'] == $k['Id_divisi']){echo "selected='selected'";}} ?>  value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
                         <?php 
@@ -75,7 +75,7 @@
 
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Laporan Pemasukan & Pegeluaran</h3>
+            <h3 class="box-title">Laporan Penerimaan & Pegeluaran</h3>
           </div>
           <div class="box-body">
 
@@ -83,7 +83,7 @@
             if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari']) && isset($_GET['Nama_divisi'])){
               $tgl_dari = $_GET['tanggal_dari'];
               $tgl_sampai = $_GET['tanggal_sampai'];
-              $kategori = $_GET['kategori'];
+              $divisi = $_GET['divisi'];
               ?>
 
               <div class="row">
@@ -100,12 +100,12 @@
                       <td><?php echo $tgl_sampai; ?></td>
                     </tr>
                     <tr>
-                      <th>KATEGORI</th>
+                      <th>DIVISI</th>
                       <th>:</th>
                       <td>
                         <?php 
                         if($Nama_divisi == "semua"){
-                          echo "SEMUA KATEGORI";
+                          echo "SEMUA DIVISI";
                         }else{
                           $k = mysqli_query($koneksi,"SELECT * FROM master_divisi where Id_Kategori='$Nama_divisi'");
                           $kk = mysqli_fetch_assoc($k);
@@ -120,15 +120,15 @@
                 </div>
               </div>
 
-              <a href="laporan_pdf.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&kategori=<?php echo $kategori ?>" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp CETAK PDF</a>
-              <a href="laporan_print.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&kategori=<?php echo $kategori ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
+              <a href="laporan_pdf.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&kategori=<?php echo $divisi ?>" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp CETAK PDF</a>
+              <a href="laporan_print.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&kategori=<?php echo $divisi ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th width="1%" rowspan="2">NO</th>
                       <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
-                      <th rowspan="2" class="text-center">KATEGORI</th>
+                      <th rowspan="2" class="text-center">DIVISI</th>
                       <th rowspan="2" class="text-center">KETERANGAN</th>
                       <th colspan="2" class="text-center">JENIS</th>
                     </tr>
@@ -143,10 +143,10 @@
                     $no=1;
                     $total_pemasukan=0;
                     $total_pengeluaran=0;
-                    if($kategori == "semua"){
+                    if($divisi == "semua"){
                       $data = mysqli_query($koneksi,"SELECT * FROM transaksi,kategori where kategori_id=transaksi_kategori and date(transaksi_tanggal)>='$tgl_dari' and date(transaksi_tanggal)<='$tgl_sampai'");
                     }else{
-                      $data = mysqli_query($koneksi,"SELECT * FROM transaksi,kategori where kategori_id=transaksi_kategori and kategori_id='$kategori' and date(transaksi_tanggal)>='$tgl_dari' and date(transaksi_tanggal)<='$tgl_sampai'");
+                      $data = mysqli_query($koneksi,"SELECT * FROM transaksi,kategori where kategori_id=transaksi_kategori and kategori_id='$divisi' and date(transaksi_tanggal)>='$tgl_dari' and date(transaksi_tanggal)<='$tgl_sampai'");
                     }
                     while($d = mysqli_fetch_array($data)){
 

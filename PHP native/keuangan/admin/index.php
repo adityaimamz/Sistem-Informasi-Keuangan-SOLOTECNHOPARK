@@ -199,13 +199,6 @@
 
     </div>
 
-
-
-
-
-
-
-
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">
@@ -217,7 +210,7 @@
 
           <ul class="nav nav-tabs pull-right">
             <!-- <li><a href="#tab2" data-toggle="tab">Pemasukan</a></li> -->
-            <li class="active"><a href="#tab1" data-toggle="tab">Pemasukan & Pengeluaran</a></li>
+            <li class="active"><a href="#tab1" data-toggle="tab">Penerimaan & Pengeluaran</a></li>
             <li class="pull-left header">Grafik</li>
           </ul>
 
@@ -230,30 +223,8 @@
               <canvas id="grafik1" style="position: relative; height: 300px;"></canvas>
 
               <br/>
-              <?php
-              include('../koneksi.php');
-              $label = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-               
-              for($bulan = 1;$bulan < 13;$bulan++)
-              {
-                $thn_ini = date('Y');
-                $query = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE Bulan='$bulan' AND year(Tanggal)='$thn_ini'");
-                $row = $query->fetch_array();
-                $jumlah[] = $row['total_penerimaan'];
-              }
-              ?>
-              <!DOCTYPE html>
-              <html>
-              <head>
-                <title>Membuat Grafik Menggunakan Chart JS</title>
-                <script type="text/javascript" src="Chart.js"></script>
-              </head>
-              <body>
-                <div style="width: 800px;height: 800px">
-                  <canvas id="myChart"></canvas>
-                </div>
 
-              <!-- <h4 class="text-center">Grafik Penerimaan Tahun 2023 berdasarkan Metode Bayar</h4>
+              <h4 class="text-center">Grafik Penerimaan Tahun 2023 berdasarkan Metode Bayar</h4>
               <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
 
               <br/>
@@ -266,8 +237,10 @@
               <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
               <canvas id="grafik4" style="position: relative; height: 300px;"></canvas>
 
-            </div> -->
-
+            </div>
+            <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
+              b
+            </div>
           </div>
 
         </div>
@@ -298,116 +271,33 @@
     </div>
     <!-- /.row (main row) -->
 
+
+
+
+
+
+
+
+
+
   </section>
 
 </div>
 
-<!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
-    </div>
-    <strong>Build & developed by MSIB batch 4 intern 2023</strong> - Sistem Informasi Laporan Keuangan Solo Technopark
-  </footer>
-
-  
-</div>
-
-
-<script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
-
-<script src="../assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
-
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-
-<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<script src="../assets/bower_components/raphael/raphael.min.js"></script>
-<script src="../assets/bower_components/morris.js/morris.min.js"></script>
-
-<script src="../assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-
-
-<script src="../assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
-<script src="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-
-<script src="../assets/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-
-<script src="../assets/bower_components/moment/min/moment.min.js"></script>
-<script src="../assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<script src="../assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-<script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-
-<script src="../assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-
-<script src="../assets/bower_components/fastclick/lib/fastclick.js"></script>
-
-<script src="../assets/dist/js/adminlte.min.js"></script>
-
-<script src="../assets/dist/js/pages/dashboard.js"></script>
-
-<script src="../assets/dist/js/demo.js"></script>
-<script src="../assets/bower_components/ckeditor/ckeditor.js"></script>
-<script src="../assets/bower_components/chart.js/Chart.min.js"></script>
-
-<script>
-  $(document).ready(function(){
-
-   // $(".edit").hide();
-
-   $('#table-datatable').DataTable({
-    'paging'      : true,
-    'lengthChange': false,
-    'searching'   : true,
-    'ordering'    : false,
-    'info'        : true,
-    'autoWidth'   : true,
-    "pageLength": 50
-  });
 
 
 
- });
-  
-  $('#datepicker').datepicker({
-    autoclose: true,
-    format: 'dd/mm/yyyy',
-  }).datepicker("setDate", new Date());
-
-  $('.datepicker2').datepicker({
-    autoclose: true,
-    format: 'yyyy/mm/dd',
-  });
 
 
-  var ctx = document.getElementById("myChart").getContext('2d');
-  var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: <?php echo json_encode($label); ?>,
-      datasets: [{
-        label: 'Grafik Penjualan',
-        data: <?php echo json_encode($jumlah); ?>,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero:true
-          }
-        }]
-      }
-    }
-  });
-</script>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+<?php include 'footer.php'; ?>

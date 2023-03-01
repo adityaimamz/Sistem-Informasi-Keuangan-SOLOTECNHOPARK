@@ -146,6 +146,12 @@
                         <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
+                      <div class="form-group">
+                        <label>Upload Bukti</label>
+                        <input type="file" name="trnfoto" required="required" class="form-control">
+                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
+                      </div>
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -155,7 +161,6 @@
                 </div>
               </div>
             </form>
-
 
             <div class="table-responsive">
               <table class="table table-bordered table-striped" id="table-datatable">
@@ -197,9 +202,9 @@
                           <i class="fa fa-trash"></i>
                         </button>
 
-                        <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_transaksi_<?php echo $d['Id_pengeluaran'] ?>">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                           <i class="fa fa-eye"></i>
-                        </button> -->
+                        </button>
 
                         <form action="pengeluaran_update.php" method="post" enctype="multipart/form-data">
                           <div class="modal fade" id="edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -287,6 +292,13 @@
                                     <input type="text" style="width:100%" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Jumlah'] ?>">
                                   </div>
 
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>Upload File</label>
+                                    <input type="file" name="trnfoto" class="form-control"><br>
+                                    <!-- <small><?php echo $d['Bukti'] ?></small> -->
+                                    <p class="help-block">Bila File <?php echo "<a class='fancybox btn btn-xs btn-primary' target=_blank href='../gambar/bukti/$d[Bukti_lpj]'>$d[Bukti_lpj]</a>";?> tidak dirubah kosongkan saja</p>
+                                  </div>
+
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -296,6 +308,25 @@
                             </div>
                           </div>
                         </form>
+
+                        <div class="modal fade" id="lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Lihat Bukti Upload</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <embed src="../gambar/bukti/<?php echo $d['Bukti_lpj']; ?>" type="application/pdf" width="100%" height="400px" />
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <!-- modal hapus -->
                         <div class="modal fade" id="hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
