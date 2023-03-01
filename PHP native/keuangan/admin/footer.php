@@ -89,6 +89,7 @@
 <script>
 
   var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+  
   var barChartData = {
     labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
     datasets : [
@@ -112,79 +113,13 @@
         }else{
           echo $total.",";
         }
-
       }
       ?>
       ]
     }
     ]
-
   }
 
-
-  var barChartData2 = {
-    labels : [
-    <?php 
-    $tahun = mysqli_query($koneksi,"SELECT distinct year(transaksi_tanggal) AS tahun FROM transaksi ORDER BY year(transaksi_tanggal) ASC");
-    while($t = mysqli_fetch_array($tahun)){
-      ?>
-      "<?php echo $t['tahun']; ?>",
-      <?php 
-    }
-    ?>
-    ],
-    datasets : [
-    {
-      label: 'penerimaan',
-      fillColor : "rgba(51, 240, 113, 0.61)",
-      strokeColor : "rgba(11, 246, 88, 0.61)",
-      highlightFill: "rgba(220,220,220,0.75)",
-      highlightStroke: "rgba(220,220,220,1)",
-      data : [
-      <?php
-      $tahun = mysqli_query($koneksi,"SELECT distinct year(transaksi_tanggal) AS tahun FROM transaksi ORDER BY year(transaksi_tanggal) ASC");
-      while($t = mysqli_fetch_array($tahun)){
-        $thn = $t['tahun'];
-        $penerimaan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) AS total_penerimaan FROM transaksi WHERE transaksi_jenis='penerimaan' AND year(transaksi_tanggal)='$thn'");
-        $pem = mysqli_fetch_assoc($penerimaan);
-        $total = $pem['total_penerimaan'];
-        if($pem['total_penerimaan'] == ""){
-          echo "0,";
-        }else{
-          echo $total.",";
-        }
-
-      }
-      ?>
-      ]
-    },
-    {
-      label: 'Pengeluaran',
-      fillColor : "rgba(255, 51, 51, 0.8)",
-      strokeColor : "rgba(248, 5, 5, 0.8)",
-      highlightFill : "rgba(151,187,205,0.75)",
-      highlightStroke : "rgba(254, 29, 29, 0)",
-      data : [
-      <?php
-      $tahun = mysqli_query($koneksi,"SELECT distinct year(transaksi_tanggal) AS tahun FROM transaksi ORDER BY year(transaksi_tanggal) ASC");
-      while($t = mysqli_fetch_array($tahun)){
-        $thn = $t['tahun'];
-        $penerimaan = mysqli_query($koneksi,"SELECT sum(transaksi_nominal) AS total_pengeluaran FROM transaksi WHERE transaksi_jenis='Pengeluaran' AND year(transaksi_tanggal)='$thn'");
-        $pem = mysqli_fetch_assoc($penerimaan);
-        $total = $pem['total_pengeluaran'];
-        if($pem['total_pengeluaran'] == ""){
-          echo "0,";
-        }else{
-          echo $total.",";
-        }
-
-      }
-      ?>
-      ]
-    }
-    ]
-
-  }
 
 
 
@@ -198,17 +133,6 @@
      tooltipFillColor: "rgba(0,0,0,0.8)",
      multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
    });
-
-   var ctx = document.getElementById("grafik2").getContext("2d");
-    window.myBar = new Chart(ctx).Bar(barChartData2, {
-     responsive : true,
-     animation: true,
-     barValueSpacing : 5,
-     barDatasetSpacing : 1,
-     tooltipFillColor: "rgba(0,0,0,0.8)",
-     multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
-   });
-
 
 
 
