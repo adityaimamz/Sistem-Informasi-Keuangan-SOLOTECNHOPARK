@@ -168,7 +168,7 @@
                     <th>BESARAN</th>
                     <th>OPSI</th>
                   </tr>
-                </thead>
+                    </thead>
 
                 <tbody>
                   <?php 
