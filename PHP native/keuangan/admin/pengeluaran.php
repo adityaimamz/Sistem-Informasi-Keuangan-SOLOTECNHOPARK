@@ -311,7 +311,6 @@
 
                                 <p>Yakin ingin menghapus data ini ?</p>
 
-                              </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                 <a href="pengeluaran_hapus.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Hapus</a>

@@ -102,7 +102,7 @@
       <?php
       for($bulan=1;$bulan<=12;$bulan++){
         $thn_ini = date('Y');
-        $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
+        $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE Bulan='$bulan' AND year(Tanggal)='$thn_ini'");
         $pem = mysqli_fetch_assoc($penerimaan);
 
         // $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
@@ -145,7 +145,6 @@
     ]
 
   }
-
 
   var barChartData2 = {
     labels : [

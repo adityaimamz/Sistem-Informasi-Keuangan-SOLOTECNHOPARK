@@ -136,12 +136,12 @@
                         <input type="number" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
-             <!--          <div class="form-group">
-                        <label>Upload File</label>
+                      <div class="form-group">
+                        <label>Upload Bukti</label>
                         <input type="file" name="trnfoto" required="required" class="form-control">
                         <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
                       </div>
- -->
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -196,9 +196,9 @@
                           <i class="fa fa-trash"></i>
                         </button>
 
-                        <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_transaksi_<?php echo $d['Id_penerimaan'] ?>">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-eye"></i>
-                        </button> -->
+                        </button>
 
                         <form action="penerimaan_update.php" method="post" enctype="multipart/form-data">
                           <div class="modal fade" id="edit_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -277,6 +277,24 @@
                                     <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Besaran .." value="<?php echo $d['Besaran_biaya'] ?>">
                                   </div>
 
+                                 <!--  <div class="modal fade" id="lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h4 class="modal-title" id="exampleModalLabel">Lihat Bukti Upload</h4>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <embed src="../gambar/bukti/<?php echo $d['Bukti']; ?>" type="application/pdf" width="100%" height="400px" />
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div> -->
 
                                 </div>
                                 <div class="modal-footer">
@@ -287,6 +305,25 @@
                             </div>
                           </div>
                         </form>
+
+                        <div class="modal fade" id="lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Lihat Bukti Upload</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <embed src="../gambar/bukti/<?php echo $d['Bukti']; ?>" type="application/pdf" width="100%" height="400px" />
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <!-- modal hapus -->
                         <div class="modal fade" id="hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
