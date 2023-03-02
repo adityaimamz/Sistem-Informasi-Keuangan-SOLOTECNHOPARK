@@ -75,7 +75,7 @@
 
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Laporan Penerimaan & Pegeluaran</h3>
+            <h3 class="box-title">Laporan Pegeluaran</h3>
           </div>
           <div class="box-body">
 
@@ -107,7 +107,7 @@
                         if($Nama_divisi == "semua"){
                           echo "SEMUA DIVISI";
                         }else{
-                          $k = mysqli_query($koneksi,"SELECT * FROM master_divisi where Id_Kategori='$Nama_divisi'");
+                          $k = mysqli_query($koneksi,"SELECT * FROM master_divisi where Id_divisi='$Nama_divisi'");
                           $kk = mysqli_fetch_assoc($k);
                           echo $kk['Nama_divisi'];
                         }
@@ -120,8 +120,8 @@
                 </div>
               </div>
 
-              <a href="laporan_pdf.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&kategori=<?php echo $divisi ?>" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp CETAK PDF</a>
-              <a href="laporan_print.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&kategori=<?php echo $divisi ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
+              <a href="laporan_pdf.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&master_divisi=<?php echo $divisi ?>" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp CETAK PDF</a>
+              <a href="laporan_print.php?tanggal_dari=<?php echo $tgl_dari ?>&tanggal_sampai=<?php echo $tgl_sampai ?>&master_divisi=<?php echo $divisi ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                   <thead>
@@ -133,7 +133,7 @@
                       <th colspan="2" class="text-center">JENIS</th>
                     </tr>
                     <tr>
-                      <th class="text-center">PEMASUKAN</th>
+                      <th class="text-center">PENERIMAAN</th>
                       <th class="text-center">PENGELUARAN</th>
                     </tr>
                   </thead>
@@ -141,39 +141,24 @@
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $total_pemasukan=0;
+                    $total_penerimaan=0;
                     $total_pengeluaran=0;
                     if($divisi == "semua"){
-                      $data = mysqli_query($koneksi,"SELECT * FROM transaksi,kategori where kategori_id=transaksi_kategori and date(transaksi_tanggal)>='$tgl_dari' and date(transaksi_tanggal)<='$tgl_sampai'");
+                      $data = mysqli_query($koneksi,"SELECT * FROM master_pengeluaran,master_divisi where master_divisi.Id_divisi=master_pengeluaran.Id_divisi and date(Tanggal)>='$tgl_dari' and date(Tanggal)<='$tgl_sampai'");
                     }else{
-                      $data = mysqli_query($koneksi,"SELECT * FROM transaksi,kategori where kategori_id=transaksi_kategori and kategori_id='$divisi' and date(transaksi_tanggal)>='$tgl_dari' and date(transaksi_tanggal)<='$tgl_sampai'");
+                      $data = mysqli_query($koneksi,"SELECT * FROM master_pengeluaran,master_divisi where master_divisi.Id_divisi=master_pengeluaran.Id_divisi and master_divisi.Id_divisi='$divisi' and date(Tanggal)>='$tgl_dari' and date(Tanggal)<='$tgl_sampai'");
                     }
                     while($d = mysqli_fetch_array($data)){
-
-                      if($d['transaksi_jenis'] == "Pemasukan"){
-                        $total_pemasukan += $d['transaksi_nominal'];
-                      }elseif($d['transaksi_jenis'] == "Pengeluaran"){
-                        $total_pengeluaran += $d['transaksi_nominal'];
-                      }
-                      ?>
+                      $total_pengeluaran += $d['Jumlah']; ?>
                       <tr>
                         <td class="text-center"><?php echo $no++; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['transaksi_tanggal'])); ?></td>
-                        <td><?php echo $d['kategori']; ?></td>
-                        <td><?php echo $d['transaksi_keterangan']; ?></td>
+                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                        <td><?php echo $d['master_divisi']; ?></td>
+                        <td><?php echo $d['Rincian']; ?></td>
                         <td class="text-center">
                           <?php 
-                          if($d['transaksi_jenis'] == "Pemasukan"){
-                            echo "Rp. ".number_format($d['transaksi_nominal'])." ,-";
-                          }else{
-                            echo "-";
-                          }
-                          ?>
-                        </td>
-                        <td class="text-center">
-                          <?php 
-                          if($d['transaksi_jenis'] == "Pengeluaran"){
-                            echo "Rp. ".number_format($d['transaksi_nominal'])." ,-";
+                          if($d['Jumlah'] != 0){
+                            echo "Rp. ".number_format($d['Jumlah'])." ,-";
                           }else{
                             echo "-";
                           }
@@ -185,12 +170,12 @@
                     ?>
                     <tr>
                       <th colspan="4" class="text-right">TOTAL</th>
-                      <td class="text-center text-bold text-success"><?php echo "Rp. ".number_format($total_pemasukan)." ,-"; ?></td>
+                      <!-- <td class="text-center text-bold text-success"><?php echo "Rp. ".number_format($total_penerimaan)." ,-"; ?></td> -->
                       <td class="text-center text-bold text-danger"><?php echo "Rp. ".number_format($total_pengeluaran)." ,-"; ?></td>
                     </tr>
                     <tr>
                       <th colspan="4" class="text-right">SALDO</th>
-                      <td colspan="2" class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total_pemasukan - $total_pengeluaran)." ,-"; ?></td>
+                      <td colspan="2" class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total_pengeluaran)." ,-"; ?></td>
                     </tr>
                   </tbody>
                 </table>
