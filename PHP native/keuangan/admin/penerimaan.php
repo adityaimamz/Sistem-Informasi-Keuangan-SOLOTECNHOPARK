@@ -92,7 +92,7 @@
 
                       <div class="form-group">
                         <label>NO TANDA TERIMA</label>
-                        <input type="number" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan No Tanda Terima ..">
+                        <input type="text" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan No Tanda Terima ..">
                       </div>
 
                       <div class="form-group">
