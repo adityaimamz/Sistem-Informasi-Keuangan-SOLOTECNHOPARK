@@ -239,6 +239,12 @@
               <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
               <canvas id="grafik4" style="position: relative; height: 300px;"></canvas>
 
+              <br/>
+              <br/>
+
+              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
+              <canvas id="grafik5" style="position: relative; height: 300px;"></canvas>
+
             </div>
             <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
               b
