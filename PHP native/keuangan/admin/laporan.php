@@ -83,7 +83,7 @@
             if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari']) && isset($_GET['Nama_divisi'])){
               $tgl_dari = $_GET['tanggal_dari'];
               $tgl_sampai = $_GET['tanggal_sampai'];
-              $divisi = $_GET['divisi'];
+              $divisi = $_GET['Nama_divisi'];
               ?>
 
               <div class="row">
