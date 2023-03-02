@@ -36,7 +36,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="penerimaan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -58,7 +57,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="penerimaan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -80,7 +78,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="penerimaan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -101,7 +98,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="penerimaan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -126,7 +122,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -149,7 +144,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -172,7 +166,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -193,7 +186,6 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -230,20 +222,14 @@
               <br/>
               <br/>
 
-              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
+              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per Divisi <b>Tahun</b> 2023 </h4>
               <canvas id="grafik3" style="position: relative; height: 300px;"></canvas>
 
-              <br/>
-              <br/>
               <br/>
               <br/>
 
               <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
               <canvas id="grafik4" style="position: relative; height: 300px;"></canvas>
-
-              <br/>
-              <br/>
-
 
             </div>
             <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
