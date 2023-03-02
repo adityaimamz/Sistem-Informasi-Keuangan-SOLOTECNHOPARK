@@ -231,10 +231,10 @@
               <br/>
 
               <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
-              <br/>
-              <br/>
               <canvas id="grafik3" style="position: relative; height: 300px;"></canvas>
 
+              <br/>
+              <br/>
               <br/>
               <br/>
 
