@@ -123,7 +123,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="penerimaan.php"><i class="fa fa-circle-o"></i> Data Penerimaan</a></li>
-              <li><a href="penerimaan_tambah.php"><i class="fa fa-circle-o"></i> Form Penerimaan</a></li>
+              <!-- <li><a href="penerimaan_tambah.php"><i class="fa fa-circle-o"></i> Form Penerimaan</a></li> -->
             </ul>
           </li>
 
@@ -137,7 +137,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
-              <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li>
+              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
             </ul>
           </li>
 
