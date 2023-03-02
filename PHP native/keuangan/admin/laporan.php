@@ -83,7 +83,7 @@
             if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari']) && isset($_GET['Nama_divisi'])){
               $tgl_dari = $_GET['tanggal_dari'];
               $tgl_sampai = $_GET['tanggal_sampai'];
-              $divisi = $_GET['Nama_divisi'];
+              $divisi = $_GET['divisi'];
               ?>
 
               <div class="row">
@@ -104,10 +104,10 @@
                       <th>:</th>
                       <td>
                         <?php 
-                        if($Nama_divisi == "semua"){
+                        if($divisi == "semua"){
                           echo "SEMUA DIVISI";
                         }else{
-                          $k = mysqli_query($koneksi,"SELECT * FROM master_divisi where Id_divisi='$Nama_divisi'");
+                          $k = mysqli_query($koneksi,"SELECT * FROM master_divisi where Id_divisi='$divisi'");
                           $kk = mysqli_fetch_assoc($k);
                           echo $kk['Nama_divisi'];
                         }
