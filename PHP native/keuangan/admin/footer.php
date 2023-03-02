@@ -151,42 +151,40 @@
   
 
   var barChartData3 = {
-    labels : [
-    <?php 
-    $tahun = mysqli_query($koneksi,"select distinct year(Tanggal) as tahun from master_pengeluaran order by year(Tanggal) asc");
-    while($t = mysqli_fetch_array($tahun)){
-      ?>
-      "<?php echo $t['tahun']; ?>",
+    labels: [
       <?php 
-    }
-    ?>
-    ],
-    datasets : [
-    {
-      label: 'Pengeluaran',
-      fillColor : "rgba(255, 51, 51, 0.8)",
-      strokeColor : "rgba(248, 5, 5, 0.8)",
-      highlightFill : "rgba(151,187,205,0.75)",
-      highlightStroke : "rgba(254, 29, 29, 0)",
-      data : [
-      <?php
-      $tahun = mysqli_query($koneksi,"SELECT distinct year(Tanggal) as tahun from master_pengeluaran order by year(Tanggal) asc");
-      while($t = mysqli_fetch_array($tahun)){
-        $thn = $t['tahun'];
-        $pemasukan = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran from master_pengeluaran where year(Tanggal)='$thn'");
-        $pem = mysqli_fetch_assoc($pemasukan);
-        $total = $pem['total_pengeluaran'];
-        if($pem['total_pengeluaran'] == ""){
-          echo "0,";
-        }else{
-          echo $total.",";
-        }
-
+      $divisi = mysqli_query($koneksi,"SELECT DISTINCT Nama_divisi FROM master_divisi ORDER BY Nama_divisi ASC");
+      while($d = mysqli_fetch_array($divisi)){
+        ?>
+        "<?php echo $d['Nama_divisi']; ?>",
+        <?php 
       }
       ?>
+    ],
+    datasets: [
+  {
+    label: 'Pengeluaran',
+    fillColor: "rgba(255, 51, 51, 0.8)",
+    strokeColor: "rgba(248, 5, 5, 0.8)",
+    highlightFill: "rgba(151,187,205,0.75)",
+    highlightStroke: "rgba(254, 29, 29, 0)",
+    data: [
+      <?php
+      $divisi = mysqli_query($koneksi, "SELECT DISTINCT Id_divisi FROM master_pengeluaran");
+      while($d = mysqli_fetch_array($divisi)){
+        $id_divisi = $d['Id_divisi'];
+        $pengeluaran = mysqli_query($koneksi, "SELECT SUM(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Id_divisi='$id_divisi'");
+        $total = mysqli_fetch_assoc($pengeluaran)['total_pengeluaran'];
+        if(empty($total)){
+          echo "0,";
+        } else {
+          echo $total.",";
+        }
+          }
+        ?>
       ]
     }
-    ]
+  ]
 
   }
 
