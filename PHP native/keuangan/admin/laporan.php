@@ -130,18 +130,18 @@
                       <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
                       <th rowspan="2" class="text-center">DIVISI</th>
                       <th rowspan="2" class="text-center">KETERANGAN</th>
-                      <!-- <th colspan="2" class="text-center">JENIS</th> -->
+                      <th colspan="2" class="text-center">PENGELUARAN</th>
                     </tr>
-                    <tr>
+        <!--             <tr>
                       <th class="text-center">PENERIMAAN</th>
                       <th class="text-center">PENGELUARAN</th>
-                    </tr>
+                    </tr> -->
                   </thead>
                   <tbody>
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $total_penerimaan=0;
+                    // $total_penerimaan=0;
                     $total_pengeluaran=0;
                     if($divisi == "semua"){
                       $data = mysqli_query($koneksi,"SELECT * FROM master_pengeluaran,master_divisi where master_divisi.Id_divisi=master_pengeluaran.Id_divisi and date(Tanggal)>='$tgl_dari' and date(Tanggal)<='$tgl_sampai'");
@@ -153,7 +153,7 @@
                       <tr>
                         <td class="text-center"><?php echo $no++; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td><?php echo $d['master_divisi']; ?></td>
+                        <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['Rincian']; ?></td>
                         <td class="text-center">
                           <?php 
