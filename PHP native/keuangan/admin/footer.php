@@ -121,72 +121,70 @@
   }
 
   var barChartData2 = {
-    labels : ["CASH","TRANSFER"],
+    labels : ["Cash","transfer"],
     datasets : [
     {
-      label: 'penerimaan',
+      label: 'pengeluaran',
       fillColor : "rgba(51, 240, 113, 0.61)",
-      strokeColor : "rgba(11, 246, 88, 0.61)",
+      strokeColor : "rgba(51, 240, 113, 0.61)",
       highlightFill: "rgba(220,220,220,0.75)",
       highlightStroke: "rgba(220,220,220,1)",
       data : [
       <?php
-      for($bulan=1;$bulan<=12;$bulan++){
-        $thn_ini = date('Y');
-        $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
-        $pem = mysqli_fetch_assoc($penerimaan);
-        
-        // $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
-        $total = $pem['total_penerimaan'];
-        if($pem['total_penerimaan'] == ""){
-          echo "0,";
-        }else{
-          echo $total.",";
-        }
-      }
+     $id_metode = mysqli_query($koneksi,"SELECT distinct id_metode from master_penerimaan order by id_metode asc");
+     while($t = mysqli_fetch_array($id_metode)){
+       $metode = $t['id_metode'];
+       $pengeluaran = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_pengeluaran from master_penerimaan where id_metode='$metode'");
+       $pem = mysqli_fetch_assoc($pengeluaran);
+       $total = $pem['total_pengeluaran'];
+       if($pem['total_pengeluaran'] == ""){
+         echo "0,";
+       }else{
+         echo $total.",";
+       }
+     }
       ?>
       ]
     }
     ]
   }
+  
 
   var barChartData3 = {
-    labels : [
-    <?php 
-    $tahun = mysqli_query($koneksi,"select distinct year(Tanggal) as tahun from master_pengeluaran order by year(Tanggal) asc");
-    while($t = mysqli_fetch_array($tahun)){
-      ?>
-      "<?php echo $t['tahun']; ?>",
+    labels: [
       <?php 
-    }
-    ?>
-    ],
-    datasets : [
-    {
-      label: 'Pengeluaran',
-      fillColor : "rgba(255, 51, 51, 0.8)",
-      strokeColor : "rgba(248, 5, 5, 0.8)",
-      highlightFill : "rgba(151,187,205,0.75)",
-      highlightStroke : "rgba(254, 29, 29, 0)",
-      data : [
-      <?php
-      $tahun = mysqli_query($koneksi,"SELECT distinct year(Tanggal) as tahun from master_pengeluaran order by year(Tanggal) asc");
-      while($t = mysqli_fetch_array($tahun)){
-        $thn = $t['tahun'];
-        $pemasukan = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran from master_pengeluaran where year(Tanggal)='$thn'");
-        $pem = mysqli_fetch_assoc($pemasukan);
-        $total = $pem['total_pengeluaran'];
-        if($pem['total_pengeluaran'] == ""){
-          echo "0,";
-        }else{
-          echo $total.",";
-        }
-
+      $divisi = mysqli_query($koneksi,"SELECT DISTINCT Nama_divisi FROM master_divisi ORDER BY Nama_divisi ASC");
+      while($d = mysqli_fetch_array($divisi)){
+        ?>
+        "<?php echo $d['Nama_divisi']; ?>",
+        <?php 
       }
       ?>
+    ],
+    datasets: [
+  {
+    label: 'Pengeluaran',
+    fillColor: "rgba(255, 51, 51, 0.8)",
+    strokeColor: "rgba(248, 5, 5, 0.8)",
+    highlightFill: "rgba(151,187,205,0.75)",
+    highlightStroke: "rgba(254, 29, 29, 0)",
+    data: [
+      <?php
+      $divisi = mysqli_query($koneksi, "SELECT DISTINCT Id_divisi FROM master_pengeluaran");
+      while($d = mysqli_fetch_array($divisi)){
+        $id_divisi = $d['Id_divisi'];
+        $pengeluaran = mysqli_query($koneksi, "SELECT SUM(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Id_divisi='$id_divisi'");
+        $total = mysqli_fetch_assoc($pengeluaran)['total_pengeluaran'];
+        if(empty($total)){
+          echo "0,";
+        } else {
+          echo $total.",";
+        }
+          }
+        ?>
       ]
     }
-    ]
+  ]
 
   }
 
@@ -220,9 +218,22 @@
     ]
   }
 
+
+
+
   window.onload = function(){
     var ctx = document.getElementById("grafik1").getContext("2d");
     window.myBar = new Chart(ctx).Bar(barChartData, {
+     responsive : true,
+     animation: true,
+     barValueSpacing : 5,
+     barDatasetSpacing : 1,
+     tooltipFillColor: "rgba(0,0,0,0.8)",
+     multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
+   });
+
+   var ctx = document.getElementById("grafik2").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData2, {
      responsive : true,
      animation: true,
      barValueSpacing : 5,
@@ -250,6 +261,7 @@
      tooltipFillColor: "rgba(0,0,0,0.8)",
      multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
    });
+
   }
 </script>
 </body>
