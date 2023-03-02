@@ -130,7 +130,7 @@
                       <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
                       <th rowspan="2" class="text-center">DIVISI</th>
                       <th rowspan="2" class="text-center">KETERANGAN</th>
-                      <th colspan="2" class="text-center">JENIS</th>
+                      <!-- <th colspan="2" class="text-center">JENIS</th> -->
                     </tr>
                     <tr>
                       <th class="text-center">PENERIMAAN</th>

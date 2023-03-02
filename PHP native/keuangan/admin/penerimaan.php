@@ -174,7 +174,7 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM master_penerimaan order by Id_penerimaan desc");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan, metode_bayar WHERE master_penerimaan.Id_metode=metode_bayar.Id_metode order by Id_penerimaan desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
@@ -182,7 +182,7 @@
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <td><?php echo $d['Bulan']; ?></td>
                       <td><?php echo $d['No_tandaterima']; ?></td>
-                      <td><?php echo $d['Id_metode']; ?></td>
+                      <td><?php echo $d['Jenis']; ?></td>
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
                       <td><?php echo $d['Keperluan']; ?></td>

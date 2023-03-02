@@ -181,13 +181,13 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM master_pengeluaran order by Id_pengeluaran desc");
+                  $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis FROM master_pengeluaran, master_divisi, master_sumberdana WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana order by Id_pengeluaran desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
-                      <td><?php echo $d['Id_sumberdana']; ?></td>
-                      <td><?php echo $d['Id_divisi']; ?></td>
+                      <td><?php echo $d['Jenis']; ?></td>
+                      <td><?php echo $d['Nama_divisi']; ?></td>
                       <td><?php echo $d['Bulan']; ?></td>
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <td><?php echo $d['Jenis_belanja']; ?></td>
