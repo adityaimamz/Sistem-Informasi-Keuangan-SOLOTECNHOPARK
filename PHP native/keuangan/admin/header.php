@@ -142,6 +142,20 @@
 
           <li class="treeview">
             <a href="#">
+              <i class="fa fa-briefcase"></i>
+              <span>BARANG</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
+              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
+            </ul>
+          </li>
+
+          <li class="treeview">
+            <a href="#">
               <i class="fa fa-print"></i>
               <span>LAPORAN</span>
               <span class="pull-right-container">
