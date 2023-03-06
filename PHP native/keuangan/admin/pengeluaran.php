@@ -130,9 +130,16 @@
                       <div class="form-group">
                         <label>JENIS BELANJA</label>
                         <select name="jenis" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <option value="Barang/Jasa">Barang/Jasa</option>
-                          <option value="Modal">Modal</option>
+                        <option value="">- Pilih -</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $belanja = mysqli_query($koneksi,"SELECT * FROM master_belanja ORDER BY Jenis ASC");
+                          while($k = mysqli_fetch_array($belanja)){
+                            ?>
+                            <option value="<?php echo $k['Id_jenisbelanja']; ?>"><?php echo $k['Jenis']; ?></option>
+                            <?php 
+                          }
+                          ?>
                         </select>
                       </div>
 
