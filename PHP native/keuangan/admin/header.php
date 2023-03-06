@@ -142,11 +142,29 @@
 
           <li class="treeview">
             <a href="#">
+<<<<<<< Updated upstream
               <i class="fa fa-print"></i>
               <span>LAPORAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
+=======
+              <i class="fa fa-briefcase"></i>
+              <span>BARANG</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
+              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
+            </ul>
+          </li>
+
+          <li>
+            <a href="laporan.php">
+              <i class="fa fa-file"></i> <span>LAPORAN</span>
+>>>>>>> Stashed changes
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="laporan_penerimaan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
