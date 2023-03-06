@@ -19,10 +19,6 @@
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Transaksi Penerimaan</h3>
-            <div class="btn-group pull-right">            
-
-              
-            </div><hr>
           </div>
 
           <div class="box-body">

@@ -80,7 +80,7 @@
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
-      "searching": false,
+      "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": false,
@@ -187,16 +187,7 @@
   
 
   var barChartData3 = {
-    labels: [
-      <?php 
-      $divisi = mysqli_query($koneksi,"SELECT DISTINCT Nama_divisi FROM master_divisi ORDER BY Nama_divisi ASC");
-      while($d = mysqli_fetch_array($divisi)){
-        ?>
-        "<?php echo $d['Nama_divisi']; ?>",
-        <?php 
-      }
-      ?>
-    ],
+    labels : ["Adms&Kpg","Akntan","Aggrn","Diklat","Krjsm&Hkm","Lgstk","PbrdyKwsn","PnglolaAset","Pr&Pm","R&I","SFHKI"],
     datasets: [
   {
     label: 'Pengeluaran',

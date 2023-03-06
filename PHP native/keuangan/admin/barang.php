@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      Pengeluaran
-      <small>Data Pengeluaran</small>
+      Barang
+      <small>Data Barang</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,11 +18,11 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran</h3>
+            <h3 class="box-title">Transaksi Barang</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i> &nbsp Tambah Pengeluaran
+                <i class="fa fa-plus"></i> &nbsp Tambah Barang
               </button>
             </div><hr>
             <?php 
@@ -59,32 +59,26 @@
           <div class="box-body">
 
             <!-- Modal Tambah-->
-            <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
+            <form action="barang_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title" id="exampleModalLabel">Tambah Pengeluaran</h4>
+                      <h4 class="modal-title" id="exampleModalLabel">Tambah Barang</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
 
-                        <div class="form-group">
-                        <label>SUMBER DANA</label>
-                        <select name="sumberdana" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <?php 
-                          include 'koneksi.php';
-                          $sumberdana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Jenis ASC");
-                          while($k = mysqli_fetch_array($sumberdana)){
-                            ?>
-                            <option value="<?php echo $k['Id_sumberdana']; ?>"><?php echo $k['Jenis']; ?></option>
-                            <?php 
-                          }
-                          ?>
-                        </select>
+                    <div class="form-group">
+                        <label>NAMA BARANG</label>
+                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Nama Barang ..">
+                      </div>
+
+                      <div class="form-group">
+                        <label>LOKASI</label>
+                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Lokasi ..">
                       </div>
 
                       <div class="form-group">
@@ -104,46 +98,13 @@
                       </div>
 
                       <div class="form-group">
-                        <label>BULAN</label>
-                        <select name="bulan" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <option value="Januari">Januari</option>
-                          <option value="Februari">Februari</option>
-                          <option value="Maret">Maret</option>
-                          <option value="April">April</option>
-                          <option value="Mei">Mei</option>
-                          <option value="Juni">Juni</option>
-                          <option value="Juli">Juli</option>
-                          <option value="Agustus">Agustus</option>
-                          <option value="September">September</option>
-                          <option value="Oktober">Oktober</option>
-                          <option value="November">November</option>
-                          <option value="Desember">Desember</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>TANGGAL SPJ</label>
+                        <label>TANGGAL</label>
                         <input type="text" name="tanggal" required="required" class="form-control datepicker2">
                       </div>
 
                       <div class="form-group">
-                        <label>JENIS BELANJA</label>
-                        <select name="jenis" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <option value="Barang/Jasa">Barang/Jasa</option>
-                          <option value="Modal">Modal</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>RINCIAN BELANJA</label>
-                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Rincian ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>JUMLAH (RUPIAH)</label>
-                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <label>KODE BARANG</label>
+                        <input type="text" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
                       </div>
 
                       <div class="form-group">
@@ -169,21 +130,19 @@
                   <thead>
                   <tr>
                     <th>NO</th>
-                    <th>SUMBER DANA</th>
+                    <th>NAMA BARANG</th>
+                    <th>LOKASI</th>
                     <th>DIVISI</th>
-                    <th>BULAN</th>
-                    <th>TANGGAL SPJ</th>
-                    <th>JENIS BELANJA</th>
-                    <th>JUMLAH (RUPIAH)</th>
-                    <th>RINCIAN</th>
-                    <th>OPSI</th>
+                    <th>TANGGAL</th>
+                    <th>KODE BARANG</th>
+                    <th>GAMBAR</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis FROM master_pengeluaran, master_divisi, master_sumberdana WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana order by Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_barang.*,master_divisi.Nama_divisi FROM master_divisi JOIN master_barang ON master_divisi.Id_divisi=master_barang.Id_divisi order by Id_barang desc;");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
