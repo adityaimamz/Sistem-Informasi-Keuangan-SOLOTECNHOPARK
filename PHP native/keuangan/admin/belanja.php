@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      Metode
-      <small>Data Metode</small>
+      Sumber Belanja
+      <small>Data belanja</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,11 +19,11 @@
         <div class="box box-info">
 
           <div class="box-header">
-            <h3 class="box-title">Data Metode</h3>
+            <h3 class="box-title">Data belanja</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i> &nbsp Tambah Metode Bayar
+                <i class="fa fa-plus"></i> &nbsp Tambah belanja Bayar
               </button>
             </div><hr>
             <?php 
@@ -59,12 +59,12 @@
           <div class="box-body">
 
             <!-- Modal -->
-            <form action="metode_proses.php" method="post" enctype="multipart/form-data">
+            <form action="belanja_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title" id="exampleModalLabel">Tambah Metode</h4>
+                      <h4 class="modal-title" id="exampleModalLabel">Tambah Sumber Belanja</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -72,7 +72,7 @@
                     <div class="modal-body">
 
                       <div class="form-group">
-                        <label>JENIS METODE BAYAR</label>
+                        <label>JENIS SUMBER BELANJA</label>
                         <input type="text" name="jenis" required="required" class="form-control" placeholder="Masukkan Nama ..">
                       </div>
 
@@ -92,7 +92,7 @@
                 <thead>
                   <tr>
                     <th>NO</th>
-                    <th>JENIS METODE BAYAR</th>
+                    <th>JENIS belanja BAYAR</th>
                     <th>OPSI</th>
                   </tr>
                 </thead>
@@ -101,27 +101,27 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM metode_bayar order by Id_metode desc");
+                  $data = mysqli_query($koneksi,"SELECT * FROM master_belanja order by Id_jenisbelanja desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td><?php echo $d['Jenis']; ?></td>
                       <td>    
-                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_metode_<?php echo $d['Id_metode'] ?>">
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_belanja_<?php echo $d['Id_jenisbelanja'] ?>">
                           <i class="fa fa-cog"></i>
                         </button>
 
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_metode_<?php echo $d['Id_metode'] ?>">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_belanja_<?php echo $d['Id_jenisbelanja'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
 
-                        <form action="metode_update.php" method="post" enctype="multipart/form-data">
-                          <div class="modal fade" id="edit_metode_<?php echo $d['Id_metode'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form action="belanja_update.php" method="post" enctype="multipart/form-data">
+                          <div class="modal fade" id="edit_belanja_<?php echo $d['Id_jenisbelanja'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Edit Metode</h4>
+                                  <h4 class="modal-title" id="exampleModalLabel">Edit belanja</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -130,7 +130,7 @@
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>JENIS PEMBAYARAN</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_metode'] ?>">
+                                    <input type="hidden" name="id" value="<?php echo $d['Id_jenisbelanja'] ?>">
                                     <input type="text" style="width:100%" name="jenis" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Jenis'] ?>">
                                   </div>
 
@@ -145,7 +145,7 @@
                         </form>
 
                         <!-- modal hapus -->
-                        <div class="modal fade" id="hapus_metode_<?php echo $d['Id_metode'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapus_belanja_<?php echo $d['Id_jenisbelanja'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -161,7 +161,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <a href="metode_hapus.php?id=<?php echo $d['Id_metode'] ?>" class="btn btn-primary">Hapus</a>
+                                <a href="belanja_hapus.php?id=<?php echo $d['Id_jenisbelanja'] ?>" class="btn btn-primary">Hapus</a>
                               </div>
                             </div>
                           </div>
