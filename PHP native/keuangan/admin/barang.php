@@ -73,12 +73,12 @@
 
                     <div class="form-group">
                         <label>NAMA BARANG</label>
-                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Nama Barang ..">
+                        <input type="text" name="Nama_barang" required="required" class="form-control" placeholder="Masukkan Nama Barang ..">
                       </div>
 
                       <div class="form-group">
                         <label>LOKASI</label>
-                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Lokasi ..">
+                        <input type="text" name="lokasi" required="required" class="form-control" placeholder="Masukkan Lokasi ..">
                       </div>
 
                       <div class="form-group">
@@ -104,7 +104,7 @@
 
                       <div class="form-group">
                         <label>KODE BARANG</label>
-                        <input type="text" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
+                        <input type="text" name="Kode_barang" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
                       </div>
 
                       <div class="form-group">
@@ -136,6 +136,7 @@
                     <th>TANGGAL</th>
                     <th>KODE BARANG</th>
                     <th>GAMBAR</th>
+                    <th>OPSI</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -147,52 +148,41 @@
                       ?>
                       <tr>
                         <td class="text-center"><?php echo $no++; ?></td>
-                        <td><?php echo $d['Jenis']; ?></td>
+                        <td><?php echo $d['Nama_barang']; ?></td>
+                        <td><?php echo $d['Lokasi']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
-                        <td><?php echo $d['Bulan']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td><?php echo $d['Jenis_belanja']; ?></td>
-                        <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
-                        <td><?php echo $d['Rincian']; ?></td>
+                        <td><?php echo $d['Kode_barang']; ?></td>
+                        <td><?php echo $d['Gambar']; ?></td>
                         <td>    
-                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
 
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-trash"></i>
                           </button>
 
-                          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-eye"></i>
                           </button>
 
                           <!-- Modal Update -->
-                          <form action="pengeluaran_update.php" method="post" enctype="multipart/form-data">
-                            <div class="modal fade" id="edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <form action="barang_update.php" method="post" enctype="multipart/form-data">
+                            <div class="modal fade" id="edit_barang_<?php echo $d['Id_barang'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">Edit pengeluaran</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">Edit barang</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
                                   <div class="modal-body">
 
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>SUMBER DANA</label>
-                                      <select name="sumberdana" style="width:100%" class="form-control" required="required">
-                                        <option value="">- Pilih -</option>
-                                        <?php 
-                                        $sumberdana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Id_sumberdana ASC");
-                                        while($k = mysqli_fetch_array($sumberdana)){
-                                          ?>
-                                          <option <?php if($d['Id_sumberdana'] == $k['Id_sumberdana']){echo "selected='selected'";} ?> value="<?php echo $k['Id_sumberdana']; ?>"><?php echo $k['Jenis']; ?></option>
-                                          <?php 
-                                        }
-                                        ?>
-                                      </select>
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>NAMA BARANG</label>
+                                      <input type="text" style="width:100%" name="tanggal" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -249,7 +239,7 @@
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <input type="hidden" name="id" value="<?php echo $d['Id_pengeluaran'] ?>">
+                                      <input type="hidden" name="id" value="<?php echo $d['Id_barang'] ?>">
                                       <label>JUMLAH (RUPIAH)</label>
                                       <input type="text" style="width:100%" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Jumlah']; ?>">
                                     </div>
@@ -272,7 +262,7 @@
                           </form>
 
                           <!-- Modal Lihat -->
-                          <div class="modal fade" id="lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal fade" id="lihat_barang_<?php echo $d['Id_barang'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -292,7 +282,7 @@
                           </div>
 
                           <!-- Modal Hapus -->
-                          <div class="modal fade" id="hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal fade" id="hapus_barang_<?php echo $d['Id_barang'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -307,7 +297,7 @@
 
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="pengeluaran_hapus.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Hapus</a>
+                                  <a href="barang_hapus.php?id=<?php echo $d['Id_barang'] ?>" class="btn btn-primary">Hapus</a>
                                 </div>
                               </div>
                             </div>
