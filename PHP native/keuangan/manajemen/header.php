@@ -123,12 +123,8 @@
               <li><a href="piutang.php"><i class="fa fa-circle-o"></i> Catatan Piutang</a></li>
             </ul>
           </li> -->
-<!-- 
-          <li>
-            <a href="bank.php">
-              <i class="fa fa-building"></i> <span>REKENING BANK</span>
-            </a>
-          </li> -->
+
+
           
           <li>
             <a href="laporan.php">

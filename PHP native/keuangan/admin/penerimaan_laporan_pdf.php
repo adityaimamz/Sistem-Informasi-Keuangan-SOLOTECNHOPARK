@@ -6,14 +6,16 @@ date_default_timezone_set('Asia/Jakarta');
 
 $tgl1=$_POST['tanggal_awal'];
 $tgl2=$_POST['tanggal_akhir'];
-$divisi=$_POST['divisi'];
-                        
-if($divisi == "semua"){
-  $data = "SELECT * FROM master_pengeluaran,master_divisi where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
+$metode=$_POST['metode'];
+
+// $querydata = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode'";
+if($metode == "semua"){
+  $data = "SELECT * FROM master_penerimaan,metode_bayar where metode_bayar.Id_metode = master_penerimaan.Id_metode and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
 }else{
-  $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.* FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi'";
+  $data = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode'";
 }
 $result = mysqli_query($koneksi, $data);
+
 //memeriksa apakah ada data yang ditemukan
 if (mysqli_num_rows($result) > 0) {
 //menampilkan tabel data
@@ -23,9 +25,9 @@ $pdf->AddPage();
 
 $pdf->Image('../assets/dist/img/logo stp-01.png',20,2,50);
 $pdf->SetFont('Arial','B',15);
-$pdf->Cell(280,9,'Laporan Data Pengeluaran',0,0,'C');
+$pdf->Cell(280,9,'Laporan Data Penerimaan',0,0,'C');
 $pdf->Ln(6);
-$pdf->Cell(280,9,'Transaksi Pengeluaran Online UPTD Solo Technopark',0,0,'C');
+$pdf->Cell(280,9,'Transaksi Penerimaan Online UPTD Solo Technopark',0,0,'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Ln(6);
 $pdf->Cell(280,9,'Sekretariat : Jl. Ki Hajar Dewantara No.19, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126',0,0,'C');
@@ -71,13 +73,13 @@ $pdf->Ln(10);
 $pdf->SetX(10);
 $pdf->Cell(8,8,'No',1,0,'C',1);
 $pdf->SetX(18);
-$pdf->Cell(40,8,'Nama Divisi',1,0,'C',1);
+$pdf->Cell(40,8,'Nama metode',1,0,'C',1);
 $pdf->SetX(58);
 $pdf->Cell(25,8,'Tanggal',1,0,'C',1);
 $pdf->SetX(83);
-$pdf->Cell(167,8,'Rincian',1,0,'C',1);
+$pdf->Cell(167,8,'Keperluan',1,0,'C',1);
 $pdf->SetX(250);
-$pdf->Cell(40,8,'Jumlah',1,0,'R',1);
+$pdf->Cell(40,8,'Besaran Biaya',1,0,'R',1);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,'Biaya Admin',1,0,'C',1);
 $pdf->Ln(8);
@@ -85,7 +87,7 @@ $pdf->SetFont('Arial','',10);
 $no=1;
 $total="0";
 while ($row = mysqli_fetch_assoc($result)) {
-$total=$total+$row['Jumlah'];
+$total=$total+$row['Besaran_biaya'];
 
 $tanggal=$row['Tanggal'];
 $tgl=substr($tanggal,8,2);
@@ -122,13 +124,13 @@ if  ($bln=="01"){
 $pdf->SetX(10);
 $pdf->Cell(8,8,$no.".",1,0,'C',0);
 $pdf->SetX(18);
-$pdf->Cell(40,8,$row['Nama_divisi'],1,0,'L',0);
+$pdf->Cell(40,8,$row['Jenis'],1,0,'L',0);
 $pdf->SetX(58);
 $pdf->Cell(25,8,$row['Tanggal'],1,0,'C',0);
 $pdf->SetX(83);
-$pdf->Cell(167,8,$row['Rincian'],1,0,'L',0);
+$pdf->Cell(167,8,$row['Keperluan'],1,0,'L',0);
 $pdf->SetX(250);
-$pdf->Cell(40,8, "Rp. ".number_format($row["Jumlah"])." ,-",1,0,'R',0);
+$pdf->Cell(40,8, "Rp. ".number_format($row["Besaran_biaya"])." ,-",1,0,'R',0);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,$biayaadmin,1,0,'R',0);
 $pdf->Ln(8);
