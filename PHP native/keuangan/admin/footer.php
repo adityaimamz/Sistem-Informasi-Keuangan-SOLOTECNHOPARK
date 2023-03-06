@@ -187,7 +187,7 @@
   
 
   var barChartData3 = {
-    labels : ["Adms&Kpg","Akntan","Aggrn","Diklat","Krjsm&Hkm","Lgstk","PbdyKwsn","PnglolaAset","Pr&Pm","R&I","SFHKI"],
+    labels : ["A&K","Akntan","Aggrn","Diklat","KH","Lgstk","PK","PA","Pr&Pm","R&I","SFHKI"],
     datasets: [
   {
     label: 'Pengeluaran',
