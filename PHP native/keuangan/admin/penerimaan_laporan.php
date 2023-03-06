@@ -5,7 +5,7 @@
   <section class="content-header">
     <h1>
       LAPORAN
-      <small>Data Laporan Pengeluaran</small>
+      <small>Data Laporan Penerimaan</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,10 +18,10 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Filter Laporan Pengeluaran</h3>
+            <h3 class="box-title">Filter Laporan Penerimaan</h3>
           </div>
           <div class="box-body">
-            <form method="post" action="laporan_pdf.php" target="_blank">
+            <form method="post" action="penerimaan_laporan_pdf.php" target="_blank">
               <div class="row">
                 <div class="col-md-3">
 
@@ -44,15 +44,15 @@
                 <div class="col-md-3">
 
                   <div class="form-group">
-                    <label>Divisi</label>
-                    <select name="divisi" class="form-control" required="required">
-                      <option value="semua">- Semua Divisi -</option>
+                    <label>Metode Pembayaran</label>
+                    <select name="metode" class="form-control" required="required">
+                      <option value="semua">- Semua Metode Bayar -</option>
                         <?php 
                         include 'koneksi.php';
-                        $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Nama_divisi ASC");
-                        while($k = mysqli_fetch_array($divisi)){
+                        $metode = mysqli_query($koneksi,"SELECT * FROM metode_bayar ORDER BY Jenis ASC");
+                        while($k = mysqli_fetch_array($metode)){
                           ?>
-                          <option value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
+                          <option value="<?php echo $k['Id_metode']; ?>"><?php echo $k['Jenis']; ?></option>
                           <?php 
                         }
                         ?>
