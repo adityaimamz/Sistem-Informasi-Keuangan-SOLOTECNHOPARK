@@ -17,12 +17,11 @@
     <div class="row">
       <section class="col-lg-12">
         <div class="box box-info">
-
           <div class="box-header">
             <h3 class="box-title">Transaksi Penerimaan</h3>
             <div class="btn-group pull-right">            
 
-              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus"></i> &nbsp Tambah Penerimaan
               </button>
             </div><hr>
@@ -34,7 +33,7 @@
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                       <h4><i class="icon fa fa-warning"></i> Peringatan !</h4>
                       Ekstensi Tidak Diperbolehkan
-                    </div>								
+                    </div>                
                     <?php
                   }elseif($_GET['alert']=="berhasil"){
                     ?>
@@ -42,7 +41,7 @@
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                       <h4><i class="icon fa fa-check"></i> Success</h4>
                       Berhasil Disimpan
-                    </div> 								
+                    </div>                
                     <?php
                   }elseif($_GET['alert']=="berhasilupdate"){
                     ?>
@@ -50,15 +49,15 @@
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                       <h4><i class="icon fa fa-check"></i> Success</h4>
                       Berhasil Update
-                    </div> 								
+                    </div>                
                     <?php
                   }
                 }
                 ?>
           </div>
-          <div class="box-body">
 
-            <!-- Modal -->
+          <div class="box-body">
+            <!-- Modal Tambah -->
             <form action="penerimaan_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -152,10 +151,11 @@
               </div>
             </form>
 
-
-            <div class="table-responsive">
-              <table class="table table-bordered table-striped" id="table-datatable">
-                <thead>
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
                   <tr>
                     <th>NO</th>
                     <th>TANGGAL</th>
@@ -164,13 +164,12 @@
                     <th>METODE BAYAR</th>
                     <th>NAMA</th>
                     <th>ASAL INSTANSI</th>
-                    <th>KEPERLUAN</th>
                     <th>BESARAN</th>
+                    <th>KEPERLUAN</th>
                     <th>OPSI</th>
                   </tr>
-                    </thead>
-
-                <tbody>
+                  </thead>
+                  <tbody>
                   <?php 
                   include '../koneksi.php';
                   $no=1;
@@ -185,21 +184,22 @@
                       <td><?php echo $d['Jenis']; ?></td>
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
+                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
                       <td><?php echo $d['Keperluan']; ?></td>
-                      <td><?php echo $d['Besaran_biaya']; ?></td>
                       <td>    
-                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                        <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-cog"></i>
                         </button>
 
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                        <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
 
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                        <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-eye"></i>
                         </button>
 
+                        <!-- Modal Edit -->
                         <form action="penerimaan_update.php" method="post" enctype="multipart/form-data">
                           <div class="modal fade" id="edit_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -233,8 +233,7 @@
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>NO TANDA TERIMA</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_penerimaan'] ?>">
-                                    <input type="number" style="width:100%" name="No_tandaterima" required="required" class="form-control datepicker2" value="<?php echo $d['No_tandaterima'] ?>">
+                                    <input type="text" style="width:100%" name="No_tandaterima" required="required" class="form-control" value="<?php echo $d['No_tandaterima'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -258,6 +257,7 @@
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <input type="hidden" name="id" value="<?php echo $d['Id_penerimaan'] ?>">
                                     <label>NAMA</label>
                                     <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama_pembayar'] ?>">
                                   </div>
@@ -274,7 +274,7 @@
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>BESARAN (RUPIAH)</label>
-                                    <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Besaran .." value="<?php echo $d['Besaran_biaya'] ?>">
+                                    <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Besaran .." value="<?php echo $d['Besaran_biaya'];?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -294,6 +294,7 @@
                           </div>
                         </form>
 
+                        <!-- Modal lihat -->
                         <div class="modal fade" id="lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -342,8 +343,11 @@
                   }
                   ?>
                 </tbody>
-              </table>
+                </table>
+              </div>
+              <!-- /.card-body -->
             </div>
+            <!-- /.card -->
           </div>
 
         </div>
@@ -352,4 +356,4 @@
   </section>
 
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?> 

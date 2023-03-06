@@ -1,4 +1,26 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'header.php'; 
+date_default_timezone_set('Asia/Jakarta');
+$hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
+// array bulan dalam bahasa Indonesia
+$namabulan = array(
+  1 => "Januari",
+  2 => "Februari",
+  3 => "Maret",
+  4 => "April",
+  5 => "Mei",
+  6 => "Juni",
+  7 => "Juli",
+  8 => "Agustus",
+  9 => "September",
+  10 => "Oktober",
+  11 => "November",
+  12 => "Desember"
+);
+
+$bulan_ini = date('n');
+$hari_ini = date('w');
+?>
 
 
 <div class="content-wrapper">
@@ -31,7 +53,7 @@
               echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>penerimaan Hari Ini</p>
+            <p>Penerimaan Hari Ini (<?php echo $hari[$hari_ini];?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -43,7 +65,7 @@
       <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-blue">
           <div class="inner">
-            <?php 
+            <?php
             $bulan = date('m');
             $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan'");
             $p = mysqli_fetch_assoc($penerimaan);
@@ -53,7 +75,7 @@
               echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>penerimaan Bulan Ini</p>
+            <p>Penerimaan Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -75,7 +97,7 @@
               echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>penerimaan Tahun Ini</p>
+            <p>Penerimaan Tahun Ini (<?php echo $tahun;?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -121,7 +143,7 @@
               echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
-            <p>Pengeluaran Hari Ini</p>
+            <p>Pengeluaran Hari Ini (<?php echo $hari[$hari_ini];?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -144,7 +166,7 @@
               echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
-            <p>Pengeluaran Bulan Ini</p>
+            <p>Pengeluaran Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -167,7 +189,7 @@
               echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
-            <p>Pengeluaran Tahun Ini</p>
+            <p>Pengeluaran Tahun Ini (<?php echo $tahun;?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>

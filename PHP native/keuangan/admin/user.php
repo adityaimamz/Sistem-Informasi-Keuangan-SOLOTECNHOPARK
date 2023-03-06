@@ -78,22 +78,22 @@
 
                       <div class="form-group">
                         <label>ALAMAT</label>
-                        <input type="text" name="alamat" required="required" class="form-control" placeholder="Masukkan Nama ..">
+                        <input type="text" name="alamat" required="required" class="form-control" placeholder="Masukkan Alamat ..">
                       </div>
 
                       <div class="form-group">
                         <label>USERNAME</label>
-                        <input type="text" name="username" required="required" class="form-control" placeholder="Masukkan Nama ..">
+                        <input type="text" name="username" required="required" class="form-control" placeholder="Masukkan Username ..">
                       </div>
 
                       <div class="form-group">
                         <label>PASSWORD</label>
-                        <input type="text" name="password" required="required" class="form-control" placeholder="Masukkan Nama ..">
+                        <input type="text" name="password" required="required" class="form-control" placeholder="Masukkan Password ..">
                       </div>
 
                       <div class="form-group">
                         <label>LEVEL</label>
-                        <input type="text" name="level" required="required" class="form-control" placeholder="Masukkan Nama ..">
+                        <input type="text" name="level" required="required" class="form-control" placeholder="Masukkan Level ..">
                       </div>
 
                     </div>

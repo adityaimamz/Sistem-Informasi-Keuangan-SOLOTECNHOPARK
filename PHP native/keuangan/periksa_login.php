@@ -17,10 +17,10 @@ if($cek > 0){
 	$_SESSION['username'] = $data['Username'];
 	$_SESSION['level'] = $data['Level'];
 
-	if($data['Level'] == "admin"){
+	if($data['Level'] == "Administrator"){
 		$_SESSION['status'] = "administrator_logedin";
 		header("location:admin/");
-	}else if($data['Level'] == "manager"){
+	}else if($data['Level'] == "Manager"){
 		$_SESSION['status'] = "manajemen_logedin";
 		header("location:manajemen/");
 	}else{

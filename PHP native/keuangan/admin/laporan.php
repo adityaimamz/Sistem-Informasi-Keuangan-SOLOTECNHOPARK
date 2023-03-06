@@ -21,7 +21,11 @@
             <h3 class="box-title">Filter Laporan</h3>
           </div>
           <div class="box-body">
+<<<<<<< Updated upstream
             <form method="get" action="">
+=======
+            <form method="POST" action="laporan_pdf.php" target="_blank">
+>>>>>>> Stashed changes
               <div class="row">
                 <div class="col-md-3">
 
@@ -46,10 +50,22 @@
                   <div class="form-group">
                     <label>Divisi</label>
                     <select name="divisi" class="form-control" required="required">
+<<<<<<< Updated upstream
                       <option value="semua">- Semua Divisi -</option>
                       <?php 
                       $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi");
                       while($k = mysqli_fetch_array($divisi)){
+=======
+                      <option value="semua">- Semua -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Nama_divisi ASC");
+                        while($k = mysqli_fetch_array($divisi)){
+                          ?>
+                          <option value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
+                          <?php 
+                        }
+>>>>>>> Stashed changes
                         ?>
                         <option <?php if(isset($_GET['Nama_divisi'])){ if($_GET['Nama_divisi'] == $k['Id_divisi']){echo "selected='selected'";}} ?>  value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
                         <?php 
@@ -73,6 +89,7 @@
           </div>
         </div>
 
+<<<<<<< Updated upstream
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Laporan Pegeluaran</h3>
@@ -198,6 +215,8 @@
 
           </div>
         </div>
+=======
+>>>>>>> Stashed changes
       </section>
     </div>
   </section>

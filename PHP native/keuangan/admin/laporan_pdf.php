@@ -1,143 +1,160 @@
- <!DOCTYPE html>
- <html>
- <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Laporan Sistem Informasi Keuangan</title>
+<?php
+session_start();
+require_once("../koneksi.php");
+require('../FPDF/fpdf.php');
+date_default_timezone_set('Asia/Jakarta');
 
-</head>
-<body>
+$tgl1=$_POST['tanggal_awal'];
+$tgl2=$_POST['tanggal_akhir'];
+$divisi=$_POST['divisi'];
 
-  <style type="text/css">
-   
-  </style>
+$querydata = "SELECT master_divisi.Nama_divisi, master_pengeluaran.* FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi'";
+$result = mysqli_query($koneksi, $querydata);
 
-  <center>
-    <h4>LAPORAN <br/> Sistem Informasi Keuangan</h4>
-  </center>
+//memeriksa apakah ada data yang ditemukan
+if (mysqli_num_rows($result) > 0) {
+//menampilkan tabel data
 
-  <?php 
-  include '../koneksi.php';
-  // error_reporting(0);
-  error_reporting(E_ALL ^ E_DEPRECATED);
-  if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari']) && isset($_GET['kategori'])){
-    $tgl_dari = $_GET['tanggal_dari'];
-    $tgl_sampai = $_GET['tanggal_sampai'];
-    $kategori = $_GET['kategori'];
-    ?>
+$pdf = new FPDF('L','mm','A4');
+$pdf->AddPage();
 
-    <table>
-      <tr>
-        <th width="25%">DARI TANGGAL</th>
-        <th width="5%">:</th>
-        <td><?php echo date('d-m-Y',strtotime($tgl_dari)); ?></td>
-      </tr>
-      <tr>
-        <th>SAMPAI TANGGAL</th>
-        <th>:</th>
-        <td><?php echo date('d-m-Y',strtotime($tgl_sampai)); ?></td>
-      </tr>
-      <tr>
-        <th>KATEGORI</th>
-        <th>:</th>
-        <td><?php 
-        if($kategori == "semua"){
-          echo "SEMUA KATEGORI";
-        }else{
-          $k = mysqli_query($koneksi,"select * from kategori where kategori_id='$kategori'");
-          $kk = mysqli_fetch_assoc($k);
-          echo $kk['kategori'];
-        }
-        ?></td>
-      </tr>
-    </table>
+$pdf->Image('../assets/dist/img/logo stp-01.png',20,2,50);
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(280,9,'Laporan Data Penerimaan',0,0,'C');
+$pdf->Ln(6);
+$pdf->Cell(280,9,'Transaksi Penerimaan Online UPTD Solo Technopark',0,0,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Ln(6);
+$pdf->Cell(280,9,'Sekretariat : Jl. Ki Hajar Dewantara No.19, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126',0,0,'C');
+$pdf->Ln(10);
+$pdf->Cell(280,0.1,'',1,1,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Ln(20);
+$Y_Fields_Name_position = 27;
 
-    <br/>
+$pdf->SetFillColor(210,221,242);
 
-    <table border="1">
-      <tr>
-        <th rowspan="2">NO</th>
-        <th rowspan="2">TANGGAL</th>
-        <th rowspan="2">KATEGORI</th>
-        <th rowspan="2">KETERANGAN</th>
-        <th colspan="2">JENIS</th>
-      </tr>
-      <tr>
-        <th>PEMASUKAN</th>
-        <th>PENGELUARAN</th>
-      </tr>
-      <?php 
-      
-      $no=1;
-      $total_pemasukan=0;
-      $total_pengeluaran=0;
-       if($kategori == "semua"){
-                      $data = mysqli_query($koneksi,"SELECT * FROM transaksi,kategori where kategori_id=transaksi_kategori and date(transaksi_tanggal)>='$tgl_dari' and date(transaksi_tanggal)<='$tgl_sampai'");
-                    }else{
-                      $data = mysqli_query($koneksi,"SELECT * FROM transaksi,kategori where kategori_id=transaksi_kategori and kategori_id='$kategori' and date(transaksi_tanggal)>='$tgl_dari' and date(transaksi_tanggal)<='$tgl_sampai'");
-                    }
-      while($d = mysqli_fetch_array($data)){
+$pdf->SetY($Y_Fields_Name_position);
+$pdf->Ln(10);
+$waktu=date("d-m-Y H:i:s");
 
-        if($d['transaksi_jenis'] == "Pemasukan"){
-          $total_pemasukan += $d['transaksi_nominal'];
-        }elseif($d['transaksi_jenis'] == "Pengeluaran"){
-          $total_pengeluaran += $d['transaksi_nominal'];
-        }
-        ?>
-        <tr>
-          <td><?php echo $no++; ?></td>
-          <td><?php echo date('d-m-Y', strtotime($d['transaksi_tanggal'])); ?></td>
-          <td><?php echo $d['kategori']; ?></td>
-          <td><?php echo $d['transaksi_keterangan']; ?></td>
-          <td><?php 
-          if($d['transaksi_jenis'] == "Pemasukan"){
-            echo "Rp. ".number_format($d['transaksi_nominal'])." ,-";
-          }else{
-            echo "-";
-          }
-          ?></td>
-          <td><?php 
-          if($d['transaksi_jenis'] == "Pengeluaran"){
-            echo "Rp. ".number_format($d['transaksi_nominal'])." ,-";
-          }else{
-            echo "-";
-          }
-          ?></td>
-        </tr>
-        <?php 
-      }
-      ?>
-      <tr>
-        <th colspan="4">TOTAL</th>
-        <td><?php echo "Rp. ".number_format($total_pemasukan)." ,-"; ?></td>
-        <td><?php echo "Rp. ".number_format($total_pengeluaran)." ,-"; ?></td>
-      </tr>
-      <tr>
-        <th colspan="4">SALDO</th>
-        <td colspan="2"><?php echo "Rp. ".number_format($total_pemasukan - $total_pengeluaran)." ,-"; ?></td>
-      </tr>
-    </table>
+$pdf->SetX(10);
+$pdf->Cell(100, 8, 'Dari Tanggal', 0, 0, 'L', 0);
+$pdf->SetX(40);
+$pdf->Cell(100, 8, ':', 0, 0, 'L', 0);
+$pdf->SetX(50);
+$pdf->Cell(155, 8, $tgl1, 0, 0, 'L', 0);
+$pdf->SetX(220);
+$pdf->Cell(100, 8, 'Sampai Tanggal', 0, 0, 'L', 0);
+$pdf->SetX(250);
+$pdf->Cell(190, 8, ':', 0, 0, 'L', 0);
+$pdf->SetX(255);
+$pdf->Cell(155, 8, $tgl2, 0, 0, 'L', 0);
+$pdf->Ln(5);
+$pdf->SetX(10);
+$pdf->Cell(100, 8, 'Nama Pegawai', 0, 0, 'L', 0);
+$pdf->SetX(40);
+$pdf->Cell(50, 8, ':', 0, 0, 'L', 0);
+$pdf->SetX(50);
+$pdf->Cell(105, 8, $_SESSION['nama'], 0, 0, 'L', 0);
+$pdf->SetX(220);
+$pdf->Cell(50, 8, 'Waktu Cetak', 0, 0, 'L', 0);
+$pdf->SetX(250);
+$pdf->Cell(50, 8, ':', 0, 0, 'L', 0);
+$pdf->SetX(255);
+$pdf->Cell(105, 8, $waktu, 0, 0, 'L', 0);
+$pdf->Ln(10);
 
-    <?php 
-  }else{
-    ?>
+$pdf->SetX(10);
+$pdf->Cell(8,8,'No',1,0,'C',1);
+$pdf->SetX(18);
+$pdf->Cell(40,8,'Nama Divisi',1,0,'C',1);
+$pdf->SetX(58);
+$pdf->Cell(25,8,'Tanggal',1,0,'C',1);
+$pdf->SetX(83);
+$pdf->Cell(167,8,'Rincian',1,0,'C',1);
+$pdf->SetX(250);
+$pdf->Cell(40,8,'Jumlah',1,0,'R',1);
+// $pdf->SetX(173);
+// $pdf->Cell(27,8,'Biaya Admin',1,0,'C',1);
+$pdf->Ln(8);
+$pdf->SetFont('Arial','',10);
+$no=1;
+$total="0";
+while ($row = mysqli_fetch_assoc($result)) {
+$total=$total+$row['Jumlah'];
 
-    <div class="alert alert-info text-center">
-      Silahkan Filter Laporan Terlebih Dulu.
-    </div>
+$tanggal=$row['Tanggal'];
+$tgl=substr($tanggal,8,2);
+$bln=substr($tanggal,5,2);
+$thn=substr($tanggal,0,4);
+if  ($bln=="01"){
+  $fixtgl=$tgl." Januari ".$thn;
+}elseif ($bln=="02") {
+  $fixtgl=$tgl." Februari ".$thn;
+}elseif ($bln=="03") {
+  $fixtgl=$tgl." Maret ".$thn;
+}elseif ($bln=="04") {
+  $fixtgl=$tgl." April ".$thn;
+}elseif ($bln=="05") {
+  $fixtgl=$tgl." Mei ".$thn;
+}elseif ($bln=="06") {
+  $fixtgl=$tgl." Juni ".$thn;
+}elseif ($bln=="07") {
+  $fixtgl=$tgl." Juli ".$thn;
+}elseif ($bln=="08") {
+  $fixtgl=$tgl." Agustus ".$thn;
+}elseif ($bln=="09") {
+  $fixtgl=$tgl." September ".$thn;
+}elseif ($bln=="10") {
+  $fixtgl=$tgl." Oktober ".$thn;
+}elseif ($bln=="11") {
+  $fixtgl=$tgl." Nopember ".$thn;
+}elseif ($bln=="12") {
+  $fixtgl=$tgl." Desember ".$thn;
+}else{
+  $fixtgl=$tgl." ".$bln." ".$thn;
+}
 
-    <?php
-  }
-  ?>
+$pdf->SetX(10);
+$pdf->Cell(8,8,$no.".",1,0,'C',0);
+$pdf->SetX(18);
+$pdf->Cell(40,8,$row['Nama_divisi'],1,0,'L',0);
+$pdf->SetX(58);
+$pdf->Cell(25,8,$row['Tanggal'],1,0,'C',0);
+$pdf->SetX(83);
+$pdf->Cell(167,8,$row['Rincian'],1,0,'L',0);
+$pdf->SetX(250);
+$pdf->Cell(40,8, "Rp. ".number_format($row["Jumlah"])." ,-",1,0,'R',0);
+// $pdf->SetX(173);
+// $pdf->Cell(27,8,$biayaadmin,1,0,'R',0);
+$pdf->Ln(8);
+$no++;
+}
 
-  <?php 
-  require_once("../library/dompdf/dompdf_config.inc.php");
-  $dompdf = new DOMPDF();
-  $dompdf->load_html(ob_get_clean());
-  $dompdf->set_paper("A4", 'portrait');
-  $dompdf->render();
-  $dompdf->stream("Laporan.pdf");    
-  ?>
+$pdf->SetFont('Arial','B',10);
+$pdf->SetX(10);
+$pdf->Cell(240,8,'Total',1,0,'R',0);
+$pdf->SetX(250);
+$pdf->Cell(40,8,"Rp. ".number_format($total)." ,-",1,0,'R',0);
+// $pdf->SetX(173);
+// $pdf->Cell(27,8,$admin1,1,0,'R',0);
+// $pdf->Ln(8);
+// $pdf->SetX(10);
+// $pdf->Cell(128,8,'Total Setor',1,0,'R',0);
+// $pdf->SetX(138);
+// $pdf->Cell(62,8,$totalsetor1,1,0,'C',0);
 
-</body>
-</html>
+
+$pdf->Output();
+//"data_siswa".".pdf",'D'
+}else{
+?>
+
+<div class="alert alert-danger text-center">
+  Mohon maaf data tidak ditemukan.
+</div>
+
+<?php
+}
+?>
