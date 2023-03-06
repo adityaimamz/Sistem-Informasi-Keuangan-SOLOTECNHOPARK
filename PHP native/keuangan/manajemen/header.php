@@ -154,7 +154,7 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="laporan_penerimaan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
+              <li><a href="penerimaan_laporan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
               <li><a href="laporan.php"><i class="fa fa-circle-o"></i> Laporan Pengeluaran</a></li>
             </ul>
           </li>
