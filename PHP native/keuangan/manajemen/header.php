@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Administrator - Sistem Informasi Keuangan</title>
-  
+
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css">
@@ -20,6 +20,11 @@
   <link rel="stylesheet" href="../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
   <?php 
   include '../koneksi.php';
@@ -75,78 +80,142 @@
 
     <aside class="main-sidebar">
       <section class="sidebar">
-        <div class="user-panel navbarrr">
-          <!-- <div class="pull-left image">
-            <?php 
-            $id_user = $_SESSION['id'];
-            $profil = mysqli_query($koneksi,"select * from master_user where Id_user='$id_user'");
-            // $profil = mysqli_fetch_assoc($profil);
-            ?>
+        <div class="user-panel">
+          <div align="center">
+          <img src="../gambar/user.png" class="img-circle img-responsive" width="100" height="100">
           </div>
-          <div class="pull-left info">
-            <p><?php echo $_SESSION['nama']; ?></p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-          </div> -->
         </div>
 
         <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">MAIN NAVIGATION</li>
+          <h4 style="color:white;" align="center"><b><?php echo $_SESSION['nama'];?></b></h4>
+          <h6 style="color:white;" align="center"><i class="fa fa-circle text-success"></i> Online</h6>
+          <li class="header">NAVIGASI</li>
 
           <li>
             <a href="index.php">
               <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
             </a>
           </li>
-
-          <!-- <li>
-            <a href="kategori.php">
-              <i class="fa fa-folder"></i> <span>DATA KATEGORI</span>
-            </a>
-          </li> -->
-
-          <!-- <li>
-            <a href="transaksi.php">
-              <i class="fa fa-folder"></i> <span>DATA TRANSAKSI</span>
-            </a>
-          </li> -->
-
-          <!-- <li class="treeview">
-            <a href="#">
-              <i class="fa fa-hand-paper-o"></i>
-              <span>HUTANG PIUTANG</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="hutang.php"><i class="fa fa-circle-o"></i> Catatan Hutang</a></li>
-              <li><a href="piutang.php"><i class="fa fa-circle-o"></i> Catatan Piutang</a></li>
-            </ul>
-          </li> -->
 <!-- 
           <li>
             <a href="bank.php">
               <i class="fa fa-building"></i> <span>REKENING BANK</span>
             </a>
           </li> -->
-          
-          <li>
-            <a href="laporan.php">
-              <i class="fa fa-file"></i> <span>LAPORAN</span>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-dollar"></i>
+              <span>PENERIMAAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="penerimaan.php"><i class="fa fa-circle-o"></i> Data Penerimaan</a></li>
+              <li><a href="tagihan.php"><i class="fa fa-circle-o"></i> Data Tagihan</a></li>
+            </ul>
           </li>
 
-          <!-- <li>
-            <a href="gantipassword.php">
-              <i class="fa fa-lock"></i> <span>GANTI PASSWORD</span>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-dollar"></i>
+              <span>PENGELUARAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
-          </li> -->
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
+              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
+            </ul>
+          </li>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-briefcase"></i>
+              <span>BARANG</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
+              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
+            </ul>
+          </li>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-print"></i>
+              <span>LAPORAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="laporan_penerimaan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
+              <li><a href="laporan.php"><i class="fa fa-circle-o"></i> Laporan Pengeluaran</a></li>
+            </ul>
+          </li>
 
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
             </a>
           </li>
+
+          <li class="header">TIME</li>
+          <h5 class="text-center" style="color:white;">
+            <script type='text/javascript'>
+
+            var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth();
+            var thisDay = date.getDay(),
+                thisDay = myDays[thisDay];
+            var yy = date.getYear();
+            var year = (yy < 1000) ? yy + 1900 : yy;
+            document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+            //-->
+            </script>
+            <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
+            </style><div id="clock"></div>
+            <script type="text/javascript">
+            function showTime() {
+                var a_p = "";
+                var today = new Date();
+                var curr_hour = today.getHours();
+                var curr_minute = today.getMinutes();
+                var curr_second = today.getSeconds();
+                if (curr_hour < 12) {
+                    a_p = "AM";
+                } else {
+                    a_p = "PM";
+                }
+                if (curr_hour == 0) {
+                    curr_hour = 12;
+                }
+                if (curr_hour > 12) {
+                    curr_hour = curr_hour - 12;
+                }
+                curr_hour = checkTime(curr_hour);
+                curr_minute = checkTime(curr_minute);
+                curr_second = checkTime(curr_second);
+             document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
+                }
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+            setInterval(showTime, 500);
+            </script>
+          </h5>
           
         </ul>
       </section>
