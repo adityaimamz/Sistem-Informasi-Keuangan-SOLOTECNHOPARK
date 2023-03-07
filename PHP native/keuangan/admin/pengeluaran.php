@@ -71,7 +71,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="form-group">
+                      <div class="form-group">
                         <label>SUMBER DANA</label>
                         <select name="sumberdana" class="form-control" required="required">
                           <option value="">- Pilih -</option>
@@ -168,7 +168,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>NO</th>
+                    <th>KODE PENGELUARAN</th>
                     <th>SUMBER DANA</th>
                     <th>DIVISI</th>
                     <th>BULAN</th>
@@ -187,7 +187,7 @@
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
-                        <td class="text-center"><?php echo $no++; ?></td>
+                        <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
                         <td><?php echo $d['Jenis']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['Bulan']; ?></td>
@@ -221,6 +221,11 @@
                                   </div>
                                   <div class="modal-body">
 
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>KODE PENGELUARAN</label>
+                                      <input type="text" style="width:100%" name="Kode_pengeluaran" required="required" class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" /readonly>
+                                    </div>
+                                    
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>SUMBER DANA</label>
                                       <select name="sumberdana" style="width:100%" class="form-control" required="required">

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include '../koneksi.php';
 $tanggal  = $_POST['tanggal'];
 $bulan  = $_POST['bulan'];
@@ -8,10 +9,13 @@ $nama  = $_POST['nama'];
 $alamat  = $_POST['alamat'];
 $keperluan  = $_POST['keperluan'];
 $nominal  = $_POST['nominal'];
+$status = $_POST['status'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf');
 $filename = $_FILES['trnfoto']['name'];
+
+$kode_penerimaan = "PNR" . date("YmdHis");
 
 // $rekening = mysqli_query($koneksi,"select * from metode_bayar where Id_metode='$metode'");
 // $r = mysqli_fetch_assoc($rekening);
@@ -31,7 +35,7 @@ $filename = $_FILES['trnfoto']['name'];
 // }
 
 if($filename == ""){
-	mysqli_query($koneksi, "insert into master_penerimaan values (NULL, NULL,'$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','')")or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','','$status')")or die(mysqli_error($koneksi));
 	header("location:penerimaan.php?alert=berhasil");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -41,10 +45,24 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_penerimaan values (NULL, NULL,'$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar')");
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','$status')");
 		header("location:penerimaan.php?alert=berhasil");
 	}
 }
 
-// mysqli_query($koneksi, "insert into transaksi values (NULL,'$tanggal','$jenis','$kategori','$nominal','$keterangan','$bank')")or die(mysqli_error($koneksi));
-// header("location:transaksi.php");
+//status
+if(isset($_GET['status']) && isset($_GET['id'])) {
+	$id = $_GET['id'];
+	
+	if($_GET['status']=='n'){
+		$status="invoice";
+	}else{
+		$status="voice";
+	}
+	
+	mysqli_query($koneksi, "UPDATE master_penerimaan SET Status='$status' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
+	header("location:penerimaan.php?alert=berhasilupdate");
+}
+//akhir aktif
+
+?>

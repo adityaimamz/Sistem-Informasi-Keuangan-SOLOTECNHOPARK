@@ -136,7 +136,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>NO</th>
+                    <th>KODE PENGELUARAN</th>
                     <th>SUMBER DANA</th>
                     <th>DIVISI</th>
                     <th>BULAN</th>
@@ -155,7 +155,7 @@
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
-                        <td class="text-center"><?php echo $no++; ?></td>
+                        <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
                         <td><?php echo $d['Jenis']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['Bulan']; ?></td>

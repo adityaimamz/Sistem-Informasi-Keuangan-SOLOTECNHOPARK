@@ -11,9 +11,11 @@ $sumberdana  = $_POST['sumberdana'];
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf');
 $filename = $_FILES['trnfoto']['name'];
+// membuat kode pengeluaran unik
+$kode_pengeluaran = "PGR" . date("YmdHis");
 
 if($filename == ""){
-	mysqli_query($koneksi, "insert into master_pengeluaran values (NULL, '$sumberdana','$divisi','$jenis','$tanggal','$bulan','$rincian','$jumlah','')")or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "insert into master_pengeluaran values (NULL, '$kode_pengeluaran', '$sumberdana','$divisi','$jenis','$tanggal','$bulan','$rincian','$jumlah','')")or die(mysqli_error($koneksi));
 	header("location:pengeluaran.php?alert=berhasil");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -23,7 +25,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_pengeluaran values (NULL, '$sumberdana','$divisi','$jenis','$tanggal','$bulan','$rincian','$jumlah', '$file_gambar')");
+		mysqli_query($koneksi, "insert into master_pengeluaran values (NULL, '$kode_pengeluaran', '$sumberdana','$divisi','$jenis','$tanggal','$bulan','$rincian','$jumlah', '$file_gambar')");
 		header("location:pengeluaran.php?alert=berhasil");
 	}
 }
