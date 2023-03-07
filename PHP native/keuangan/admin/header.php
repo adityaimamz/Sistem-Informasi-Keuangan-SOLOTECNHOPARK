@@ -106,7 +106,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="divisi.php"><i class="fa fa-circle-o"></i> Data Divisi</a></li>
+            <li class="accordion-collapse collapse show"><a href="divisi.php"><i class="fa fa-circle-o"></i> Data Divisi</a></li>
             <li><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>
             <li><a href="metode.php"><i class="fa fa-circle-o"></i> Data Metode</a></li>
             <li><a href="dana.php"><i class="fa fa-circle-o"></i> Sumber Dana</a></li>

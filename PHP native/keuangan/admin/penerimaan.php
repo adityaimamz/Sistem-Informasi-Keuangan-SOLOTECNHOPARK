@@ -195,9 +195,9 @@
                       <td><?php echo $d['Keperluan']; ?></td>
                       <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>
-                          <a title="Batalkan Bayar" class="btn bg-green btn-flat btn-xs" href="penerimaan_proses.php?id=<?php echo $d['Id_penerimaan']; ?>&status=n">Voice</a>
+                          <a title="Batalkan Bayar" class="btn bg-green btn-flat btn-xs" href="">Voice</a>
                         <?php } else { ?>
-                          <a title="Sudah Bayar" class="btn bg-red btn-flat btn-xs" href="penerimaan_proses.php?id=<?php echo $d['Id_penerimaan']; ?>&status=y">Invoice</a>
+                          <a title="Sudah Bayar" class="btn bg-red btn-flat btn-xs" href="">Invoice</a>
                         <?php } ?>
                       </td>
                       <td>    
@@ -376,3 +376,11 @@
 
 </div>
 <?php include 'footer.php'; ?> 
+<script type="text/javascript"> 
+    $(document).ready(function () {
+        $('#table-datatables').DataTable({
+            dom: 'Bfrtip',
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        });
+    });
+</script>

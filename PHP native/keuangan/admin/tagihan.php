@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      Penerimaan
-      <small>Data Penerimaan</small>
+      Tagihan
+      <small>Data Tagihan</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,7 +18,7 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Penerimaan</h3>
+            <h3 class="box-title">Transaksi Tagihan</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
