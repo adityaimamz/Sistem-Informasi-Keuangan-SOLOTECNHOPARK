@@ -140,7 +140,7 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
+              <li><a href="barang.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
               <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
             </ul>
           </li>
