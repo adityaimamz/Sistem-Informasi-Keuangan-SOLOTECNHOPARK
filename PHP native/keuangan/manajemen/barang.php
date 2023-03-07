@@ -68,7 +68,7 @@
 
                     <div class="form-group">
                         <label>NAMA BARANG</label>
-                        <input type="text" name="Nama_barang" required="required" class="form-control" placeholder="Masukkan Nama Barang ..">
+                        <input type="text" name="nama_barang" required="required" class="form-control" placeholder="Masukkan Nama Barang ..">
                       </div>
 
                       <div class="form-group">
@@ -99,7 +99,7 @@
 
                       <div class="form-group">
                         <label>KODE BARANG</label>
-                        <input type="text" name="Kode_barang" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
+                        <input type="text" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
                       </div>
 
                       <div class="form-group">
@@ -150,6 +150,7 @@
                         <td><?php echo $d['Kode_barang']; ?></td>
                         <td><?php echo $d['Gambar']; ?></td>
                         <td>    
+
                           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-eye"></i>
                           </button>
@@ -169,7 +170,12 @@
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>NAMA BARANG</label>
-                                      <input type="text" style="width:100%" name="tanggal" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal'] ?>">
+                                      <input type="text" style="width:100%" name="nama_barang" required="required" class="form-control" value="<?php echo $d['Nama_barang'] ?>">
+                                    </div>
+
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>LOKASI</label>
+                                      <input type="text" style="width:100%" name="lokasi" required="required" class="form-control" value="<?php echo $d['Lokasi'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -185,26 +191,7 @@
                                         }
                                         ?>
                                       </select>
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>BULAN</label>
-                                      <select name="bulan" style="width:100%" class="form-control" required="required">
-                                        <option value="">- Pilih -</option>
-                                        <option <?php if($d['Bulan'] == "Januari"){echo "selected='selected'";} ?> value="Januari">Januari</option>
-                                        <option <?php if($d['Bulan'] == "Februari"){echo "selected='selected'";} ?> value="Februari">Februari</option>
-                                        <option <?php if($d['Bulan'] == "Maret"){echo "selected='selected'";} ?> value="Maret">Maret</option>
-                                        <option <?php if($d['Bulan'] == "April"){echo "selected='selected'";} ?> value="April">April</option>
-                                        <option <?php if($d['Bulan'] == "Mei"){echo "selected='selected'";} ?> value="Mei">Mei</option>
-                                        <option <?php if($d['Bulan'] == "Juni"){echo "selected='selected'";} ?> value="Juni">Juni</option>
-                                        <option <?php if($d['Bulan'] == "Juli"){echo "selected='selected'";} ?> value="Juli">Juli</option>
-                                        <option <?php if($d['Bulan'] == "Agustus"){echo "selected='selected'";} ?> value="Agustus">Agustus</option>
-                                        <option <?php if($d['Bulan'] == "September"){echo "selected='selected'";} ?> value="September">September</option>
-                                        <option <?php if($d['Bulan'] == "Oktober"){echo "selected='selected'";} ?> value="Oktober">Oktober</option>
-                                        <option <?php if($d['Bulan'] == "November"){echo "selected='selected'";} ?> value="November">November</option>
-                                        <option <?php if($d['Bulan'] == "Desember"){echo "selected='selected'";} ?> value="Desember">Desember</option>
-                                      </select>
-                                    </div>
+                                      </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>TANGGAL</label>
@@ -212,34 +199,19 @@
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>JENIS BELANJA</label>
-                                      <select name="jenis" style="width:100%" class="form-control" required="required">
-                                        <option value="">- Pilih -</option>
-                                        <option <?php if($d['Jenis_belanja'] == "Barang/Jasa"){echo "selected='selected'";} ?> value="Barang/Jasa">Barang/Jasa</option>
-                                        <option <?php if($d['Jenis_belanja'] == "Modal"){echo "selected='selected'";} ?> value="Modal">Modal</option>
-                                      </select>
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>RINCIAN BELANJA</label>
-                                      <input type="text" style="width:100%" name="rincian" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Rincian'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <input type="hidden" name="id" value="<?php echo $d['Id_barang'] ?>">
-                                      <label>JUMLAH (RUPIAH)</label>
-                                      <input type="text" style="width:100%" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Jumlah']; ?>">
+                                      <label>KODE BARANG</label>
+                                      <input type="text" style="width:100%" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_barang'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Upload File</label>
                                       <input type="file" name="trnfoto" class="form-control"><br>
                                       <!-- <small><?php echo $d['Bukti'] ?></small> -->
-                                      <p class="help-block">Bila File <?php echo "<a class='fancybox btn btn-xs btn-primary' target=_blank href='../gambar/bukti/$d[Bukti_lpj]'>$d[Bukti_lpj]</a>";?> tidak dirubah kosongkan saja</p>
+                                      <p class="help-block">Bila File <?php echo "<a class='fancybox btn btn-xs btn-primary' target=_blank href='../gambar/bukti/$d[Gambar]'>$d[Gambar]</a>";?> tidak dirubah kosongkan saja</p>
                                     </div>
 
                                   </div>
-                                  <div class="modal-footer">
+                                  <div class="modal-footer">  
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                   </div>
@@ -259,7 +231,7 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  <embed src="../gambar/bukti/<?php echo $d['Bukti_lpj']; ?>" type="application/pdf" width="100%" height="400px" />
+                                  <embed src="../gambar/bukti/<?php echo $d['Gambar']; ?>" type="application/pdf" width="100%" height="400px" />
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
