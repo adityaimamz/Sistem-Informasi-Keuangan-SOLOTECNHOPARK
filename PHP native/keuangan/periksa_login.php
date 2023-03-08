@@ -21,8 +21,8 @@ if($cek > 0){
 		$_SESSION['status'] = "administrator_logedin";
 		header("location:admin/");
 	}else if($data['Level'] == "Manager"){
-		$_SESSION['status'] = "manajemen_logedin";
-		header("location:manajemen/");
+		$_SESSION['status'] = "manager_logedin";
+		header("location:manager/");
 	}else{
 		header("location:index.php?alert=gagal");
 	}

@@ -22,9 +22,14 @@
             <h3 class="box-title">Data belanja</h3>
             <div class="btn-group pull-right">            
 
-              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus"></i> &nbsp Tambah belanja Bayar
               </button>
+              &nbsp
+
+              <a href="belanja_csv.php"><button type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-file-excel-o"></i> &nbsp CSV
+              </button></a>
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -92,7 +97,7 @@
                 <thead>
                   <tr>
                     <th>NO</th>
-                    <th>JENIS belanja BAYAR</th>
+                    <th>JENIS SUMBER BELANJA</th>
                     <th>OPSI</th>
                   </tr>
                 </thead>
