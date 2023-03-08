@@ -79,21 +79,15 @@
 
     <aside class="main-sidebar">
       <section class="sidebar">
-        <div class="user-panel">
-          <!-- <div class="pull-left image">
-            <?php 
-            $id_user = $_SESSION['id'];
-            $profil = mysqli_query($koneksi,"select * from master_user where Id_user='$id_user'");
-            // $profil = mysqli_fetch_assoc($profil);
-            ?>
+      <div class="user-panel">
+          <div align="center">
+          <img src="../gambar/user.png" class="img-circle img-responsive" width="100" height="100">
           </div>
-          <div class="pull-left info">
-            <p><?php echo $_SESSION['nama']; ?></p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-          </div> -->
         </div>
 
         <ul class="sidebar-menu" data-widget="tree">
+          <h4 style="color:white;" align="center"><b><?php echo $_SESSION['nama'];?></b></h4>
+          <h6 style="color:white;" align="center"><i class="fa fa-circle text-success"></i> Online</h6>
           <li class="header">NAVIGASI</li>
 
           <li>
