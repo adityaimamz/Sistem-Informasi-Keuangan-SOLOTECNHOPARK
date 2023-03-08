@@ -157,7 +157,7 @@
   }
 
   var barChartData2 = {
-    labels : ["Cash","transfer"],
+    labels : ["Belum Dibayar","Cash","transfer"],
     datasets : [
     {
       label: 'pengeluaran',
