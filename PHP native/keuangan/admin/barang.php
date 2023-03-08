@@ -25,9 +25,9 @@
                 <i class="fa fa-plus"></i> &nbsp Tambah Barang
               </button>
               &nbsp
-              <a href="penerimaan_csv.php"><button type="button" class="btn btn-success btn-sm">
-                <i class="fa fa-file-excel-o"></i> &nbsp CSV
-              </button></a>
+            <a href="barang_csv.php"><button type="button" class="btn btn-success btn-sm">
+              <i class="fa fa-file-excel-o"></i> &nbsp CSV
+            </button></a>
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
