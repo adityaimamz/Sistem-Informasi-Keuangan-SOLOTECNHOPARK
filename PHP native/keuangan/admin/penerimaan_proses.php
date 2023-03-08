@@ -48,6 +48,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','voice')");
 		header("location:penerimaan.php?alert=berhasil");
 	}
 }
