@@ -97,12 +97,12 @@
 
                       <div class="form-group">
                         <label>NO TANDA TERIMA</label>
-                        <input type="text" name="No_tandaterima" required="required" class="form-control" placeholder="Masukkan No Tanda Terima ..">
+                        <input type="text" name="No_tandaterima" class="form-control" placeholder="Masukkan No Tanda Terima ..">
                       </div>
 
                       <div class="form-group">
                         <label>METODE PEMBAYARAN</label>
-                        <select name="metode" class="form-control" required="required">
+                        <select name="metode" class="form-control">
                           <option value="">- Pilih -</option>
                           <?php 
                           include 'koneksi.php';
@@ -141,15 +141,15 @@
                         <input type="number" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label>STATUS</label>
                         &nbsp &nbsp &nbsp<input type="radio" name="status" id="status" value="voice" checked='checked'>&nbsp Sudah Bayar
                         &nbsp &nbsp &nbsp<input type="radio" name="status" id="status" value="invoice">&nbsp Belum Bayar
-                      </div>
+                      </div> -->
 
                       <div class="form-group">
                         <label>Upload Bukti</label>
-                        <input type="file" name="trnfoto" required="required" class="form-control">
+                        <input type="file" name="trnfoto" class="form-control">
                         <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
                       </div>
 
@@ -201,9 +201,9 @@
                       <td><?php echo $d['Keperluan']; ?></td>
                       <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>
-                          <a title="Batalkan Bayar" class="btn bg-green btn-flat btn-xs" href="">Voice</a>
+                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal">Voice</button>
                         <?php } else { ?>
-                          <a title="Sudah Bayar" class="btn bg-red btn-flat btn-xs" href="">Invoice</a>
+                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal">Invoice</button>
                         <?php } ?>
                       </td>
                       <td>    
