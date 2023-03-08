@@ -22,9 +22,15 @@
             <h3 class="box-title">Data Divisi</h3>
             <div class="btn-group pull-right">            
 
-              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus"></i> &nbsp Tambah Divisi
               </button>
+              &nbsp
+
+              <a href="divisi_csv.php"><button type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-file-excel-o"></i> &nbsp CSV
+              </button></a>
+
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
