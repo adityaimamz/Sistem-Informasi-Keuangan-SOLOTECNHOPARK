@@ -19,6 +19,12 @@
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Transaksi Barang</h3>
+            <div class="btn-group pull-right">            
+            &nbsp
+            <a href="barang_csv.php"><button type="button" class="btn btn-success btn-sm">
+              <i class="fa fa-file-excel-o"></i> &nbsp CSV
+            </button></a>
+            </div>
             <hr>
             <?php 
                 if(isset($_GET['alert'])){
