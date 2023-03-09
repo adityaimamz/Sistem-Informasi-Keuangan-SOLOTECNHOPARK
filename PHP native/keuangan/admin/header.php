@@ -169,6 +169,7 @@
             <ul class="treeview-menu" style="display: none;">
               <li><a href="penerimaan_laporan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
               <li><a href="laporan.php"><i class="fa fa-circle-o"></i> Laporan Pengeluaran</a></li>
+              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
             </ul>
           </li>
 
