@@ -137,8 +137,15 @@
                         <label>JENIS BELANJA</label>
                         <select name="jenis" class="form-control" required="required">
                           <option value="">- Pilih -</option>
-                          <option value="Barang/Jasa">Barang/Jasa</option>
-                          <option value="Modal">Modal</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $divisi = mysqli_query($koneksi,"SELECT * FROM master_belanja ORDER BY Jenis ASC");
+                          while($k = mysqli_fetch_array($divisi)){
+                            ?>
+                            <option value="<?php echo $k['Id_jenisbelanja']; ?>"><?php echo $k['Jenis']; ?></option>
+                            <?php 
+                          }
+                          ?>
                         </select>
                       </div>
 
@@ -189,16 +196,16 @@
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis FROM master_pengeluaran, master_divisi, master_sumberdana WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana order by Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis order by Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
                         <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
-                        <td><?php echo $d['Jenis']; ?></td>
+                        <td><?php echo $d['jenisdana']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['Bulan']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td><?php echo $d['Jenis_belanja']; ?></td>
+                        <td><?php echo $d['jenisbelanja']; ?></td>
                         <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
                         <td><?php echo $d['Rincian']; ?></td>
                         <td>    
@@ -290,8 +297,14 @@
                                       <label>JENIS BELANJA</label>
                                       <select name="jenis" style="width:100%" class="form-control" required="required">
                                         <option value="">- Pilih -</option>
-                                        <option <?php if($d['Jenis_belanja'] == "Barang/Jasa"){echo "selected='selected'";} ?> value="Barang/Jasa">Barang/Jasa</option>
-                                        <option <?php if($d['Jenis_belanja'] == "Modal"){echo "selected='selected'";} ?> value="Modal">Modal</option>
+                                        <?php 
+                                        $divisi = mysqli_query($koneksi,"SELECT * FROM master_belanja ORDER BY Id_jenisbelanja ASC");
+                                        while($k = mysqli_fetch_array($divisi)){
+                                          ?>
+                                          <option <?php if($d['Id_jenis'] == $k['Id_jenisbelanja']){echo "selected='selected'";} ?> value="<?php echo $k['Id_jenisbelanja']; ?>"><?php echo $k['Jenis']; ?></option>
+                                          <?php 
+                                        }
+                                        ?>
                                       </select>
                                     </div>
 

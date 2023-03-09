@@ -120,7 +120,7 @@ if  ($bln=="01"){
 }
 
 $pdf->SetX(10);
-$pdf->Cell(40,8,$row['Kode_pengeluaran'].".",1,0,'C',0);
+$pdf->Cell(40,8,$row['Kode_pengeluaran'],1,0,'C',0);
 $pdf->SetX(50);
 $pdf->Cell(52,8,$row['Nama_divisi'],1,0,'L',0);
 $pdf->SetX(102);
@@ -152,12 +152,29 @@ $pdf->Cell(35,8,"Rp. ".number_format($total)." ,-",1,0,'R',0);
 $pdf->Output();
 //"data_siswa".".pdf",'D'
 }else{
-?>
+  $pdf = new FPDF('L','mm','A4');
+$pdf->AddPage();
 
-<div class="alert alert-danger text-center">
-  Mohon maaf data tidak ditemukan.
-</div>
+$pdf->Image('../assets/dist/img/logo stp-01.png',20,2,50);
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(280,9,'Laporan Data Pengeluaran',0,0,'C');
+$pdf->Ln(6);
+$pdf->Cell(280,9,'Transaksi Pengeluaran Online UPTD Solo Technopark',0,0,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Ln(6);
+$pdf->Cell(280,9,'Sekretariat : Jl. Ki Hajar Dewantara No.19, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126',0,0,'C');
+$pdf->Ln(10);
+$pdf->Cell(280,0.1,'',1,1,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Ln(20);
+$Y_Fields_Name_position = 27;
 
-<?php
+$pdf->SetFillColor(250,161,0);
+
+$pdf->SetY($Y_Fields_Name_position);
+$pdf->Ln(10);
+$pdf->SetX(50);
+$pdf->Cell(200,8,'Mohon maaf !!! Data yang anda inginkan tidak di temukan',0,0,'C',1);
+$pdf->Output();
 }
 ?>
