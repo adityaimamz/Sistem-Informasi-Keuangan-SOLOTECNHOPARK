@@ -10,6 +10,7 @@ $alamat  = $_POST['alamat'];
 $keperluan  = $_POST['keperluan'];
 $nominal  = $_POST['nominal'];
 $status = $_POST['status'];
+$drive = $_POST['drive'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf');
@@ -35,10 +36,10 @@ $kode_penerimaan = "PNR" . date("YmdHis");
 // }
 
 if($filename == ""){
-	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat', '$No_tandaterima', '$nominal', '$metode','','voice')")or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat', '$No_tandaterima', '$nominal', '$metode','','voice', '$drive')")or die(mysqli_error($koneksi));
 	header("location:penerimaan.php?alert=berhasil");
 }elseif ($No_tandaterima = "" && $metode = "") {
-	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat', NULL, '$nominal', NULL,'$file_gambar','voice')")or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat', NULL, '$nominal', NULL,'$file_gambar','voice', '$drive')")or die(mysqli_error($koneksi));
 	header("location:penerimaan.php?alert=berhasil");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -48,7 +49,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','voice')");
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','voice', '$drive')");
 		header("location:penerimaan.php?alert=berhasil");
 	}
 }

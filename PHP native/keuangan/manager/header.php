@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Administrator - Sistem Informasi Keuangan</title>
+  <title>Manager - Keuangan STP</title>
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -169,6 +169,7 @@
             <ul class="treeview-menu" style="display: none;">
               <li><a href="penerimaan_laporan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
               <li><a href="laporan.php"><i class="fa fa-circle-o"></i> Laporan Pengeluaran</a></li>
+              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
             </ul>
           </li>
 

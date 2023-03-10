@@ -160,6 +160,11 @@
                       </div>
 
                       <div class="form-group">
+                        <label>LINK DRIVE</label>
+                        <input type="text" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda ..">
+                      </div>
+
+                      <div class="form-group">
                         <label>Upload Bukti</label>
                         <input type="file" name="trnfoto" required="required" class="form-control">
                         <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
@@ -209,17 +214,28 @@
                         <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
                         <td><?php echo $d['Rincian']; ?></td>
                         <td>    
-                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                          <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
 
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                          <button title="Hapus" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                             <i class="fa fa-trash"></i>
                           </button>
 
-                          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                          <button title="Lihat" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                             <i class="fa fa-eye"></i>
                           </button>
+
+                          <?php if($d['Drive']==''){ ?> 
+
+                          <?php } else { ?> 
+                            <a href="<?php echo $d['Drive']; ?>" title="Lihat File" target="_blank">
+                              <button type="button" class="btn btn-success btn-sm">
+                                <i class="fa fa-cloud"></i>
+                              </button>
+                            </a>
+                            <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">Lihat File</a> -->
+                          <?php } ?>
 
                           <!-- Modal Update -->
                           <form action="pengeluaran_update.php" method="post" enctype="multipart/form-data">
@@ -310,13 +326,18 @@
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>RINCIAN BELANJA</label>
-                                      <input type="text" style="width:100%" name="rincian" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Rincian'] ?>">
+                                      <input type="text" style="width:100%" name="rincian" required="required" class="form-control" placeholder="Masukkan Rincian Penerimaan .." value="<?php echo $d['Rincian'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <input type="hidden" name="id" value="<?php echo $d['Id_pengeluaran'] ?>">
                                       <label>JUMLAH (RUPIAH)</label>
                                       <input type="text" style="width:100%" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Jumlah']; ?>">
+                                    </div>
+
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>LINK DRIVE</label>
+                                      <input type="text" style="width:100%" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda .." value="<?php echo $d['Drive'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">

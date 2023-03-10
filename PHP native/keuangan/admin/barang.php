@@ -134,12 +134,11 @@
                   <thead>
                   <tr>
                     <th>NO</th>
+                    <th>KODE BARANG</th>
                     <th>NAMA BARANG</th>
                     <th>LOKASI</th>
                     <th>DIVISI</th>
                     <th>TANGGAL</th>
-                    <th>KODE BARANG</th>
-                    <th>GAMBAR</th>
                     <th>OPSI</th>
                   </tr>
                   </thead>
@@ -152,12 +151,11 @@
                       ?>
                       <tr>
                         <td class="text-center"><?php echo $no++; ?></td>
+                        <td><?php echo $d['Kode_barang']; ?></td>
                         <td><?php echo $d['Nama_barang']; ?></td>
                         <td><?php echo $d['Lokasi']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td><?php echo $d['Kode_barang']; ?></td>
-                        <td><?php echo $d['Gambar']; ?></td>
                         <td>    
                           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-cog"></i>

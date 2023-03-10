@@ -137,6 +137,11 @@
                       </div>
 
                       <div class="form-group">
+                        <label>LINK DRIVE</label>
+                        <input type="text" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda ..">
+                      </div>
+
+                      <div class="form-group">
                         <label>BESARAN (RUPIAH)</label>
                         <input type="number" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
@@ -169,7 +174,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>KODE</th>
+                    <th>NO</th>
                     <th>TANGGAL</th>
                     <th>BULAN</th>
                     <th>NO TANDA TERIMA</th>
@@ -190,7 +195,7 @@
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
-                      <td class="text-center"><?php echo $d['Kode_penerimaan']; ?></td>
+                      <td class="text-center"><?php echo $no++; ?></td>
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <td><?php echo $d['Bulan']; ?></td>
                       <td><?php echo $d['No_tandaterima']; ?></td>
@@ -218,6 +223,17 @@
                         <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-eye"></i>
                         </button>
+                        
+                        <?php if($d['Drive']==''){ ?> 
+
+                          <?php } else { ?> 
+                            <a href="<?php echo $d['Drive']; ?>" title="Lihat File" target="_blank">
+                              <button type="button" class="btn btn-success btn-sm">
+                                <i class="fa fa-cloud"></i>
+                              </button>
+                            </a>
+                            <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">Lihat File</a> -->
+                          <?php } ?>
 
                         <!-- Modal Edit -->
                         <form action="penerimaan_update.php" method="post" enctype="multipart/form-data">
@@ -295,6 +311,11 @@
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>KEPERLUAN</label>
                                     <input type="text" style="width:100%" name="keperluan" required="required" class="form-control" placeholder="Masukkan Keperluan .." value="<?php echo $d['Keperluan'] ?>">
+                                  </div>
+
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>LINK DRIVE</label>
+                                    <input type="text" style="width:100%" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda .." value="<?php echo $d['Drive'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">

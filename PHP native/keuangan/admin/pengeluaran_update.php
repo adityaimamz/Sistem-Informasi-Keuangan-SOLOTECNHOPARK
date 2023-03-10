@@ -8,6 +8,7 @@ $jenis  = $_POST['jenis'];
 $rincian  = $_POST['rincian'];
 $jumlah  = $_POST['jumlah'];
 $sumberdana  = $_POST['sumberdana'];
+$drive  = $_POST['drive'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf');
@@ -15,7 +16,7 @@ $filename = $_FILES['trnfoto']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if($filename == ""){
-	mysqli_query($koneksi, "update master_pengeluaran set Id_sumberdana='$sumberdana', Id_divisi='$divisi', Id_jenis='$jenis', Tanggal='$tanggal', Bulan='$bulan', Rincian='$rincian', Jumlah='$jumlah' where Id_pengeluaran='$id'") or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "update master_pengeluaran set Id_sumberdana='$sumberdana', Id_divisi='$divisi', Id_jenis='$jenis', Tanggal='$tanggal', Bulan='$bulan', Rincian='$rincian', Jumlah='$jumlah', Drive='$drive' where Id_pengeluaran='$id'") or die(mysqli_error($koneksi));
 	header("location:pengeluaran.php?alert=berhasilupdate");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -25,7 +26,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "update master_pengeluaran set Id_sumberdana='$sumberdana', Id_divisi='$divisi', Id_jenis='$jenis', Tanggal='$tanggal', Bulan='$bulan', Rincian='$rincian', Jumlah='$jumlah', Bukti_lpj='$xgambar' where Id_pengeluaran='$id'");
+		mysqli_query($koneksi, "update master_pengeluaran set Id_sumberdana='$sumberdana', Id_divisi='$divisi', Id_jenis='$jenis', Tanggal='$tanggal', Bulan='$bulan', Rincian='$rincian', Jumlah='$jumlah', Bukti_lpj='$xgambar', Drive='$drive' where Id_pengeluaran='$id'");
 		header("location:pengeluaran.php?alert=berhasilupdate");
 	}
 }

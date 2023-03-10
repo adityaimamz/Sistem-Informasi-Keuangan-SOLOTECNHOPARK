@@ -76,7 +76,7 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": true, "lengthChange": true, "autoWidth": false,
       "buttons": ["copy", "excel", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
@@ -159,7 +159,7 @@
   }
 
   var barChartData2 = {
-    labels : ["Belum Dibayar","Cash","transfer"],
+    labels : ["Cash","transfer"],
     datasets : [
     {
       label: 'pengeluaran',
@@ -187,7 +187,6 @@
     ]
   }
   
-
   var barChartData3 = {
     labels : ["A&K","Akntan","Aggrn","Diklat","KH","Lgstk","PK","PA","Pr&Pm","R&I","SFHKI"],
     datasets: [

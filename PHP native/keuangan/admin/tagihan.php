@@ -97,6 +97,17 @@
                         <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-eye"></i>
                         </button>
+                        
+                        <?php if($d['Drive']==''){ ?> 
+
+                          <?php } else { ?> 
+                            <a href="<?php echo $d['Drive']; ?>" title="Lihat File" target="_blank">
+                              <button type="button" class="btn btn-success btn-sm">
+                                <i class="fa fa-cloud"></i>
+                              </button>
+                            </a>
+                            <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">Lihat File</a> -->
+                          <?php } ?>
 
                         <!-- Modal Edit -->
                         <form action="tagihan_update.php" method="post" enctype="multipart/form-data">
@@ -135,6 +146,11 @@
                                       }
                                       ?>
                                     </select>
+                                  </div>
+
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>LINK DRIVE</label>
+                                    <input type="text" style="width:100%" name="drive" required="required" class="form-control">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">

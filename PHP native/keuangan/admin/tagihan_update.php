@@ -3,6 +3,7 @@ include '../koneksi.php';
 $id  = $_POST['id'];
 $No_tandaterima  = $_POST['No_tandaterima'];
 $metode  = $_POST['metode'];
+$drive  = $_POST['drive'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf');
@@ -10,7 +11,7 @@ $filename = $_FILES['trnfoto']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if($filename == ""){
-	mysqli_query($koneksi, "update master_penerimaan set No_tandaterima='$No_tandaterima', Id_metode='$metode', Status='invoice' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "update master_penerimaan set No_tandaterima='$No_tandaterima', Id_metode='$metode', Status='invoice', Drive='$drive' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
 	header("location:tagihan.php?alert=berhasilupdate");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -20,7 +21,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "update master_penerimaan set No_tandaterima='$No_tandaterima', Id_metode='$metode', Bukti='$xgambar', Status='invoice' where Id_penerimaan='$id'");
+		mysqli_query($koneksi, "update master_penerimaan set No_tandaterima='$No_tandaterima', Id_metode='$metode', Bukti='$xgambar', Status='invoice', Drive='$drive' where Id_penerimaan='$id'");
 		header("location:tagihan.php?alert=berhasilupdate");
 	}
 }
