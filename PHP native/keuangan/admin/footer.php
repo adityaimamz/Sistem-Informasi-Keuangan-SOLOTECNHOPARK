@@ -149,7 +149,8 @@
         if($pem['total_penerimaan'] == ""){
           echo "0,";
         }else{
-          echo $total.",";
+          echo "Rp. " . number_format($total, 0, ',', '.') . ",-";
+          echo ",";
         }
       }
       ?>
@@ -247,6 +248,7 @@
   }
 
 
+  console.log(barChartData);
 
 
   window.onload = function(){
