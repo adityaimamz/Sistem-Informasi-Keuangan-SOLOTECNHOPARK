@@ -183,7 +183,11 @@
 				scales: {
 					yAxes: [{
 						ticks: {
-							beginAtZero:true
+							// beginAtZero:true
+							// gunakan fungsi callback untuk mengubah format uang
+					          callback: function(value, index, values) {
+					            return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
+					          }
 						}
 					}]
 				}
