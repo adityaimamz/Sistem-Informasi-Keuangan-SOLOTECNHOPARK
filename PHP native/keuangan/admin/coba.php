@@ -29,6 +29,9 @@
 		<canvas id="myChart"></canvas>
 	</div>
  
+	<div style="width: 800px;margin: 0px auto;">
+		<canvas id="myChart2"></canvas>
+	</div>
 	<br/>
 	<br/>
  
@@ -43,7 +46,7 @@
 		<tbody>
 			<?php 
 			$no = 1;
-			$data = mysqli_query($koneksi,"SELECT master_divisi.Nama_divisi, SUM(master_pengeluaran.Jumlah) AS total FROM master_divisi JOIN master_pengeluaran ON master_pengeluaran.Id_divisi=master_divisi.Id_divisi GROUP BY master_pengeluaran.Id_divisi");
+			$data = mysqli_query($koneksi,"SELECT SUM(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Id_divisi='$id_divisi'");
 			while($d=mysqli_fetch_array($data)){
 				?>
 				<tr>
@@ -61,12 +64,93 @@
 	<script>
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
-			type: 'bar',
+			type: 'pie',
 			data: {
-				labels: ["A&K","Akntan","Aggrn","Diklat","KH","Lgstk","PK","PA","Pr&Pm","R&I","SFHKI"],
+				labels: [
+					<?php 
+      $divisi = mysqli_query($koneksi,"SELECT master_divisi.Nama_divisi, SUM(master_pengeluaran.Jumlah) AS total FROM master_divisi JOIN master_pengeluaran ON master_pengeluaran.Id_divisi=master_divisi.Id_divisi GROUP BY master_pengeluaran.Id_divisi");
+      while($d = mysqli_fetch_array($divisi)){
+        ?>
+        "<?php echo $d['Nama_divisi']; ?>",
+        <?php 
+      }
+      ?>
+				],
 				datasets: [{
 					label: '',
 					data: [
+<<<<<<< HEAD
+						<?php
+      $divisi = mysqli_query($koneksi, "SELECT DISTINCT Id_divisi FROM master_pengeluaran ORDER BY Id_divisi ASC");
+      while($d = mysqli_fetch_array($divisi)){
+        $id_divisi = $d['Id_divisi'];
+        $pengeluaran = mysqli_query($koneksi, "SELECT SUM(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Id_divisi='$id_divisi'");
+        $total = mysqli_fetch_assoc($pengeluaran)['total_pengeluaran'];
+        if(empty($total)){
+          echo "0,";
+        } else {
+          echo $total.",";
+        }
+          }
+        ?>
+					],
+					backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(255, 99, 132, 0.2)'
+					],
+					borderColor: [
+					'rgba(255,99,132,1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(255,99,132,1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(255,99,132,1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(255,99,132,1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				
+			}
+		});
+
+		var ctx = document.getElementById("myChart2").getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ["Cash","transfer"],
+				datasets: [{
+					label: '',
+					data: [
+						<?php
+     $id_metode = mysqli_query($koneksi,"SELECT distinct id_metode from master_penerimaan order by id_metode asc");
+     while($t = mysqli_fetch_array($id_metode)){
+       $metode = $t['id_metode'];
+       $pengeluaran = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_pengeluaran from master_penerimaan where id_metode='$metode'");
+       $pem = mysqli_fetch_assoc($pengeluaran);
+       $total = $pem['total_pengeluaran'];
+       if($pem['total_pengeluaran'] == ""){
+         echo "0,";
+       }else{
+         echo $total.",";
+       }
+     }
+      ?>
+=======
 					<?php 
 					$jumlah_administrasi = mysqli_query($koneksi,"SELECT sum(Jumlah) from master_pengeluaran where Id_divisi='12'");
 					echo number_format(mysqli_fetch_array($jumlah_administrasi)[0]);
@@ -111,6 +195,7 @@
 					$jumlah_SFHKI = mysqli_query($koneksi,"SELECT sum(Jumlah) from master_pengeluaran where Id_divisi='9'");
 					echo number_format(mysqli_fetch_array($jumlah_SFHKI)[000000]);
 					?>
+>>>>>>> 92471ad0979c7f934ca2cb5898fa58b3d3d26ddd
 					],
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',

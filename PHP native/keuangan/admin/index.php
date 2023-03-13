@@ -393,20 +393,4 @@ $hari_ini = date('w');
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php include 'footer.php'; ?>
