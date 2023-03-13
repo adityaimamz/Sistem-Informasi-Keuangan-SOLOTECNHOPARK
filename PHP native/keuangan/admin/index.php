@@ -330,19 +330,19 @@ $hari_ini = date('w');
 
               
               <h4 class="text-center">Realisasi Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
-              <canvas id="grafik1" style="position: relative; height: 300px;"></canvas>
+              <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
 
               <br/>
               <br/>
 
               <h4 class="text-center">Grafik Penerimaan Tahun 2023 berdasarkan Metode Bayar</h4>
-              <canvas id="grafik2" style="position: relative; height: 300px;"></canvas>
+              <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
 
               <br/>
               <br/>
 
               <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
-              <canvas id="grafik3" style="position: relative; height: 300px;"></canvas>
+              <canvas id="myChart3" style="position: relative; height: 300px;"></canvas>
 
               <br/>
               <br/>
@@ -350,7 +350,7 @@ $hari_ini = date('w');
               <br/>
 
               <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
-              <canvas id="grafik4" style="position: relative; height: 300px;"></canvas>
+              <canvas id="myChart4" style="position: relative; height: 300px;"></canvas>
 
               <br/>
               <br/>
