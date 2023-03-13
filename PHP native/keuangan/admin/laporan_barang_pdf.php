@@ -69,16 +69,18 @@ $pdf->Cell(105, 8, $waktu, 0, 0, 'L', 0);
 $pdf->Ln(10);
 
 $pdf->SetX(10);
-$pdf->Cell(20,8,'Nomor',1,0,'C',1);
-$pdf->Cell(52,8,'Nama Barang',1,0,'C',1);
-$pdf->Cell(40,8,'Lokasi',1,0,'C',1);
-$pdf->Cell(70,8,'Nama Divisi',1,0,'C',1);
-$pdf->Cell(35,8,'Tanggal',1,0,'C',1);
-$pdf->Cell(55,8,'Kode Barang',1,0,'C',1);
+$pdf->Cell(10,8,'NO',1,0,'C',1);
+$pdf->Cell(25,8,'TANGGAL',1,0,'C',1);
+$pdf->Cell(35,8,'KODE BARANG',1,0,'C',1);
+$pdf->Cell(75,8,'Nama BARANG',1,0,'C',1);
+$pdf->Cell(55,8,'NAMA DIVISI',1,0,'C',1);
+$pdf->Cell(80,8,'LOKASI',1,0,'C',1);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,'Biaya Admin',1,0,'C',1);
 $pdf->Ln(8);
 $pdf->SetFont('Arial','',10);
+
+$no=1;
 while ($row = mysqli_fetch_assoc($result)) {
 
 $tanggal=$row['Tanggal'];
@@ -114,37 +116,45 @@ if  ($bln=="01"){
 }
 
 $pdf->SetX(10);
-$pdf->Cell(20,8,$row['Id_barang'].".",1,0,'C',0);
-$pdf->Cell(52,8,$row['Nama_barang'],1,0,'C',0);
-$pdf->Cell(40,8,$row['Lokasi'],1,0,'C',0);
-$pdf->Cell(70,8,$row['Nama_divisi'],1,0,'C',0);
-$pdf->Cell(35,8,$row['Tanggal'],1,0,'C',0);
-$pdf->Cell(55,8,$row['Kode_barang'],1,0,'C',0);
+$pdf->Cell(10,8,$no.".",1,0,'C',0);
+$pdf->Cell(25,8,$row['Tanggal'],1,0,'C',0);
+$pdf->Cell(35,8,$row['Kode_barang'],1,0,'C',0);
+$pdf->Cell(75,8,$row['Nama_barang'],1,0,'C',0);
+$pdf->Cell(55,8,$row['Nama_divisi'],1,0,'C',0);
+$pdf->Cell(80,8,$row['Lokasi'],1,0,'C',0);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,$biayaadmin,1,0,'R',0);
 $pdf->Ln(8);
+$no++;
 }
-
-$pdf->SetFont('Arial','B',10);
-$pdf->SetX(10);
-// $pdf->SetX(173);
-// $pdf->Cell(27,8,$admin1,1,0,'R',0);
-// $pdf->Ln(8);
-// $pdf->SetX(10);
-// $pdf->Cell(128,8,'Total Setor',1,0,'R',0);
-// $pdf->SetX(138);
-// $pdf->Cell(62,8,$totalsetor1,1,0,'C',0);
 
 
 $pdf->Output();
 //"data_siswa".".pdf",'D'
 }else{
-?>
+  $pdf = new FPDF('L','mm','A4');
+$pdf->AddPage();
 
-<div class="alert alert-danger text-center">
-  Mohon maaf data tidak ditemukan.
-</div>
+$pdf->Image('../assets/dist/img/logo stp-01.png',20,2,50);
+$pdf->SetFont('Arial','B',15);
+$pdf->Cell(280,9,'Laporan Data Barang',0,0,'C');
+$pdf->Ln(6);
+$pdf->Cell(280,9,'Data Barang UPTD Solo Technopark',0,0,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Ln(6);
+$pdf->Cell(280,9,'Sekretariat : Jl. Ki Hajar Dewantara No.19, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126',0,0,'C');
+$pdf->Ln(10);
+$pdf->Cell(280,0.1,'',1,1,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Ln(20);
+$Y_Fields_Name_position = 27;
 
-<?php
+$pdf->SetFillColor(250,161,0);
+
+$pdf->SetY($Y_Fields_Name_position);
+$pdf->Ln(10);
+$pdf->SetX(50);
+$pdf->Cell(200,8,'Mohon maaf !!! Data yang anda inginkan tidak di temukan',0,0,'C',1);
+$pdf->Output();
 }
 ?>

@@ -109,6 +109,7 @@
             <li><a href="metode.php"><i class="fa fa-circle-o"></i> Data Metode</a></li>
             <li><a href="dana.php"><i class="fa fa-circle-o"></i> Sumber Dana</a></li>
             <li><a href="belanja.php"><i class="fa fa-circle-o"></i> Jenis Belanja</a></li>
+            <li><a href="coba.php"><i class="fa fa-circle-o"></i> Chart</a></li>
           </ul>
         </li>
         <script>

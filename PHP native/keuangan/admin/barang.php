@@ -107,11 +107,6 @@
                       </div>
 
                       <div class="form-group">
-                        <label>KODE BARANG</label>
-                        <input type="text" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
-                      </div>
-
-                      <div class="form-group">
                         <label>Upload Bukti</label>
                         <input type="file" name="trnfoto" required="required" class="form-control">
                         <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
@@ -182,7 +177,12 @@
                                   </div>
                                   <div class="modal-body">
 
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>KODE BARANG</label>
+                                      <input type="text" style="width:100%" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_barang'] ?>" /readonly>
+                                    </div>
+
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>NAMA BARANG</label>
                                       <input type="text" style="width:100%" name="nama_barang" required="required" class="form-control" value="<?php echo $d['Nama_barang'] ?>">
                                     </div>
@@ -210,11 +210,6 @@
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>TANGGAL</label>
                                       <input type="text" style="width:100%" name="tanggal" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KODE BARANG</label>
-                                      <input type="text" style="width:100%" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_barang'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
