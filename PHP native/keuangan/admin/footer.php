@@ -149,8 +149,7 @@
         if($pem['total_penerimaan'] == ""){
           echo "0,";
         }else{
-          echo "Rp. " . number_format($total, 0, ',', '.') . ",-";
-          echo ",";
+          echo $total.",";
         }
       }
       ?>
@@ -189,7 +188,16 @@
   }
   
   var barChartData3 = {
-    labels : ["A&K","Akntan","Aggrn","Diklat","KH","Lgstk","PK","PA","Pr&Pm","R&I","SFHKI"],
+    labels : [
+      <?php 
+      $divisi = mysqli_query($koneksi,"SELECT master_divisi.Nama_divisi, SUM(master_pengeluaran.Jumlah) AS total FROM master_divisi JOIN master_pengeluaran ON master_pengeluaran.Id_divisi=master_divisi.Id_divisi GROUP BY master_pengeluaran.Id_divisi");
+      while($d = mysqli_fetch_array($divisi)){
+        ?>
+        "<?php echo $d['Nama_divisi']; ?>",
+        <?php 
+      }
+      ?>
+    ],
     datasets: [
   {
     label: 'Pengeluaran',
@@ -248,19 +256,26 @@
   }
 
 
-  console.log(barChartData);
 
 
   window.onload = function(){
     var ctx = document.getElementById("grafik1").getContext("2d");
     window.myBar = new Chart(ctx).Bar(barChartData, {
-     responsive : true,
-     animation: true,
-     barValueSpacing : 5,
-     barDatasetSpacing : 1,
-     tooltipFillColor: "rgba(0,0,0,0.8)",
-     multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-"
-   });
+        responsive : true,
+        animation: true,
+        barValueSpacing : 5,
+        barDatasetSpacing : 1,
+        tooltipFillColor: "rgba(0,0,0,0.8)",
+        multiTooltipTemplate: "<%= datasetLabel %> - Rp.<%= value.toLocaleString() %>,-",
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var value = data.datasets[0].data[tooltipItem.index];
+                    return 'Rp. ' + value.toLocaleString() + ',-';
+                }
+            }
+        }
+    });
 
    var ctx = document.getElementById("grafik2").getContext("2d");
     window.myBar = new Chart(ctx).Bar(barChartData2, {
