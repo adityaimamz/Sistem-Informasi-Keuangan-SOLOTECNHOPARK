@@ -69,7 +69,7 @@
 					data: [
 					<?php 
 					$jumlah_administrasi = mysqli_query($koneksi,"SELECT sum(Jumlah) from master_pengeluaran where Id_divisi='12'");
-					echo number_format(mysqli_fetch_array($jumlah_administrasi)[000000]);
+					echo number_format(mysqli_fetch_array($jumlah_administrasi)[0]);
 					?>, 
 					<?php 
 					$jumlah_akuntansi = mysqli_query($koneksi,"SELECT sum(Jumlah) from master_pengeluaran where Id_divisi='4'");

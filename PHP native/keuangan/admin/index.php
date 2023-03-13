@@ -59,12 +59,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="penerimaan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="penerimaan_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
+        <div class="small-box bg-green">
           <div class="inner">
             <?php
             $bulan = date('m');
@@ -81,12 +81,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="penerimaan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="penerimaan_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-orange">
+        <div class="small-box bg-green">
           <div class="inner">
             <?php 
             $tahun = date('Y');
@@ -103,12 +103,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="penerimaan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="penerimaan_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-black">
+        <div class="small-box bg-green">
           <div class="inner">
             <?php 
             $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'");
@@ -130,7 +130,7 @@ $hari_ini = date('w');
 
       <!-- DATA PENGELUARAN -->
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
@@ -148,12 +148,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="pengeluaran_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $bulan = date('m');
@@ -171,12 +171,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="pengeluaran_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-orange">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $tahun = date('Y');
@@ -194,12 +194,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="pengeluaran_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-black">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $pengeluaran = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran FROM master_pengeluaran");
@@ -221,7 +221,7 @@ $hari_ini = date('w');
 
       <!-- DATA TAGIHAN -->
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
+        <div class="small-box bg-blue">
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
@@ -238,7 +238,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="tagihan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="tagihan_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -260,12 +260,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="tagihan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="tagihan_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-orange">
+        <div class="small-box bg-blue">
           <div class="inner">
             <?php 
             $tahun = date('Y');
@@ -282,12 +282,12 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="tagihan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="tagihan_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-black">
+        <div class="small-box bg-blue">
           <div class="inner">
             <?php 
             $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'");
@@ -307,26 +307,6 @@ $hari_ini = date('w');
         </div>
       </div>
 
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'");
-            $p = mysqli_fetch_assoc($penerimaan);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-              echo $p['total_penerimaan']
-              ?>
-            </h4>
-            <p>Total Tagihan</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="tagihan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
 
     </div>
     <!-- /.row -->
