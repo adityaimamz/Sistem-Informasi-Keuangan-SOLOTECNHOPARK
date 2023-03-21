@@ -6,7 +6,7 @@ $nama_barang  = $_POST['nama_barang'];
 $lokasi  = $_POST['lokasi'];
 $divisi  = $_POST['divisi'];
 $tanggal  = $_POST['tanggal'];
-
+$kode_barang =  $_POST['kode_barang'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf');
@@ -24,7 +24,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "update master_barang set Nama_barang='$nama_barang',Lokasi='$lokasi', Tanggal='$tanggal',Id_divisi='$divisi', Gambar='$xgambar' where Id_barang='$id'");
+		mysqli_query($koneksi, "update master_barang set Kode_barang='$kode_barang' Nama_barang='$nama_barang',Lokasi='$lokasi', Tanggal='$tanggal',Id_divisi='$divisi', Gambar='$xgambar' where Id_barang='$id'");
 		header("location:barang.php?alert=berhasilupdate");
 	}
 }

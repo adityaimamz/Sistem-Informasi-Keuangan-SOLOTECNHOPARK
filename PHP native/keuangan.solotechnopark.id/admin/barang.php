@@ -86,6 +86,11 @@
                       </div>
 
                       <div class="form-group">
+                        <label>KODE BARANG</label>
+                        <input type="text" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
+                      </div>
+
+                      <div class="form-group">
                         <label>DIVISI</label>
                         <select name="divisi" class="form-control" required="required">
                           <option value="">- Pilih -</option>
@@ -180,7 +185,7 @@
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>KODE BARANG</label>
                                       <input type="hidden" name="id" required="required" class="form-control" placeholder="Nama Kategori .." value="<?php echo $d['Id_barang']; ?>">
-                                      <input type="text" style="width:100%" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_barang'] ?>" /readonly>
+                                      <input type="text" style="width:100%" name="kode_barang" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_barang'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
