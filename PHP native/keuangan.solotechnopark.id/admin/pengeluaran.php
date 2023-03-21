@@ -190,6 +190,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>OPSI</th>
                     <th>KODE PENGELUARAN</th>
                     <th>SUMBER DANA</th>
                     <th>DIVISI</th>
@@ -198,7 +199,6 @@
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
                     <th>RINCIAN</th>
-                    <th>OPSI</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -209,15 +209,7 @@
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
-                        <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
-                        <td><?php echo $d['jenisdana']; ?></td>
-                        <td><?php echo $d['Nama_divisi']; ?></td>
-                        <td><?php echo $d['Bulan']; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td><?php echo $d['jenisbelanja']; ?></td>
-                        <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
-                        <td><?php echo $d['Rincian']; ?></td>
-                        <td>    
+                      <td>    
                           <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
@@ -402,8 +394,15 @@
                               </div>
                             </div>
                           </div>
-
                       </td>
+                        <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
+                        <td><?php echo $d['jenisdana']; ?></td>
+                        <td><?php echo $d['Nama_divisi']; ?></td>
+                        <td><?php echo $d['Bulan']; ?></td>
+                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                        <td><?php echo $d['jenisbelanja']; ?></td>
+                        <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
+                        <td><?php echo $d['Rincian']; ?></td>
                     </tr>
                     <?php 
                   }

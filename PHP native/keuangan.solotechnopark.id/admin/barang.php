@@ -133,13 +133,13 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>OPSI</th>
                     <th>NO</th>
                     <th>KODE BARANG</th>
                     <th>NAMA BARANG</th>
                     <th>LOKASI</th>
                     <th>DIVISI</th>
                     <th>TANGGAL</th>
-                    <th>OPSI</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -150,13 +150,7 @@
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
-                        <td class="text-center"><?php echo $no++; ?></td>
-                        <td><?php echo $d['Kode_barang']; ?></td>
-                        <td><?php echo $d['Nama_barang']; ?></td>
-                        <td><?php echo $d['Lokasi']; ?></td>
-                        <td><?php echo $d['Nama_divisi']; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td>    
+                      <td>    
                           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
@@ -278,6 +272,12 @@
                           </div>
 
                       </td>
+                        <td class="text-center"><?php echo $no++; ?></td>
+                        <td><?php echo $d['Kode_barang']; ?></td>
+                        <td><?php echo $d['Nama_barang']; ?></td>
+                        <td><?php echo $d['Lokasi']; ?></td>
+                        <td><?php echo $d['Nama_divisi']; ?></td>
+                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                     </tr>
                     <?php 
                   }
