@@ -4,11 +4,12 @@ $nama_barang  = $_POST['nama_barang'];
 $lokasi  = $_POST['lokasi'];
 $divisi  = $_POST['divisi'];
 $tanggal  = $_POST['tanggal'];
+$kode_barang =  $_POST['kode_barang'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf','png');
 $filename = $_FILES['trnfoto']['name'];
-$kode_barang = "BRG" . date("His");
+
 
 if($filename == ""){
 	mysqli_query($koneksi, "insert into master_barang values (NULL, '$kode_barang','$nama_barang','$lokasi','$tanggal','','$divisi')")or die(mysqli_error($koneksi));

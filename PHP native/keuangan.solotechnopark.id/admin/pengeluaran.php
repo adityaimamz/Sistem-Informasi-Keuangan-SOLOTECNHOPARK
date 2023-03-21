@@ -76,6 +76,10 @@
                       </button>
                     </div>
                     <div class="modal-body">
+                    <div class="form-group">
+                        <label>KODE PENGELUARAN</label>
+                        <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
+                      </div>
 
                       <div class="form-group">
                         <label>SUMBER DANA</label>
@@ -252,7 +256,7 @@
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>KODE PENGELUARAN</label>
-                                      <input type="text" style="width:100%" name="Kode_pengeluaran" required="required" class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" /readonly>
+                                      <input type="text" style="width:100%" name="kode_pengeluaran"  class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" >
                                     </div>
                                     
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
