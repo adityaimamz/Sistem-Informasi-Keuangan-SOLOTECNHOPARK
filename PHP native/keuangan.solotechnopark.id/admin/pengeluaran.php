@@ -191,12 +191,12 @@
                   <thead>
                   <tr>
                     <th>OPSI</th>
-                    <th>KODE PENGELUARAN</th>
                     <th>SUMBER DANA</th>
                     <th>DIVISI</th>
                     <th>BULAN</th>
                     <th>TANGGAL SPJ</th>
                     <th>JENIS BELANJA</th>
+                    <th>KODE PENGELUARAN</th>
                     <th>JUMLAH (RUPIAH)</th>
                     <th>RINCIAN</th>
                   </tr>
@@ -395,12 +395,12 @@
                             </div>
                           </div>
                       </td>
-                        <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
                         <td><?php echo $d['jenisdana']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['Bulan']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                         <td><?php echo $d['jenisbelanja']; ?></td>
+                        <td><?php echo $d['Kode_pengeluaran']; ?></td>
                         <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
                         <td><?php echo $d['Rincian']; ?></td>
                     </tr>

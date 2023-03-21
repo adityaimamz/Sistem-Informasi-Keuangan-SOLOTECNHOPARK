@@ -124,7 +124,7 @@ $pdf->Cell(52,8,$row['Nama_pembayar'],1,0,'L',0);
 $pdf->Cell(20,8,$row['Jenis'],1,0,'L',0);
 $pdf->Cell(25,8,$row['Tanggal'],1,0,'C',0);
 $pdf->Cell(140,8,$row['Keperluan'],1,0,'L',0);
-$pdf->Cell(33,8, "Rp. ".number_format($row["Besaran_biaya"])." ,-",1,0,'R',0);
+$pdf->Cell(33,8, "Rp. ".number_format($row["Besaran_biaya"])." ,-",1,0,'L',0);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,$biayaadmin,1,0,'R',0);
 $pdf->Ln(8);

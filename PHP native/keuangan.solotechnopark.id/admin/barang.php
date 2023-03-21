@@ -76,18 +76,26 @@
                     <div class="modal-body">
 
                     <div class="form-group">
+                        <label>KODE BARANG</label>
+                        <input type="text" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
+                      </div>
+
+                    <div class="form-group">
                         <label>NAMA BARANG</label>
                         <input type="text" name="nama_barang" required="required" class="form-control" placeholder="Masukkan Nama Barang ..">
                       </div>
 
                       <div class="form-group">
+                        <label>KONDISI BARANG</label>
+                        <select name="kondisi_barang" class="form-control" required="required">
+                          <option value="">- Pilih -</option>
+                          <option value="baik">Baik</option>
+                          <option value="rusak">Rusak</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
                         <label>LOKASI</label>
                         <input type="text" name="lokasi" required="required" class="form-control" placeholder="Masukkan Lokasi ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>KODE BARANG</label>
-                        <input type="text" name="kode_barang" required="required" class="form-control" placeholder="Masukkan Kode Barang ..">
                       </div>
 
                       <div class="form-group">
@@ -137,9 +145,12 @@
                     <th>NO</th>
                     <th>KODE BARANG</th>
                     <th>NAMA BARANG</th>
+                    <th>KONDISI BARANG</th>
                     <th>LOKASI</th>
                     <th>DIVISI</th>
-                    <th>TANGGAL</th>
+                    <th>TANGGAL MASUK</th>
+                    <th>TANGGAL KELUAR</th>
+                    <th>JUMLAH BARANG</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -275,6 +286,7 @@
                         <td class="text-center"><?php echo $no++; ?></td>
                         <td><?php echo $d['Kode_barang']; ?></td>
                         <td><?php echo $d['Nama_barang']; ?></td>
+                        <td><?php echo $d['Kondisi_barang']; ?></td>
                         <td><?php echo $d['Lokasi']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
