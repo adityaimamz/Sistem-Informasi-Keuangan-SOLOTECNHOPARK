@@ -7,11 +7,12 @@ date_default_timezone_set('Asia/Jakarta');
 $tgl1=$_POST['tanggal_awal'];
 $tgl2=$_POST['tanggal_akhir'];
 $divisi=$_POST['divisi'];
+$dana=$_POST['sumberdana'];
                         
 if($divisi == "semua"){
-  $data = "SELECT * FROM master_pengeluaran,master_divisi where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
+  $data = "SELECT * FROM master_pengeluaran,master_divisi,master_sumberdana where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
 }else{
-  $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.* FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi'";
+  $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi' AND master_pengeluaran.Id_sumberdana = '$dana' ";
 }
 $result = mysqli_query($koneksi, $data);
 //memeriksa apakah ada data yang ditemukan

@@ -23,7 +23,7 @@
           <div class="box-body">
             <form method="post" action="" enctype="multipart/form-data">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-5">
 
                   <div class="form-group">
                     <label>Mulai Tanggal</label>
@@ -32,7 +32,7 @@
 
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-5">
 
                   <div class="form-group">
                     <label>Sampai Tanggal</label>
@@ -41,7 +41,18 @@
 
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
+
+                  <div class="form-group">
+                    <br/>
+                    <input type="submit" name="submit" value="TAMPILKAN" class="btn btn-sm btn-primary btn-block">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
 
                   <div class="form-group">
                     <label>Divisi</label>
@@ -61,11 +72,22 @@
 
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-5">
 
                   <div class="form-group">
-                    <br/>
-                    <input type="submit" name="submit" value="TAMPILKAN" class="btn btn-sm btn-primary btn-block">
+                    <label>Sumber Dana</label>
+                    <select name="sumberdana" class="form-control" required="required">
+                      <option value="semua">- Semua Sumber Dana -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $dana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Jenis ASC");
+                        while($k = mysqli_fetch_array($dana)){
+                          ?>
+                          <option value="<?php echo $k['Id_sumberdana']; ?>"><?php echo $k['Jenis']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                    </select>
                   </div>
 
                 </div>
@@ -84,12 +106,14 @@
               $tgl1 = $_POST['tanggal_awal'];
               $tgl2 = $_POST['tanggal_akhir'];
               $divisi = $_POST['divisi'];
+              $dana = $_POST['sumberdana'];
             ?>
               <div class="table-responsive">
                 <form class="form-horizontal" method="post" action="laporan_pdf.php" enctype="multipart/form-data" target="_blank">
                   <input type="hidden" name="tanggal_awal" id="tanggal_awal" value="<?php echo $_POST['tanggal_awal']; ?>"> 
                   <input type="hidden" name="tanggal_akhir" id="tanggal_akhir" value="<?php echo $_POST['tanggal_akhir']; ?>">
                   <input type="hidden" name="divisi" id="divisi" value="<?php echo $_POST['divisi']; ?>">
+                  <input type="hidden" name="sumberdana" id="sumberdana" value="<?php echo $_POST['sumberdana']; ?>">
                   <button class="btn bg-orange" type="submit" align="left" class="btn bg-orange" name="Print" id="Print">
                     <i class="fa fa-print"></i> &nbsp PDF
                   </button>
@@ -102,7 +126,8 @@
                     <tr>
                       <th width="1%" rowspan="2">NO</th>
                       <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
-                      <th rowspan="2" class="text-center">JENIS</th>
+                      <th rowspan="2" class="text-center">SUMBER DANA</th>
+                      <th rowspan="2" class="text-center">DIVISI</th>
                       <th rowspan="2" class="text-center">KETERANGAN</th>
                       <th colspan="2" class="text-center">JUMLAH</th>
                     </tr>
@@ -113,9 +138,9 @@
                     $no=1;
                     $total=0;                         
                     if($divisi == "semua"){
-                      $data = "SELECT * FROM master_pengeluaran,master_divisi where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
+                      $data = "SELECT * FROM master_pengeluaran,master_divisi,master_sumberdana where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
                     }else{
-                      $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.* FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi'";
+                      $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi' AND master_pengeluaran.Id_sumberdana = '$dana' ";
                     }
                     $result = mysqli_query($koneksi, $data);
                     //memeriksa apakah ada data yang ditemukan
@@ -127,9 +152,10 @@
                       <tr>
                         <td class="text-center"><?php echo $no++; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal'])); ?></td>
+                        <td><?php echo $row['Jenis']; ?></td>
                         <td><?php echo $row['Nama_divisi']; ?></td>
                         <td><?php echo $row['Rincian']; ?></td>
-                        <td class="text-right"><?php echo "Rp. ".number_format($row["Jumlah"])." ,-" ; ?></td>
+                        <td class="text-left"><?php echo "Rp. ".number_format($row["Jumlah"])." ,-" ; ?></td>
                       </tr>
                       <?php 
                     }
