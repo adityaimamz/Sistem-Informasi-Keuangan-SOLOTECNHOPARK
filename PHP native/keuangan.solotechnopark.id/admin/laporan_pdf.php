@@ -69,15 +69,16 @@ $pdf->SetX(255);
 $pdf->Cell(105, 8, $waktu, 0, 0, 'L', 0);
 $pdf->Ln(10);
 
-$pdf->SetX(10);
-$pdf->Cell(40,8,'KODE PENGELUARAN',1,0,'C',1);
-$pdf->SetX(50);
-$pdf->Cell(52,8,'NAMA DIVISI',1,0,'C',1);
-$pdf->SetX(102);
+// $pdf->SetX(10);
+$pdf->Cell(40,8,'KODE',1,0,'C',1);
+// $pdf->SetX(50);
+$pdf->Cell(15,8,'JENIS',1,0,'C',1);
+$pdf->Cell(45,8,'NAMA DIVISI',1,0,'C',1);
+// $pdf->SetX(102);
 $pdf->Cell(25,8,'TANGGAL',1,0,'C',1);
-$pdf->SetX(127);
+// $pdf->SetX(127);
 $pdf->Cell(123,8,'RINCIAN',1,0,'C',1);
-$pdf->SetX(250);
+// $pdf->SetX(250);
 $pdf->Cell(35,8,'JUMLAH',1,0,'C',1);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,'Biaya Admin',1,0,'C',1);
@@ -120,16 +121,17 @@ if  ($bln=="01"){
   $fixtgl=$tgl." ".$bln." ".$thn;
 }
 
-$pdf->SetX(10);
+// $pdf->SetX(10);
 $pdf->Cell(40,8,$row['Kode_pengeluaran'],1,0,'C',0);
-$pdf->SetX(50);
-$pdf->Cell(52,8,$row['Nama_divisi'],1,0,'L',0);
-$pdf->SetX(102);
+// $pdf->SetX(50);
+$pdf->Cell(15,8,$row['Jenis'],1,0,'L',0);
+$pdf->Cell(45,8,$row['Nama_divisi'],1,0,'L',0);
+// $pdf->SetX(102);
 $pdf->Cell(25,8,$row['Tanggal'],1,0,'C',0);
-$pdf->SetX(127);
+// $pdf->SetX(127);
 $pdf->Cell(123,8,$row['Rincian'],1,0,'L',0);
-$pdf->SetX(250);
-$pdf->Cell(35,8, "Rp. ".number_format($row["Jumlah"])." ,-",1,0,'R',0);
+// $pdf->SetX(250);
+$pdf->Cell(35,8, "Rp. ".number_format($row["Jumlah"])." ,-",1,0,'L',0);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,$biayaadmin,1,0,'R',0);
 $pdf->Ln(8);
@@ -137,10 +139,10 @@ $no++;
 }
 
 $pdf->SetFont('Arial','B',10);
-$pdf->SetX(10);
-$pdf->Cell(240,8,'TOTAL',1,0,'R',1);
-$pdf->SetX(250);
-$pdf->Cell(35,8,"Rp. ".number_format($total)." ,-",1,0,'R',1);
+// $pdf->SetX(10);
+$pdf->Cell(248,8,'TOTAL',1,0,'R',1);
+// $pdf->SetX(250);
+$pdf->Cell(35,8,"Rp. ".number_format($total)." ,-",1,0,'L',1);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,$admin1,1,0,'R',0);
 // $pdf->Ln(8);
