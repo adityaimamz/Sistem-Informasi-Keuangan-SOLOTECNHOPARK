@@ -132,7 +132,7 @@
                         <td><?php echo $row['Nama_pembayar']; ?></td>
                         <td><?php echo $row['Jenis']; ?></td>
                         <td><?php echo $row['Keperluan']; ?></td>
-                        <td class="text-right"><?php echo "Rp. ".number_format($row["Besaran_biaya"])." ,-" ; ?></td>
+                        <td class="text-left"><?php echo "Rp. ".number_format($row["Besaran_biaya"])." ,-" ; ?></td>
                       </tr>
                       <?php 
                     }
