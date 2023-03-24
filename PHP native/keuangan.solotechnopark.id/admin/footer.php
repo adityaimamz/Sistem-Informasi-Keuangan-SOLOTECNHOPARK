@@ -1,7 +1,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
+      <b>Version</b> 1.9
     </div>
     <strong>Build & developed by MSIB batch 3 intern 2023</strong> - Solo Techno Park Finance Analyzer (Soto Panaz)
   </footer>
@@ -76,16 +76,16 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": true, "autoWidth": false,
+      "responsive": true, "lengthChange": true, "autoWidth": true,
       "buttons": ["copy", "excel", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
+      "lengthChange": true,
+      "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": false,
+      "autoWidth": true,
       "responsive": true,
     });
   });
@@ -98,9 +98,9 @@
 
    $('#table-datatable').DataTable({
     'paging'      : true,
-    'lengthChange': false,
+    'lengthChange': true,
     'searching'   : true,
-    'ordering'    : false,
+    'ordering'    : true,
     'info'        : true,
     'autoWidth'   : true,
     "pageLength": 50
