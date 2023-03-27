@@ -346,7 +346,7 @@
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
-                        <td><?php echo $d['Jumlah']; ?></td>
+                        <td class="text-center"><?php echo $d['Jumlah']; ?></td>
                     </tr>
                     <?php 
                   }
