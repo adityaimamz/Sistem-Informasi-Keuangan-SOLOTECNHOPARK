@@ -174,7 +174,6 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>OPSI</th>
                     <th>NO</th>
                     <th>TANGGAL</th>
                     <th>BULAN</th>
@@ -185,17 +184,34 @@
                     <th>BESARAN</th>
                     <th>KEPERLUAN</th>
                     <th>STATUS</th>
+                    <th>OPSI</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='voice' order by Id_penerimaan desc");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='invoice' order by Id_penerimaan desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
-                    <td>    
+                      <td class="text-center"><?php echo $no++; ?></td>
+                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                      <td><?php echo $d['Bulan']; ?></td>
+                      <td><?php echo $d['No_tandaterima']; ?></td>
+                      <td><?php echo $d['Jenis']; ?></td>
+                      <td><?php echo $d['Nama_pembayar']; ?></td>
+                      <td><?php echo $d['Alamat_instansi']; ?></td>
+                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
+                      <td><?php echo $d['Keperluan']; ?></td>
+                      <td class="text-center">
+                        <?php if($d['Status']=='voice'){ ?>
+                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal">Voice</button>
+                        <?php } else { ?>
+                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal">Invoice</button>
+                        <?php } ?>
+                      </td>
+                      <td>    
                         <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-cog"></i>
                         </button>
@@ -367,22 +383,6 @@
                           </div>
                         </div>
 
-                      </td>
-                      <td class="text-center"><?php echo $no++; ?></td>
-                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                      <td><?php echo $d['Bulan']; ?></td>
-                      <td><?php echo $d['No_tandaterima']; ?></td>
-                      <td><?php echo $d['Jenis']; ?></td>
-                      <td><?php echo $d['Nama_pembayar']; ?></td>
-                      <td><?php echo $d['Alamat_instansi']; ?></td>
-                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
-                      <td><?php echo $d['Keperluan']; ?></td>
-                      <td class="text-center">
-                        <?php if($d['Status']=='voice'){ ?>
-                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal">Voice</button>
-                        <?php } else { ?>
-                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal">Invoice</button>
-                        <?php } ?>
                       </td>
                     </tr>
                     <?php 

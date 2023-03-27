@@ -102,7 +102,6 @@
                     <tr>
                       <th width="1%" rowspan="2">NO</th>
                       <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
-                      <th rowspan="2" class="text-center">NAMA</th>
                       <th rowspan="2" class="text-center">METODE BAYAR</th>
                       <th rowspan="2" class="text-center">KEPERLUAN</th>
                       <th colspan="2" class="text-center">BESARAN BIAYA</th>
@@ -129,10 +128,9 @@
                       <tr>
                         <td class="text-center"><?php echo $no++; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal'])); ?></td>
-                        <td><?php echo $row['Nama_pembayar']; ?></td>
                         <td><?php echo $row['Jenis']; ?></td>
                         <td><?php echo $row['Keperluan']; ?></td>
-                        <td class="text-left"><?php echo "Rp. ".number_format($row["Besaran_biaya"])." ,-" ; ?></td>
+                        <td class="text-right"><?php echo "Rp. ".number_format($row["Besaran_biaya"])." ,-" ; ?></td>
                       </tr>
                       <?php 
                     }

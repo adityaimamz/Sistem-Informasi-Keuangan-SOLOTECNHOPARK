@@ -1,23 +1,17 @@
 <?php 
 include '../koneksi.php';
-$kode_barang  = $_POST['kode_barang'];
 $nama_barang  = $_POST['nama_barang'];
-$merk  = $_POST['merk'];
-$tipe  = $_POST['tipe'];
-$kondisi_barang  = $_POST['kondisi_barang'];
 $lokasi  = $_POST['lokasi'];
 $divisi  = $_POST['divisi'];
-$tanggal_masuk  = $_POST['tanggal_masuk'];
-$tanggal_keluar  = $_POST['tanggal_keluar'];
-$jumlah =  $_POST['jumlah'];
+$tanggal  = $_POST['tanggal'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf','png');
 $filename = $_FILES['trnfoto']['name'];
-
+$kode_barang = "BRG" . date("His");
 
 if($filename == ""){
-	mysqli_query($koneksi, "insert into master_barang values (NULL, '$kode_barang','$nama_barang','$merk','$tipe','$kondisi_barang','$lokasi','$tanggal_masuk','$tanggal_keluar','jumlah','','$divisi')")or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "insert into master_barang values (NULL, '$kode_barang','$nama_barang','$lokasi','$tanggal','','$divisi')")or die(mysqli_error($koneksi));
 	header("location:barang.php?alert=berhasil");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -27,7 +21,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_barang values (NULL,'$kode_barang','$nama_barang','$merk','$tipe','$kondisi_barang','$lokasi','$tanggal_masuk','$tanggal_keluar','jumlah','$file_gambar','$divisi')");
+		mysqli_query($koneksi, "insert into master_barang values (NULL,'$kode_barang','$nama_barang','$lokasi','$tanggal','$file_gambar','$divisi')");
 		header("location:barang.php?alert=berhasil");
 	}
 }

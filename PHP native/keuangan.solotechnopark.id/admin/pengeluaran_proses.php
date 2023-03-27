@@ -7,13 +7,13 @@ $jenis  = $_POST['jenis'];
 $rincian  = $_POST['rincian'];
 $jumlah  = $_POST['jumlah'];
 $sumberdana  = $_POST['sumberdana'];
-$kode_pengeluaran = $_POST['kode_pengeluaran'];
 $drive  = $_POST['drive'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf','png');
 $filename = $_FILES['trnfoto']['name'];
 // membuat kode pengeluaran unik
+$kode_pengeluaran = "PGR" . date("YmdHis");
 
 if($filename == ""){
 	mysqli_query($koneksi, "insert into master_pengeluaran values (NULL, '$kode_pengeluaran', '$sumberdana','$divisi','$jenis','$tanggal','$bulan','$rincian','$jumlah','', '$drive')")or die(mysqli_error($koneksi));

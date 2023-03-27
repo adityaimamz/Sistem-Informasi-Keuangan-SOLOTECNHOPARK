@@ -76,10 +76,6 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                    <div class="form-group">
-                        <label>KODE PENGELUARAN</label>
-                        <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
-                      </div>
 
                       <div class="form-group">
                         <label>SUMBER DANA</label>
@@ -190,15 +186,15 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>OPSI</th>
+                    <th>KODE PENGELUARAN</th>
                     <th>SUMBER DANA</th>
                     <th>DIVISI</th>
                     <th>BULAN</th>
                     <th>TANGGAL SPJ</th>
                     <th>JENIS BELANJA</th>
-                    <th>KODE PENGELUARAN</th>
                     <th>JUMLAH (RUPIAH)</th>
                     <th>RINCIAN</th>
+                    <th>OPSI</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -209,7 +205,15 @@
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
-                      <td>    
+                        <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
+                        <td><?php echo $d['jenisdana']; ?></td>
+                        <td><?php echo $d['Nama_divisi']; ?></td>
+                        <td><?php echo $d['Bulan']; ?></td>
+                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                        <td><?php echo $d['jenisbelanja']; ?></td>
+                        <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
+                        <td><?php echo $d['Rincian']; ?></td>
+                        <td>    
                           <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
@@ -248,7 +252,7 @@
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>KODE PENGELUARAN</label>
-                                      <input type="text" style="width:100%" name="kode_pengeluaran"  class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" >
+                                      <input type="text" style="width:100%" name="Kode_pengeluaran" required="required" class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" /readonly>
                                     </div>
                                     
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -394,15 +398,8 @@
                               </div>
                             </div>
                           </div>
+
                       </td>
-                        <td><?php echo $d['jenisdana']; ?></td>
-                        <td><?php echo $d['Nama_divisi']; ?></td>
-                        <td><?php echo $d['Bulan']; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td><?php echo $d['jenisbelanja']; ?></td>
-                        <td><?php echo $d['Kode_pengeluaran']; ?></td>
-                        <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
-                        <td><?php echo $d['Rincian']; ?></td>
                     </tr>
                     <?php 
                   }

@@ -7,12 +7,11 @@ date_default_timezone_set('Asia/Jakarta');
 $tgl1=$_POST['tanggal_awal'];
 $tgl2=$_POST['tanggal_akhir'];
 $divisi=$_POST['divisi'];
-$dana=$_POST['sumberdana'];
                         
 if($divisi == "semua"){
-  $data = "SELECT * FROM master_pengeluaran,master_divisi,master_sumberdana where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
+  $data = "SELECT * FROM master_pengeluaran,master_divisi where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
 }else{
-  $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi' AND master_pengeluaran.Id_sumberdana = '$dana' ";
+  $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.* FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi'";
 }
 $result = mysqli_query($koneksi, $data);
 //memeriksa apakah ada data yang ditemukan
@@ -69,16 +68,15 @@ $pdf->SetX(255);
 $pdf->Cell(105, 8, $waktu, 0, 0, 'L', 0);
 $pdf->Ln(10);
 
-// $pdf->SetX(10);
-$pdf->Cell(40,8,'KODE',1,0,'C',1);
-// $pdf->SetX(50);
-$pdf->Cell(15,8,'JENIS',1,0,'C',1);
-$pdf->Cell(45,8,'NAMA DIVISI',1,0,'C',1);
-// $pdf->SetX(102);
+$pdf->SetX(10);
+$pdf->Cell(40,8,'KODE PENGELUARAN',1,0,'C',1);
+$pdf->SetX(50);
+$pdf->Cell(52,8,'NAMA DIVISI',1,0,'C',1);
+$pdf->SetX(102);
 $pdf->Cell(25,8,'TANGGAL',1,0,'C',1);
-// $pdf->SetX(127);
+$pdf->SetX(127);
 $pdf->Cell(123,8,'RINCIAN',1,0,'C',1);
-// $pdf->SetX(250);
+$pdf->SetX(250);
 $pdf->Cell(35,8,'JUMLAH',1,0,'C',1);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,'Biaya Admin',1,0,'C',1);
@@ -121,17 +119,16 @@ if  ($bln=="01"){
   $fixtgl=$tgl." ".$bln." ".$thn;
 }
 
-// $pdf->SetX(10);
+$pdf->SetX(10);
 $pdf->Cell(40,8,$row['Kode_pengeluaran'],1,0,'C',0);
-// $pdf->SetX(50);
-$pdf->Cell(15,8,$row['Jenis'],1,0,'L',0);
-$pdf->Cell(45,8,$row['Nama_divisi'],1,0,'L',0);
-// $pdf->SetX(102);
+$pdf->SetX(50);
+$pdf->Cell(52,8,$row['Nama_divisi'],1,0,'L',0);
+$pdf->SetX(102);
 $pdf->Cell(25,8,$row['Tanggal'],1,0,'C',0);
-// $pdf->SetX(127);
+$pdf->SetX(127);
 $pdf->Cell(123,8,$row['Rincian'],1,0,'L',0);
-// $pdf->SetX(250);
-$pdf->Cell(35,8, "Rp. ".number_format($row["Jumlah"])." ,-",1,0,'L',0);
+$pdf->SetX(250);
+$pdf->Cell(35,8, "Rp. ".number_format($row["Jumlah"])." ,-",1,0,'R',0);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,$biayaadmin,1,0,'R',0);
 $pdf->Ln(8);
@@ -139,10 +136,10 @@ $no++;
 }
 
 $pdf->SetFont('Arial','B',10);
-// $pdf->SetX(10);
-$pdf->Cell(248,8,'TOTAL',1,0,'R',1);
-// $pdf->SetX(250);
-$pdf->Cell(35,8,"Rp. ".number_format($total)." ,-",1,0,'L',1);
+$pdf->SetX(10);
+$pdf->Cell(240,8,'TOTAL',1,0,'R',1);
+$pdf->SetX(250);
+$pdf->Cell(35,8,"Rp. ".number_format($total)." ,-",1,0,'R',1);
 // $pdf->SetX(173);
 // $pdf->Cell(27,8,$admin1,1,0,'R',0);
 // $pdf->Ln(8);
