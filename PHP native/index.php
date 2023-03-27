@@ -57,7 +57,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-in>
 		<h2 data-aos="fade-up" data-aos-delay="400">Selamat datang!</h2>
           <h1 class="pt-1" data-aos="fade-up">Solo Techno Park Finance Analyzer (Soto Panaz)</h1>
           <div data-aos="fade-up" data-aos-delay="600">
@@ -105,10 +105,10 @@
   <footer id="footer">
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+        &copy; Build and Developed by MSIB Intern Batch 3
       </div>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        MSIB Intern Batch 3 ; Aditya Imam Z & Nadha Fitri
       </div>
     </div>
   </footer><!-- End Footer -->
