@@ -1,7 +1,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
+      <b>Version</b> 1.9
     </div>
     <strong>Build & developed by MSIB batch 3 intern 2023</strong> - Solo Techno Park Finance Analyzer (Soto Panaz)
   </footer>
@@ -76,16 +76,16 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": true, "autoWidth": false,
+      "responsive": true, "lengthChange": true, "autoWidth": true,
       "buttons": ["copy", "excel", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
+      "lengthChange": true,
+      "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": false,
+      "autoWidth": true,
       "responsive": true,
     });
   });
@@ -98,9 +98,9 @@
 
    $('#table-datatable').DataTable({
     'paging'      : true,
-    'lengthChange': false,
+    'lengthChange': true,
     'searching'   : true,
-    'ordering'    : false,
+    'ordering'    : true,
     'info'        : true,
     'autoWidth'   : true,
     "pageLength": 50
@@ -128,73 +128,72 @@
 
   var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
   
- var ctx = document.getElementById("myChart").getContext('2d');
-				var myChart = new Chart(ctx, {
-					type: 'bar',
-					data: {
-						labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
-						datasets: [{
-							label: '',
-							data: [
-													<?php
-						for($bulan=1;$bulan<=12;$bulan++){
-							$thn_ini = date('Y');
-							$penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
-							$pem = mysqli_fetch_assoc($penerimaan);
-							
-							// $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
-							$total = $pem['total_penerimaan'];
-							if($pem['total_penerimaan'] == ""){
-							echo "0,";
-							}else{
-							echo $total.",";
-							}
-						}
-						?>
-							],
-							backgroundColor: [
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(75, 192, 192, 0.2)',
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(255, 99, 132, 0.2)'
-							],
-							borderColor: [
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(75, 192, 192, 1)',
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(255,99,132,1)'
-							],
-							borderWidth: 1
-						}]
-					},
-					options: {
-						scales: {
-							yAxes: [{
-								ticks: {
-									// beginAtZero:true
-									// gunakan fungsi callback untuk mengubah format uang
-									callback: function(value, index, values) {
-										return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
-									}
-								}
-							}]
-						}
-					}
-				});
+  var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
+        datasets: [{
+            label: '',
+            data: [
+                <?php
+                    for($bulan=1;$bulan<=12;$bulan++){
+                        $thn_ini = date('Y');
+                        $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
+                        $pem = mysqli_fetch_assoc($penerimaan);
+                        
+                        $total = $pem['total_penerimaan'];
+                        if($pem['total_penerimaan'] == ""){
+                            echo "0,";
+                        }else{
+                            echo $total.",";
+                        }
+                    }
+                ?>
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255,99,132,1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // gunakan fungsi callback untuk mengubah format uang
+                    callback: function(value, index, values) {
+                        return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
+                    }
+                }
+            }]
+        }
+    }
+});
+
 
 		var ctx = document.getElementById("myChart2").getContext('2d');
 				var myChart = new Chart(ctx, {
@@ -263,7 +262,7 @@
 					}
 				});
 
-		var ctx = document.getElementById("myChart3").getContext('2d');
+				var ctx = document.getElementById("myChart3").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
