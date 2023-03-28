@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Soto Panaz</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="shortcut icon" href="./assets/dist/imgSOTO PANAZ LOGO-04.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/dist/img/SOTO PANAZ LOGO-04.png" type="image/x-icon">
   <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/bower_components/Ionicons/css/ionicons.min.css">
@@ -73,7 +73,6 @@
         </div>
       </div>
     </div>
-
     <span style="color: white;">
       <center>
         <h5>Build and developed by MSIB batch 3 interns 2023</h5>
