@@ -1816,3 +1816,7 @@ section {
     padding-top: 4px;
   }
 }
+
+.btn-primary{
+  background-color:"#fff" !important;
+}

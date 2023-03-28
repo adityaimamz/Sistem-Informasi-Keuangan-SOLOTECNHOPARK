@@ -27,8 +27,8 @@ if($cek > 0){
 		$_SESSION['status'] = "verifikator_logedin";
 		header("location:verifikator/");
 	}else{
-		header("location:index.php?alert=gagal");
+		header("location:login.php?alert=gagal");
 	}
 }else{
-	header("location:index.php?alert=gagal");
+	header("location:login.php?alert=gagal");
 }

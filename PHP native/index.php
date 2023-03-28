@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
   <script type="text/javascript" src="./plugins/chart.js/Chart.js"></script>
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/SOTO PANAZ LOGO-04.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
