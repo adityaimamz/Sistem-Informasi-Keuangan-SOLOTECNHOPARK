@@ -12,17 +12,17 @@ $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if($filename == ""){
 	mysqli_query($koneksi, "update master_penerimaan set No_tandaterima='$No_tandaterima', Id_metode='$metode', Status='invoice', Drive='$drive' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
-	header("location:tagihan.php?alert=berhasilupdate");
+	header("location:tagihan_verifikasi.php?alert=berhasilupdate");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 	if(!in_array($ext,$allowed) ) {
-		header("location:tagihan.php?alert=gagal");
+		header("location:tagihan_verifikasi.php?alert=gagal");
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
 		mysqli_query($koneksi, "update master_penerimaan set No_tandaterima='$No_tandaterima', Id_metode='$metode', Bukti='$xgambar', Status='invoice', Drive='$drive' where Id_penerimaan='$id'");
-		header("location:tagihan.php?alert=berhasilupdate");
+		header("location:tagihan_verifikasi.php?alert=berhasilupdate");
 	}
 }
 

@@ -111,7 +111,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="penerimaan_verifikasi.php"><i class="fa fa-circle-o"></i> Data Penerimaan</a></li>
-              <li><a href="tagihan.php"><i class="fa fa-circle-o"></i> Data Tagihan</a></li>
+              <li><a href="tagihan_verifikasi.php"><i class="fa fa-circle-o"></i> Data Tagihan</a></li>
             </ul>
           </li>
 
@@ -124,7 +124,7 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
+              <li><a href="pengeluaran_verifikasi.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
               <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
             </ul>
 

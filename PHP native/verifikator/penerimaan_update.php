@@ -18,17 +18,17 @@ $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if($filename == ""){
 	mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Drive='$drive' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
-	header("location:penerimaan.php?alert=berhasilupdate");
+	header("location:penerimaan_verifikasi.php?alert=berhasilupdate");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 	if(!in_array($ext,$allowed) ) {
-		header("location:penerimaan.php?alert=gagal");
+		header("location:penerimaan_verifikasi.php?alert=gagal");
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
 		mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Bukti='$xgambar', Drive='$drive' where Id_penerimaan='$id'");
-		header("location:penerimaan.php?alert=berhasilupdate");
+		header("location:penerimaan_verifikasi.php?alert=berhasilupdate");
 	}
 }
 

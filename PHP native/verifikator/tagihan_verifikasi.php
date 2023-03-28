@@ -4,7 +4,7 @@
 
   <section class="content-header">
     <h1>
-      Tagihan
+      Tagihan Verifikasi
       <small>Data Tagihan</small>
     </h1>
     <ol class="breadcrumb">
@@ -20,10 +20,6 @@
           <div class="box-header">
             <h3 class="box-title">Transaksi Tagihan</h3>
             <div class="btn-group pull-right">            
-              <a href="tagihan_csv.php"><button type="button" class="btn btn-success btn-sm">
-                <i class="fa fa-file-excel-o"></i> &nbsp CSV
-              </button></a>
-
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -64,14 +60,15 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>KODE</th>
+                    <th>NO</th>
                     <th>TANGGAL</th>
                     <th>BULAN</th>
+                    <th>METODE BAYAR</th>
                     <th>NAMA</th>
                     <th>ASAL INSTANSI</th>
                     <th>BESARAN</th>
-                    <th>KEPERLUAN</th>
                     <th>STATUS</th>
+                    <th>KETERANGAN</th>
                     <th>OPSI</th>
                   </tr>
                   </thead>
@@ -79,21 +76,32 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' order by Id_penerimaan desc");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='invoice' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
-                      <td class="text-center"><?php echo $d['Kode_penerimaan']; ?></td>
+                      <td class="text-center"><?php echo $no++; ?></td>
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <td><?php echo $d['Bulan']; ?></td>
+                      <!-- <td><?php echo $d['No_tandaterima']; ?></td> -->
+                      <td><?php echo $d['Jenis']; ?></td>
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
                       <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
-                      <td><?php echo $d['Keperluan']; ?></td>
                       <td class="text-center">
                         <button title="Bayarkan" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal" data-target="#edit_tagihan<?php echo $d['Id_penerimaan'] ?>">Invoice</button>
                       </td>
-                      <td>    
+                      <td class="text-center">
+                        <?php if($d['Keterangan']=='nonverifikasi'){ ?>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_penerimaan'] ?>">Draft</button>
+                        <?php } else { ?>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Final</button>
+                        <?php } ?>
+                      </td>
+                      <td>
+                        <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                            <i class="fa fa-list"></i>
+                        </button>    
                         <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-eye"></i>
                         </button>
@@ -185,6 +193,86 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Modal detail -->
+                        <div class="modal fade" id="detail_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Detail</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                              <table class="table table-condensed">
+                                <tr>
+                                  <th>NO TANDA TERIMA</th>
+                                  <td><?php echo $d['No_tandaterima']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>TANGGAL</th>
+                                  <td><?php echo $d['Tanggal']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>BULAN</th>
+                                  <td><?php echo $d['Bulan']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>METODE BAYAR</th>
+                                  <td><?php echo $d['Jenis']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>NAMA</th>
+                                  <td><?php echo $d['Nama_pembayar']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>ASAL INSTANSI</th>
+                                  <td><?php echo $d['Alamat_instansi']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>METODE BAYAR</th>
+                                  <td><?php echo $d['Jenis']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>BESARAN</th>
+                                  <td><?php echo $d['Besaran_biaya']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>KETERANGAN</th>
+                                  <td><?php echo $d['Keperluan']; ?></td>
+                                </tr>
+                                </table>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- modal edit verifikasi -->
+                        <div class="modal fade" id="edit_verifikasi<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                <p>Anda yakin ingin memverifikasi data dengan kode <?php echo $d['No_tandaterima']?> ?</p>
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <a href="penerimaan_prosesverif.php?id=<?php echo $d['Id_penerimaan'] ?>" class="btn btn-primary">Verifikasi</a>
                               </div>
                             </div>
                           </div>
