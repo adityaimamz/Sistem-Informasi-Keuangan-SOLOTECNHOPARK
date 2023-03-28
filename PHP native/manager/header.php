@@ -29,7 +29,7 @@
   include '../koneksi.php';
   session_start();
   if($_SESSION['status'] != "manager_logedin"){
-    header("location:../index.php?alert=belum_login");
+    header("location:../login.php?alert=belum_login");
   }
   ?>
 

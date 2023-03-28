@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="assets/plugins/iCheck/square/blue.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -17,8 +18,11 @@
 
 <body class=" bg-primary">
   <div class="container">
+    
     <div class="login-box">
-
+      <a href="index.php">
+      <button type="submit" class="btn btn-light btn-block btn-flat">Kembali ke Dashboard</button>
+      </a>
       <center>
 
         <h3><b>Solo Techno Park Finance Analyzer (Soto Panaz)</b></h3>
@@ -78,7 +82,8 @@
         <h5>Build and developed by MSIB batch 3 interns 2023</h5>
       </center>
     </span></p>
-
+    <div id="preloader"></div>
+    <script src="assets/js/main.js"></script>
     <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
