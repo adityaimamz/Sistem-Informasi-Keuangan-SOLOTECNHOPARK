@@ -90,9 +90,13 @@
                             <i class="fa fa-cog"></i>
                           </button>
 
-                          <button title="Lihat" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
-                            <i class="fa fa-eye"></i>
-                          </button>
+                          <?php if($d['Bukti_lpj']==''){ ?> 
+
+                          <?php } else { ?> 
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                                <i class="fa fa-eye"></i>
+                              </button>
+                          <?php } ?>
 
                           <?php if($d['Drive']==''){ ?> 
 
@@ -302,6 +306,36 @@
                             </div>
                           </div>
 
+                          <!-- modal edit verifikasi -->
+                          <div class="modal fade" id="edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+
+                                  <p>
+                                  <?php 
+                                  if($d['Kode_pengeluaran']==''){
+                                    echo "Anda yakin ingin memverifikasi data ini ?";
+                                  }else{
+                                    echo "Anda yakin ingin memverifikasi data dengan kode". $d['Kode_pengeluaran']. " ?";
+                                  }
+                                  ?>
+
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                  <a href="penerimaan_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                           <!-- Modal Hapus -->
                           <div class="modal fade" id="hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -324,29 +358,6 @@
                             </div>
                           </div>
 
-                          <!-- modal edit verifikasi -->
-                          <div class="modal fade" id="edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-
-                                  <p>Anda yakin ingin memverifikasi data dengan kode <?php echo $d['Kode_pengeluaran']?> ?</p>
-
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="pengeluaran_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
                         </td>
                         <!-- <td><?php echo $d['Kode_pengeluaran']; ?></td> -->
                         <td><?php echo $d['Bulan']; ?></td>
@@ -357,11 +368,11 @@
                         <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
-                          <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                            <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>">Draft</button>
-                          <?php } else { ?>
-                            <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Final</button>
-                          <?php } ?>
+                        <?php if($d['Keterangan']=='nonverifikasi'){ ?>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>">Draft</button>
+                        <?php } else { ?>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Final</button>
+                        <?php } ?>
                         </td>
                     </tr>
                     <?php 

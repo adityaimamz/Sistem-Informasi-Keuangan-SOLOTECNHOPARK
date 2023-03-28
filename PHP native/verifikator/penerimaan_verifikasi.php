@@ -90,10 +90,14 @@
                           <i class="fa fa-cog"></i>
                         </button>
 
-                        <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
-                          <i class="fa fa-eye"></i>
-                        </button>
-                        
+                        <?php if($d['Bukti']==''){ ?> 
+
+                          <?php } else { ?> 
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                                <i class="fa fa-eye"></i>
+                              </button>
+                          <?php } ?>
+
                         <?php if($d['Drive']==''){ ?> 
 
                           <?php } else { ?> 
@@ -104,6 +108,12 @@
                             </a>
                             <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">Lihat File</a> -->
                           <?php } ?>
+
+                          <!-- <?php if($d['Keterangan']=='nonverifikasi'){ ?>
+                            <button title="Draft" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_penerimaan'] ?>"><i class="fa fa-check-square-o"></i></button>
+                          <?php } else { ?>
+                            <button title="Final" type="button" class="btn btn-primary btn-sm" data-toggle="modal"><i class="fa fa-flag-o"></i></button>
+                          <?php } ?> -->
 
                         <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                           <i class="fa fa-trash"></i>
@@ -288,7 +298,7 @@
                         </div>
 
                         <!-- modal hapus -->
-                        <div class="modal fade" id="hapus_penerimaan<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
