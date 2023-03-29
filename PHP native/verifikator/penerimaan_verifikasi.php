@@ -68,8 +68,8 @@
                     <th>NAMA</th>
                     <th>ASAL INSTANSI</th>
                     <th>BESARAN</th>
-                    <!-- <th>RINCIAN</th> -->
                     <th>STATUS</th>
+                    <th>KETERANGAN</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -285,7 +285,7 @@
                                   <td><?php echo $d['Besaran_biaya']; ?></td>
                                 </tr>
                                 <tr>
-                                  <th>KETERANGAN</th>
+                                  <th>RINCIAN</th>
                                   <td><?php echo $d['Keperluan']; ?></td>
                                 </tr>
                                 </table>
@@ -352,13 +352,13 @@
                       <td><?php echo $d['Alamat_instansi']; ?></td>
                       <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
                       <!-- <td><?php echo $d['Keperluan']; ?></td> -->
-                      <!-- <td class="text-center">
+                      <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>
                           <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal">Voice</button>
                         <?php } else { ?>
                           <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal">Invoice</button>
                         <?php } ?>
-                      </td> -->
+                      </td>
                       <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
                           <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_penerimaan'] ?>">Draft</button>

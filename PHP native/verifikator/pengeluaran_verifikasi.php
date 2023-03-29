@@ -68,7 +68,6 @@
                     <th>DIVISI</th>
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
-                    <!-- <th>RINCIAN</th> -->
                     <th>STATUS</th>
                   </tr>
                   </thead>
@@ -294,7 +293,7 @@
                                     <td><?php echo $d['Jumlah']; ?></td>
                                   </tr>
                                   <tr>
-                                    <th>KETERANGAN</th>
+                                    <th>RINCIAN</th>
                                     <td><?php echo $d['Rincian']; ?></td>
                                   </tr>
                                   </table>
