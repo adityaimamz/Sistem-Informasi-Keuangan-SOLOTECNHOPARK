@@ -383,7 +383,7 @@ $bulan_ini = date('n');
                         <td><?php echo $d['jenisdana']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['jenisbelanja']; ?></td>
-                        <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
+<td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>

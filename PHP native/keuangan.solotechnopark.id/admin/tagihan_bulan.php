@@ -106,7 +106,7 @@ $bulan_ini = date('n');
                       <td><?php echo $d['Bulan']; ?></td>
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
-                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
+                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                       <td><?php echo $d['Keperluan']; ?></td>
                       <td class="text-center">
                         <button title="Bayarkan" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal" data-target="#edit_tagihan<?php echo $d['Id_penerimaan'] ?>">Voice</button>

@@ -350,7 +350,7 @@
                       <td><?php echo $d['Jenis']; ?></td>
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
-                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
+                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                       <!-- <td><?php echo $d['Keperluan']; ?></td> -->
                       <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>
