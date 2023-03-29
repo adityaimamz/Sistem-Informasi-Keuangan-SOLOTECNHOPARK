@@ -144,10 +144,10 @@ $tahun = date('Y');
                         <input type="text" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda ..">
                       </div>
 
-                      <div class="form-group">
-                        <label>BESARAN (RUPIAH)</label>
-                        <input type="number" name="nominal" required="required" class="form-control" placeholder="Masukkan Nominal ..">
-                      </div>
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>BESARAN (RUPIAH)</label>
+                                    <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Besaran .." value="<?php echo $d['Besaran_biaya'];?>">
+                                  </div>
 
                       <!-- <div class="form-group">
                         <label>STATUS</label>
@@ -206,7 +206,7 @@ $tahun = date('Y');
                       <td><?php echo $d['Jenis']; ?></td>
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
-                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'])." ,-"; ?></td>
+                      <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                       <td><?php echo $d['Keperluan']; ?></td>
                       <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>

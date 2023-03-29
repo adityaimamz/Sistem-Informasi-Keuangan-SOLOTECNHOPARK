@@ -173,7 +173,7 @@ $bulan_ini = date('n');
 
                       <div class="form-group">
                         <label>JUMLAH (RUPIAH)</label>
-                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="text" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
                       <div class="form-group">
@@ -229,7 +229,7 @@ $bulan_ini = date('n');
                         <td><?php echo $d['Bulan']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                         <td><?php echo $d['jenisbelanja']; ?></td>
-                        <td><?php echo "Rp. ".number_format($d['Jumlah'])." ,-";?></td>
+<td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                         <td><?php echo $d['Rincian']; ?></td>
                         <td>    
                           <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
