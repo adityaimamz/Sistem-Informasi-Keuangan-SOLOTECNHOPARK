@@ -76,11 +76,6 @@
                     </div>
                     <div class="modal-body">
 
-                    <div class="form-group">
-                        <label>KODE PENERIMAAN</label>
-                        <input type="text" name="Kode" class="form-control" placeholder="Masukkan Kode Penerimaan ..">
-                      </div>
-
                       <div class="form-group">
                         <label>BULAN</label>
                         <select name="bulan" class="form-control" required="required">
@@ -251,11 +246,6 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>KODE PENERIMAAN</label>
-                                    <input type="text" style="width:100%" name="Kode_penerimaan" required="required" class="form-control" value="<?php echo $d['Kode_penerimaan'] ?>" /readonly>
-                                  </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>BULAN</label>

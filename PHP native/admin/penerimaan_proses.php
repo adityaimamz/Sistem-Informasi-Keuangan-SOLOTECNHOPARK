@@ -11,33 +11,22 @@ $keperluan  = $_POST['keperluan'];
 $nominal  = $_POST['nominal'];
 $status = $_POST['status'];
 $drive = $_POST['drive'];
+// $kode = $_POST['kode'];
 
 $rand = rand();
 $allowed =  array('jpg','jpeg','pdf', 'png');
 $filename = $_FILES['trnfoto']['name'];
 
-$kode_penerimaan = "PNR" . date("YmdHis");
-
-// $rekening = mysqli_query($koneksi,"select * from metode_bayar where Id_metode='$metode'");
-// $r = mysqli_fetch_assoc($rekening);
-
-// if($jenis == "Pemasukan"){
-
-// 	$saldo_sekarang = $r['bank_saldo'];
-// 	$total = $saldo_sekarang+$nominal;
-// 	mysqli_query($koneksi,"update bank set bank_saldo='$total' where bank_id='$bank'");
-
-// }elseif($jenis == "Pengeluaran"){
-
-// 	$saldo_sekarang = $r['bank_saldo'];
-// 	$total = $saldo_sekarang-$nominal;
-// 	mysqli_query($koneksi,"update bank set bank_saldo='$total' where bank_id='$bank'");
-
-// }
+// $kode_penerimaan = "PNR" . date("YmdHis");
 
 if($filename == ""){
-	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat', 'NULL', '$nominal', 'NULL','','voice', '$drive','nonverifikasi')")or die(mysqli_error($koneksi));
-	header("location:tagihan.php?alert=berhasil");
+	if($No_tandaterima == "" && $metode == ""){
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'','$bulan','$tanggal','$nama','$keperluan','$alamat', 'NULL', '$nominal', '','','invoice', '$drive','nonverifikasi')")or die(mysqli_error($koneksi));
+		header("location:tagihan.php?alert=berhasil");
+	}else{
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'','$bulan','$tanggal','$nama','$keperluan','$alamat', '$No_tandaterima', '$nominal', '$metode','','voice', '$drive','nonverifikasi')")or die(mysqli_error($koneksi));
+		header("location:penerimaan.php?alert=berhasil");
+	}
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -46,12 +35,12 @@ if($filename == ""){
 	}elseif($No_tandaterima == "" && $metode == ""){
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','NULL', '$nominal', 'NULL','$file_gambar','voice', '$drive','nonverifikasi')");
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'','$bulan','$tanggal','$nama','$keperluan','$alamat','NULL', '$nominal', 'NULL','$file_gambar','invoice', '$drive','nonverifikasi')");
 		header("location:tagihan.php?alert=berhasil");
 	}else{
 	    move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','invoice', '$drive','nonverifikasi')");
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','voice', '$drive','nonverifikasi')");
 		header("location:penerimaan.php?alert=berhasil");
 	}
 }
