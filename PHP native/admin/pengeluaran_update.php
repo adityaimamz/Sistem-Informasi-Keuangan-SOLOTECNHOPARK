@@ -12,7 +12,7 @@ $kode_pengeluaran = $_POST['kode_pengeluaran'];
 $drive  = $_POST['drive'];
 
 $rand = rand();
-$allowed =  array('jpg','jpeg','pdf');
+$allowed =  array('jpg','jpeg','pdf', 'png');
 $filename = $_FILES['trnfoto']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 

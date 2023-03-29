@@ -372,7 +372,7 @@
                                 </tr>
                                 <tr>
                                   <th>TANGGAL</th>
-                                  <td><?php echo $d['Tanggal']; ?></td>
+                                  <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                 </tr>
                                 <tr>
                                   <th>BULAN</th>
@@ -392,7 +392,7 @@
                                 </tr>
                                 <tr>
                                   <th>BESARAN</th>
-                                  <td><?php echo $d['Besaran_biaya']; ?></td>
+                                  <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                                 </tr>
                                 <tr>
                                   <th>KETERANGAN</th>

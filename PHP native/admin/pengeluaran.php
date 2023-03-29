@@ -20,6 +20,16 @@
           <div class="box-header">
             <h3 class="box-title">Transaksi Pengeluaran</h3>
             <div class="btn-group pull-right">            
+
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i> &nbsp Tambah Pengeluaran
+              </button>
+              &nbsp
+
+              <a href="pengeluaran_csv.php"><button type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-file-excel-o"></i> &nbsp CSV
+              </button></a>
+
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -53,6 +63,125 @@
           </div>
 
           <div class="box-body">
+          <!-- Modal Tambah-->
+          <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="exampleModalLabel">Tambah Pengeluaran</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="form-group">
+                        <label>KODE PENGELUARAN</label>
+                        <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
+                      </div>
+
+                      <div class="form-group">
+                        <label>SUMBER DANA</label>
+                        <select name="sumberdana" class="form-control" required="required">
+                          <option value="">- Pilih -</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $sumberdana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Jenis ASC");
+                          while($k = mysqli_fetch_array($sumberdana)){
+                            ?>
+                            <option value="<?php echo $k['Id_sumberdana']; ?>"><?php echo $k['Jenis']; ?></option>
+                            <?php 
+                          }
+                          ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>DIVISI</label>
+                        <select name="divisi" class="form-control" required="required">
+                          <option value="">- Pilih -</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Nama_divisi ASC");
+                          while($k = mysqli_fetch_array($divisi)){
+                            ?>
+                            <option value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
+                            <?php 
+                          }
+                          ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>BULAN</label>
+                        <select name="bulan" class="form-control" required="required">
+                          <option value="">- Pilih -</option>
+                          <option value="Januari">Januari</option>
+                          <option value="Februari">Februari</option>
+                          <option value="Maret">Maret</option>
+                          <option value="April">April</option>
+                          <option value="Mei">Mei</option>
+                          <option value="Juni">Juni</option>
+                          <option value="Juli">Juli</option>
+                          <option value="Agustus">Agustus</option>
+                          <option value="September">September</option>
+                          <option value="Oktober">Oktober</option>
+                          <option value="November">November</option>
+                          <option value="Desember">Desember</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>TANGGAL SPJ</label>
+                        <input type="text" name="tanggal" required="required" class="form-control datepicker2">
+                      </div>
+
+                      <div class="form-group">
+                        <label>JENIS BELANJA</label>
+                        <select name="jenis" class="form-control" required="required">
+                          <option value="">- Pilih -</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $divisi = mysqli_query($koneksi,"SELECT * FROM master_belanja ORDER BY Jenis ASC");
+                          while($k = mysqli_fetch_array($divisi)){
+                            ?>
+                            <option value="<?php echo $k['Id_jenisbelanja']; ?>"><?php echo $k['Jenis']; ?></option>
+                            <?php 
+                          }
+                          ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>RINCIAN BELANJA</label>
+                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Rincian ..">
+                      </div>
+
+                      <div class="form-group">
+                        <label>JUMLAH (RUPIAH)</label>
+                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                      </div>
+
+                      <div class="form-group">
+                        <label>LINK DRIVE</label>
+                        <input type="text" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda ..">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Upload Bukti</label>
+                        <input type="file" name="trnfoto" class="form-control">
+                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg | *PNG </small>
+                      </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                      <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
@@ -274,7 +403,7 @@
                                   </tr>
                                   <tr>
                                     <th>TANGGAL</th>
-                                    <td><?php echo $d['Tanggal']; ?></td>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                   </tr>
                                   <tr>
                                     <th>SUMBER DANA</th>
@@ -290,7 +419,7 @@
                                   </tr>
                                   <tr>
                                     <th>BESARAN</th>
-                                    <td><?php echo $d['Jumlah']; ?></td>
+                                    <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                                   </tr>
                                   <tr>
                                     <th>RINCIAN</th>
