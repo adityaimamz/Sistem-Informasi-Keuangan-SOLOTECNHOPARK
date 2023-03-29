@@ -299,7 +299,7 @@ $bulan_ini = date('n');
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
                           <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_penerimaan'] ?>">Draft</button>
                         <?php } else { ?>
-                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Final</button>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Terverifikasi</button>
                         <?php } ?>
                       </td>
 

@@ -369,9 +369,9 @@
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>">Non Verifikasi</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>">Draft</button>
                         <?php } else { ?>
-                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Verifikasi</button>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
                         <?php } ?>
                         </td>
                     </tr>
