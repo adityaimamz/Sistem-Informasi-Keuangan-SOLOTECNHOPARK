@@ -7,7 +7,7 @@ $tahun = date('Y');
 
   <section class="content-header">
     <h1>
-      Tagihan Verifikasi
+      Tagihan
       <small>Data Tagihan</small>
     </h1>
     <ol class="breadcrumb">
@@ -67,10 +67,10 @@ $tahun = date('Y');
                     <th>OPSI</th>
                     <th>BULAN</th>
                     <th>TANGGAL</th>
-                    <th>METODE BAYAR</th>
                     <th>NAMA</th>
                     <th>ASAL INSTANSI</th>
                     <th>BESARAN</th>
+                    <th>KEPERLUAN</th>
                     <th>STATUS</th>
                     <th>KETERANGAN</th>
                   </tr>
@@ -80,7 +80,7 @@ $tahun = date('Y');
                   include '../koneksi.php';
                   $no=1;
                   $tahun = date('Y');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='invoice' AND YEAR(master_penerimaan.Tanggal)='$tahun' ORDER BY master_penerimaan.Id_penerimaan DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice'AND YEAR(master_penerimaan.Tanggal)='$tahun' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
@@ -109,6 +109,10 @@ $tahun = date('Y');
                             <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">Lihat File</a> -->
                           <?php } ?>
 
+                          <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                          <i class="fa fa-trash"></i>
+                        </button>
+
                         <!-- Modal Edit -->
                         <form action="tagihan_update.php" method="post" enctype="multipart/form-data">
                           <div class="modal fade" id="edit_tagihan<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -123,13 +127,8 @@ $tahun = date('Y');
                                 <div class="modal-body">
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>KODE PENERIMAAN</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_penerimaan'] ?>">
-                                    <input type="text" style="width:100%" name="Kode_penerimaan" required="required" class="form-control" value="<?php echo $d['Kode_penerimaan'] ?>" /readonly>
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>NO TANDA TERIMA</label>
+                                    <input type="hidden" name="id" value="<?php echo $d['Id_penerimaan'] ?>">
                                     <input type="text" style="width:100%" name="No_tandaterima" required="required" class="form-control">
                                   </div>
 
@@ -203,20 +202,12 @@ $tahun = date('Y');
                               <div class="modal-body">
                               <table class="table table-condensed">
                                 <tr>
-                                  <th>NO TANDA TERIMA</th>
-                                  <td><?php echo $d['No_tandaterima']; ?></td>
-                                </tr>
-                                <tr>
                                   <th>TANGGAL</th>
-                                  <td><?php echo $d['Tanggal']; ?></td>
+                                  <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                 </tr>
                                 <tr>
                                   <th>BULAN</th>
                                   <td><?php echo $d['Bulan']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>METODE BAYAR</th>
-                                  <td><?php echo $d['Jenis']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>NAMA</th>
@@ -227,15 +218,11 @@ $tahun = date('Y');
                                   <td><?php echo $d['Alamat_instansi']; ?></td>
                                 </tr>
                                 <tr>
-                                  <th>METODE BAYAR</th>
-                                  <td><?php echo $d['Jenis']; ?></td>
-                                </tr>
-                                <tr>
                                   <th>BESARAN</th>
-                                  <td><?php echo $d['Besaran_biaya']; ?></td>
+                                  <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                                 </tr>
                                 <tr>
-                                  <th>KETERANGAN</th>
+                                  <th>KEPERLUAN</th>
                                   <td><?php echo $d['Keperluan']; ?></td>
                                 </tr>
                                 </table>
@@ -270,20 +257,44 @@ $tahun = date('Y');
                           </div>
                         </div>
 
+                        <!-- modal hapus -->
+                        <div class="modal fade" id="hapus_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                <p>Yakin ingin menghapus data ini ?</p>
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <a href="tagihan_hapus.php?id=<?php echo $d['Id_penerimaan'] ?>" class="btn btn-primary">Hapus</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                       </td>
                       <td><?php echo $d['Bulan']; ?></td>
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <!-- <td><?php echo $d['No_tandaterima']; ?></td> -->
-                      <td><?php echo $d['Jenis']; ?></td>
+                      <!-- <td><?php echo $d['Jenis']; ?></td> -->
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
                       <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
+                      <td><?php echo $d['Keperluan']; ?></td>
                       <td class="text-center">
                         <button title="Bayarkan" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal" data-target="#edit_tagihan<?php echo $d['Id_penerimaan'] ?>">Invoice</button>
                       </td>
                       <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" <?php echo $d['Id_penerimaan'] ?>">Draft</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" <?php echo $d['Id_penerimaan'] ?>">Draft</button>
                         <?php } else { ?>
                           <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Terverifikasi</button>
                         <?php } ?>
