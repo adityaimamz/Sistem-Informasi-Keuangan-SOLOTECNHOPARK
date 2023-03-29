@@ -2,7 +2,7 @@
 include '../koneksi.php';
 $data = mysqli_query($koneksi,"SELECT master_penerimaan.Kode_penerimaan, master_penerimaan.Tanggal, master_penerimaan.Bulan, master_penerimaan.Nama_pembayar, master_penerimaan.Alamat_instansi, master_penerimaan.Besaran_biaya, master_penerimaan.Keperluan,master_penerimaan.Bukti, master_penerimaan.Status, master_penerimaan.Drive FROM master_penerimaan WHERE master_penerimaan.Status='voice' order by Id_penerimaan desc");
 // header kolom pada file CSV
-$csv_header = array("KODE PENERIMAAN","TANGGAL", "BULAN", "NAMA","ASAL INSTANSI", "BESARAN","KEPERLUAN", "GAMBAR/BUKTI","STATUS","LINK DRIVE");
+$csv_header = array("KODE PENERIMAAN","TANGGAL", "BULAN", "NAMA","ASAL INSTANSI", "BESARAN","KEPERLUAN", "GAMBAR/BUKTI","STATUS","LINK DRIVE","KETERANGAN");
 
 // membuka file CSV untuk ditulis
 $fp = fopen('data_tagihan.csv', 'w');

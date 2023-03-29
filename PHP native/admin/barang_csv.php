@@ -1,8 +1,8 @@
 <?php
 include '../koneksi.php';
-$data = mysqli_query($koneksi,"SELECT master_barang.Tanggal, master_barang.Kode_barang, master_barang.Nama_barang,master_divisi.Nama_divisi, master_barang.Lokasi, master_barang.Gambar FROM master_divisi JOIN master_barang ON master_divisi.Id_divisi=master_barang.Id_divisi order by Id_barang desc");
+$data = mysqli_query($koneksi,"SELECT master_barang.*,master_divisi.Nama_divisi FROM master_divisi JOIN master_barang ON master_divisi.Id_divisi=master_barang.Id_divisi order by Id_barang desc");
 // header kolom pada file CSV
-$csv_header = array("TANGGAL","KODE BARANG", "NAMA BARANG", "DIVISI","LOKASI","GAMBAR/BUKTI");
+$csv_header = array("KODE BARANG","NAMA BARANG","MERK","TIPE","KONDISI BARANG","LOKASI", "DIVISI","TANGGAL MASUK","TANGGAL KELUAR","JUMLAH BARANG","GAMBAR/BUKTI");
 
 // membuka file CSV untuk ditulis
 $fp = fopen('data_barang.csv', 'w');
