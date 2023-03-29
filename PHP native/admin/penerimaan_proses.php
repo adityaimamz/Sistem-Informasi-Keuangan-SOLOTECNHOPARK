@@ -36,7 +36,7 @@ $kode_penerimaan = "PNR" . date("YmdHis");
 // }
 
 if($filename == ""){
-	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat', 'NULL', '$nominal', 'NULL','','voice', '$drive')")or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat', 'NULL', '$nominal', 'NULL','','voice', '$drive','nonverifikasi')")or die(mysqli_error($koneksi));
 	header("location:tagihan.php?alert=berhasil");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -46,12 +46,12 @@ if($filename == ""){
 	}elseif($No_tandaterima == "" && $metode == ""){
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','NULL', '$nominal', 'NULL','$file_gambar','voice', '$drive')");
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','NULL', '$nominal', 'NULL','$file_gambar','voice', '$drive','nonverifikasi')");
 		header("location:tagihan.php?alert=berhasil");
 	}else{
 	    move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','invoice', '$drive')");
+		mysqli_query($koneksi, "insert into master_penerimaan values (NULL,'$kode_penerimaan','$bulan','$tanggal','$nama','$keperluan','$alamat','$No_tandaterima', '$nominal', '$metode','$file_gambar','invoice', '$drive','nonverifikasi')");
 		header("location:penerimaan.php?alert=berhasil");
 	}
 }

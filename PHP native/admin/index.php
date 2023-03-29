@@ -46,7 +46,7 @@ $hari_ini = date('w');
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Tanggal='$tanggal' AND Status='invoice' ");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Tanggal='$tanggal' AND Status='voice' ");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -68,7 +68,7 @@ $hari_ini = date('w');
           <div class="inner">
             <?php
             $bulan = date('m');
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND Status='invoice'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND Status='voice'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -90,7 +90,7 @@ $hari_ini = date('w');
           <div class="inner">
             <?php 
             $tahun = date('Y');
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE year(Tanggal)='$tahun' AND Status='invoice'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE year(Tanggal)='$tahun' AND Status='voice'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -111,7 +111,7 @@ $hari_ini = date('w');
         <div class="small-box bg-green">
           <div class="inner">
             <?php 
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -225,7 +225,7 @@ $hari_ini = date('w');
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Tanggal='$tanggal' AND Status='voice'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Tanggal='$tanggal' AND Status='invoice'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -247,7 +247,7 @@ $hari_ini = date('w');
           <div class="inner">
             <?php
             $bulan = date('m');
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND Status='voice'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE month(Tanggal)='$bulan' AND Status='invoice'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -269,7 +269,7 @@ $hari_ini = date('w');
           <div class="inner">
             <?php 
             $tahun = date('Y');
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE year(Tanggal)='$tahun' AND Status='voice'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE year(Tanggal)='$tahun' AND Status='invoice'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -290,7 +290,7 @@ $hari_ini = date('w');
         <div class="small-box bg-blue">
           <div class="inner">
             <?php 
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
