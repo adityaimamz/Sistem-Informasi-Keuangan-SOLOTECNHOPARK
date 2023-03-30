@@ -21,7 +21,7 @@ $tanggal = date('Y-m-d');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Penerimaan <?php echo "(".$tanggal. ")";?></h3>
+            <h3 class="box-title">Transaksi Penerimaan <?php echo date('d-m-Y', strtotime($tanggal));?></h3>
             <hr>
             <?php 
                 if(isset($_GET['alert'])){
