@@ -10,9 +10,9 @@ $metode=$_POST['metode'];
 
 // $querydata = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode'";
 if($metode == "semua"){
-  $data = "SELECT * FROM master_penerimaan,metode_bayar where metode_bayar.Id_metode = master_penerimaan.Id_metode and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
+  $data = "SELECT * FROM master_penerimaan,metode_bayar where metode_bayar.Id_metode = master_penerimaan.Id_metode and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2' and master_penerimaan.Keterangan='verifikasi' and master_penerimaan.Status='voice'";
 }else{
-  $data = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode'";
+  $data = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode' and master_penerimaan.Keterangan='verifikasi' and master_penerimaan.Status='voice'";
 }
 $result = mysqli_query($koneksi, $data);
 
@@ -122,14 +122,14 @@ $pdf->Cell(52,8,$row['Nama_pembayar'],1,0,'L',0);
 $pdf->Cell(20,8,$row['Jenis'],1,0,'L',0);
 $pdf->Cell(25,8,$row['Tanggal'],1,0,'C',0);
 $pdf->Cell(140,8,$row['Keperluan'],1,0,'L',0);
-$pdf->Cell(33,8, "Rp. ".number_format($row["Besaran_biaya"])." ,-",1,0,'L',0);
+$pdf->Cell(33,8, "Rp. ".number_format($row['Besaran_biaya'], 2, '.', ',')." ,-",1,0,'L',0);
 $pdf->Ln(8);
 $no++;
 }
 
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(245,8,'TOTAL',1,0,'R',1);
-$pdf->Cell(35,8,"Rp. ".number_format($total)." ,-",1,0,'R',1);
+$pdf->Cell(33,8,"Rp. ".number_format($total, 2, '.', ',')." ,-",1,0,'L',1);
 
 
 $pdf->Output();

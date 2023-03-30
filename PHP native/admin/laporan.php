@@ -138,9 +138,9 @@
                     $no=1;
                     $total=0;                         
                     if($divisi == "semua"){
-                      $data = "SELECT * FROM master_pengeluaran,master_divisi,master_sumberdana where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
+                      $data = "SELECT * FROM master_pengeluaran,master_divisi,master_sumberdana where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2' and master_pengeluaran.Keterangan='verifikasi'";
                     }else{
-                      $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi' AND master_pengeluaran.Id_sumberdana = '$dana' ";
+                      $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi' AND master_pengeluaran.Id_sumberdana = '$dana' and master_pengeluaran.Keterangan='verifikasi'";
                     }
                     $result = mysqli_query($koneksi, $data);
                     //memeriksa apakah ada data yang ditemukan
@@ -155,7 +155,7 @@
                         <td><?php echo $row['Jenis']; ?></td>
                         <td><?php echo $row['Nama_divisi']; ?></td>
                         <td><?php echo $row['Rincian']; ?></td>
-                        <td class="text-left"><?php echo "Rp. ".number_format($row["Jumlah"])." ,-" ; ?></td>
+                        <td class="text-left"><?php echo "Rp. ".number_format($row['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                       </tr>
                       <?php 
                     }
@@ -168,7 +168,7 @@
                     ?>
                     <tr>
                       <th colspan="4" class="text-right">TOTAL</th>
-                      <td colspan="2" class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total)." ,-"; ?></td>
+                      <td colspan="2" class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total, 2, '.', ',')." ,-"; ?></td>
                     </tr>
                   </tbody>
                 </table>

@@ -115,9 +115,9 @@
                     $total=0;                         
                     // $querydata = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode'";
                     if($metode == "semua"){
-                      $data = "SELECT * FROM master_penerimaan,metode_bayar where metode_bayar.Id_metode = master_penerimaan.Id_metode and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
+                      $data = "SELECT * FROM master_penerimaan,metode_bayar where metode_bayar.Id_metode = master_penerimaan.Id_metode and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2' and master_penerimaan.Keterangan='verifikasi' and master_penerimaan.Status='voice' ";
                     }else{
-                      $data = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode'";
+                      $data = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode' and master_penerimaan.Keterangan='verifikasi' and master_penerimaan.Status='voice' ";
                     }
                     $result = mysqli_query($koneksi, $data);
                     //memeriksa apakah ada data yang ditemukan
@@ -132,7 +132,7 @@
                         <td><?php echo $row['Nama_pembayar']; ?></td>
                         <td><?php echo $row['Jenis']; ?></td>
                         <td><?php echo $row['Keperluan']; ?></td>
-                        <td class="text-left"><?php echo "Rp. ".number_format($row["Besaran_biaya"])." ,-" ; ?></td>
+                        <td class="text-left"><?php echo "Rp. ".number_format($row['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                       </tr>
                       <?php 
                     }
@@ -145,7 +145,7 @@
                     ?>
                     <tr>
                       <th colspan="4" class="text-right">TOTAL</th>
-                      <td colspan="2" class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total)." ,-"; ?></td>
+                      <td colspan="2" class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total, 2, '.', ',')." ,-"; ?></td>
                     </tr>
                   </tbody>
                 </table>
