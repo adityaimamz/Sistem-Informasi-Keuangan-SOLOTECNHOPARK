@@ -22,7 +22,10 @@ $tanggal = date('Y-m-d');
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Transaksi Tagihan <?php echo date('d-m-Y', strtotime($tanggal));?></h3>
-            <div class="btn-group pull-right">            
+            <div class="btn-group pull-right"> 
+            <a href="tagihan_csv.php"><button type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-file-excel-o"></i> &nbsp CSV
+              </button></a>           
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){

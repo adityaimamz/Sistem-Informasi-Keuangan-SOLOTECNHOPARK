@@ -19,7 +19,10 @@
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Transaksi Tagihan</h3>
-            <div class="btn-group pull-right">            
+            <div class="btn-group pull-right">        
+            <a href="tagihan_csv.php"><button type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-file-excel-o"></i> &nbsp CSV
+              </button></a>    
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -64,7 +67,6 @@
                     <th>OPSI</th>
                     <th>BULAN</th>
                     <th>TANGGAL</th>
-                    <th>METODE BAYAR</th>
                     <th>NAMA</th>
                     <th>ASAL INSTANSI</th>
                     <th>BESARAN</th>
@@ -105,66 +107,6 @@
                             <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">Lihat File</a> -->
                           <?php } ?>
 
-                        <!-- Modal Edit -->
-                        <form action="tagihan_update.php" method="post" enctype="multipart/form-data">
-                          <div class="modal fade" id="edit_tagihan<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Edit Tagihan</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>KODE PENERIMAAN</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_penerimaan'] ?>">
-                                    <input type="text" style="width:100%" name="Kode_penerimaan" required="required" class="form-control" value="<?php echo $d['Kode_penerimaan'] ?>" /readonly>
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>NO TANDA TERIMA</label>
-                                    <input type="text" style="width:100%" name="No_tandaterima" required="required" class="form-control">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>METODE PEMBAYARAN</label>
-                                    <select name="metode" style="width:100%" class="form-control" required="required">
-                                      <option value="">- Pilih -</option>
-                                      <?php 
-                                      $metode = mysqli_query($koneksi,"SELECT * FROM metode_bayar ORDER BY Id_metode ASC");
-                                      while($k = mysqli_fetch_array($metode)){
-                                        ?>
-                                        <option <?php if($d['Id_metode'] == $k['Id_metode']){echo "selected='selected'";} ?> value="<?php echo $k['Id_metode']; ?>"><?php echo $k['Jenis']; ?></option>
-                                        <?php 
-                                      }
-                                      ?>
-                                    </select>
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>LINK DRIVE</label>
-                                    <input type="text" style="width:100%" name="drive" class="form-control">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>Upload File</label>
-                                    <input type="file" name="trnfoto" class="form-control"><br>
-                                    <!-- <small><?php echo $d['Bukti'] ?></small> -->
-                                    <p class="help-block">Bila File <?php echo "<a class='fancybox btn btn-xs btn-primary' target=_blank href='../gambar/bukti/$d[Bukti]'>$d[Bukti]</a>";?> tidak dirubah kosongkan saja</p>
-                                  </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <button type="submit" class="btn btn-primary">Simpan</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
 
                         <!-- Modal lihat -->
                         <div class="modal fade" id="lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -211,20 +153,12 @@
                                   <td><?php echo $d['Bulan']; ?></td>
                                 </tr>
                                 <tr>
-                                  <th>METODE BAYAR</th>
-                                  <td><?php echo $d['Jenis']; ?></td>
-                                </tr>
-                                <tr>
                                   <th>NAMA</th>
                                   <td><?php echo $d['Nama_pembayar']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>ASAL INSTANSI</th>
                                   <td><?php echo $d['Alamat_instansi']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>METODE BAYAR</th>
-                                  <td><?php echo $d['Jenis']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>BESARAN</th>
@@ -270,7 +204,6 @@
                       <td><?php echo $d['Bulan']; ?></td>
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <!-- <td><?php echo $d['No_tandaterima']; ?></td> -->
-                      <td><?php echo $d['Jenis']; ?></td>
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
                       <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
