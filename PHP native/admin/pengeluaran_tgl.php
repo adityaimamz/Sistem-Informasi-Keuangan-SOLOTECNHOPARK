@@ -21,7 +21,7 @@ $tanggal = date('Y-m-d');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran <?php echo "(".$tanggal. ")";?></h3>
+            <h3 class="box-title">Transaksi Pengeluaran <?php echo date('d-m-Y', strtotime($tanggal));?></h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
