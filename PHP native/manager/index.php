@@ -53,7 +53,7 @@ $hari_ini = date('w');
               echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>Penerimaan Hari Ini (<?php echo $tanggal;?>)</p>
+            <p>Penerimaan Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -138,7 +138,7 @@ $hari_ini = date('w');
               echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
               ?>
             </h4>
-            <p>Pengeluaran Hari Ini (<?php echo $tanggal;?>)</p>
+            <p>Pengeluaran Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -224,7 +224,7 @@ $hari_ini = date('w');
               echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
               ?>
             </h4>
-            <p>Tagihan Hari Ini (<?php echo $tanggal;?>)</p>
+            <p>Tagihan Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
