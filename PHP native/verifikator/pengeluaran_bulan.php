@@ -119,12 +119,12 @@ $bulan_ini = date('n');
                           <?php if($d['Drive']==''){ ?> 
 
                           <?php } else { ?> 
-                            <a href="<?php echo $d['Drive']; ?>" title="Lihat File" target="_blank">
+                            <a href="<?php echo $d['Drive']; ?>" title="lihat drive" target="_blank">
                               <button type="button" class="btn btn-success btn-sm">
                                 <i class="fa fa-cloud"></i>
                               </button>
                             </a>
-                            <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">Lihat File</a> -->
+                            <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">lihat drive</a> -->
                           <?php } ?>
 
                           <button title="Hapus" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
