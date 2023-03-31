@@ -181,25 +181,23 @@ var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
+        labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
         datasets: [{
             label: '',
             data: [
-                <?php
-                    for($bulan=1;$bulan<=12;$bulan++){
-                        $thn_ini = date('Y');
-                        $penerimaan = mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE Keterangan='Verifikasi' GROUP BY MONTH(Tanggal), YEAR(Tanggal), Status='Voice' ");
-                        $pem = mysqli_fetch_assoc($penerimaan);
-                        
-                        $total = $pem['total_penerimaan'];
-                        if($pem['total_penerimaan'] == ""){
-                            echo "0,";
-                        }else{
-                            echo $total.",";
-                        }
-                    }
-                ?>
-            ],
+				<?php while ($p = mysqli_fetch_array($januari)) { echo '"' . $p['total_januari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($februari)) { echo '"' . $p['total_februari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($maret)) { echo '"' . $p['total_maret'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($april)) { echo '"' . $p['total_april'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($mei)) { echo '"' . $p['total_mei'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juni)) { echo '"' . $p['total_juni'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juli)) { echo '"' . $p['total_juli'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agustus)) { echo '"' . $p['total_agustus'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($september)) { echo '"' . $p['total_september'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($oktober)) { echo '"' . $p['total_oktober'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($november)) { echo '"' . $p['total_november'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($desember)) { echo '"' . $p['total_desember'] . '",';}?>,
+				],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -254,15 +252,15 @@ var myChart = new Chart(ctx, {
 				<?php
 				$id_metode = mysqli_query($koneksi,"SELECT distinct id_metode from master_penerimaan order by id_metode asc");
 				while($t = mysqli_fetch_array($id_metode)){
-				$metode = $t['id_metode'];
-				$pengeluaran = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_pengeluaran from master_penerimaan where id_metode='$metode'");
-				$pem = mysqli_fetch_assoc($pengeluaran);
-				$total = $pem['total_pengeluaran'];
-				if($pem['total_pengeluaran'] == ""){
-					echo "0,";
-				}else{
-					echo $total.",";
-				}
+					$metode = $t['id_metode'];
+					$pengeluaran = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_pengeluaran from master_penerimaan where id_metode='$metode' AND Keterangan='Verifikasi' AND Status='Voice'");
+					$pem = mysqli_fetch_assoc($pengeluaran);
+					$total = $pem['total_pengeluaran'];
+					if($pem['total_pengeluaran'] == ""){
+						echo "0,";
+					}else{
+						echo $total.",";
+					}
 				}
 				?>
 			],
