@@ -97,7 +97,7 @@ $tahun = date('Y');
                           <?php if($d['Bukti_lpj']==''){ ?> 
 
                           <?php } else { ?> 
-                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                                 <i class="fa fa-eye"></i>
                               </button>
                           <?php } ?>
