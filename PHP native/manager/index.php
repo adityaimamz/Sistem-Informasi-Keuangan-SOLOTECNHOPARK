@@ -45,7 +45,7 @@ $hari_ini = date('w');
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Tanggal='$tanggal'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Tanggal='$tanggal' ");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
