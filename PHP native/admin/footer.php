@@ -329,15 +329,15 @@ var myChart = new Chart(ctx, {
 				$divisi = mysqli_query($koneksi, "SELECT DISTINCT Id_divisi FROM master_pengeluaran ORDER BY Id_divisi ASC");
 				while($d = mysqli_fetch_array($divisi)){
 					$id_divisi = $d['Id_divisi'];
-					$pengeluaran = mysqli_query($koneksi, "SELECT SUM(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Id_divisi='$id_divisi'");
+					$pengeluaran = mysqli_query($koneksi, "SELECT SUM(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Id_divisi='$id_divisi' AND Keterangan='verifikasi' ");
 					$total = mysqli_fetch_assoc($pengeluaran)['total_pengeluaran'];
 					if(empty($total)){
 					echo "0,";
 					} else {
 					echo $total.",";
 					}
-					}
-					?>
+				}
+				?>
 			],
 			backgroundColor: [
 			'rgba(255, 99, 132, 0.2)',
@@ -377,26 +377,23 @@ var ctx = document.getElementById("myChart4").getContext('2d');
 var myChart = new Chart(ctx, {
 	type: 'bar',
 	data: {
-		labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
+		labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
 		datasets: [{
 			label: '',
 			data: [
-				<?php
-		for($bulan=1;$bulan<=12;$bulan++){
-			$thn_ini = date('Y');
-			$penerimaan = mysqli_query($koneksi,"SELECT sum(Jumlah) AS total_penerimaan FROM master_pengeluaran WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
-			$pem = mysqli_fetch_assoc($penerimaan);
-			
-			// $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
-			$total = $pem['total_penerimaan'];
-			if($pem['total_penerimaan'] == ""){
-			echo "0,";
-			}else{
-			echo $total.",";
-			}
-		}
-		?>
-			],
+				<?php while ($a = mysqli_fetch_array($jan)) { echo '"' . $a['total_jan'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($feb)) { echo '"' . $a['total_feb'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($mart)) { echo '"' . $a['total_mart'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($apr)) { echo '"' . $a['total_apr'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($mi)) { echo '"' . $a['total_mi'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($jun)) { echo '"' . $a['total_jun'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($jul)) { echo '"' . $a['total_jul'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($agust)) { echo '"' . $a['total_agust'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($sept)) { echo '"' . $a['total_sept'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($okt)) { echo '"' . $a['total_okt'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($nov)) { echo '"' . $a['total_nov'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($des)) { echo '"' . $a['total_des'] . '",';}?>,
+				],
 			backgroundColor: [
 			'rgba(255, 99, 132, 0.2)',
 			'rgba(54, 162, 235, 0.2)',
