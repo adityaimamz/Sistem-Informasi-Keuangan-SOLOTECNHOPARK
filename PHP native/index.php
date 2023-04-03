@@ -91,7 +91,22 @@
             <div class="accordion-list">
 			<div style="width: 800px;margin: 0px auto;">
 					<h4>Per <b>Bulan</b> Tahun 2023 </h4>
-					<canvas id="myChart"></canvas>
+					<?php 
+                $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Januari' AND Status='Voice' ");
+                $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Februari' AND Status='Voice' ");
+                $maret= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_maret FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Maret' AND Status='Voice' ");
+                $april= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_april FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='April' AND Status='Voice' ");
+                $mei= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_mei FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Mei' AND Status='Voice' ");
+                $juni= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juni FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juni' AND Status='Voice' ");
+                $juli= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juli FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juli' AND Status='Voice' ");
+                $agustus= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_agustus FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Agustus' AND Status='Voice' ");
+                $september= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_september FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='September' AND Status='Voice' ");
+                $oktober= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_oktober FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Oktober' AND Status='Voice' ");
+                $november= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_november FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='November' AND Status='Voice' ");
+                $desember= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_desember FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Desember' AND Status='Voice' ");
+              ?>
+              <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
+
 					</div>
             </div>
           </div>
@@ -132,73 +147,69 @@
   </script>
   <script>
 
-		var ctx = document.getElementById("myChart").getContext('2d');
-				var myChart = new Chart(ctx, {
-					type: 'bar',
-					data: {
-						labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
-						datasets: [{
-							label: '',
-							data: [
-								<?php
-						for($bulan=1;$bulan<=12;$bulan++){
-							$thn_ini = date('Y');
-							$penerimaan = mysqli_query($koneksi,"SELECT sum(Jumlah) AS total_penerimaan FROM master_pengeluaran WHERE month(Tanggal)='$bulan' AND year(Tanggal)='$thn_ini'");
-							$pem = mysqli_fetch_assoc($penerimaan);
-							
-							// $total = str_replace(",", "44", number_format($pem['total_penerimaan']));
-							$total = $pem['total_penerimaan'];
-							if($pem['total_penerimaan'] == ""){
-							echo "0,";
-							}else{
-							echo $total.",";
-							}
-						}
-						?>
-							],
-							backgroundColor: [
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(75, 192, 192, 0.2)',
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(255, 99, 132, 0.2)'
-							],
-							borderColor: [
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(75, 192, 192, 1)',
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(255,99,132,1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(255,99,132,1)'
-							],
-							borderWidth: 1
-						}]
-					},
-					options: {
-						scales: {
-							yAxes: [{
-								ticks: {
-									// beginAtZero:true
-									// gunakan fungsi callback untuk mengubah format uang
-									callback: function(value, index, values) {
-										return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
-									}
-								}
-							}]
-						}
-					}
-				});
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
+        datasets: [{
+            label: '',
+            data: [
+				<?php while ($p = mysqli_fetch_array($januari)) { echo '"' . $p['total_januari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($februari)) { echo '"' . $p['total_februari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($maret)) { echo '"' . $p['total_maret'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($april)) { echo '"' . $p['total_april'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($mei)) { echo '"' . $p['total_mei'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juni)) { echo '"' . $p['total_juni'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juli)) { echo '"' . $p['total_juli'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agustus)) { echo '"' . $p['total_agustus'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($september)) { echo '"' . $p['total_september'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($oktober)) { echo '"' . $p['total_oktober'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($november)) { echo '"' . $p['total_november'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($desember)) { echo '"' . $p['total_desember'] . '",';}?>,
+				],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255,99,132,1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // gunakan fungsi callback untuk mengubah format uang
+                    callback: function(value, index, values) {
+                        return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
+                    }
+                }
+            }]
+        }
+    }
+});
 
 		
 	</script>

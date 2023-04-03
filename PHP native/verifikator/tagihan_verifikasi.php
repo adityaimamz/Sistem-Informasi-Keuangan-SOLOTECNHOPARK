@@ -8,7 +8,7 @@
       <small>Data Tagihan</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Dashboard</li>
     </ol>
   </section>
@@ -64,7 +64,6 @@
                     <th>OPSI</th>
                     <th>BULAN</th>
                     <th>TANGGAL</th>
-                    <th>METODE BAYAR</th>
                     <th>NAMA</th>
                     <th>ASAL INSTANSI</th>
                     <th>BESARAN</th>
@@ -211,20 +210,12 @@
                                   <td><?php echo $d['Bulan']; ?></td>
                                 </tr>
                                 <tr>
-                                  <th>METODE BAYAR</th>
-                                  <td><?php echo $d['Jenis']; ?></td>
-                                </tr>
-                                <tr>
                                   <th>NAMA</th>
                                   <td><?php echo $d['Nama_pembayar']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>ASAL INSTANSI</th>
                                   <td><?php echo $d['Alamat_instansi']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>METODE BAYAR</th>
-                                  <td><?php echo $d['Jenis']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>BESARAN</th>
@@ -270,7 +261,7 @@
                       <td><?php echo $d['Bulan']; ?></td>
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <!-- <td><?php echo $d['No_tandaterima']; ?></td> -->
-                      <td><?php echo $d['Jenis']; ?></td>
+                      <!-- <td><?php echo $d['Jenis']; ?></td> -->
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
                       <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
