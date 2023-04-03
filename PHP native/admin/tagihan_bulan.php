@@ -97,7 +97,7 @@ $bulan_ini = date('n');
                   include '../koneksi.php';
                   $no=1;
                   $bulan = date('m');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND MONTH(master_penerimaan.Tanggal)='$bulan' ORDER BY master_penerimaan.Id_penerimaan DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND MONTH(master_penerimaan.Tanggal)='$bulan' AND master_penerimaan.Keterangan='verifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>

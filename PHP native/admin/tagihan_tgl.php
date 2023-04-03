@@ -83,7 +83,7 @@ $tanggal = date('Y-m-d');
                   include '../koneksi.php';
                   $no=1;
                   $tanggal = date('Y-m-d');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND master_penerimaan.Tanggal='$tanggal' ORDER BY master_penerimaan.Id_penerimaan DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND master_penerimaan.Tanggal='$tanggal' AND master_penerimaan.Keterangan='verifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>

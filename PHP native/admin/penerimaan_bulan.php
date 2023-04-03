@@ -209,7 +209,7 @@ $bulan_ini = date('n');
                   include '../koneksi.php';
                   $no=1;
                   $bulan = date('m');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='voice' AND MONTH(master_penerimaan.Tanggal)='$bulan' order by Id_penerimaan desc");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='voice' AND MONTH(master_penerimaan.Tanggal)='$bulan' AND master_penerimaan.Keterangan='verifikasi' order by Id_penerimaan desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>

@@ -222,7 +222,7 @@ $bulan_ini = date('n');
                     include '../koneksi.php';
                     $no=1;
                     $bulan = date('m');
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND MONTH(master_pengeluaran.Tanggal)='$bulan' ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND MONTH(master_pengeluaran.Tanggal)='$bulan' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
