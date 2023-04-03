@@ -287,7 +287,7 @@ $hari_ini = date('w');
         <div class="small-box bg-blue">
           <div class="inner">
             <?php 
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'  AND Keterangan='nonverifikasi'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'  AND Keterangan='verifikasi'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -307,7 +307,7 @@ $hari_ini = date('w');
         <div class="small-box bg-purple">
           <div class="inner">
             <?php 
-            $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='nonverifikasi'");
+            $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='verifikasi'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -348,7 +348,7 @@ $hari_ini = date('w');
         <div class="small-box bg-orange">
           <div class="inner">
             <?php 
-            $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='nonverifikasi'");
+            $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='verifikasi'");
             $p = mysqli_fetch_assoc($pengeluaran);
             ?>
             <h4 style="font-weight: bolder">
