@@ -215,7 +215,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="pengeluaran_verifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -307,6 +307,88 @@ $hari_ini = date('w');
         </div>
       </div>
 
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-purple">
+          <div class="inner">
+            <?php 
+            $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='nonverifikasi'");
+            $p = mysqli_fetch_assoc($penerimaan);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_penerimaan']) 
+              ?>
+            </h4>
+            <p>Jumlah Data Penerimaan (Draft)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="penerimaan_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-purple">
+          <div class="inner">
+            <?php 
+            $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='verifikasi'");
+            $p = mysqli_fetch_assoc($penerimaan);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_penerimaan'])
+              ?>
+            </h4>
+            <p>Jumlah Data Penerimaan (Terverifikasi)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="penerimaan_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='nonverifikasi'");
+            $p = mysqli_fetch_assoc($pengeluaran);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_pengeluaran'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengeluaran(Draft)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="pengeluaran_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+        <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='verifikasi'");
+            $p = mysqli_fetch_assoc($pengeluaran);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_pengeluaran'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengeluaran(Terverifikasi)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="pengeluaran_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
 
     </div>
     <!-- /.row -->
@@ -420,5 +502,5 @@ $hari_ini = date('w');
   </section>
 
 </div>
-
+<div id="preloader"></div>
 <?php include 'footer.php'; ?>
