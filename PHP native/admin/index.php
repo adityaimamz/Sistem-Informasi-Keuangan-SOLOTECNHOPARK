@@ -386,7 +386,7 @@ $hari_ini = date('w');
 
             </div>
             <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
-              b
+              <!-- b -->
             </div>
           </div>
 

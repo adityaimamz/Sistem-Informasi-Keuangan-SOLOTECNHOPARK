@@ -36,15 +36,17 @@ $bulan_ini = date('n');
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Transaksi Pengeluaran <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
-            <div class="btn-group pull-right">    
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+            <div class="btn-group pull-right">            
+
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus"></i> &nbsp Tambah Pengeluaran
               </button>
               &nbsp
 
               <a href="pengeluaran_csv.php"><button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-file-excel-o"></i> &nbsp CSV
-              </button></a>               
+              </button></a>
+
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -78,8 +80,8 @@ $bulan_ini = date('n');
           </div>
 
           <div class="box-body">
-             <!-- Modal Tambah-->
-             <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
+          <!-- Modal Tambah-->
+          <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -90,6 +92,10 @@ $bulan_ini = date('n');
                       </button>
                     </div>
                     <div class="modal-body">
+                    <div class="form-group">
+                        <label>KODE PENGELUARAN</label>
+                        <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
+                      </div>
 
                       <div class="form-group">
                         <label>SUMBER DANA</label>
@@ -170,7 +176,7 @@ $bulan_ini = date('n');
 
                       <div class="form-group">
                         <label>JUMLAH (RUPIAH)</label>
-                        <input type="text" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
                       <div class="form-group">
@@ -180,8 +186,8 @@ $bulan_ini = date('n');
 
                       <div class="form-group">
                         <label>Upload Bukti</label>
-                        <input type="file" name="trnfoto" required="required" class="form-control">
-                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
+                        <input type="file" name="trnfoto" class="form-control">
+                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg | *PNG </small>
                       </div>
 
                     </div>
@@ -208,7 +214,6 @@ $bulan_ini = date('n');
                     <th>DIVISI</th>
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
-                    <!-- <th>RINCIAN</th> -->
                     <th>STATUS</th>
                   </tr>
                   </thead>
@@ -416,7 +421,7 @@ $bulan_ini = date('n');
                                   </tr>
                                   <tr>
                                     <th>TANGGAL</th>
-                                    <td><?php echo $d['Tanggal']; ?></td>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                   </tr>
                                   <tr>
                                     <th>SUMBER DANA</th>
@@ -432,10 +437,10 @@ $bulan_ini = date('n');
                                   </tr>
                                   <tr>
                                     <th>BESARAN</th>
-                                    <td><?php echo $d['Jumlah']; ?></td>
+                                    <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                                   </tr>
                                   <tr>
-                                    <th>KETERANGAN</th>
+                                    <th>RINCIAN</th>
                                     <td><?php echo $d['Rincian']; ?></td>
                                   </tr>
                                   </table>
@@ -510,7 +515,7 @@ $bulan_ini = date('n');
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" <?php echo $d['Id_pengeluaran'] ?>">Draft</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs">Draft</button>
                         <?php } else { ?>
                           <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
                         <?php } ?>

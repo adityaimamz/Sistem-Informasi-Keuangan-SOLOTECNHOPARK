@@ -66,9 +66,8 @@ $tanggal = date('Y-m-d');
           </div>
 
           <div class="box-body">
-
-            <!-- Modal Tambah-->
-            <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
+          <!-- Modal Tambah-->
+          <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -79,6 +78,10 @@ $tanggal = date('Y-m-d');
                       </button>
                     </div>
                     <div class="modal-body">
+                    <div class="form-group">
+                        <label>KODE PENGELUARAN</label>
+                        <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
+                      </div>
 
                       <div class="form-group">
                         <label>SUMBER DANA</label>
@@ -159,7 +162,7 @@ $tanggal = date('Y-m-d');
 
                       <div class="form-group">
                         <label>JUMLAH (RUPIAH)</label>
-                        <input type="text" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
                       <div class="form-group">
@@ -169,8 +172,8 @@ $tanggal = date('Y-m-d');
 
                       <div class="form-group">
                         <label>Upload Bukti</label>
-                        <input type="file" name="trnfoto" required="required" class="form-control">
-                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
+                        <input type="file" name="trnfoto" class="form-control">
+                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg | *PNG </small>
                       </div>
 
                     </div>
@@ -182,22 +185,22 @@ $tanggal = date('Y-m-d');
                 </div>
               </div>
             </form>
-
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>KODE PENGELUARAN</th>
-                    <th>SUMBER DANA</th>
-                    <th>DIVISI</th>
+                    <th>NO</th>
+                    <th>OPSI</th>
+                    <!-- <th>KODE PENGELUARAN</th> -->
                     <th>BULAN</th>
                     <th>TANGGAL SPJ</th>
+                    <th>SUMBER DANA</th>
+                    <th>DIVISI</th>
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
-                    <th>RINCIAN</th>
-                    <th>OPSI</th>
+                    <th>STATUS</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -205,30 +208,27 @@ $tanggal = date('Y-m-d');
                     include '../koneksi.php';
                     $no=1;
                     $tanggal = date('Y-m-d');
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND master_pengeluaran.Tanggal='$tanggal' order by Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND master_pengeluaran.Tanggal='$tanggal' ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
-                        <td class="text-center"><?php echo $d['Kode_pengeluaran']; ?></td>
-                        <td><?php echo $d['jenisdana']; ?></td>
-                        <td><?php echo $d['Nama_divisi']; ?></td>
-                        <td><?php echo $d['Bulan']; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td><?php echo $d['jenisbelanja']; ?></td>
-<td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
-                        <td><?php echo $d['Rincian']; ?></td>
-                        <td>    
+                      <td class="text-center"><?php echo $no++; ?></td>
+                      <td>
+                          <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                              <i class="fa fa-list"></i>
+                          </button>
+
                           <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
 
-                          <button title="Hapus" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
-                            <i class="fa fa-trash"></i>
-                          </button>
+                          <?php if($d['Bukti_lpj']==''){ ?> 
 
-                          <button title="Lihat" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
-                            <i class="fa fa-eye"></i>
-                          </button>
+                          <?php } else { ?> 
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                                <i class="fa fa-eye"></i>
+                              </button>
+                          <?php } ?>
 
                           <?php if($d['Drive']==''){ ?> 
 
@@ -240,6 +240,10 @@ $tanggal = date('Y-m-d');
                             </a>
                             <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">lihat drive</a> -->
                           <?php } ?>
+
+                          <button title="Hapus" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                            <i class="fa fa-trash"></i>
+                          </button>
 
                           <!-- Modal Update -->
                           <form action="pengeluaran_update.php" method="post" enctype="multipart/form-data">
@@ -256,7 +260,7 @@ $tanggal = date('Y-m-d');
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>KODE PENGELUARAN</label>
-                                      <input type="text" style="width:100%" name="Kode_pengeluaran" required="required" class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" /readonly>
+                                      <input type="text" style="width:100%" name="kode_pengeluaran"  class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" >
                                     </div>
                                     
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -381,6 +385,89 @@ $tanggal = date('Y-m-d');
                             </div>
                           </div>
 
+                          <!-- Modal detail -->
+                          <div class="modal fade" id="detail_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Detail</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                <table class="table table-condensed">
+                                  <tr>
+                                    <th>KODE PENGELUARAN</th>
+                                    <td><?php echo $d['Kode_pengeluaran']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>BULAN</th>
+                                    <td><?php echo $d['Bulan']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>TANGGAL</th>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>SUMBER DANA</th>
+                                    <td><?php echo $d['jenisdana']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>DIVISI</th>
+                                    <td><?php echo $d['Nama_divisi']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>JENIS BELANJA</th>
+                                    <td><?php echo $d['jenisbelanja']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>BESARAN</th>
+                                    <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>RINCIAN</th>
+                                    <td><?php echo $d['Rincian']; ?></td>
+                                  </tr>
+                                  </table>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- modal edit verifikasi -->
+                          <div class="modal fade" id="edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+
+                                  <p>
+                                  <?php 
+                                  if($d['Kode_pengeluaran']==''){
+                                    echo "Anda yakin ingin memverifikasi data ini ?";
+                                  }else{
+                                    echo "Anda yakin ingin memverifikasi data dengan kode". $d['Kode_pengeluaran']. " ?";
+                                  }
+                                  ?>
+
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                  <a href="penerimaan_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                           <!-- Modal Hapus -->
                           <div class="modal fade" id="hapus_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -403,7 +490,22 @@ $tanggal = date('Y-m-d');
                             </div>
                           </div>
 
-                      </td>
+                        </td>
+                        <!-- <td><?php echo $d['Kode_pengeluaran']; ?></td> -->
+                        <td><?php echo $d['Bulan']; ?></td>
+                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                        <td><?php echo $d['jenisdana']; ?></td>
+                        <td><?php echo $d['Nama_divisi']; ?></td>
+                        <td><?php echo $d['jenisbelanja']; ?></td>
+                        <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
+                        <!-- <td><?php echo $d['Rincian']; ?></td> -->
+                        <td class="text-center">
+                        <?php if($d['Keterangan']=='nonverifikasi'){ ?>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs">Draft</button>
+                        <?php } else { ?>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
+                        <?php } ?>
+                        </td>
                     </tr>
                     <?php 
                   }
