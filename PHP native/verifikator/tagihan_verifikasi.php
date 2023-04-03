@@ -64,7 +64,7 @@
                     <th>OPSI</th>
                     <th>BULAN</th>
                     <th>TANGGAL</th>
-                    <th>METODE BAYAR</th>
+                    <!-- <th>METODE BAYAR</th> -->
                     <th>NAMA</th>
                     <th>ASAL INSTANSI</th>
                     <th>BESARAN</th>
@@ -117,12 +117,6 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>KODE PENERIMAAN</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_penerimaan'] ?>">
-                                    <input type="text" style="width:100%" name="Kode_penerimaan" required="required" class="form-control" value="<?php echo $d['Kode_penerimaan'] ?>" /readonly>
-                                  </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>NO TANDA TERIMA</label>
@@ -198,22 +192,22 @@
                               </div>
                               <div class="modal-body">
                               <table class="table table-condensed">
-                                <tr>
+                                <!-- <tr>
                                   <th>NO TANDA TERIMA</th>
                                   <td><?php echo $d['No_tandaterima']; ?></td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                   <th>TANGGAL</th>
-                                  <td><?php echo $d['Tanggal']; ?></td>
+                                  <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                 </tr>
                                 <tr>
                                   <th>BULAN</th>
                                   <td><?php echo $d['Bulan']; ?></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                   <th>METODE BAYAR</th>
                                   <td><?php echo $d['Jenis']; ?></td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                   <th>NAMA</th>
                                   <td><?php echo $d['Nama_pembayar']; ?></td>
@@ -222,13 +216,13 @@
                                   <th>ASAL INSTANSI</th>
                                   <td><?php echo $d['Alamat_instansi']; ?></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                   <th>METODE BAYAR</th>
                                   <td><?php echo $d['Jenis']; ?></td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                   <th>BESARAN</th>
-                                  <td><?php echo $d['Besaran_biaya']; ?></td>
+                                  <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                                 </tr>
                                 <tr>
                                   <th>KETERANGAN</th>
@@ -270,7 +264,7 @@
                       <td><?php echo $d['Bulan']; ?></td>
                       <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                       <!-- <td><?php echo $d['No_tandaterima']; ?></td> -->
-                      <td><?php echo $d['Jenis']; ?></td>
+                      <!-- <td><?php echo $d['Jenis']; ?></td> -->
                       <td><?php echo $d['Nama_pembayar']; ?></td>
                       <td><?php echo $d['Alamat_instansi']; ?></td>
                       <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
