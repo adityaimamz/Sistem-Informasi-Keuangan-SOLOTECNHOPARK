@@ -40,6 +40,7 @@ $hari_ini = date('w');
 
     <div class="row">
 
+      <!-- DATA PENERIMAAN -->
       <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-green">
           <div class="inner">
@@ -58,6 +59,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+    
         </div>
       </div>
 
@@ -79,6 +81,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+        
         </div>
       </div>
 
@@ -100,6 +103,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+  
         </div>
       </div>
 
@@ -120,6 +124,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+    
         </div>
       </div>
 
@@ -207,6 +212,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+      
         </div>
       </div>
 
@@ -229,6 +235,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+        
         </div>
       </div>
 
@@ -250,6 +257,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+        
         </div>
       </div>
 
@@ -271,6 +279,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+    
         </div>
       </div>
 
@@ -278,7 +287,7 @@ $hari_ini = date('w');
         <div class="small-box bg-blue">
           <div class="inner">
             <?php 
-            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'  AND Keterangan='verifikasi'");
+            $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'  AND Keterangan='nonverifikasi'");
             $p = mysqli_fetch_assoc($penerimaan);
             ?>
             <h4 style="font-weight: bolder">
@@ -293,6 +302,90 @@ $hari_ini = date('w');
           </div>
         </div>
       </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-purple">
+          <div class="inner">
+            <?php 
+            $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='nonverifikasi'");
+            $p = mysqli_fetch_assoc($penerimaan);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_penerimaan']) 
+              ?>
+            </h4>
+            <p>Jumlah Data Penerimaan (Draft)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-purple">
+          <div class="inner">
+            <?php 
+            $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='verifikasi'");
+            $p = mysqli_fetch_assoc($penerimaan);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_penerimaan'])
+              ?>
+            </h4>
+            <p>Jumlah Data Penerimaan (Terverifikasi)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='nonverifikasi'");
+            $p = mysqli_fetch_assoc($pengeluaran);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_pengeluaran'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengeluaran(Draft)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+        <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='verifikasi'");
+            $p = mysqli_fetch_assoc($pengeluaran);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['total_pengeluaran'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengeluaran(Terverifikasi)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+  
+        </div>
+      </div>
+
+      
+
 
     </div>
     <!-- /.row -->
@@ -315,7 +408,7 @@ $hari_ini = date('w');
             <div class="chart tab-pane active" id="tab1">
 
               
-            <h4 class="text-center">Realisasi Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
+              <h4 class="text-center">Realisasi Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
               <?php 
                 $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Januari' AND Status='Voice' ");
                 $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Februari' AND Status='Voice' ");
@@ -372,7 +465,7 @@ $hari_ini = date('w');
 
             </div>
             <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
-              b
+              <!-- b -->
             </div>
           </div>
 
@@ -406,21 +499,5 @@ $hari_ini = date('w');
   </section>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'footer.php'; ?>
