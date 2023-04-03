@@ -80,7 +80,7 @@ $tahun = date('Y');
                   include '../koneksi.php';
                   $no=1;
                   $tahun = date('Y');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND YEAR(master_penerimaan.Tanggal)='$tahun' AND master_penerimaan.Keterangan='nonverifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND YEAR(master_penerimaan.Tanggal)='$tahun' AND master_penerimaan.Keterangan='verifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
