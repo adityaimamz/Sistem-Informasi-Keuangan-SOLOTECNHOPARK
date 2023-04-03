@@ -162,18 +162,18 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                  <th>NO</th>
                     <th>OPSI</th>
-                    <th>NO</th>
-                    <th>KODE BARANG</th>
+                    <!-- <th>KODE BARANG</th> -->
                     <th>NAMA BARANG</th>
-                    <th>MERK</th>
-                    <th>TIPE</th>
-                    <th>KONDISI BARANG</th>
-                    <th>LOKASI</th>
-                    <th>DIVISI</th>
                     <th>TANGGAL MASUK</th>
                     <th>TANGGAL KELUAR</th>
                     <th>JUMLAH BARANG</th>
+                    <!-- <th>MERK</th> -->
+                    <!-- <th>TIPE</th> -->
+                    <th>KONDISI BARANG</th>
+                    <th>LOKASI</th>
+                    <th>DIVISI</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -184,18 +184,31 @@
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
+                      <td class="text-center"><?php echo $no++; ?></td>
                       <td>    
+                          <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_barang_<?php echo $d['Id_barang'] ?>">
+                              <i class="fa fa-list"></i>
+                          </button>
+
                           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
+
+                          <?php if($d['Gambar']==''){ ?> 
+
+                          <?php } else { ?> 
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_barang_<?php echo $d['Id_barang'] ?>">
+                                <i class="fa fa-eye"></i>
+                              </button>
+                          <?php } ?>
 
                           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-trash"></i>
                           </button>
 
-                          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_barang_<?php echo $d['Id_barang'] ?>">
+                          <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-eye"></i>
-                          </button>
+                          </button> -->
 
                           <!-- Modal Update -->
                           <form action="barang_update.php" method="post" enctype="multipart/form-data">
@@ -313,6 +326,67 @@
                             </div>
                           </div>
 
+                          <!-- Modal detail -->
+                          <div class="modal fade" id="detail_barang_<?php echo $d['Id_barang'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Detail</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                <table class="table table-condensed">
+                                  <tr>
+                                    <th>KODE BARANG</th>
+                                    <td><?php echo $d['Kode_barang']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>NAMA BARANG</th>
+                                    <td><?php echo $d['Nama_barang']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>TANGGAL MASUK</th>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>TANGGAL KELUAR</th>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>MERK</th>
+                                    <td><?php echo $d['Merk']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>TIPE</th>
+                                    <td><?php echo $d['Tipe']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>JUMLAH BARANG</th>
+                                    <td><?php echo $d['Jumlah']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>KONDISI BARANG</th>
+                                    <td><?php echo $d['Kondisi_barang']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>LOKASI</th>
+                                    <td><?php echo $d['Lokasi']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>DIVISI</th>
+                                    <td><?php echo $d['Nama_divisi']; ?></td>
+                                  </tr>
+                                  </table>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                           <!-- Modal Hapus -->
                           <div class="modal fade" id="hapus_barang_<?php echo $d['Id_barang'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -336,17 +410,16 @@
                           </div>
 
                       </td>
-                        <td class="text-center"><?php echo $no++; ?></td>
-                        <td><?php echo $d['Kode_barang']; ?></td>
+                        <!-- <td><?php echo $d['Kode_barang']; ?></td> -->
                         <td><?php echo $d['Nama_barang']; ?></td>
-                        <td><?php echo $d['Merk']; ?></td>
-                        <td><?php echo $d['Tipe']; ?></td>
-                        <td><?php echo $d['Kondisi_barang']; ?></td>
-                        <td><?php echo $d['Lokasi']; ?></td>
-                        <td><?php echo $d['Nama_divisi']; ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
                         <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
                         <td class="text-center"><?php echo $d['Jumlah']; ?></td>
+                        <!-- <td><?php echo $d['Merk']; ?></td> -->
+                        <!-- <td><?php echo $d['Tipe']; ?></td> -->
+                        <td><?php echo $d['Kondisi_barang']; ?></td>
+                        <td><?php echo $d['Lokasi']; ?></td>
+                        <td><?php echo $d['Nama_divisi']; ?></td>
                     </tr>
                     <?php 
                   }

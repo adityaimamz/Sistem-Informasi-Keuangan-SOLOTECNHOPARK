@@ -274,7 +274,7 @@
                                   </tr>
                                   <tr>
                                     <th>TANGGAL</th>
-                                    <td><?php echo $d['Tanggal']; ?></td>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                   </tr>
                                   <tr>
                                     <th>SUMBER DANA</th>
@@ -290,7 +290,7 @@
                                   </tr>
                                   <tr>
                                     <th>BESARAN</th>
-                                    <td><?php echo $d['Jumlah']; ?></td>
+                                    <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                                   </tr>
                                   <tr>
                                     <th>RINCIAN</th>
@@ -364,7 +364,7 @@
                         <td><?php echo $d['jenisdana']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['jenisbelanja']; ?></td>
-<td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
+                        <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>

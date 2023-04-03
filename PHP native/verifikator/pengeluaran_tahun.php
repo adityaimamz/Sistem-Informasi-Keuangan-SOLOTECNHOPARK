@@ -71,7 +71,6 @@ $tahun = date('Y');
                     <th>DIVISI</th>
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
-                    <!-- <th>RINCIAN</th> -->
                     <th>STATUS</th>
                   </tr>
                   </thead>
@@ -80,7 +79,7 @@ $tahun = date('Y');
                     include '../koneksi.php';
                     $no=1;
                     $tahun = date('Y');
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND YEAR(master_pengeluaran.Tanggal)='$tahun' ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND YEAR(master_pengeluaran.Tanggal)='$tahun' AND master_pengeluaran.Keterangan='nonverifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -97,7 +96,7 @@ $tahun = date('Y');
                           <?php if($d['Bukti_lpj']==''){ ?> 
 
                           <?php } else { ?> 
-                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                                 <i class="fa fa-eye"></i>
                               </button>
                           <?php } ?>
@@ -279,7 +278,7 @@ $tahun = date('Y');
                                   </tr>
                                   <tr>
                                     <th>TANGGAL</th>
-                                    <td><?php echo $d['Tanggal']; ?></td>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                   </tr>
                                   <tr>
                                     <th>SUMBER DANA</th>
@@ -295,10 +294,10 @@ $tahun = date('Y');
                                   </tr>
                                   <tr>
                                     <th>BESARAN</th>
-                                    <td><?php echo $d['Jumlah']; ?></td>
+                                    <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                                   </tr>
                                   <tr>
-                                    <th>KETERANGAN</th>
+                                    <th>RINCIAN</th>
                                     <td><?php echo $d['Rincian']; ?></td>
                                   </tr>
                                   </table>
@@ -334,7 +333,7 @@ $tahun = date('Y');
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="penerimaan_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
+                                  <a href="pengeluaran_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
                                 </div>
                               </div>
                             </div>
@@ -369,7 +368,7 @@ $tahun = date('Y');
                         <td><?php echo $d['jenisdana']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['jenisbelanja']; ?></td>
-<td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
+                        <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
