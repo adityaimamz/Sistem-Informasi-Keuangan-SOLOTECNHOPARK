@@ -4,7 +4,7 @@
 
   <section class="content-header">
     <h1>
-      Pengeluaran
+      Pengeluaran Draft
       <small>Data Pengeluaran</small>
     </h1>
     <ol class="breadcrumb">
@@ -18,13 +18,8 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran</h3>
+            <h3 class="box-title">Transaksi Pengeluaran Draft</h3>
             <div class="btn-group pull-right">            
-
-
-              <a href="pengeluaran_csv.php"><button type="button" class="btn btn-success btn-sm">
-                <i class="fa fa-file-excel-o"></i> &nbsp CSV
-              </button></a>
 
             </div><hr>
             <?php 

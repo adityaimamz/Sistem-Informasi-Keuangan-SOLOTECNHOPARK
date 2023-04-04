@@ -21,7 +21,7 @@ $bulan_ini = date('n');
 
   <section class="content-header">
     <h1>
-      Pengeluaran
+      Pengeluaran Verifikasi
       <small>Data Pengeluaran</small>
     </h1>
     <ol class="breadcrumb">
@@ -35,7 +35,7 @@ $bulan_ini = date('n');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
+            <h3 class="box-title">Transaksi Pengeluaran Terverifikasi <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
             <div class="btn-group pull-right">            
             </div><hr>
             <?php 

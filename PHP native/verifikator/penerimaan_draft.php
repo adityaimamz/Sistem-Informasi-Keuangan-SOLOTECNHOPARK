@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      Penerimaan
-      <small>Data Penerimaan</small>
+      Penerimaan Draft
+      <small>Data Penerimaan </small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,12 +18,8 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Penerimaan</h3>
-            <div class="btn-group pull-right">            
-
-              <a href="penerimaan_csv.php"><button type="button" class="btn btn-success btn-sm">
-                <i class="fa fa-file-excel-o"></i> &nbsp CSV
-              </button></a>
+            <h3 class="box-title">Transaksi Penerimaan Draft</h3>
+            <div class="btn-group pull-right">
 
             </div><hr>
             <?php 

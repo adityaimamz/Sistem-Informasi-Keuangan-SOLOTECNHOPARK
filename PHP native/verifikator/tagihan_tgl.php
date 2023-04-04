@@ -21,7 +21,7 @@ $tanggal = date('Y-m-d');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Tagihan <?php echo date('d-m-Y', strtotime($tanggal));?></h3>
+            <h3 class="box-title">Transaksi Tagihan Terverifikasi <?php echo date('d-m-Y', strtotime($tanggal));?></h3>
             <div class="btn-group pull-right">            
             </div><hr>
             <?php 
@@ -108,6 +108,33 @@ $tanggal = date('Y-m-d');
                             </a>
                             <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">lihat drive</a> -->
                           <?php } ?>
+
+                          <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_tagihan_<?php echo $d['Id_penerimaan'] ?>">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
+                        <!-- modal hapus -->
+                        <div class="modal fade" id="hapus_tagihan_<?php echo $d['Id_penerimaan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                <p>Yakin ingin menghapus data ini ?</p>
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <a href="tagihan_hapus.php?id=<?php echo $d['Id_penerimaan'] ?>" class="btn btn-primary">Hapus</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <!-- Modal Edit -->
                         <form action="tagihan_update.php" method="post" enctype="multipart/form-data">

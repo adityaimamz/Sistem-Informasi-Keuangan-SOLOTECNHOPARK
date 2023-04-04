@@ -35,7 +35,7 @@ $bulan_ini = date('n');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Penerimaan <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
+            <h3 class="box-title">Transaksi Penerimaan Terverifikasi <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
             <hr>
             <?php 
                 if(isset($_GET['alert'])){

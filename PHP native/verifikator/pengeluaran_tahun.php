@@ -7,7 +7,7 @@ $tahun = date('Y');
 
   <section class="content-header">
     <h1>
-      Pengeluaran
+      Pengeluaran Verifikasi
       <small>Data Pengeluaran</small>
     </h1>
     <ol class="breadcrumb">
@@ -21,7 +21,7 @@ $tahun = date('Y');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran <?php echo "(".$tahun. ")";?></h3>
+            <h3 class="box-title">Transaksi Pengeluaran Terverifikasi <?php echo "(".$tahun. ")";?></h3>
             <div class="btn-group pull-right">            
             </div><hr>
             <?php 
