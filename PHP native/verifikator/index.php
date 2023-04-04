@@ -51,7 +51,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Penerimaan Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
@@ -73,7 +73,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Penerimaan Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
@@ -95,7 +95,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Penerimaan Tahun Ini (<?php echo $tahun;?>)</p>
@@ -116,7 +116,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Seluruh Penerimaan</p>
@@ -140,7 +140,7 @@ $hari_ini = date('w');
             
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Pengeluaran Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
@@ -163,7 +163,7 @@ $hari_ini = date('w');
             
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Pengeluaran Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
@@ -186,7 +186,7 @@ $hari_ini = date('w');
             
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Pengeluaran Tahun Ini (<?php echo $tahun;?>)</p>
@@ -207,7 +207,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Seluruh Pengeluaran</p>
@@ -230,7 +230,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Tagihan Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
@@ -252,7 +252,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Tagihan Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
@@ -274,7 +274,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Tagihan Tahun Ini (<?php echo $tahun;?>)</p>
@@ -295,7 +295,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Seluruh Tagihan</p>
@@ -316,7 +316,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_penerimaan']) 
+              echo number_format($p['total_penerimaan']) 
               ?>
             </h4>
             <p>Jumlah Data Penerimaan (Draft)</p>
@@ -337,7 +337,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_penerimaan'])
+              echo number_format($p['total_penerimaan'])
               ?>
             </h4>
             <p>Jumlah Data Penerimaan (Terverifikasi)</p>
@@ -358,7 +358,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_pengeluaran'])
+              echo number_format($p['total_pengeluaran'])
               ?>
             </h4>
             <p>Jumlah Data Pengeluaran (Draft)</p>
@@ -378,7 +378,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_pengeluaran'])
+              echo number_format($p['total_pengeluaran'])
               ?>
             </h4>
             <p>Jumlah Data Pengeluaran (Terverifikasi)</p>

@@ -51,7 +51,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Penerimaan Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
@@ -59,7 +59,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-    
+          <!-- <a href="penerimaan_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -73,7 +73,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Penerimaan Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
@@ -81,7 +81,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-        
+          <!-- <a href="penerimaan_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -95,7 +95,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Penerimaan Tahun Ini (<?php echo $tahun;?>)</p>
@@ -103,7 +103,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-  
+          <!-- <a href="penerimaan_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -116,7 +116,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Seluruh Penerimaan</p>
@@ -124,7 +124,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-    
+          <!-- <a href="penerimaan_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -140,7 +140,7 @@ $hari_ini = date('w');
             
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Pengeluaran Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
@@ -148,6 +148,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+          <!-- <a href="pengeluaran_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -162,7 +163,7 @@ $hari_ini = date('w');
             
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Pengeluaran Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
@@ -170,6 +171,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+          <!-- <a href="pengeluaran_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -184,7 +186,7 @@ $hari_ini = date('w');
             
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Pengeluaran Tahun Ini (<?php echo $tahun;?>)</p>
@@ -192,6 +194,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+          <!-- <a href="pengeluaran_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -204,7 +207,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_pengeluaran'])." ,-" 
+              echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Seluruh Pengeluaran</p>
@@ -212,7 +215,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-      
+          <!-- <a href="pengeluaran_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -227,7 +230,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Tagihan Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
@@ -235,7 +238,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-        
+          <!-- <a href="tagihan_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -249,7 +252,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Tagihan Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
@@ -257,7 +260,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-        
+          <!-- <a href="tagihan_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -271,7 +274,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Tagihan Tahun Ini (<?php echo $tahun;?>)</p>
@@ -279,7 +282,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-    
+          <!-- <a href="tagihan_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -292,7 +295,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "Rp. ".number_format($p['total_penerimaan'])." ,-" 
+              echo "Rp. ".number_format($p['total_penerimaan'], 2, '.', ',')." ,-"
               ?>
             </h4>
             <p>Seluruh Tagihan</p>
@@ -300,6 +303,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+          <!-- <a href="tagihan_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -312,7 +316,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_penerimaan']) 
+              echo number_format($p['total_penerimaan']) 
               ?>
             </h4>
             <p>Jumlah Data Penerimaan (Draft)</p>
@@ -320,7 +324,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-
+          <!-- <a href="penerimaan_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -333,7 +337,7 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_penerimaan'])
+              echo number_format($p['total_penerimaan'])
               ?>
             </h4>
             <p>Jumlah Data Penerimaan (Terverifikasi)</p>
@@ -341,6 +345,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+          <!-- <a href="penerimaan_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
 
@@ -353,14 +358,15 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_pengeluaran'])
+              echo number_format($p['total_pengeluaran'])
               ?>
             </h4>
-            <p>Jumlah Data Pengeluaran(Draft)</p>
+            <p>Jumlah Data Pengeluaran (Draft)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
+          <!-- <a href="pengeluaran_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
         <div class="col-lg-3 col-xs-6">
@@ -372,20 +378,17 @@ $hari_ini = date('w');
             ?>
             <h4 style="font-weight: bolder">
               <?php 
-              echo "".number_format($p['total_pengeluaran'])
+              echo number_format($p['total_pengeluaran'])
               ?>
             </h4>
-            <p>Jumlah Data Pengeluaran(Terverifikasi)</p>
+            <p>Jumlah Data Pengeluaran (Terverifikasi)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-  
+          <!-- <a href="pengeluaran_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
         </div>
       </div>
-
-      
-
 
     </div>
     <!-- /.row -->
@@ -410,18 +413,18 @@ $hari_ini = date('w');
               
               <h4 class="text-center">Realisasi Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
               <?php 
-                $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Januari' AND Status='Voice' ");
-                $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Februari' AND Status='Voice' ");
-                $maret= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_maret FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Maret' AND Status='Voice' ");
-                $april= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_april FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='April' AND Status='Voice' ");
-                $mei= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_mei FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Mei' AND Status='Voice' ");
-                $juni= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juni FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juni' AND Status='Voice' ");
-                $juli= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juli FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juli' AND Status='Voice' ");
-                $agustus= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_agustus FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Agustus' AND Status='Voice' ");
-                $september= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_september FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='September' AND Status='Voice' ");
-                $oktober= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_oktober FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Oktober' AND Status='Voice' ");
-                $november= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_november FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='November' AND Status='Voice' ");
-                $desember= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_desember FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Desember' AND Status='Voice' ");
+                $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Januari' AND Status='Voice' ");
+                $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Februari' AND Status='Voice' ");
+                $maret= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_maret FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Maret' AND Status='Voice' ");
+                $april= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_april FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='April' AND Status='Voice' ");
+                $mei= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_mei FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Mei' AND Status='Voice' ");
+                $juni= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juni FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Juni' AND Status='Voice' ");
+                $juli= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juli FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Juli' AND Status='Voice' ");
+                $agustus= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_agustus FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Agustus' AND Status='Voice' ");
+                $september= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_september FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='September' AND Status='Voice' ");
+                $oktober= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_oktober FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Oktober' AND Status='Voice' ");
+                $november= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_november FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='November' AND Status='Voice' ");
+                $desember= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_desember FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Desember' AND Status='Voice' ");
               ?>
               <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
 
@@ -444,18 +447,18 @@ $hari_ini = date('w');
 
               <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
               <?php 
-                $jan= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jan FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Januari' ");
-                $feb= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_feb FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Februari' ");
-                $mart= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mart FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Maret' ");
-                $apr= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_apr FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='April' ");
-                $mi= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mi FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Mei' ");
-                $jun= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jun FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juni' ");
-                $jul= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jul FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juli' ");
-                $agust= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_agust FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Agustus' ");
-                $sept= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_sept FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='September' ");
-                $okt= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_okt FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Oktober' ");
-                $nov= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_nov FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='November' ");
-                $des= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_des FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Desember' ");
+                $jan= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jan FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Januari' ");
+                $feb= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_feb FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Februari' ");
+                $mart= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mart FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Maret' ");
+                $apr= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_apr FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='April' ");
+                $mi= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mi FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Mei' ");
+                $jun= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jun FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Juni' ");
+                $jul= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jul FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Juli' ");
+                $agust= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_agust FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Agustus' ");
+                $sept= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_sept FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='September' ");
+                $okt= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_okt FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Oktober' ");
+                $nov= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_nov FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='November' ");
+                $des= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_des FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Desember' ");
               ?>
               <canvas id="myChart4" style="position: relative; height: 300px;"></canvas>
 
@@ -499,5 +502,5 @@ $hari_ini = date('w');
   </section>
 
 </div>
-
+<div id="preloader"></div>
 <?php include 'footer.php'; ?>
