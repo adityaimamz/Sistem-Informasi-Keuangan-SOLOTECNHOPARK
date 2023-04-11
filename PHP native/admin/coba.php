@@ -24,7 +24,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 <body>
@@ -59,6 +59,7 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
 		<h2 data-aos="fade-up" data-aos-delay="400">Selamat datang!</h2>
+    <a href="mpdf.php" target="_blank" rel="noopener noreferrer">dsad</a>
           <h1 class="pt-1" data-aos="fade-up">Solo Techno Park Finance Analyzer (Soto Panaz)</h1>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">

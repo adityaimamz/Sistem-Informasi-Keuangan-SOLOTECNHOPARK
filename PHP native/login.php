@@ -16,9 +16,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class=" bg-primary">
-  <div class="container">
-    
+    <body>
+    <section class="hero d-flex align-items-center">
+
+    <div class="container">
+
     <div class="login-box">
       <a href="index.php">
       <button type="submit" class="btn btn-light btn-block btn-flat">Kembali ke Dashboard</button>
@@ -77,6 +79,8 @@
         </div>
       </div>
     </div>
+    </div>
+</div>
     <span style="color: white;">
       <center>
         <h5>Build and developed by MSIB batch 3 interns 2023</h5>
