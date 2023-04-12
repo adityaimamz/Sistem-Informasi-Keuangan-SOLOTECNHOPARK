@@ -114,7 +114,7 @@
                     </div>
                     <div class="form-group">
                       <label>WAKTU PELAKSANAAN</label>
-                      <input type="text" name="waktu_pelaksanaan" class="form-control">
+                      <input type="text" name="waktu_pelaksanaan" class="form-control" placeholder="Masukkan Waktu Pelaksanaan ..">
                     </div>
                     <div class="form-group">
                       <label>TEMPAT PELAKSANAAN</label>

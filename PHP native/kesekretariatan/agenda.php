@@ -192,32 +192,32 @@
                               </button>
                           <?php } ?>
 
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_agenda_<?php echo $d['Id_agenda'] ?>">
-                            <i class="fa fa-trash"></i>
-                          </button>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_agenda_<?php echo $d['Id_agenda'] ?>">
+                              <i class="fa fa-trash"></i>
+                            </button>
 
-                          <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_agenda_<?php echo $d['Id_agenda'] ?>">
-                            <i class="fa fa-eye"></i>
-                          </button> -->
+                            <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_agenda_<?php echo $d['Id_agenda'] ?>">
+                              <i class="fa fa-eye"></i>
+                            </button> -->
 
-                          <!-- Modal Update -->
-                          <form action="agenda_update.php" method="post" enctype="multipart/form-data">
-                            <div class="modal fade" id="edit_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">Edit agenda</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KODE agenda</label>
-                                      <input type="hidden" name="id" required="required" class="form-control" placeholder="Nama Kategori .." value="<?php echo $d['Id_agenda']; ?>">
-                                      <input type="text" style="width:100%" name="kode_agenda" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_agenda'] ?>">
+                            <!-- Modal Update -->
+                            <form action="agenda_update.php" method="post" enctype="multipart/form-data">
+                              <div class="modal fade" id="edit_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title" id="exampleModalLabel">Edit agenda</h4>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
                                     </div>
+                                    <div class="modal-body">
+
+                                      <div class="form-group" style="width:100%;margin-bottom:20px">
+                                        <label>KODE agenda</label>
+                                        <input type="hidden" name="id" required="required" class="form-control" placeholder="Nama Kategori .." value="<?php echo $d['Id_agenda']; ?>">
+                                        <input type="text" style="width:100%" name="kode_agenda" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_agenda'] ?>">
+                                      </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>NAMA agenda</label>
