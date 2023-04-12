@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      pengeluaran
-      <small>Data pengeluaran</small>
+      Surat Keluar
+      <small>Data Surat Keluar UPT Solo Technopark</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,8 +18,18 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi pengeluaran</h3>
+            <h3 class="box-title">Daftar Surat Masuk</h3>
             <div class="btn-group pull-right">            
+
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i> &nbsp Tambah Surat
+              </button>
+              &nbsp
+
+              <a href="pengeluaran_csv.php"><button type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-file-excel-o"></i> &nbsp CSV
+              </button></a>
+
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -53,6 +63,58 @@
           </div>
 
           <div class="box-body">
+          <!-- Modal Tambah-->
+          <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="exampleModalLabel">Tambah Pengeluaran</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                          <div class="form-group">
+                              <label>NO SURAT KELUAR</label>
+                              <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan No Surat Keluar ..">
+                          </div>
+                          <div class="form-group">
+                          <label>TANGGAL</label>
+                        <input type="date" name="tanggal" required="required" class="form-control">
+                          </div>
+
+                          <div class="form-group">
+                              <label>PERIHAL</label>
+                              <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Perihal ..">
+                          </div>
+                          <div class="form-group">
+                              <label>KEPADA</label>
+                              <input type="text" name="kepada" required="required" class="form-control" placeholder="Masukkan Kepada ..">
+                          </div>
+                          <div class="form-group">
+                              <label>CATATAN</label>
+                              <input type="text" name="catatan" required="required" class="form-control" placeholder="Masukkan Catatan ..">
+                          </div>
+                          <div class="form-group">
+                          <label>KATEGORI</label>
+                            <select name="kategori" class="form-control" required="required">
+                              <option value="">- Pilih -</option>
+                              <option value="Permohonan">Permohonan</option>
+                              <option value="Kunjungan">Kunjungan</option>
+                              <option value="Berita Acara ">Berita Acara</option>
+                            </select>
+                          </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                      <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
@@ -60,24 +122,21 @@
                   <thead>
                   <tr>
                     <th>NO</th>
-                    <th>OPSI</th>
-                    <!-- <th>KODE pengeluaran</th> -->
-                    <th>BULAN</th>
-                    <th>TANGGAL SPJ</th>
-                    <th>SUMBER DANA</th>
-                    <th>DIVISI</th>
-                    <th>JENIS BELANJA</th>
-                    <th>JUMLAH (RUPIAH)</th>
-                    <th>STATUS</th>
+                    <th>NO SURAT KELUAR</th>
+                    <th>TANGGAL</th>
+                    <th>PERIHAL</th>
+                    <th>KEPADA</th>
+                    <th>CATATAN</th>
+                    <th>KATEGORI</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT surat_keluar.* FROM surat_keluar  ORDER BY surat_keluar.Id_Suratkeluar DESC");
                     while($d = mysqli_fetch_array($data)){
-                      ?>
+                        ?>
                       <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td>
@@ -126,7 +185,7 @@
                                   <div class="modal-body">
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KODE pengeluaran</label>
+                                      <label>KODE PENGELUARAN</label>
                                       <input type="text" style="width:100%" name="kode_pengeluaran"  class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" >
                                     </div>
                                     
@@ -265,7 +324,7 @@
                                 <div class="modal-body">
                                 <table class="table table-condensed">
                                   <tr>
-                                    <th>KODE pengeluaran</th>
+                                    <th>KODE PENGELUARAN</th>
                                     <td><?php echo $d['Kode_pengeluaran']; ?></td>
                                   </tr>
                                   <tr>
@@ -329,7 +388,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="pengeluaran_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
+                                  <a href="penerimaan_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
                                 </div>
                               </div>
                             </div>
@@ -368,7 +427,7 @@
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_pengeluaran'] ?>">Draft</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs">Draft</button>
                         <?php } else { ?>
                           <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
                         <?php } ?>

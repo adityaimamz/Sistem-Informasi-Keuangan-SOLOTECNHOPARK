@@ -76,11 +76,6 @@
                     </div>
                     <div class="modal-body">
                     <div class="form-group">
-                        <label>TANGGAL SPJ</label>
-                        <input type="date" name="tanggal" required="required" class="form-control datepicker2">
-                      </div>
-
-                    <div class="form-group">
                         <label>KODE PENGELUARAN</label>
                         <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
                       </div>
@@ -134,6 +129,11 @@
                           <option value="November">November</option>
                           <option value="Desember">Desember</option>
                         </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>TANGGAL SPJ</label>
+                        <input type="text" name="tanggal" required="required" class="form-control datepicker2">
                       </div>
 
                       <div class="form-group">

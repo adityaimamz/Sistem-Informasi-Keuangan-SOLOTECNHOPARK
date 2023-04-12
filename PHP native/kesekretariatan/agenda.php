@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group">
                         <label>PUKUL</label>
-                        <input type="time" name="pukul" required="required" class="form-control">
+                        <input type="text" name="pukul" required="required" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>ACARA</label>
@@ -122,19 +122,19 @@
                     </div>
 
                     <div class="form-group" style="width:100%;margin-bottom:20px">
-  <label>PIC</label>
-  <select name="PIC" style="width:100%" class="form-control" required="required">
-    <option value="">- Pilih -</option>
-    <?php 
-    $pegawai = mysqli_query($koneksi,"SELECT * FROM master_pegawai ORDER BY Id_pegawai ASC");
-    while($p = mysqli_fetch_array($pegawai)){
-      ?>
-      <option <?php if($p['Id_pegawai'] == $p['Id_pegawai']){echo "selected='selected'";} ?> value="<?php echo $p['Id_pegawai']; ?>"><?php echo $p['Nama_pegawai']; ?></option>
-      <?php 
-    }
-    ?>
-  </select>
-</div> 
+                        <label>PIC</label>
+                      <select name="PIC" style="width:100%" class="form-control" required="required">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        $pegawai = mysqli_query($koneksi,"SELECT * FROM master_pegawai ORDER BY Id_pegawai ASC");
+                        while($p = mysqli_fetch_array($pegawai)){
+                          ?>
+                          <option <?php if($p['Id_pegawai'] == $p['Id_pegawai']){echo "selected='selected'";} ?> value="<?php echo $p['Id_pegawai']; ?>"><?php echo $p['Nama_pegawai']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
+                    </div> 
 
                     </div>
                     <div class="modal-footer">
