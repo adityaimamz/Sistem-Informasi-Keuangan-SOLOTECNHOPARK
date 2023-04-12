@@ -127,56 +127,6 @@
 
 <script>
 
-// var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-
-// var barChartData = {
-//   labels : ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
-//   datasets: [
-//     {
-//     //   label: "American Express",
-// 	  backgroundColor: "lightblue",
-//       borderColor: "blue",
-//       borderWidth: 1,
-//       data: [
-		
-// 		while ($row = mysqli_fetch_array($februari)) {
-// 			echo $row['total_februari'];
-// 		},
-		// echo Mysqli_fetch_array($februari);
-// 	  ]
-// 		  SELECT SUM(besaran_biaya) AS total_penerimaan FROM master_penerimaan WHERE Keterangan='Verifikasi' GROUP BY MONTH(Tanggal), YEAR(Tanggal), Status='Voice']
-//     }
-//   ]
-// };
-
-// var chartOptions = {
-//   responsive: true,
-//   legend: {
-//     position: "top"
-//   },
-//   title: {
-//     display: true,
-//     // text: "Chart.js Bar Chart"
-//   },
-//   scales: {
-//     yAxes: [{
-//       ticks: {
-//         // beginAtZegunakan fungsi callback untuk mengubah format uang
-// 		callback: function(value, index, values) {
-// 			return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
-// 		}ro:true
-// 		// 
-//       }
-//     }]
-//   }
-// }
-
-//   var ctx = document.getElementById("myChart").getContext("2d");
-//   window.myBar = new Chart(ctx, {
-//     type: "bar",
-//     data: barChartData,
-//     options: chartOptions
-//   });
 
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {

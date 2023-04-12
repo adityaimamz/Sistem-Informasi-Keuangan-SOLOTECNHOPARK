@@ -104,28 +104,28 @@
           <li class="treeview">
             <a href="#">
               <i class="fa fa-dollar"></i>
-              <span>PENERIMAAN</span>
+              <span>SURAT</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="penerimaan_verifikasi.php"><i class="fa fa-circle-o"></i> Data Penerimaan</a></li>
-              <li><a href="tagihan_verifikasi.php"><i class="fa fa-circle-o"></i> Data Tagihan</a></li>
+              <li><a href="surat_masuk.php"><i class="fa fa-circle-o"></i> Data Surat Masuk</a></li>
+              <li><a href="surat_keluar.php"><i class="fa fa-circle-o"></i> Data Surat Keluar</a></li>
             </ul>
           </li>
 
           <li class="treeview">
             <a href="#">
               <i class="fa fa-dollar"></i>
-              <span>PENGELUARAN</span>
+              <span>AGENDA</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="pengeluaran_verifikasi.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
-              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Data Agenda STP</a></li>
+              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form pengeluaran</a></li> -->
             </ul>
 
           <li>

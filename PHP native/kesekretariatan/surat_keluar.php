@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      Pengeluaran Draft
-      <small>Data Pengeluaran</small>
+      pengeluaran
+      <small>Data pengeluaran</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,9 +18,8 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran Draft</h3>
+            <h3 class="box-title">Transaksi pengeluaran</h3>
             <div class="btn-group pull-right">            
-
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -54,125 +53,6 @@
           </div>
 
           <div class="box-body">
-          <!-- Modal Tambah-->
-          <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="exampleModalLabel">Tambah Pengeluaran</h4>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                    <div class="form-group">
-                        <label>KODE PENGELUARAN</label>
-                        <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>SUMBER DANA</label>
-                        <select name="sumberdana" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <?php 
-                          include 'koneksi.php';
-                          $sumberdana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Jenis ASC");
-                          while($k = mysqli_fetch_array($sumberdana)){
-                            ?>
-                            <option value="<?php echo $k['Id_sumberdana']; ?>"><?php echo $k['Jenis']; ?></option>
-                            <?php 
-                          }
-                          ?>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>DIVISI</label>
-                        <select name="divisi" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <?php 
-                          include 'koneksi.php';
-                          $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Nama_divisi ASC");
-                          while($k = mysqli_fetch_array($divisi)){
-                            ?>
-                            <option value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
-                            <?php 
-                          }
-                          ?>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>BULAN</label>
-                        <select name="bulan" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <option value="Januari">Januari</option>
-                          <option value="Februari">Februari</option>
-                          <option value="Maret">Maret</option>
-                          <option value="April">April</option>
-                          <option value="Mei">Mei</option>
-                          <option value="Juni">Juni</option>
-                          <option value="Juli">Juli</option>
-                          <option value="Agustus">Agustus</option>
-                          <option value="September">September</option>
-                          <option value="Oktober">Oktober</option>
-                          <option value="November">November</option>
-                          <option value="Desember">Desember</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>TANGGAL SPJ</label>
-                        <input type="text" name="tanggal" required="required" class="form-control datepicker2">
-                      </div>
-
-                      <div class="form-group">
-                        <label>JENIS BELANJA</label>
-                        <select name="jenis" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <?php 
-                          include 'koneksi.php';
-                          $divisi = mysqli_query($koneksi,"SELECT * FROM master_belanja ORDER BY Jenis ASC");
-                          while($k = mysqli_fetch_array($divisi)){
-                            ?>
-                            <option value="<?php echo $k['Id_jenisbelanja']; ?>"><?php echo $k['Jenis']; ?></option>
-                            <?php 
-                          }
-                          ?>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>RINCIAN BELANJA</label>
-                        <input type="text" name="rincian" required="required" class="form-control" placeholder="Masukkan Rincian ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>JUMLAH (RUPIAH)</label>
-                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>LINK DRIVE</label>
-                        <input type="text" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>Upload Bukti</label>
-                        <input type="file" name="trnfoto" class="form-control">
-                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg | *PNG </small>
-                      </div>
-
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                      <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
@@ -181,7 +61,7 @@
                   <tr>
                     <th>NO</th>
                     <th>OPSI</th>
-                    <!-- <th>KODE PENGELUARAN</th> -->
+                    <!-- <th>KODE pengeluaran</th> -->
                     <th>BULAN</th>
                     <th>TANGGAL SPJ</th>
                     <th>SUMBER DANA</th>
@@ -195,7 +75,7 @@
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND master_pengeluaran.Keterangan='nonverifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -246,7 +126,7 @@
                                   <div class="modal-body">
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KODE PENGELUARAN</label>
+                                      <label>KODE pengeluaran</label>
                                       <input type="text" style="width:100%" name="kode_pengeluaran"  class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" >
                                     </div>
                                     
@@ -385,7 +265,7 @@
                                 <div class="modal-body">
                                 <table class="table table-condensed">
                                   <tr>
-                                    <th>KODE PENGELUARAN</th>
+                                    <th>KODE pengeluaran</th>
                                     <td><?php echo $d['Kode_pengeluaran']; ?></td>
                                   </tr>
                                   <tr>
@@ -449,7 +329,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="penerimaan_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
+                                  <a href="pengeluaran_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
                                 </div>
                               </div>
                             </div>

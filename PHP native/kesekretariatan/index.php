@@ -128,7 +128,7 @@ $hari_ini = date('w');
         </div>
       </div>
 
-      <!-- DATA PENGELUARAN -->
+      <!-- DATA pengeluaran -->
       <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-red">
           <div class="inner">
@@ -143,7 +143,7 @@ $hari_ini = date('w');
               echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
-            <p>Pengeluaran Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
+            <p>pengeluaran Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -166,7 +166,7 @@ $hari_ini = date('w');
               echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
-            <p>Pengeluaran Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+            <p>pengeluaran Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -189,7 +189,7 @@ $hari_ini = date('w');
               echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
-            <p>Pengeluaran Tahun Ini (<?php echo $tahun;?>)</p>
+            <p>pengeluaran Tahun Ini (<?php echo $tahun;?>)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -210,7 +210,7 @@ $hari_ini = date('w');
               echo "Rp. ".number_format($p['total_pengeluaran'], 2, '.', ',')." ,-"
               ?>
             </h4>
-            <p>Seluruh Pengeluaran</p>
+            <p>Seluruh pengeluaran</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -361,7 +361,7 @@ $hari_ini = date('w');
               echo number_format($p['total_pengeluaran'])
               ?>
             </h4>
-            <p>Jumlah Data Pengeluaran (Draft)</p>
+            <p>Jumlah Data pengeluaran (Draft)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -381,7 +381,7 @@ $hari_ini = date('w');
               echo number_format($p['total_pengeluaran'])
               ?>
             </h4>
-            <p>Jumlah Data Pengeluaran (Terverifikasi)</p>
+            <p>Jumlah Data pengeluaran (Terverifikasi)</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -402,7 +402,7 @@ $hari_ini = date('w');
 
           <ul class="nav nav-tabs pull-right">
             <!-- <li><a href="#tab2" data-toggle="tab">Pemasukan</a></li> -->
-            <li class="active"><a href="#tab1" data-toggle="tab">Pemasukan & Pengeluaran</a></li>
+            <li class="active"><a href="#tab1" data-toggle="tab">Pemasukan & pengeluaran</a></li>
             <li class="pull-left header">Grafik</li>
           </ul>
 
@@ -437,7 +437,7 @@ $hari_ini = date('w');
               <br/>
               <br/>
 
-              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
+              <h4 class="text-center">Realisasi pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
               <canvas id="myChart3" style="position: relative; height: 300px;"></canvas>
 
               <br/>
@@ -445,7 +445,7 @@ $hari_ini = date('w');
               <br/>
               <br/>
 
-              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
+              <h4 class="text-center">Progress Realisasi pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
               <?php 
                 $jan= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jan FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Januari' ");
                 $feb= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_feb FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Februari' ");

@@ -27,7 +27,7 @@
       </a>
       <center>
 
-        <h3><b>Solo Techno Park Finance Analyzer (Soto Panaz)</b></h3>
+        <h3><b>Solo Techno Park Analyzer (Soto Panaz)</b></h3>
 
         <br />
 

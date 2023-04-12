@@ -1,14 +1,28 @@
 <?php 
 include 'header.php'; 
-$tanggal = date('Y-m-d');
+$namabulan = array(
+  1 => "Januari",
+  2 => "Februari",
+  3 => "Maret",
+  4 => "April",
+  5 => "Mei",
+  6 => "Juni",
+  7 => "Juli",
+  8 => "Agustus",
+  9 => "September",
+  10 => "Oktober",
+  11 => "November",
+  12 => "Desember"
+);
+$bulan_ini = date('n');
 ?>
 
 <div class="content-wrapper">
 
   <section class="content-header">
     <h1>
-      Pengeluaran Verifikasi
-      <small>Data Pengeluaran</small>
+      pengeluaran Verifikasi
+      <small>Data pengeluaran</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -21,7 +35,7 @@ $tanggal = date('Y-m-d');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran Terverifikasi <?php echo date('d-m-Y', strtotime($tanggal));?></h3>
+            <h3 class="box-title">Transaksi pengeluaran Terverifikasi <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
             <div class="btn-group pull-right">            
             </div><hr>
             <?php 
@@ -64,7 +78,7 @@ $tanggal = date('Y-m-d');
                   <tr>
                     <th>NO</th>
                     <th>OPSI</th>
-                    <!-- <th>KODE PENGELUARAN</th> -->
+                    <!-- <th>KODE pengeluaran</th> -->
                     <th>BULAN</th>
                     <th>TANGGAL SPJ</th>
                     <th>SUMBER DANA</th>
@@ -78,8 +92,8 @@ $tanggal = date('Y-m-d');
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $tanggal = date('Y-m-d');
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND master_pengeluaran.Tanggal='$tanggal' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $bulan = date('m');
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND MONTH(master_pengeluaran.Tanggal)='$bulan' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -130,7 +144,7 @@ $tanggal = date('Y-m-d');
                                   <div class="modal-body">
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KODE PENGELUARAN</label>
+                                      <label>KODE pengeluaran</label>
                                       <input type="text" style="width:100%" name="kode_pengeluaran"  class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" >
                                     </div>
                                     
@@ -269,7 +283,7 @@ $tanggal = date('Y-m-d');
                                 <div class="modal-body">
                                 <table class="table table-condensed">
                                   <tr>
-                                    <th>KODE PENGELUARAN</th>
+                                    <th>KODE pengeluaran</th>
                                     <td><?php echo $d['Kode_pengeluaran']; ?></td>
                                   </tr>
                                   <tr>

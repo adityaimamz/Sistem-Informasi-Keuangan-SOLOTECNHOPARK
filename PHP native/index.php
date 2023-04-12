@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-in>
 		<h2 data-aos="fade-up" data-aos-delay="400">Selamat datang!</h2>
-          <h1 class="pt-1" data-aos="fade-up">Solo Techno Park Finance Analyzer (Soto Panaz)</h1>
+          <h1 class="pt-1" data-aos="fade-up">Solo Techno Park Analyzer (Soto Panaz)</h1>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
               <a href="#chart" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">

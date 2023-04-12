@@ -1,11 +1,14 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'header.php'; 
+$tanggal = date('Y-m-d');
+?>
 
 <div class="content-wrapper">
 
   <section class="content-header">
     <h1>
-      Pengeluaran
-      <small>Data Pengeluaran</small>
+      pengeluaran Verifikasi
+      <small>Data pengeluaran</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,7 +21,7 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran</h3>
+            <h3 class="box-title">Transaksi pengeluaran Terverifikasi <?php echo date('d-m-Y', strtotime($tanggal));?></h3>
             <div class="btn-group pull-right">            
             </div><hr>
             <?php 
@@ -61,7 +64,7 @@
                   <tr>
                     <th>NO</th>
                     <th>OPSI</th>
-                    <!-- <th>KODE PENGELUARAN</th> -->
+                    <!-- <th>KODE pengeluaran</th> -->
                     <th>BULAN</th>
                     <th>TANGGAL SPJ</th>
                     <th>SUMBER DANA</th>
@@ -75,7 +78,8 @@
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $tanggal = date('Y-m-d');
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND master_pengeluaran.Tanggal='$tanggal' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -92,7 +96,7 @@
                           <?php if($d['Bukti_lpj']==''){ ?> 
 
                           <?php } else { ?> 
-                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                                 <i class="fa fa-eye"></i>
                               </button>
                           <?php } ?>
@@ -126,7 +130,7 @@
                                   <div class="modal-body">
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KODE PENGELUARAN</label>
+                                      <label>KODE pengeluaran</label>
                                       <input type="text" style="width:100%" name="kode_pengeluaran"  class="form-control" value="<?php echo $d['Kode_pengeluaran'] ?>" >
                                     </div>
                                     
@@ -265,7 +269,7 @@
                                 <div class="modal-body">
                                 <table class="table table-condensed">
                                   <tr>
-                                    <th>KODE PENGELUARAN</th>
+                                    <th>KODE pengeluaran</th>
                                     <td><?php echo $d['Kode_pengeluaran']; ?></td>
                                   </tr>
                                   <tr>
