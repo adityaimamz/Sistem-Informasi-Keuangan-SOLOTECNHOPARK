@@ -170,7 +170,7 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT master_agenda.*, master_pegawai.Nama_pegawai FROM master_agenda,master_pegawai  WHERE master_pegawai.Id_pegawai=master_pengeluaran.Id_pegawai ORDER BY master_agenda.Id_agenda DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_agenda.*,master_pegawai.Nama_pegawai FROM master_pegawai JOIN master_agenda ON master_pegawai.Id_pegawai=master_agenda.Id_pegawai order by Id_agenda desc;");
                   while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
