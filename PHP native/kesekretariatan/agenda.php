@@ -97,7 +97,7 @@
                     </div>
                     <div class="form-group">
                         <label>PERIHAL</label>
-                        <select name="Perihal" class="form-control" required="required">
+                        <select name="perihal" class="form-control" required="required">
                           <option value="">- Pilih -</option>
                           <option value="Kunjungan">Kunjungan</option>
                           <option value="Undangan">Undangan</option>
@@ -105,7 +105,7 @@
                       </div>
                       <div class="form-group">
                         <label>STATUS</label>
-                        <select name="Status" class="form-control" required="required">
+                        <select name="status" class="form-control" required="required">
                           <option value="">- Pilih -</option>
                           <option value="Draft">Draft</option>
                           <option value="Disposisi">Disposisi</option>
@@ -123,7 +123,7 @@
 
                     <div class="form-group" style="width:100%;margin-bottom:20px">
                         <label>PIC</label>
-                      <select name="PIC" style="width:100%" class="form-control" required="required">
+                      <select name="pegawai" style="width:100%" class="form-control" required="required">
                         <option value="">- Pilih -</option>
                         <?php 
                         $pegawai = mysqli_query($koneksi,"SELECT * FROM master_pegawai ORDER BY Id_pegawai ASC");
@@ -170,35 +170,21 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT master_agenda.* FROM master_agenda  ORDER BY master_agenda.Id_agenda DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_agenda.*, master_pegawai.Nama_pegawai FROM master_agenda,master_pegawai  WHERE master_pegawai.Id_pegawai=master_pengeluaran.Id_pegawai ORDER BY master_agenda.Id_agenda DESC");
                   while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td>    
-                          <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_agenda_<?php echo $d['Id_agenda'] ?>">
-                              <i class="fa fa-list"></i>
-                          </button>
 
                           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_agenda_<?php echo $d['Id_agenda'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
 
-                          <?php if($d['Gambar']==''){ ?> 
-
-                          <?php } else { ?> 
-                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_agenda_<?php echo $d['Id_agenda'] ?>">
-                                <i class="fa fa-eye"></i>
-                              </button>
-                          <?php } ?>
-
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_agenda_<?php echo $d['Id_agenda'] ?>">
                               <i class="fa fa-trash"></i>
                             </button>
 
-                            <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_agenda_<?php echo $d['Id_agenda'] ?>">
-                              <i class="fa fa-eye"></i>
-                            </button> -->
 
                             <!-- Modal Update -->
                             <form action="agenda_update.php" method="post" enctype="multipart/form-data">
@@ -316,67 +302,6 @@
                             </div>
                           </div>
 
-                          <!-- Modal detail -->
-                          <div class="modal fade" id="detail_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Detail</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                <table class="table table-condensed">
-                                  <tr>
-                                    <th>KODE agenda</th>
-                                    <td><?php echo $d['Kode_agenda']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>NAMA agenda</th>
-                                    <td><?php echo $d['Nama_agenda']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>TANGGAL MASUK</th>
-                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>TANGGAL KELUAR</th>
-                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>MERK</th>
-                                    <td><?php echo $d['Merk']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>TIPE</th>
-                                    <td><?php echo $d['Tipe']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>JUMLAH agenda</th>
-                                    <td><?php echo $d['Jumlah']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>KONDISI agenda</th>
-                                    <td><?php echo $d['Kondisi_agenda']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>LOKASI</th>
-                                    <td><?php echo $d['Lokasi']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <th>pegawai</th>
-                                    <td><?php echo $d['Nama_pegawai']; ?></td>
-                                  </tr>
-                                  </table>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
                           <!-- Modal Hapus -->
                           <div class="modal fade" id="hapus_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -400,15 +325,15 @@
                           </div>
 
                       </td>
-                        <!-- <td><?php echo $d['Kode_agenda']; ?></td> -->
-                        <td><?php echo $d['Nama_agenda']; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
-                        <td class="text-center"><?php echo $d['Jumlah']; ?></td>
-                        <!-- <td><?php echo $d['Merk']; ?></td> -->
-                        <!-- <td><?php echo $d['Tipe']; ?></td> -->
-                        <td><?php echo $d['Kondisi_agenda']; ?></td>
-                        <td><?php echo $d['Lokasi']; ?></td>
+                        <td><?php echo $d['Tanggal']; ?></td>
+                        <td><?php echo $d['Pukul']; ?></td>
+                        <td><?php echo $d['Acara']; ?></td>
+                        <td><?php echo $d['Instansi']; ?></td>
+                        <td><?php echo $d['Tempat']; ?></td>
+                        <td><?php echo $d['Perihal']; ?></td>
+                        <td><?php echo $d['Status']; ?></td>
+                        <td><?php echo $d['Jumlah_pengunjung']; ?></td>
+                        <td><?php echo $d['Keterangan']; ?></td>
                         <td><?php echo $d['Nama_pegawai']; ?></td>
                     </tr>
                     <?php 
