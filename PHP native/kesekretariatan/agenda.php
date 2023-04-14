@@ -200,43 +200,62 @@
                                     <div class="modal-body">
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
-                                        <label>KODE agenda</label>
-                                        <input type="hidden" name="id" required="required" class="form-control" placeholder="Nama Kategori .." value="<?php echo $d['Id_agenda']; ?>">
-                                        <input type="text" style="width:100%" name="kode_agenda" class="form-control" placeholder="Masukkan Nominal .." value="<?php echo $d['Kode_agenda'] ?>">
+                                        <label>TANGGAL</label>
+                                        <input type="hidden" name="id" required="required" class="form-control" value="<?php echo $d['Id_agenda']; ?>">
+                                        <input type="text" style="width:100%" name="tanggal" class="form-control datepicker2" placeholder="Ubah Tanggal" value="<?php echo $d['Tanggal'] ?>">
                                       </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>NAMA agenda</label>
-                                      <input type="text" style="width:100%" name="nama_agenda" required="required" class="form-control" value="<?php echo $d['Nama_agenda'] ?>">
+                                      <label>PUKUL</label>
+                                      <input type="text" style="width:100%" name="pukul" required="required" class="form-control" value="<?php echo $d['Pukul'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>MERK</label>
-                                      <input type="text" style="width:100%" name="merk" required="required" class="form-control" value="<?php echo $d['Merk'] ?>">
+                                      <label>ACARA</label>
+                                      <input type="text" style="width:100%" name="acara" required="required" class="form-control" value="<?php echo $d['Acara'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>TIPE</label>
-                                      <input type="text" style="width:100%" name="tipe" required="required" class="form-control" value="<?php echo $d['Tipe'] ?>">
+                                      <label>INSTANSI</label>
+                                      <input type="text" style="width:100%" name="instansi" required="required" class="form-control" value="<?php echo $d['Instansi'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>TIPE</label>
-                                      <input type="text" style="width:100%" name="tipe" required="required" class="form-control" value="<?php echo $d['Tipe'] ?>">
+                                      <label>TEMPAT</label>
+                                      <input type="text" style="width:100%" name="tempat" required="required" class="form-control" value="<?php echo $d['Tempat'] ?>">
+                                    </div>
+
+                                    <div class="form-group" style="width:100%; margin-bottom:20px">
+                                      <label>PERIHAL</label>
+                                      <select name="perihal" style="width:100%" class="form-control" >
+                                      <option value="perihal"><?php echo $d['Perihal']; ?></option>
+                                      <option value="Kunjungan">Kunjungan</option>
+                                      <option value="Undangan">Undangan</option>
+                                      </select>
+                                    </div>
+
+                                    <div class="form-group" style="width:100%; margin-bottom:20px">
+                                      <label>STATUS</label>
+                                      <select name="status" style="width:100%" class="form-control" >
+                                          <option value="status"><?php echo $d['Status']; ?></option>
+                                          <option value="Draft">Draft</option>
+                                          <option value="Disposisi">Disposisi</option>
+                                          <option value="Terlaksana">Terlaksana</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KONDISI agenda</label>
-                                      <input type="text" style="width:100%" name="kondisi_agenda" required="required" class="form-control" value="<?php echo $d['Kondisi_agenda'] ?>">
-                                    </div>
+                                    <label>JUMLAH PENGUNJUNG</label>
+                                    <input type="text" style="width:100%" name="jumlah_pengunjung" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Jumlah_pengunjung'];?>">
+                                  </div>
+
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>keterangan</label>
+                                    <input type="text" style="width:100%" name="keterangan" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Keterangan'];?>">
+                                  </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>LOKASI</label>
-                                      <input type="text" style="width:100%" name="lokasi" required="required" class="form-control" value="<?php echo $d['Lokasi'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>pegawai</label>
+                                      <label>Pegawai</label>
                                       <select name="pegawai" style="width:100%" class="form-control" required="required">
                                         <option value="">- Pilih -</option>
                                         <?php 
@@ -250,27 +269,6 @@
                                       </select>
                                       </div>
 
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>TANGGAL MASUK</label>
-                                      <input type="text" style="width:100%" name="tanggal_masuk" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal_masuk'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>TANGGAL_KELUAR</label>
-                                      <input type="text" style="width:100%" name="tanggal_keluar" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal_keluar'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>JUMLAH agenda</label>
-                                    <input type="text" style="width:100%" name="jumlah" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Jumlah'];?>">
-                                  </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>UPLOAD BUKTI</label>
-                                      <input type="file" name="trnfoto" class="form-control"><br>
-                                      <!-- <small><?php echo $d['Bukti'] ?></small> -->
-                                      <p class="help-block">Bila File <?php echo "<a class='fancybox btn btn-xs btn-primary' target=_blank href='../gambar/bukti/$d[Gambar]'>$d[Gambar]</a>";?> tidak dirubah kosongkan saja</p>
-                                    </div>
 
                                   </div>
                                   <div class="modal-footer">  
@@ -281,26 +279,6 @@
                               </div>
                             </div>
                           </form>
-
-                          <!-- Modal Lihat -->
-                          <div class="modal fade" id="lihat_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Lihat Bukti Upload</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <embed src="../gambar/bukti/<?php echo $d['Gambar']; ?>" type="application/pdf" width="100%" height="400px" />
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
 
                           <!-- Modal Hapus -->
                           <div class="modal fade" id="hapus_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -332,7 +310,7 @@
                         <td><?php echo $d['Tempat']; ?></td>
                         <td><?php echo $d['Perihal']; ?></td>
                         <td><?php echo $d['Status']; ?></td>
-                        <td><?php echo $d['Jumlah_pengunjung']; ?></td>
+                        <td class="text-center"><?php echo $d['Jumlah_pengunjung']; ?></td>
                         <td><?php echo $d['Keterangan']; ?></td>
                         <td><?php echo $d['Nama_pegawai']; ?></td>
                     </tr>
