@@ -105,7 +105,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="accordion-collapse collapse show"><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data PEgawai</a></li>
+            <li class="accordion-collapse collapse show"><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
           </ul>
         </li>
         <script>
