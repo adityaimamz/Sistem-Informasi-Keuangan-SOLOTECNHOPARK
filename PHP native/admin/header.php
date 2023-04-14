@@ -109,6 +109,7 @@
             <li><a href="metode.php"><i class="fa fa-circle-o"></i> Data Metode Bayar</a></li>
             <li><a href="dana.php"><i class="fa fa-circle-o"></i> Data Sumber Dana</a></li>
             <li><a href="belanja.php"><i class="fa fa-circle-o"></i> Data Jenis Belanja</a></li>
+            <li><a href="Pegawai.php"><i class="fa fa-circle-o"></i> Data PEgawai</a></li>
           </ul>
         </li>
         <script>
@@ -116,6 +117,21 @@
           $('.treeview').tree();
         });
         </script>
+
+              <li class="treeview">
+            <a href="#">
+              <i class="fa fa-user"></i>
+              <span>KESEKRETARIATAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="surat_masuk.php"><i class="fa fa-circle-o"></i> Data Surat Masuk</a></li>
+              <li><a href="surat_keluar.php"><i class="fa fa-circle-o"></i> Data Surat Keluar</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Agenda</a></li>
+            </ul>
+          </li>
 
           <li class="treeview">
             <a href="#">
