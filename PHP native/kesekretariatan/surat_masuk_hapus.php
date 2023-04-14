@@ -2,5 +2,5 @@
 include '../koneksi.php';
 $id  = $_GET['id'];
 
-mysqli_query($koneksi, "delete from master_penerimaan where Id_penerimaan='$id'");
-header("location:penerimaan_verifikasi.php");
+mysqli_query($koneksi, "delete from surat_masuk where Id_Suratmasuk='$id'");
+header("location:surat_masuk.php?");

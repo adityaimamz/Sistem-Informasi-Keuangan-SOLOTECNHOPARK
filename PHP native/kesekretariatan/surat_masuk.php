@@ -102,7 +102,7 @@
                     </div>
                     <div class="form-group">
                       <label>TANGGAL DITERUSKAN</label>
-                      <input type="text" name="tgl_diteruskan" required="required" class="form-control datepicker2">
+                      <input type="text" name="tanggal_diteruskan" required="required" class="form-control datepicker2">
                     </div>
                     <div class="form-group">
                       <label>CATATAN</label>
@@ -114,14 +114,14 @@
                               <option value="">- Pilih -</option>
                               <option value="Permohonan">Permohonan</option>
                               <option value="Kunjungan">Kunjungan</option>
-                              <option value="Berita Acara ">Undangan</option>
-                              <option value="Berita Acara ">Jawaban</option>
-                              <option value="Berita Acara ">Berita Acara</option>
+                              <option value="Undangan">Undangan</option>
+                              <option value="Jawaban">Jawaban</option>
+                              <option value="Berita_acara">Berita Acara</option>
                             </select>
                     </div>
                     <div class="form-group">
                       <label>TANGGAL PELAKSANAAN</label>
-                      <input type="text" name="tanggal" required="required" class="form-control datepicker2">
+                      <input type="text" name="tgl_pelaksanaan" required="required" class="form-control datepicker2">
                     </div>
                     <div class="form-group">
                       <label>WAKTU PELAKSANAAN</label>
@@ -182,7 +182,7 @@
                         </button>
 
                         <!-- Modal Edit -->
-                        <form action="Suratmasuk_update.php" method="post" enctype="multipart/form-data">
+                        <form action="surat_masuk_update.php" method="post" enctype="multipart/form-data">
                           <div class="modal fade" id="edit_Suratmasuk_<?php echo $d['Id_Suratmasuk'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -193,35 +193,61 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                  <div class="form-group">
+                                    <label>NO SURAT MASUK</label>
+                                    <input type="hidden" name="id" required="required" class="form-control" value="<?php echo $d['Id_Suratmasuk']; ?>">
+                                    <input type="text" name="no_suratmasuk" class="form-control" placeholder="Masukkan No Surat Masuk .." value="<?php echo $d['No_Suratmasuk'] ?>">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>NOMOR SURAT</label>
+                                    <input type="text" name="nomor_surat" class="form-control" placeholder="Masukkan Nomor Surat .." value="<?php echo $d['Nomor_surat'] ?>">
+                                  </div>
+                                  <div class="form-group">
                                     <label>TANGGAL</label>
-                                    <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Masukkan Tanggal .." value="<?php echo $d['Tanggal'] ?>">
+                                    <input type="text" name="tanggal" required="required" class="form-control datepicker2" value="<?php echo $d['Tanggal'] ?>">
                                   </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_Suratmasuk'] ?>">
-                                    <label>NAMA</label>
-                                    <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama_pembayar'] ?>">
+                                  <div class="form-group">
+                                    <label>PERIHAL</label>
+                                    <input type="text" name="perihal" required="required" class="form-control" placeholder="Masukkan Perihal .." value="<?php echo $d['Perihal'] ?>">
                                   </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>ALAMAT/ASAL INSTANSI</label>
-                                    <input type="text" style="width:100%" name="alamat" required="required" class="form-control" placeholder="Masukkan Asal Instansi .." value="<?php echo $d['Alamat_instansi'] ?>">
+                                  <div class="form-group">
+                                    <label>TERIMA DARI</label>
+                                    <input type="text" name="terima_dari" required="required" class="form-control" placeholder="Masukkan Nama Penerima .." value="<?php echo $d['Terima_dari'] ?>">
                                   </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>KEPERLUAN</label>
-                                    <input type="text" style="width:100%" name="keperluan" required="required" class="form-control" placeholder="Masukkan Keperluan .." value="<?php echo $d['Keperluan'] ?>">
+                                  <div class="form-group">
+                                    <label>ISI</label>
+                                    <input type="text" name="isi" required="required" class="form-control" placeholder="Masukkan Isi Surat .." value="<?php echo $d['Isi'] ?>">
                                   </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>LINK DRIVE</label>
-                                    <input type="text" style="width:100%" name="drive" class="form-control" placeholder="Masukkan Link Drive File Anda .." value="<?php echo $d['Drive'] ?>">
+                                  <div class="form-group">
+                                    <label>TANGGAL DITERUSKAN</label>
+                                    <input type="text" name="tanggal_diteruskan" required="required" class="form-control datepicker2" value="<?php echo $d['Tanggal_diteruskan'] ?>">
                                   </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>BESARAN (RUPIAH)</label>
-                                    <input type="text" style="width:100%" name="nominal" required="required" class="form-control" placeholder="Masukkan Besaran .." value="<?php echo $d['Besaran_biaya'];?>">
+                                  <div class="form-group">
+                                    <label>CATATAN</label>
+                                    <input type="text" name="catatan" class="form-control" placeholder="Masukkan Catatan .." value="<?php echo $d['Catatan'] ?>">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>KATEGORI </label>
+                                    <select name="kategori" style="width:100%" class="form-control" required="required">
+                                      <option value="kategori"><?php echo $d['Kategori']; ?></option>
+                                      <option value="Permohonan">Permohonan</option>
+                                      <option value="Kunjungan">Kunjungan</option>
+                                      <option value="Undangan">Undangan</option>
+                                      <option value="Jawaban">Jawaban</option>
+                                      <option value="Berita_acara">Berita Acara</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label>TANGGAL PELAKSANAAN</label>
+                                    <input type="text" name="tgl_pelaksanaan" required="required" class="form-control datepicker2" value="<?php echo $d['Tanggal_pelaksanaan'] ?>">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>WAKTU PELAKSANAAN</label>
+                                    <input type="text" name="waktu_pelaksanaan" class="form-control" placeholder="Masukkan Waktu Pelaksanaan .." value="<?php echo $d['Waktu_pelaksanaan'] ?>">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>TEMPAT PELAKSANAAN</label>
+                                    <input type="text" name="tempat_pelaksanaan" class="form-control" placeholder="Masukkan Tempat Pelaksanaan .." value="<?php echo $d['Tempat_pelaksanaan'] ?>">
                                   </div>
 
 
@@ -261,7 +287,7 @@
                                 </tr>
                                 <tr>
                                   <th>TANGGAL PELAKSANAAN</th>
-                                  <td><?php echo $d['Tgl_pelaksanaan']; ?></td>
+                                  <td><?php echo $d['Tanggal_pelaksanaan']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>WAKTU PELAKSANAAN</th>
@@ -297,7 +323,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <a href="Suratmasuk_hapus.php?id=<?php echo $d['Id_Suratmasuk'] ?>" class="btn btn-primary">Hapus</a>
+                                <a href="surat_masuk_hapus.php?id=<?php echo $d['Id_Suratmasuk'] ?>" class="btn btn-primary">Hapus</a>
                               </div>
                             </div>
                           </div>

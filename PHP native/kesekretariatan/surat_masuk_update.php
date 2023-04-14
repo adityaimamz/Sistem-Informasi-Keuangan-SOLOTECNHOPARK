@@ -1,36 +1,19 @@
 <?php 
 include '../koneksi.php';
-$id  = $_POST['id'];
-$tanggal  = $_POST['tanggal'];
-$bulan  = $_POST['bulan'];
-$No_tandaterima  = $_POST['No_tandaterima'];
-$metode  = $_POST['metode'];
-$nama  = $_POST['nama'];
-$alamat  = $_POST['alamat'];
-$keperluan  = $_POST['keperluan'];
-$nominal  = $_POST['nominal'];
-$drive  = $_POST['drive'];
+$id = $_POST['id'];
+$no_suratmasuk = $_POST['no_suratmasuk'];
+$no_surat = $_POST['nomor_surat'];
+$tanggal = $_POST['tanggal'];
+$perihal = $_POST['perihal'];
+$terima_dari = $_POST['terima_dari'];
+$isi = $_POST['isi'];
+$tanggal_diteruskan = $_POST['tanggal_diteruskan'];
+$catatan = $_POST['catatan'];
+$kategori = $_POST['kategori'];
+$tgl_pelaksanaan = $_POST['tgl_pelaksanaan'];
+$waktu_pelaksanaan = $_POST['waktu_pelaksanaan'];
+$tempat_pelaksanaan = $_POST['tempat_pelaksanaan'];
 
-$rand = rand();
-$allowed =  array('jpg','jpeg','pdf');
-$filename = $_FILES['trnfoto']['name'];
-$ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-if($filename == ""){
-	mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Drive='$drive' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
-	header("location:penerimaan_verifikasi.php?alert=berhasilupdate");
-}else{
-	$ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-	if(!in_array($ext,$allowed) ) {
-		header("location:penerimaan_verifikasi.php?alert=gagal");
-	}else{
-		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
-		$xgambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Bukti='$xgambar', Drive='$drive' where Id_penerimaan='$id'");
-		header("location:penerimaan_verifikasi.php?alert=berhasilupdate");
-	}
-}
-
-// mysqli_query($koneksi, "update transaksi set transaksi_tanggal='$tanggal', transaksi_jenis='$jenis', transaksi_kategori='$kategori', transaksi_nominal='$nominal', transaksi_keterangan='$keterangan', transaksi_bank='$bank' where transaksi_id='$id'") or die(mysqli_error($koneksi));
-// header("location:transaksi.php");
+mysqli_query($koneksi, "UPDATE surat_masuk SET No_Suratmasuk='$no_suratmasuk', Nomor_surat='$no_surat', Tanggal='$tanggal', Perihal='$perihal', Terima_dari='$terima_dari', Isi='$isi', Tanggal_diteruskan='$tanggal_diteruskan', Catatan='$catatan', Kategori='$kategori', Tanggal_pelaksanaan='$tgl_pelaksanaan', Waktu_pelaksanaan='$waktu_pelaksanaan', Tempat_pelaksanaan='$tempat_pelaksanaan' WHERE Id_Suratmasuk='$id'") or die(mysqli_error($koneksi));
+header("location: surat_masuk.php?alert=berhasilupdate");
+?>
