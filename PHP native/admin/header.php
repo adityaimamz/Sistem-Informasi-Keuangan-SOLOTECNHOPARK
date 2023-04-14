@@ -109,7 +109,7 @@
             <li><a href="metode.php"><i class="fa fa-circle-o"></i> Data Metode Bayar</a></li>
             <li><a href="dana.php"><i class="fa fa-circle-o"></i> Data Sumber Dana</a></li>
             <li><a href="belanja.php"><i class="fa fa-circle-o"></i> Data Jenis Belanja</a></li>
-            <li><a href="Pegawai.php"><i class="fa fa-circle-o"></i> Data PEgawai</a></li>
+            <li><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
           </ul>
         </li>
         <script>

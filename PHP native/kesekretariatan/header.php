@@ -95,6 +95,19 @@
               <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
             </a>
           </li>
+
+          <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>DATA MASTER</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="accordion-collapse collapse show"><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data PEgawai</a></li>
+          </ul>
+        </li>
         <script>
         $(function () {
           $('.treeview').tree();
