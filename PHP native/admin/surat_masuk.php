@@ -287,7 +287,7 @@
                                 </tr>
                                 <tr>
                                   <th>TANGGAL PELAKSANAAN</th>
-                                  <td><?php echo $d['Tanggal_pelaksanaan']; ?></td>
+                                  <td><?php echo $d['Tgl_pelaksanaan']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>WAKTU PELAKSANAAN</th>

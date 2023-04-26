@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group">
                         <label>PUKUL</label>
-                        <input type="text" name="pukul" required="required" class="form-control">
+                        <input type="text" name="pukul" required="required" class="form-control" placeholder="mulai pukul: _____ dan selesai pukul:_____">
                     </div>
                     <div class="form-group">
                         <label>ACARA</label>
