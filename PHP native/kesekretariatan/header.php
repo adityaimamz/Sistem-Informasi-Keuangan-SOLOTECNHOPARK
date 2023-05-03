@@ -141,6 +141,21 @@
               <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form pengeluaran</a></li> -->
             </ul>
 
+            <li class="treeview">
+            <a href="#">
+              <i class="fa fa-print"></i>
+              <span>LAPORAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="surat_masuk_laporan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
+              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i> Laporan Pengeluaran</a></li>
+              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
+            </ul>
+          </li>
+
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
