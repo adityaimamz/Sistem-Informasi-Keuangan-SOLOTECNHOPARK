@@ -26,7 +26,7 @@
               </button>
               &nbsp
 
-              <a href="Suratmasuk_csv.php"><button type="button" class="btn btn-success btn-sm">
+              <a href="surat_masuk_csv.php"><button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-file-excel-o"></i> &nbsp CSV
               </button></a>
 

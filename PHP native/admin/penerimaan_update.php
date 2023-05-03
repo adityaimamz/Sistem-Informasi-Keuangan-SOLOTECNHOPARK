@@ -17,8 +17,24 @@ $filename = $_FILES['trnfoto']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if($filename == ""){
-	mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Drive='$drive' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
-	header("location:penerimaan.php?alert=berhasilupdate");
+// 	mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Drive='$drive' where Id_penerimaan='$id'") or die(mysqli_error($koneksi));
+// 	header("location:penerimaan.php?alert=berhasilupdate");
+    
+    $query = sprintf("update master_penerimaan set Bulan='%s', Tanggal='%s', Nama_pembayar='%s', Keperluan='%s', alamat_instansi='%s', No_tandaterima='%s', Besaran_biaya='%s', Id_metode='%d', Drive='%s' where Id_penerimaan='%s'",
+    	mysqli_real_escape_string($koneksi, $bulan),
+    	mysqli_real_escape_string($koneksi, $tanggal),
+    	mysqli_real_escape_string($koneksi, $nama),
+    	mysqli_real_escape_string($koneksi, $keperluan),
+    	mysqli_real_escape_string($koneksi, $alamat),
+    	mysqli_real_escape_string($koneksi, $No_tandaterima),
+    	mysqli_real_escape_string($koneksi, $nominal),
+    	mysqli_real_escape_string($koneksi, $metode),
+    	mysqli_real_escape_string($koneksi, $drive),
+    	mysqli_real_escape_string($koneksi, $id));
+    
+    mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
+    header("location:penerimaan.php?alert=berhasilupdate");
+
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -27,8 +43,25 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Bukti='$xgambar', Drive='$drive' where Id_penerimaan='$id'");
-		header("location:penerimaan.php?alert=berhasilupdate");
+// 		mysqli_query($koneksi, "update master_penerimaan set Bulan='$bulan', Tanggal='$tanggal', Nama_pembayar='$nama', Keperluan='$keperluan', alamat_instansi='$alamat', No_tandaterima='$No_tandaterima', Besaran_biaya='$nominal', Id_metode='$metode', Bukti='$xgambar', Drive='$drive' where Id_penerimaan='$id'");
+// 		header("location:penerimaan.php?alert=berhasilupdate");
+
+        $query = sprintf("UPDATE master_penerimaan SET Bulan='%s', Tanggal='%s', Nama_pembayar='%s', Keperluan='%s', alamat_instansi='%s', No_tandaterima='%s', Besaran_biaya='%s', Id_metode='%s', Bukti='%s', Drive='%s' WHERE Id_penerimaan='%s'",
+			mysqli_real_escape_string($koneksi, $bulan),
+			mysqli_real_escape_string($koneksi, $tanggal),
+			mysqli_real_escape_string($koneksi, $nama),
+			mysqli_real_escape_string($koneksi, $keperluan),
+			mysqli_real_escape_string($koneksi, $alamat),
+			mysqli_real_escape_string($koneksi, $No_tandaterima),
+			mysqli_real_escape_string($koneksi, $nominal),
+			mysqli_real_escape_string($koneksi, $metode),
+			mysqli_real_escape_string($koneksi, $xgambar),
+			mysqli_real_escape_string($koneksi, $drive),
+			mysqli_real_escape_string($koneksi, $id)
+		);
+        mysqli_query($koneksi, $query);
+        header("location:penerimaan.php?alert=berhasilupdate");
+
 	}
 }
 

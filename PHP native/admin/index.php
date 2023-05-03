@@ -308,6 +308,7 @@ $hari_ini = date('w');
         </div>
       </div>
 
+     <!--Data verifikasi dan belum-->
      <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-purple">
           <div class="inner">

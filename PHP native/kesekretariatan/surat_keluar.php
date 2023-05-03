@@ -18,14 +18,14 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Daftar Surat Masuk</h3>
+            <h3 class="box-title">Daftar Surat Keluar</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus"></i> &nbsp Tambah Surat
               </button>
               &nbsp
-            <a href="Suratkeluar_csv.php"><button type="button" class="btn btn-success btn-sm">
+            <a href="surat_keluar_csv.php"><button type="button" class="btn btn-success btn-sm">
               <i class="fa fa-file-excel-o"></i> &nbsp CSV
             </button></a>
             </div><hr>

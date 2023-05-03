@@ -77,64 +77,44 @@
 
                     <div class="form-group">
                         <label>TANGGAL</label>
-                        <input type="date" name="tanggal" required="required" class="form-control">
+                        <input type="date" name="tanggal"  class="form-control">
                     </div>
                     <div class="form-group">
                         <label>PUKUL</label>
-                        <input type="text" name="pukul" required="required" class="form-control" placeholder="mulai pukul: _____ dan selesai pukul:_____">
+                        <input type="text" name="pukul" class="form-control" placeholder="mulai pukul: _____ dan selesai pukul:_____">
                     </div>
                     <div class="form-group">
                         <label>ACARA</label>
-                        <input type="text" name="acara" required="required" class="form-control" placeholder="Masukkan Acara..">
+                        <input type="text" name="acara"  class="form-control" placeholder="Masukkan Acara..">
                     </div>
                     <div class="form-group">
                         <label>INSTANSI</label>
-                        <input type="text" name="instansi" required="required" class="form-control" placeholder="Masukkan Instansi..">
+                        <input type="text" name="instansi"  class="form-control" placeholder="Masukkan Instansi..">
                     </div>
                     <div class="form-group">
                         <label>TEMPAT</label>
-                        <input type="text" name="tempat" required="required" class="form-control" placeholder="Masukkan Tempat..">
+                        <input type="text" name="tempat" class="form-control" placeholder="Masukkan Tempat..">
                     </div>
                     <div class="form-group">
                         <label>PERIHAL</label>
-                        <select name="perihal" class="form-control" required="required">
+                        <select name="perihal" class="form-control">
                           <option value="">- Pilih -</option>
                           <option value="Kunjungan">Kunjungan</option>
                           <option value="Undangan">Undangan</option>
                         </select>
                       </div>
-                      <div class="form-group">
-                        <label>STATUS</label>
-                        <select name="status" class="form-control" required="required">
-                          <option value="">- Pilih -</option>
-                          <option value="Draft">Draft</option>
-                          <option value="Disposisi">Disposisi</option>
-                          <option value="Terlaksana">Terlaksana</option>
-                        </select>
-                      </div>
                     <div class="form-group">
                         <label>JUMLAH PENGUNJUNG</label>
-                        <input type="number" name="jumlah_pengunjung" required="required" class="form-control" placeholder="Masukkan Jumlah Pengunjung..">
+                        <input type="number" name="jumlah_pengunjung"  class="form-control" placeholder="Masukkan Jumlah Pengunjung..">
                     </div>
                     <div class="form-group">
                         <label>KETERANGAN</label>
-                        <input type="text" name="keterangan" required="required" class="form-control" placeholder="Masukkan Keterangan..">
+                        <input type="text" name="keterangan"  class="form-control" placeholder="Masukkan Keterangan..">
                     </div>
-
-                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                    <div class="form-group">
                         <label>PIC</label>
-                      <select name="pegawai" style="width:100%" class="form-control" required="required">
-                        <option value="">- Pilih -</option>
-                        <?php 
-                        $pegawai = mysqli_query($koneksi,"SELECT * FROM master_pegawai ORDER BY Id_pegawai ASC");
-                        while($p = mysqli_fetch_array($pegawai)){
-                          ?>
-                          <option <?php if($p['Id_pegawai'] == $p['Id_pegawai']){echo "selected='selected'";} ?> value="<?php echo $p['Id_pegawai']; ?>"><?php echo $p['Nama_pegawai']; ?></option>
-                          <?php 
-                        }
-                        ?>
-                      </select>
-                    </div> 
+                        <input type="text" name="pic"  class="form-control" placeholder="Masukkan Nama PIC..">
+                    </div>
 
                     </div>
                     <div class="modal-footer">
@@ -160,7 +140,6 @@
                     <th>INSTANSI</th>
                     <th>TEMPAT</th>
                     <th>PERIHAL</th>
-                    <th>STATUS</th>
                     <th>JUMLAH PENGUNJUNG</th>
                     <th>KETERANGAN</th>
                     <th>PIC</th>
@@ -170,7 +149,7 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT master_agenda.*,master_pegawai.Nama_pegawai FROM master_pegawai JOIN master_agenda ON master_pegawai.Id_pegawai=master_agenda.Id_pegawai order by Id_agenda desc;");
+                  $data = mysqli_query($koneksi,"SELECT * FROM master_agenda order by Id_agenda desc;");
                   while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -234,16 +213,6 @@
                                       </select>
                                     </div>
 
-                                    <div class="form-group" style="width:100%; margin-bottom:20px">
-                                      <label>STATUS</label>
-                                      <select name="status" style="width:100%" class="form-control" >
-                                          <option value="status"><?php echo $d['Status']; ?></option>
-                                          <option value="Draft">Draft</option>
-                                          <option value="Disposisi">Disposisi</option>
-                                          <option value="Terlaksana">Terlaksana</option>
-                                        </select>
-                                    </div>
-
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>JUMLAH PENGUNJUNG</label>
                                     <input type="text" style="width:100%" name="jumlah_pengunjung" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Jumlah_pengunjung'];?>">
@@ -254,20 +223,10 @@
                                     <input type="text" style="width:100%" name="keterangan" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Keterangan'];?>">
                                   </div>
 
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Pegawai</label>
-                                      <select name="pegawai" style="width:100%" class="form-control" required="required">
-                                        <option value="">- Pilih -</option>
-                                        <?php 
-                                        $pegawai = mysqli_query($koneksi,"SELECT * FROM master_pegawai ORDER BY Id_pegawai ASC");
-                                        while($k = mysqli_fetch_array($pegawai)){
-                                          ?>
-                                          <option <?php if($d['Id_pegawai'] == $k['Id_pegawai']){echo "selected='selected'";} ?> value="<?php echo $k['Id_pegawai']; ?>"><?php echo $k['Nama_pegawai']; ?></option>
-                                          <?php 
-                                        }
-                                        ?>
-                                      </select>
-                                      </div>
+                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                    <label>PIC</label>
+                                    <input type="text" style="width:100%" name="pic" required="required" class="form-control" placeholder="Ganti nama Pic.." value="<?php echo $d['Pic'];?>">
+                                  </div>
 
 
                                   </div>
@@ -309,10 +268,9 @@
                         <td><?php echo $d['Instansi']; ?></td>
                         <td><?php echo $d['Tempat']; ?></td>
                         <td><?php echo $d['Perihal']; ?></td>
-                        <td><?php echo $d['Status']; ?></td>
                         <td class="text-center"><?php echo $d['Jumlah_pengunjung']; ?></td>
                         <td><?php echo $d['Keterangan']; ?></td>
-                        <td><?php echo $d['Nama_pegawai']; ?></td>
+                        <td><?php echo $d['Pic']; ?></td>
                     </tr>
                     <?php 
                   }
