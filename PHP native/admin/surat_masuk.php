@@ -26,7 +26,7 @@
               </button>
               &nbsp
 
-              <a href="Suratmasuk_csv.php"><button type="button" class="btn btn-success btn-sm">
+              <a href="surat_masuk_csv.php"><button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-file-excel-o"></i> &nbsp CSV
               </button></a>
 
@@ -152,10 +152,10 @@
                     <th>OPSI</th>
                     <th>NO SURAT MASUK</th>
                     <th>NOMOR SURAT</th>
-                    <th>TANGGAL</th>
-                    <th>PERIHAL</th>
-                    <th>TERIMA DARI</th>
-                    <th>ISI</th>
+                    <!--<th>TANGGAL</th>-->
+                    <!--<th>PERIHAL</th>-->
+                    <!--<th>TERIMA DARI</th>-->
+                    <!--<th>ISI</th>-->
                   </tr>
                   </thead>
                   <tbody>
@@ -331,10 +331,10 @@
                       </td>
                       <td><?php echo $d['No_Suratmasuk']; ?></td>
                       <td><?php echo $d['Nomor_surat']; ?></td>
-                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                      <td><?php echo $d['Perihal']; ?></td>
-                      <td><?php echo $d['Terima_dari']; ?></td>
-                      <td><?php echo $d['Isi']; ?></td>
+                      <!--<td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>-->
+                      <!--<td><?php echo $d['Perihal']; ?></td>-->
+                      <!--<td><?php echo $d['Terima_dari']; ?></td>-->
+                      <!--<td><?php echo $d['Isi']; ?></td>-->
                     </tr>
                     <?php 
                   }
