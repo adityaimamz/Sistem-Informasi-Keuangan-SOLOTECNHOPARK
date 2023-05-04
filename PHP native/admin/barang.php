@@ -76,63 +76,67 @@
 
                               <div class="form-group">
                                   <label>NAMA BARANG</label>
-                                  <input type="text" name="nama_barang" required="required" class="form-control" placeholder="Masukkan Nama Barang ..">
+                                  <input type="text" name="nama_barang" class="form-control" placeholder="Masukkan Nama Barang ..">
                               </div>
 
                               <div class="form-group">
                                   <label>NAMA GEDUNG</label>
-                                  <input type="text" name="nama_gedung" required="required" class="form-control" placeholder="Masukkan Nama Gedung ..">
+                                  <input type="text" name="nama_gedung" class="form-control" placeholder="Masukkan Nama Gedung ..">
                               </div>
 
                               <div class="form-group">
                                   <label>NAMA RUANGAN/AREA</label>
-                                  <input type="text" name="nama_ruangan_area" required="required" class="form-control" placeholder="Masukkan Nama Ruangan/Area ..">
+                                  <input type="text" name="nama_ruangan_area" class="form-control" placeholder="Masukkan Nama Ruangan/Area ..">
                               </div>
 
                               <div class="form-group">
-                                  <label>TANGGAL MASUK</label>
-                                  <input type="text" name="tanggal_masuk" required="required" class="form-control datepicker2">
+                                  <label>TANGGAL PEMINJAMAN</label>
+                                  <input type="text" name="tanggal_masuk" class="form-control datepicker2">
                               </div>
 
                               <div class="form-group">
-                                  <label>TANGGAL KELUAR</label>
-                                  <input type="text" name="tanggal_keluar" required="required" class="form-control datepicker2">
+                                  <label>TANGGAL DIKEMBALIKAN</label>
+                                  <input type="text" name="tanggal_keluar" class="form-control datepicker2">
+                              </div>
+                                   <div class="form-group">
+                                  <label>TANGGAL BARANG MASUK</label>
+                                  <input type="text" name="tanggal_barang" class="form-control datepicker2">
                               </div>
 
                               <div class="form-group">
                                   <label>JENIS MERK TIPE</label>
-                                  <input type="text" name="jenis_merk_tipe" required="required" class="form-control" placeholder="Masukkan Jenis Merk Tipe Barang ..">
+                                  <input type="text" name="jenis_merk_tipe" class="form-control" placeholder="Masukkan Jenis Merk Tipe Barang ..">
                               </div>
 
                               <div class="form-group">
                                   <label>KODE LABEL STP</label>
-                                  <input type="text" name="kode_label_stp" required="required" class="form-control" placeholder="Masukkan Kode Label STP Barang ..">
+                                  <input type="text" name="kode_label_stp" class="form-control" placeholder="Masukkan Kode Label STP Barang ..">
                               </div>
 
                               <div class="form-group">
                                   <label>KODE LABEL PEMKOT</label>
-                                  <input type="text" name="kode_label_pemkot" required="required" class="form-control" placeholder="Masukkan Kode Label Pemkot Barang ..">
+                                  <input type="text" name="kode_label_pemkot" class="form-control" placeholder="Masukkan Kode Label Pemkot Barang ..">
                               </div>
 
                               <div class="form-group">
                                   <label>JUMLAH BARANG</label>
-                                  <input type="text" name="jumlah_barang" required="required" class="form-control" placeholder="Masukkan Jumlah Barang ..">
+                                  <input type="text" name="jumlah_barang" class="form-control" placeholder="Masukkan Jumlah Barang ..">
                               </div>
 
                               <div class="form-group">
                                   <label>GAMBAR</label>
-                                  <input type="file" name="gambar" required="required" class="form-control">
+                                  <input type="file" name="gambar" class="form-control">
                                   <small>File yang di perbolehkan *PDF | *JPG | *jpeg | *PNG</small>
                               </div>
 
                               <div class="form-group">
                                   <label>DRIVE</label>
-                                  <input type="text" name="drive" required="required" class="form-control" placeholder="Masukkan Drive Barang ..">
+                                  <input type="text" name="drive" class="form-control" placeholder="Masukkan Drive Barang ..">
                               </div>
 
                               <div class="form-group">
                                   <label>KONDISI BARANG</label>
-                                  <select name="kondisi_barang" class="form-control" required="required">
+                                  <select name="kondisi_barang" class="form-control">
                                       <option value="">- Pilih -</option>
                                       <option value="baik">Baik</option>
                                       <option value="rusak">Rusak</option>
@@ -141,7 +145,7 @@
 
                         <div class="form-group">
                         <label>CATATAN</label>
-                        <input type="text" name="catatan" required="required" class="form-control" placeholder="Masukkan Catatan ..">
+                        <input type="text" name="catatan" class="form-control" placeholder="Masukkan Catatan ..">
                       </div>
 
                     </div>
@@ -199,6 +203,17 @@
                           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-trash"></i>
                           </button>
+                          
+                           <?php if($d['Drive']==''){ ?> 
+
+                          <?php } else { ?> 
+                            <a href="<?php echo $d['Drive']; ?>" title="lihat drive" target="_blank">
+                              <button type="button" class="btn btn-success btn-sm">
+                                <i class="fa fa-cloud"></i>
+                              </button>
+                            </a>
+                            <!-- <a href="<?php echo $d['Drive']; ?>" target="_blank">lihat drive</a> -->
+                          <?php } ?>
 
                           <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_barang_<?php echo $d['Id_barang'] ?>">
                             <i class="fa fa-eye"></i>
@@ -218,56 +233,61 @@
                                   <div class="modal-body">
                                                                         <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>NAMA BARANG</label>
-                                          <input type="text" style="width:100%" name="nama_barang" required="required" class="form-control" value="<?php echo $d['Nama_barang'] ?>">
+                                          <input type="text" style="width:100%" name="nama_barang" class="form-control" value="<?php echo $d['Nama_barang'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>NAMA GEDUNG</label>
-                                          <input type="text" style="width:100%" name="nama_gedung" required="required" class="form-control" value="<?php echo $d['Nama_gedung'] ?>">
+                                          <input type="text" style="width:100%" name="nama_gedung" class="form-control" value="<?php echo $d['Nama_gedung'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>NAMA RUANGAN/AREA</label>
-                                          <input type="text" style="width:100%" name="nama_ruanganarea" required="required" class="form-control" value="<?php echo $d['Nama_ruanganarea'] ?>">
+                                          <input type="text" style="width:100%" name="nama_ruanganarea" class="form-control" value="<?php echo $d['Nama_ruanganarea'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
-                                          <label>TANGGAL MASUK</label>
-                                          <input type="text" style="width:100%" name="tanggal_masuk" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal_masuk'] ?>">
+                                          <label>TANGGAL PEMINJAMAN</label>
+                                          <input type="text" style="width:100%" name="tanggal_masuk" class="form-control datepicker2" placeholder="Ubah Tanggal .." value="<?php echo $d['Tanggal_masuk'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
-                                          <label>TANGGAL KELUAR</label>
-                                          <input type="text" style="width:100%" name="tanggal_keluar" required="required" class="form-control datepicker2" placeholder="Masukkan Nominal .." value="<?php echo $d['Tanggal_keluar'] ?>">
+                                          <label>TANGGAL DIKEMBALIKAN</label>
+                                          <input type="text" style="width:100%" name="tanggal_keluar" class="form-control datepicker2" placeholder="Ubah Tanggal .." value="<?php echo $d['Tanggal_keluar'] ?>">
+                                      </div>
+
+                                      <div class="form-group" style="width:100%;margin-bottom:20px">
+                                          <label>TANGGAL MASUK BARANG</label>
+                                          <input type="text" style="width:100%" name="tanggal_barang" class="form-control datepicker2" placeholder="Ubah Tanggal .." value="<?php echo $d['Tanggal_masuk_barang'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>JENIS MERK TIPE</label>
-                                          <input type="text" style="width:100%" name="jenis_merk_tipe" required="required" class="form-control" value="<?php echo $d['JenisMerkTipe'] ?>">
+                                          <input type="text" style="width:100%" name="jenis_merk_tipe" class="form-control" value="<?php echo $d['JenisMerkTipe'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>KODE LABEL STP</label>
-                                          <input type="text" style="width:100%" name="kode_label_stp" required="required" class="form-control" value="<?php echo $d['Kode_label_STP'] ?>">
+                                          <input type="text" style="width:100%" name="kode_label_stp" class="form-control" value="<?php echo $d['Kode_label_STP'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>KODE LABEL PEMKOT</label>
-                                          <input type="text" style="width:100%" name="kode_label_pemkot" required="required" class="form-control" value="<?php echo $d['Kode_label_pemkot'] ?>">
+                                          <input type="text" style="width:100%" name="kode_label_pemkot" class="form-control" value="<?php echo $d['Kode_label_pemkot'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>KONDISI BARANG</label>
-                                          <input type="text" style="width:100%" name="kondisi_barang" required="required" class="form-control" value="<?php echo $d['Kondisi_barang'] ?>">
+                                          <input type="text" style="width:100%" name="kondisi_barang" class="form-control" value="<?php echo $d['Kondisi_barang'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                         <label>CATATAN</label>
-                                        <input type="text" style="width:100%" name="catatan" required="required" class="form-control" value="<?php echo $d['Catatan'] ?>">
+                                        <input type="text" style="width:100%" name="catatan" class="form-control" value="<?php echo $d['Catatan'] ?>">
                                       </div>
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
                                         <label>JUMLAH BARANG</label>
-                                        <input type="text" style="width:100%" name="jumlah_barang" required="required" class="form-control" value="<?php echo $d['Jumlah_barang'] ?>">
+                                        <input type="text" style="width:100%" name="jumlah_barang" class="form-control" value="<?php echo $d['Jumlah_barang'] ?>">
                                       </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -332,12 +352,16 @@
                                     <td><?php echo $d['Nama_ruanganarea']; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>TANGGAL MASUK</th>
+                                    <th>TANGGAL PEMINJAMAN</th>
                                     <td><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
                                 </tr>
                                 <tr>
-                                    <th>TANGGAL KELUAR</th>
+                                    <th>TANGGAL DIKEMBALIKAN</th>
                                     <td><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>TANGGAL MASUK BARANG</th>
+                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk_barang'])); ?></td>
                                 </tr>
                                 <tr>
                                     <th>JENIS/MERK/TIPE</th>
@@ -362,6 +386,10 @@
                                 <tr>
                                   <th>CATATAN</th>
                                   <td><?php echo $d['Catatan']; ?></td>
+                              </tr>
+                              <tr>
+                                  <th>DRIVE</th>
+                                  <td><?php echo $d['Drive']; ?></td>
                               </tr>
                                   </table>
                                 </div>

@@ -5,6 +5,7 @@ $nama_gedung  = $_POST['nama_gedung'];
 $nama_ruangan_area  = $_POST['nama_ruangan_area'];
 $tanggal_masuk  = $_POST['tanggal_masuk'];
 $tanggal_keluar  = $_POST['tanggal_keluar'];
+$tanggal_barang  = $_POST['tanggal_barang'];
 $jenis_merk_tipe  = $_POST['jenis_merk_tipe'];
 $kode_label_stp  = $_POST['kode_label_stp'];
 $kode_label_pemkot  = $_POST['kode_label_pemkot'];
@@ -28,6 +29,7 @@ if($filename == ""){
         mysqli_real_escape_string($koneksi, $nama_ruangan_area),
         mysqli_real_escape_string($koneksi, $tanggal_masuk),
         mysqli_real_escape_string($koneksi, $tanggal_keluar),
+        mysqli_real_escape_string($koneksi, $tanggal_barang),
         mysqli_real_escape_string($koneksi, $jenis_merk_tipe),
         mysqli_real_escape_string($koneksi, $kode_label_stp),
         mysqli_real_escape_string($koneksi, $kode_label_pemkot),
