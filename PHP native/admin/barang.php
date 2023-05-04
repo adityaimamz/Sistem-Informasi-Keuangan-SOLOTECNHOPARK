@@ -30,33 +30,32 @@
             </button></a>
             </div><hr>
             <?php 
-                if(isset($_GET['alert'])){
-                  if($_GET['alert']=='gagal'){
-                    ?>
-                    <div class="alert alert-warning alert-dismissible">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                      <h4><i class="icon fa fa-warning"></i> Peringatan !</h4>
-                      Ekstensi Tidak Diperbolehkan
-                    </div>                
-                    <?php
-                  }elseif($_GET['alert']=="berhasil"){
-                    ?>
-                    <div class="alert alert-success alert-dismissible">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                      <h4><i class="icon fa fa-check"></i> Success</h4>
-                      Berhasil Disimpan
-                    </div>                
-                    <?php
-                  }elseif($_GET['alert']=="berhasilupdate"){
-                    ?>
-                    <div class="alert alert-success alert-dismissible">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                      <h4><i class="icon fa fa-check"></i> Success</h4>
-                      Berhasil Update
-                    </div>                
-                    <?php
-                  }
-                }
+                 $alert = '';
+                 if(isset($_GET['alert'])){
+                     $pesan = '';
+                     if($_GET['alert']=='gagal'){
+                         $pesan = 'Ekstensi Tidak Diperbolehkan';
+                         $alert = '<div class="alert alert-warning alert-dismissible">
+                                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                       <h4><i class="icon fa fa-warning"></i> Peringatan !</h4>
+                                       '.$pesan.'
+                                   </div>';
+                     }elseif($_GET['alert']=="berhasil"){
+                         $pesan = 'Berhasil Disimpan';
+                         $alert = '<div class="alert alert-success alert-dismissible">
+                                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                       <h4><i class="icon fa fa-check"></i> Success</h4>
+                                       '.$pesan.'
+                                   </div>';
+                     }elseif($_GET['alert']=="berhasilupdate"){
+                         $pesan = 'Berhasil Update';
+                         $alert = '<div class="alert alert-success alert-dismissible">
+                                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                       <h4><i class="icon fa fa-check"></i> Success</h4>
+                                       '.$pesan.'
+                                   </div>';
+                     }
+                 }
                 ?>
           </div>
 
@@ -162,7 +161,7 @@
                   <thead>
                   <tr>
                   <th>NO</th>
-                    <th>OPSI</th>>
+                    <th>OPSI</th>
                     <th>NAMA BARANG</th>
                     <th>NAMA GEDUNG</th>
                     <th>JENIS/MERK/TIPE</th>

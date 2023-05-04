@@ -59,7 +59,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratmasuk_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_masuk_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -81,7 +81,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratmasuk_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_masuk_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -103,7 +103,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratmasuk_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_masuk_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -124,7 +124,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratmasu.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_masuk.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -148,7 +148,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratkeluar_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_keluar_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -171,7 +171,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratkeluar_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_keluar_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -194,7 +194,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratkeluar_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_keluar_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -215,7 +215,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="suratkeluar.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="surat_keluar.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -238,7 +238,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="tagihan_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="agenda_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -260,7 +260,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="tagihan_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="agenda_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -282,7 +282,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="tagihan_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="agenda_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -303,7 +303,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="tagihan_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="agenda.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       
@@ -312,7 +312,7 @@ $hari_ini = date('w');
         <div class="small-box bg-orange">
           <div class="inner">
             <?php 
-            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_hari FROM master_agenda WHERE Tanggal='$tanggal'");
+            $pengunjung = mysqli_query($koneksi,"SELECT count(Jumlah_pengunjung) as pengunjung_hari FROM master_agenda WHERE Tanggal='$tanggal'");
             $p = mysqli_fetch_assoc($pengunjung);
             ?>
             <h4 style="font-weight: bolder">
@@ -325,7 +325,6 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       
@@ -333,7 +332,7 @@ $hari_ini = date('w');
         <div class="small-box bg-orange">
           <div class="inner">
             <?php 
-            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
+            $pengunjung = mysqli_query($koneksi,"SELECT count(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
             $p = mysqli_fetch_assoc($pengunjung);
             ?>
             <h4 style="font-weight: bolder">
@@ -346,7 +345,6 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       
@@ -367,7 +365,6 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       
@@ -388,7 +385,6 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="pengeluaran_draft.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       
@@ -415,9 +411,13 @@ $hari_ini = date('w');
               
               <h4 class="text-center">Realisasi Kesekretariatan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Jenis</b></h4>
               <?php 
-                $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
-                $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-                $agenda= mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agenda FROM master_agenda");
+             $bulan_array = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+
+             foreach($bulan_array as $key => $bulan) {
+               $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='".($key+1)."'");
+               $p = mysqli_fetch_assoc($pengunjung);
+               $total[$bulan] = $p['pengunjung_bulan'];
+             }
               ?>
               <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
 
@@ -426,6 +426,25 @@ $hari_ini = date('w');
               
             </div>
           </div>
+          <div class="tab-content" style="padding: 20px">
+
+            <div class="chart tab-pane active" id="tab1">
+
+              
+              <h4 class="text-center">Realisasi Kesekretariatan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Jenis</b></h4>
+              <?php 
+                $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
+                $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
+                $agenda= mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agenda FROM master_agenda");
+
+              ?>
+              <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
+
+            </div>
+            <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
+              
+            </div>
+            </div>
 
         </div>
 
