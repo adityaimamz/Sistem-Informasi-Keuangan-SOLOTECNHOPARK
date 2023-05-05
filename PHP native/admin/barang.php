@@ -78,6 +78,10 @@
                                   <label>NAMA BARANG</label>
                                   <input type="text" name="nama_barang" class="form-control" placeholder="Masukkan Nama Barang ..">
                               </div>
+                               <div class="form-group">
+                                  <label>NOMOR REGISTRASI</label>
+                                  <input type="text" name="registrasi" class="form-control" placeholder="Masukkan Nomor Registrasi ..">
+                              </div>
 
                               <div class="form-group">
                                   <label>NAMA GEDUNG</label>
@@ -99,7 +103,7 @@
                                   <input type="text" name="tanggal_keluar" class="form-control datepicker2">
                               </div>
                                    <div class="form-group">
-                                  <label>TANGGAL BARANG MASUK</label>
+                                  <label>TANGGAL BARANG PEROLEHAN</label>
                                   <input type="text" name="tanggal_barang" class="form-control datepicker2">
                               </div>
 
@@ -168,7 +172,9 @@
                     <th>OPSI</th>
                     <th>NAMA BARANG</th>
                     <th>NAMA GEDUNG</th>
+                    <th>NAMA RUANGAN/AREA</th>
                     <th>JENIS/MERK/TIPE</th>
+                    <th>LABEL PEMKOT</th>
                     <th>JUMLAH BARANG</th>
                     <th>KONDISI BARANG</th>
                     <th>CATATAN</th>
@@ -231,9 +237,13 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                                                        <div class="form-group" style="width:100%;margin-bottom:20px">
+                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>NAMA BARANG</label>
                                           <input type="text" style="width:100%" name="nama_barang" class="form-control" value="<?php echo $d['Nama_barang'] ?>">
+                                      </div>
+                                      <div class="form-group" style="width:100%;margin-bottom:20px">
+                                          <label>NOMOR REGISTRASI</label>
+                                          <input type="text" style="width:100%" name="registrasi" class="form-control" value="<?php echo $d['No_registrasi'] ?>">
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -343,6 +353,10 @@
                                     <th>NAMA BARANG</th>
                                     <td><?php echo $d['Nama_barang']; ?></td>
                                 </tr>
+                                 <tr>
+                                    <th>NOMOR REGISTRASI</th>
+                                    <td><?php echo $d['No_registrasi']; ?></td>
+                                </tr>
                                 <tr>
                                     <th>NAMA GEDUNG</th>
                                     <td><?php echo $d['Nama_gedung']; ?></td>
@@ -360,7 +374,7 @@
                                     <td><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
                                 </tr>
                                 <tr>
-                                    <th>TANGGAL MASUK BARANG</th>
+                                    <th>TANGGAL PEROLEHAN BARANG</th>
                                     <td><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk_barang'])); ?></td>
                                 </tr>
                                 <tr>
@@ -425,7 +439,9 @@
                       </td>
                       <td><?php echo $d['Nama_barang']; ?></td>
                     <td><?php echo $d['Nama_gedung']; ?></td>
+                    <td><?php echo $d['Nama_ruanganarea']; ?></td>
                     <td><?php echo $d['JenisMerkTipe']; ?></td>
+                    <td><?php echo $d['Kode_label_pemkot']; ?></td>
                     <td class="text-center"><?php echo $d['Jumlah_barang']; ?></td>
                     <td><?php echo $d['Kondisi_barang']; ?></td>
                     <td><?php echo $d['Catatan']; ?></td>

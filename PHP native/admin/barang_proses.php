@@ -1,6 +1,7 @@
 <?php 
 include '../koneksi.php';
 $nama_barang  = $_POST['nama_barang'];
+$registrasi  = $_POST['registrasi'];
 $nama_gedung  = $_POST['nama_gedung'];
 $nama_ruangan_area  = $_POST['nama_ruangan_area'];
 $tanggal_masuk  = $_POST['tanggal_masuk'];
@@ -25,6 +26,7 @@ if($filename == ""){
 
     $query = sprintf("INSERT INTO master_barang VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '%s', '%s', '%s')",
         mysqli_real_escape_string($koneksi, $nama_barang),
+        mysqli_real_escape_string($koneksi, $registrasi),
         mysqli_real_escape_string($koneksi, $nama_gedung),
         mysqli_real_escape_string($koneksi, $nama_ruangan_area),
         mysqli_real_escape_string($koneksi, $tanggal_masuk),
@@ -49,7 +51,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['gambar']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "INSERT INTO master_barang VALUES (NULL, '$nama_barang', '$nama_gedung', '$nama_ruangan_area', '$tanggal_masuk', '$tanggal_keluar', '$jenis_merk_tipe', '$kode_label_stp', '$kode_label_pemkot', '$jumlah_barang', '$file_gambar', '$drive', '$kondisi_barang','$catatan')");
+		mysqli_query($koneksi, "INSERT INTO master_barang VALUES (NULL, '$nama_barang',$registrasi, '$nama_gedung', '$nama_ruangan_area', '$tanggal_masuk', '$tanggal_keluar', '$jenis_merk_tipe', '$kode_label_stp', '$kode_label_pemkot', '$jumlah_barang', '$file_gambar', '$drive', '$kondisi_barang','$catatan')");
 		header("location:barang.php?alert=berhasil");
 	}
 }

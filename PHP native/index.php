@@ -1,4 +1,25 @@
+<?php 
+date_default_timezone_set('Asia/Jakarta');
+$hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
+// array bulan dalam bahasa Indonesia
+$namabulan = array(
+  1 => "Januari",
+  2 => "Februari",
+  3 => "Maret",
+  4 => "April",
+  5 => "Mei",
+  6 => "Juni",
+  7 => "Juli",
+  8 => "Agustus",
+  9 => "September",
+  10 => "Oktober",
+  11 => "November",
+  12 => "Desember"
+);
+$bulan_ini = date('n');
+?>
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -27,6 +48,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/dist/css/style.css">
 <body>
 	
 <?php 
@@ -74,9 +96,68 @@
         </div>
       </div>
     </div>
-
   </section><!-- End Hero -->
 
+  <section class="feature-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<div class="title">
+                <?php 
+            $tanggal = date('Y-m-d');
+            $pengunjung = mysqli_query($koneksi,"SELECT count(Jumlah_pengunjung) as pengunjung_hari FROM master_agenda WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_hari'])
+              ?>
+            </h4>
+            <p>Jumlah Pengunjung Hari Ini </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<div class="title">
+                <?php 
+            $bulan = date('m');
+            $pengunjung = mysqli_query($koneksi,"SELECT count(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_bulan'])
+              ?>
+            </h4>
+            <p>Jumlah Pengunjung Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+          </div>
+								</div>
+							</div>
+              <div class="col-lg-4">
+							<div class="single-feature">
+								<div class="title">
+								 <?php 
+            $tahun = date('Y');
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_tahun FROM master_agenda  WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_tahun'])
+              ?>
+            </h4>
+            <p>Jumlah Pengunjung Tahun Ini</p>
+								</div>
+							</div>
+						</div>	
+						</div>
+											
+					</div>
+				</div>	
+			</section>
+      
   <main id="main">
 
 	    <!-- ======= Why Us Section ======= -->
