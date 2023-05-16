@@ -177,14 +177,13 @@
                     <th>LABEL PEMKOT</th>
                     <th>JUMLAH BARANG</th>
                     <th>KONDISI BARANG</th>
-                    <th>CATATAN</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php 
                     include '../koneksi.php';
                     $no=1;
-                    $data = mysqli_query($koneksi, "SELECT * FROM master_barang ORDER BY Id_barang DESC;");
+                    $data = mysqli_query($koneksi, "SELECT * FROM master_barang ORDER BY Id_barang DESC LIMIT 50");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -239,6 +238,7 @@
                                   <div class="modal-body">
                                      <div class="form-group" style="width:100%;margin-bottom:20px">
                                           <label>NAMA BARANG</label>
+                                          <input type="hidden" name="id" value="<?php echo $d['Id_barang'] ?>">
                                           <input type="text" style="width:100%" name="nama_barang" class="form-control" value="<?php echo $d['Nama_barang'] ?>">
                                       </div>
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -267,7 +267,7 @@
                                       </div>
 
                                       <div class="form-group" style="width:100%;margin-bottom:20px">
-                                          <label>TANGGAL MASUK BARANG</label>
+                                          <label>TANGGAL PEROLEHAN</label>
                                           <input type="text" style="width:100%" name="tanggal_barang" class="form-control datepicker2" placeholder="Ubah Tanggal .." value="<?php echo $d['Tanggal_masuk_barang'] ?>">
                                       </div>
 
@@ -367,15 +367,39 @@
                                 </tr>
                                 <tr>
                                     <th>TANGGAL PEMINJAMAN</th>
-                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
+                                    <td>
+                                        <?php 
+                                            if($d['Tanggal_masuk']=='0000-00-00'){
+                                                echo "";
+                                            }else{
+                                                echo date('d-m-Y', strtotime($d['Tanggal_masuk']));
+                                            }
+                                        ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>TANGGAL DIKEMBALIKAN</th>
-                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_keluar'])); ?></td>
+                                    <td>
+                                        <?php 
+                                            if($d['Tanggal_masuk']=='0000-00-00'){
+                                                echo "";
+                                            }else{
+                                                echo date('d-m-Y', strtotime($d['Tanggal_keluar']));
+                                            }
+                                        ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>TANGGAL PEROLEHAN BARANG</th>
-                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal_masuk_barang'])); ?></td>
+                                    <td>
+                                        <?php 
+                                            if($d['Tanggal_masuk']=='0000-00-00'){
+                                                echo "";
+                                            }else{
+                                                echo date('d-m-Y', strtotime($d['Tanggal_masuk_barang']));
+                                            }
+                                        ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>JENIS/MERK/TIPE</th>
@@ -444,7 +468,6 @@
                     <td><?php echo $d['Kode_label_pemkot']; ?></td>
                     <td class="text-center"><?php echo $d['Jumlah_barang']; ?></td>
                     <td><?php echo $d['Kondisi_barang']; ?></td>
-                    <td><?php echo $d['Catatan']; ?></td>
                     </tr>
                     <?php 
                   }

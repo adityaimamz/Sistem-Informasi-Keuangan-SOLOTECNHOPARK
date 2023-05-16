@@ -35,7 +35,7 @@ $bulan_ini = date('n');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Penerimaan Terverifikasi <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
+            <h3 class="box-title">Transaksi Penerimaan <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
             <hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -76,7 +76,7 @@ $bulan_ini = date('n');
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>NO</th>
+                  <th>NO</th>
                     <th>OPSI</th>
                     <!-- <th>NO TANDA TERIMA</th> -->
                     <th>BULAN</th>
@@ -94,7 +94,7 @@ $bulan_ini = date('n');
                   include '../koneksi.php';
                   $no=1;
                   $bulan = date('m');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='voice' AND MONTH(master_penerimaan.Tanggal)='$bulan' AND master_penerimaan.Keterangan='verifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='voice' AND MONTH(master_penerimaan.Tanggal)='$bulan' AND master_penerimaan.Keterangan='Verifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
@@ -280,7 +280,7 @@ $bulan_ini = date('n');
                                 </tr>
                                 <tr>
                                   <th>TANGGAL</th>
-                                  <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                                  <td><?php echo $d['Tanggal']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>BULAN</th>
@@ -300,7 +300,7 @@ $bulan_ini = date('n');
                                 </tr>
                                 <tr>
                                   <th>BESARAN</th>
-                                  <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
+                                  <td><?php echo $d['Besaran_biaya']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>RINCIAN</th>
@@ -372,16 +372,16 @@ $bulan_ini = date('n');
                       <!-- <td><?php echo $d['Keperluan']; ?></td> -->
                       <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>
-                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs">Voice</button>
+                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal">Voice</button>
                         <?php } else { ?>
-                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs">Invoice</button>
+                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal">Invoice</button>
                         <?php } ?>
                       </td>
                       <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
                           <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_penerimaan'] ?>">Draft</button>
                         <?php } else { ?>
-                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Terverifikasi</button>
                         <?php } ?>
                       </td>
                     </tr>

@@ -24,7 +24,7 @@ $filename = $_FILES['gambar']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if($filename == ""){
-	mysqli_query($koneksi, "update master_barang set Nama_barang='$nama_barang',No_registrasi='$registrasi',Nama_gedung='$nama_gedung', Nama_ruanganarea='$nama_ruanganarea', Tanggal_masuk='$tanggal_masuk', Tanggal_keluar='$tanggal_keluar', Tanggal_masuk_barang='$tanggal_barang', JenisMerkTipe='$jenis_merk_tipe', Kode_label_STP='$kode_label_stp', Kode_label_pemkot='$kode_label_pemkot', Jumlah_barang='$jumlah_barang', Drive='$drive', Kondisi_barang='$kondisi_barang', Catatan='$catatan' where Id_barang='$id'") or die(mysqli_error($koneksi));
+	mysqli_query($koneksi, "update master_barang set Nama_barang='$nama_barang',No_registrasi ='$registrasi',Nama_gedung='$nama_gedung', Nama_ruanganarea='$nama_ruanganarea', Tanggal_masuk='$tanggal_masuk', Tanggal_keluar='$tanggal_keluar', Tanggal_masuk_barang='$tanggal_barang', JenisMerkTipe='$jenis_merk_tipe', Kode_label_STP='$kode_label_stp', Kode_label_pemkot='$kode_label_pemkot', Jumlah_barang='$jumlah_barang', Drive='$drive', Kondisi_barang='$kondisi_barang', Catatan='$catatan' where Id_barang='$id'") or die(mysqli_error($koneksi));
 	header("location:barang.php?alert=berhasilupdate");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -34,7 +34,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['gambar']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
-		mysqli_query($koneksi, "update master_barang set Nama_barang='$nama_barang',No_registrasi='$registrasi', Nama_gedung='$nama_gedung', Nama_ruanganarea='$nama_ruanganarea', Tanggal_masuk='$tanggal_masuk', Tanggal_keluar='$tanggal_keluar', Tanggal_masuk_barang='$tanggal_barang',JenisMerkTipe='$jenis_merk_tipe', Kode_label_STP='$kode_label_stp', Kode_label_pemkot='$kode_label_pemkot', Jumlah_barang='$jumlah_barang', Gambar='$xgambar', Drive='$drive', Kondisi_barang='$kondisi_barang', Catatan='$catatan' where Id_barang='$id'");
+		mysqli_query($koneksi, "update master_barang set Nama_barang='$nama_barang',No_registrasi ='$registrasi', Nama_gedung='$nama_gedung', Nama_ruanganarea='$nama_ruanganarea', Tanggal_masuk='$tanggal_masuk', Tanggal_keluar='$tanggal_keluar', Tanggal_masuk_barang='$tanggal_barang',JenisMerkTipe='$jenis_merk_tipe', Kode_label_STP='$kode_label_stp', Kode_label_pemkot='$kode_label_pemkot', Jumlah_barang='$jumlah_barang', Gambar='$xgambar', Drive='$drive', Kondisi_barang='$kondisi_barang', Catatan='$catatan' where Id_barang='$id'");
 		header("location:barang.php?alert=berhasilupdate");
 	}
 }

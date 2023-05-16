@@ -36,10 +36,10 @@ $bulan_ini = date('n');
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Transaksi Tagihan <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
-            <div class="btn-group pull-right"> 
+            <div class="btn-group pull-right">
             <a href="tagihan_csv.php"><button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-file-excel-o"></i> &nbsp CSV
-              </button></a>           
+              </button></a>            
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -97,7 +97,7 @@ $bulan_ini = date('n');
                   include '../koneksi.php';
                   $no=1;
                   $bulan = date('m');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND MONTH(master_penerimaan.Tanggal)='$bulan' AND master_penerimaan.Keterangan='verifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND MONTH(master_penerimaan.Tanggal)='$bulan' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
@@ -311,9 +311,9 @@ $bulan_ini = date('n');
                       </td>
                       <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs">Draft</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" <?php echo $d['Id_penerimaan'] ?>">Draft</button>
                         <?php } else { ?>
-                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Terverifikasi</button>
                         <?php } ?>
                       </td>
 

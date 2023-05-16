@@ -19,7 +19,6 @@ $namabulan = array(
 $bulan_ini = date('n');
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -30,6 +29,7 @@ $bulan_ini = date('n');
   <meta content="" name="description">
   <meta content="" name="keywords">
   <script type="text/javascript" src="./plugins/chart.js/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Favicons -->
   <link href="assets/img/SOTO PANAZ LOGO-04.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -52,8 +52,8 @@ $bulan_ini = date('n');
 <body>
 	
 <?php 
-		include 'koneksi.php';
-		?>
+include 'koneksi.php';
+?>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
@@ -79,13 +79,13 @@ $bulan_ini = date('n');
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-in>
+        <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-in">
 		<h2 data-aos="fade-up" data-aos-delay="400">Selamat datang!</h2>
           <h1 class="pt-1" data-aos="fade-up">Solo Techno Park Analyzer (Soto Panaz)</h1>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
               <a href="#chart" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>Liat Grafik Pengeluaran</span>
+                <span>Lihat Grafik</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -98,123 +98,136 @@ $bulan_ini = date('n');
     </div>
   </section><!-- End Hero -->
 
-  <section class="feature-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4">
-							<div class="single-feature">
-								<div class="title">
-                <?php 
-            $tanggal = date('Y-m-d');
-            $pengunjung = mysqli_query($koneksi,"SELECT count(Jumlah_pengunjung) as pengunjung_hari FROM master_agenda WHERE Tanggal='$tanggal'");
-            $p = mysqli_fetch_assoc($pengunjung);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-              echo "".number_format($p['pengunjung_hari'])
-              ?>
-            </h4>
-            <p>Jumlah Pengunjung Hari Ini </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<div class="single-feature">
-								<div class="title">
-                <?php 
-            $bulan = date('m');
-            $pengunjung = mysqli_query($koneksi,"SELECT count(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
-            $p = mysqli_fetch_assoc($pengunjung);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-              echo "".number_format($p['pengunjung_bulan'])
-              ?>
-            </h4>
-            <p>Jumlah Pengunjung Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
-          </div>
-								</div>
-							</div>
-              <div class="col-lg-4">
-							<div class="single-feature">
-								<div class="title">
-								 <?php 
-            $tahun = date('Y');
-            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_tahun FROM master_agenda  WHERE year(Tanggal)='$tahun'");
-            $p = mysqli_fetch_assoc($pengunjung);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-              echo "".number_format($p['pengunjung_tahun'])
-              ?>
-            </h4>
-            <p>Jumlah Pengunjung Tahun Ini</p>
-								</div>
-							</div>
-						</div>	
-						</div>
-											
+ <section class="feature-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="single-feature">
+					<div class="title">
+                        <?php 
+                            $tanggal = date('Y-m-d');
+                            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_hari FROM master_agenda WHERE Tanggal='$tanggal'");
+                            $p = mysqli_fetch_assoc($pengunjung);
+                        ?>
+                        <h4 style="font-weight: bolder">
+                          <?php 
+                            echo "".number_format($p['pengunjung_hari'])
+                          ?>
+                        </h4>
+                        <p>Jumlah Pengunjung Hari Ini </p>
 					</div>
-				</div>	
-			</section>
-      
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-feature">
+					<div class="title">
+                    <?php 
+                    $bulan = date('m');
+                    $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
+                    $p = mysqli_fetch_assoc($pengunjung);
+                    ?>
+                    <h4 style="font-weight: bolder">
+                      <?php 
+                        echo "".number_format($p['pengunjung_bulan'])
+                      ?>
+                    </h4>
+                    <p>Jumlah Pengunjung Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+                    </div>
+                </div>
+			</div>
+			<div class="col-lg-4">
+				<div class="single-feature">
+					<div class="title">
+					 <?php 
+                        $tahun = date('Y');
+                        $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_tahun FROM master_agenda  WHERE year(Tanggal)='$tahun'");
+                        $p = mysqli_fetch_assoc($pengunjung);
+                    ?>
+                    <h4 style="font-weight: bolder">
+                    <?php
+                        echo "".number_format($p['pengunjung_tahun'])
+                    ?>
+                    </h4>
+                    <p>Jumlah Pengunjung Tahun Ini</p>
+					</div>
+				</div>
+			</div>	
+			</div>
+								
+		</div>
+	</div>	
+</section>
+
   <main id="main">
 
-	    <!-- ======= Why Us Section ======= -->
-		<section id="chart" class="why-us section-bg">
+    <!-- ======= Why Us Section ======= -->
+	<section id="chart" class="why-us section-bg">
       <div class="container-fluid" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-          <div class="content">
-              <h3>Progress Realisasi UPT KST SOLO TECHNOPARK</h3>
+            <div class="content">
+              <h3> Realisasi Jumlah Kunjungan UPTD KST SOLO TECHNOPARK <h4>Per Tahun 2023 </h4></h3>
+              <div style="width: 800px;margin: 0px auto;">
+                   <?php 
+                    $agenda_januari= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_januari FROM master_agenda WHERE month(Tanggal)='01' AND year(Tanggal)='2023' ");
+                    $agenda_februari= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_februari FROM master_agenda WHERE month(Tanggal)='02' AND year(Tanggal)='2023' ");
+                    $agenda_maret= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_maret FROM master_agenda WHERE month(Tanggal)='03' AND year(Tanggal)='2023' ");
+                    $agenda_april= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_april FROM master_agenda WHERE month(Tanggal)='04' AND year(Tanggal)='2023' ");
+                    $agenda_mei= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_mei FROM master_agenda WHERE month(Tanggal)='05' AND year(Tanggal)='2023' ");
+                    $agenda_juni= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_juni FROM master_agenda WHERE month(Tanggal)='06' AND year(Tanggal)='2023' ");
+                    $agenda_juli= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_juli FROM master_agenda WHERE month(Tanggal)='07' AND year(Tanggal)='2023' ");
+                    $agenda_agustus= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_agustus FROM master_agenda WHERE month(Tanggal)='08' AND year(Tanggal)='2023' ");
+                    $agenda_september= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_september FROM master_agenda WHERE month(Tanggal)='09' AND year(Tanggal)='2023' ");
+                    $agenda_oktober= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_oktober FROM master_agenda WHERE month(Tanggal)='10' AND year(Tanggal)='2023' ");
+                    $agenda_november= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_november FROM master_agenda WHERE month(Tanggal)='11' AND year(Tanggal)='2023' ");
+                    $agenda_desember= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_desember FROM master_agenda WHERE month(Tanggal)='12' AND year(Tanggal)='2023' ");
+                  ?>
+                  <canvas id="myChart3" style="position: relative; height: 300px;"></canvas>
+				</div>
+            </div>
+            
+            <div class="content">
+              <h3>Progress Realisasi UPTD KST SOLO TECHNOPARK</h3>
             </div>
 
             <div class="accordion-list">
-			<div style="width: 800px;margin: 0px auto;">
-      Pengeluaran Belanja <h4>Per <b>Bulan</b> Tahun 2023 </h4>
-					<?php 
-                $jan= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jan FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Januari' ");
-                $feb= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_feb FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Februari' ");
-                $mart= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mart FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Maret' ");
-                $apr= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_apr FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='April' ");
-                $mi= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mi FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Mei' ");
-                $jun= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jun FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juni' ");
-                $jul= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jul FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juli' ");
-                $agust= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_agust FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Agustus' ");
-                $sept= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_sept FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='September' ");
-                $okt= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_okt FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Oktober' ");
-                $nov= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_nov FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='November' ");
-                $des= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_des FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Desember' ");
-              ?>
-              <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
-					</div>
-          <div style="width: 800px;margin: 0px auto;">
-      Penerimaan Belanja <h4>Per <b>Bulan</b> Tahun 2023 </h4>
-      <?php 
-               $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Januari' AND Status='Voice' ");
-               $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Februari' AND Status='Voice' ");
-               $maret= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_maret FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Maret' AND Status='Voice' ");
-               $april= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_april FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='April' AND Status='Voice' ");
-               $mei= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_mei FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Mei' AND Status='Voice' ");
-               $juni= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juni FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juni' AND Status='Voice' ");
-               $juli= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juli FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juli' AND Status='Voice' ");
-               $agustus= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_agustus FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Agustus' AND Status='Voice' ");
-               $september= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_september FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='September' AND Status='Voice' ");
-               $oktober= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_oktober FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Oktober' AND Status='Voice' ");
-               $november= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_november FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='November' AND Status='Voice' ");
-               $desember= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_desember FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Desember' AND Status='Voice' ");
-              ?>
-              <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
-					</div>
-          <div style="width: 800px;margin: 0px auto;">
-          Realisasi Kesekretariatan UPTD KST SOLO TECHNOPARK Tahun 2023
-      <?php 
-                $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
-                $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-                $agenda= mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agenda FROM master_agenda");
-              ?>
-              <canvas id="myChart3" style="position: relative; height: 300px;"></canvas>
-					</div>
+    			<div style="width: 800px;margin: 0px auto;">
+    			    Pengeluaran <h4>Per <b>Bulan</b> Tahun 2023 </h4>
+        			<?php 
+                        $jan= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jan FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Januari' ");
+                        $feb= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_feb FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Februari' ");
+                        $mart= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mart FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Maret' ");
+                        $apr= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_apr FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='April' ");
+                        $mi= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mi FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Mei' ");
+                        $jun= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jun FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juni' ");
+                        $jul= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jul FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juli' ");
+                        $agust= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_agust FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Agustus' ");
+                        $sept= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_sept FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='September' ");
+                        $okt= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_okt FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Oktober' ");
+                        $nov= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_nov FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='November' ");
+                        $des= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_des FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Desember' ");
+                      ?>
+                      <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
+				</div>
+				
+                <div style="width: 800px;margin: 0px auto;">
+                    Penerimaan <h4>Per <b>Bulan</b> Tahun 2023 </h4>
+                    <?php 
+                       $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Januari' AND Status='Voice' ");
+                       $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Februari' AND Status='Voice' ");
+                       $maret= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_maret FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Maret' AND Status='Voice' ");
+                       $april= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_april FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='April' AND Status='Voice' ");
+                       $mei= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_mei FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Mei' AND Status='Voice' ");
+                       $juni= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juni FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juni' AND Status='Voice' ");
+                       $juli= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juli FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juli' AND Status='Voice' ");
+                       $agustus= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_agustus FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Agustus' AND Status='Voice' ");
+                       $september= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_september FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='September' AND Status='Voice' ");
+                       $oktober= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_oktober FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Oktober' AND Status='Voice' ");
+                       $november= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_november FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='November' AND Status='Voice' ");
+                       $desember= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_desember FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Desember' AND Status='Voice' ");
+                      ?>
+                      <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
+				</div>
             </div>
           </div>
           <!-- <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div> -->
@@ -388,13 +401,22 @@ var ctx = document.getElementById("myChart3").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels : ["Surat Masuk","","Surat Keluar","","Agenda"],
+      labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
         datasets: [{
             label: '',
             data: [
-				<?php while ($p = mysqli_fetch_array($suratmasuk)) { echo '"' . $p['total_suratmasuk'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($suratkeluar)) { echo '"' . $p['total_suratkeluar'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda)) { echo '"' . $p['total_agenda'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_januari)) { echo '"' . $p['total_agenda_januari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_februari)) { echo '"' . $p['total_agenda_februari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_maret)) { echo '"' . $p['total_agenda_maret'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_april)) { echo '"' . $p['total_agenda_april'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_mei)) { echo '"' . $p['total_agenda_mei'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_juni)) { echo '"' . $p['total_agenda_juni'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_juli)) { echo '"' . $p['total_agenda_juli'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_agustus)) { echo '"' . $p['total_agenda_agustus'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_september)) { echo '"' . $p['total_agenda_september'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_oktober)) { echo '"' . $p['total_agenda_oktober'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_november)) { echo '"' . $p['total_agenda_november'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agenda_desember)) { echo '"' . $p['total_agenda_desember'] . '",';}?>,
 				],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

@@ -22,17 +22,15 @@ $tahun = date('Y');
         <div class="box box-info">
           <div class="box-header">
             <h3 class="box-title">Transaksi Pengeluaran <?php echo "(".$tahun. ")";?></h3>
-            <div class="btn-group pull-right">            
-
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+            <div class="btn-group pull-right">     
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus"></i> &nbsp Tambah Pengeluaran
               </button>
               &nbsp
 
               <a href="pengeluaran_csv.php"><button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-file-excel-o"></i> &nbsp CSV
-              </button></a>
-
+              </button></a>       
             </div><hr>
             <?php 
                 if(isset($_GET['alert'])){
@@ -66,8 +64,8 @@ $tahun = date('Y');
           </div>
 
           <div class="box-body">
-          <!-- Modal Tambah-->
-          <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
+             <!-- Modal Tambah-->
+             <form action="pengeluaran_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -78,10 +76,6 @@ $tahun = date('Y');
                       </button>
                     </div>
                     <div class="modal-body">
-                    <div class="form-group">
-                        <label>KODE PENGELUARAN</label>
-                        <input type="text" name="kode_pengeluaran" required="required" class="form-control" placeholder="Masukkan Kode Pengeluaran ..">
-                      </div>
 
                       <div class="form-group">
                         <label>SUMBER DANA</label>
@@ -162,7 +156,7 @@ $tahun = date('Y');
 
                       <div class="form-group">
                         <label>JUMLAH (RUPIAH)</label>
-                        <input type="number" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
+                        <input type="text" name="jumlah" required="required" class="form-control" placeholder="Masukkan Nominal ..">
                       </div>
 
                       <div class="form-group">
@@ -172,8 +166,8 @@ $tahun = date('Y');
 
                       <div class="form-group">
                         <label>Upload Bukti</label>
-                        <input type="file" name="trnfoto" class="form-control">
-                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg | *PNG </small>
+                        <input type="file" name="trnfoto" required="required" class="form-control">
+                        <small>File yang di perbolehkan *PDF | *JPG | *jpeg </small>
                       </div>
 
                     </div>
@@ -200,6 +194,7 @@ $tahun = date('Y');
                     <th>DIVISI</th>
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
+                    <!-- <th>RINCIAN</th> -->
                     <th>STATUS</th>
                   </tr>
                   </thead>
@@ -208,7 +203,7 @@ $tahun = date('Y');
                     include '../koneksi.php';
                     $no=1;
                     $tahun = date('Y');
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND YEAR(master_pengeluaran.Tanggal)='$tahun' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis  AND master_pengeluaran.Keterangan='verifikasi' AND YEAR(master_pengeluaran.Tanggal)='$tahun' ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -407,7 +402,7 @@ $tahun = date('Y');
                                   </tr>
                                   <tr>
                                     <th>TANGGAL</th>
-                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                                    <td><?php echo $d['Tanggal']; ?></td>
                                   </tr>
                                   <tr>
                                     <th>SUMBER DANA</th>
@@ -423,10 +418,10 @@ $tahun = date('Y');
                                   </tr>
                                   <tr>
                                     <th>BESARAN</th>
-                                    <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
+                                    <td><?php echo $d['Jumlah']; ?></td>
                                   </tr>
                                   <tr>
-                                    <th>RINCIAN</th>
+                                    <th>KETERANGAN</th>
                                     <td><?php echo $d['Rincian']; ?></td>
                                   </tr>
                                   </table>
@@ -501,7 +496,7 @@ $tahun = date('Y');
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs">Draft</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" <?php echo $d['Id_pengeluaran'] ?>">Draft</button>
                         <?php } else { ?>
                           <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
                         <?php } ?>

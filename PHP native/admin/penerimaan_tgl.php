@@ -195,7 +195,7 @@ $tanggal = date('Y-m-d');
                   include '../koneksi.php';
                   $no=1;
                   $tanggal = date('Y-m-d');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='voice' AND master_penerimaan.Tanggal='$tanggal' AND master_penerimaan.Keterangan='verifikasi' order by Id_penerimaan desc");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.*, metode_bayar.Jenis FROM master_penerimaan JOIN metode_bayar ON master_penerimaan.Id_metode=metode_bayar.Id_metode WHERE master_penerimaan.Status='voice' AND master_penerimaan.Tanggal='$tanggal' order by Id_penerimaan desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
@@ -468,16 +468,16 @@ $tanggal = date('Y-m-d');
                       <!-- <td><?php echo $d['Keperluan']; ?></td> -->
                       <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>
-                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs">Voice</button>
+                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal">Voice</button>
                         <?php } else { ?>
-                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs">Invoice</button>
+                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal">Invoice</button>
                         <?php } ?>
                       </td>
                       <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" >Draft</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" <?php echo $d['Id_penerimaan'] ?>">Draft</button>
                         <?php } else { ?>
-                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Terverifikasi</button>
                         <?php } ?>
                       </td>
                     </tr>

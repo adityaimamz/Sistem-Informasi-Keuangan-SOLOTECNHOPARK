@@ -1,6 +1,6 @@
 <?php 
 include '../koneksi.php';
-$nama  = $_POST['nama'];
+$peraturan  = $_POST['peraturan'];
 
-mysqli_query($koneksi, "insert into master_jenis_peraturan values (NULL, '$nama')")or die(mysqli_error($koneksi));
-header("location:pegawai.php?alert=berhasil");
+mysqli_query($koneksi, "insert into master_jenis_peraturan values (NULL, '$peraturan')")or die(mysqli_error($koneksi));
+header("location:peraturan.php?alert=berhasil");

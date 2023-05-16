@@ -62,8 +62,7 @@ $hari_ini = date('w');
           <a href="penerimaan_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
-
-      <div class="col-lg-3 col-xs-6">
+<div class="col-lg-3 col-xs-6">
         <div class="small-box bg-green">
           <div class="inner">
             <?php
@@ -84,7 +83,8 @@ $hari_ini = date('w');
           <a href="penerimaan_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
-
+      
+      
       <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-green">
           <div class="inner">
@@ -130,7 +130,7 @@ $hari_ini = date('w');
 
       <!-- DATA PENGELUARAN -->
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
+        <div class="small-box bg-green">
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
@@ -154,7 +154,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
+        <div class="small-box bg-green">
           <div class="inner">
             <?php 
             $bulan = date('m');
@@ -177,7 +177,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
+        <div class="small-box bg-green">
           <div class="inner">
             <?php 
             $tahun = date('Y');
@@ -200,7 +200,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
+        <div class="small-box bg-green">
           <div class="inner">
             <?php 
             $pengeluaran = mysqli_query($koneksi,"SELECT sum(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='verifikasi'");
@@ -222,7 +222,7 @@ $hari_ini = date('w');
 
       <!-- DATA TAGIHAN -->
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
@@ -244,7 +244,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php
             $bulan = date('m');
@@ -266,7 +266,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $tahun = date('Y');
@@ -288,7 +288,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $penerimaan = mysqli_query($koneksi,"SELECT sum(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='invoice'  AND Keterangan='verifikasi'");
@@ -310,7 +310,7 @@ $hari_ini = date('w');
 
      <!--Data verifikasi dan belum-->
      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-purple">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='nonverifikasi'");
@@ -331,7 +331,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-purple">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $penerimaan = mysqli_query($koneksi,"SELECT count(Besaran_biaya) as total_penerimaan FROM master_penerimaan WHERE Status='voice'  AND Keterangan='verifikasi'");
@@ -352,7 +352,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-orange">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='nonverifikasi'");
@@ -372,7 +372,7 @@ $hari_ini = date('w');
         </div>
       </div>
         <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-orange">
+        <div class="small-box bg-red">
           <div class="inner">
             <?php 
             $pengeluaran = mysqli_query($koneksi,"SELECT count(Jumlah) as total_pengeluaran FROM master_pengeluaran WHERE Keterangan='verifikasi'");
@@ -389,6 +389,355 @@ $hari_ini = date('w');
             <i class="ion ion-stats-bars"></i>
           </div>
           <a href="pengeluaran_terverifikasi.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $tanggal = date('Y-m-d');
+            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukhari FROM surat_masuk WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($suratmasuk);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_suratmasukhari']
+              ?>
+            </h4>
+            <p>Surat Masuk Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_masuk_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php
+            $bulan = date('m');
+            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukbulan FROM surat_masuk WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($suratmasuk);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+                echo $p['total_suratmasukbulan']
+              ?>
+            </h4>
+            <p>Surat Masuk Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_masuk_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $tahun = date('Y');
+            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuktahun FROM surat_masuk WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($suratmasuk);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+                echo $p['total_suratmasuktahun']
+              ?>
+            </h4>
+            <p>Surat Masuk Tahun Ini (<?php echo $tahun;?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_masuk_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
+            $p = mysqli_fetch_assoc($suratmasuk);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_suratmasuk']
+              ?>
+            </h4>
+            <p>Seluruh Surat Masuk</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_masuk.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <!-- DATA SURAT KELUAR -->
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $tanggal = date('Y-m-d');
+            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarhari FROM surat_keluar WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($suratkeluar);
+            ?>
+            
+            <h4 style="font-weight: bolder">
+            <?php 
+             echo $p['total_suratkeluarhari']
+              ?>
+            </h4>
+            <p>Surat Keluar Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_keluar_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $bulan = date('m');
+            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarbulan FROM surat_keluar WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($suratkeluar);
+            ?>
+            
+            <h4 style="font-weight: bolder">
+            <?php 
+             echo $p['total_suratkeluarbulan']
+              ?>
+            </h4>
+            <p>Surat Keluar Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_keluar_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $tahun = date('Y');
+            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluartahun FROM surat_keluar WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($suratkeluar);
+            ?>
+            
+            <h4 style="font-weight: bolder">
+            <?php 
+             echo $p['total_suratkeluartahun']
+              ?>
+            </h4>
+            <p>Surat Keluar Tahun Ini (<?php echo $tahun;?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_keluar_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
+            $p = mysqli_fetch_assoc($suratkeluar);
+            ?>
+            <h4 style="font-weight: bolder">
+            <?php 
+             echo $p['total_suratkeluar']
+              ?>
+            </h4>
+            <p>Seluruh Surat Keluar</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="surat_keluar.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <!-- DATA AGENDA -->
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $tanggal = date('Y-m-d');
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agendahari FROM master_agenda WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agendahari']
+              ?>
+            </h4>
+            <p>Agenda Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php
+            $bulan = date('m');
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agendabulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agendabulan']
+              ?>
+            </h4>
+            <p>Agenda Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $tahun = date('Y');
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agendatahun FROM master_agenda WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agendatahun']
+              ?>
+            </h4>
+            <p>Agenda Tahun Ini (<?php echo $tahun;?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agenda FROM master_agenda");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agenda']
+              ?>
+            </h4>
+            <p>Seluruh Agenda</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      
+      <!--Data jumlah pengunjung-->
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $tanggal = date('Y-m-d');
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_hari FROM master_agenda WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_hari'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengunjung Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $bulan = date('m');
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_bulan'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengunjung Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $tahun = date('Y');
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_tahun FROM master_agenda  WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_tahun'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengunjung Tahun Ini (<?php echo $tahun;?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung FROM master_agenda");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung'])
+              ?>
+            </h4>
+            <p>Jumlah Seluruh Data Pengunjung</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
         </div>
       </div>
 
