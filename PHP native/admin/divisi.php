@@ -79,7 +79,7 @@
 
                       <div class="form-group">
                         <label>NAMA DIVISI</label>
-                        <input type="text" name="nama" required="required" class="form-control" placeholder="Masukkan Nama Divisi ..">
+                        <input type="text" name="nama" required="required" class="form-control" placeholder="Masukkan Nama ..">
                       </div>
 
                     </div>

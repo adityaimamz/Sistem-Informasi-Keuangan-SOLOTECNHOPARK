@@ -21,7 +21,7 @@ $bulan_ini = date('n');
 
   <section class="content-header">
     <h1>
-      Pengeluaran Verifikasi
+      Pengeluaran
       <small>Data Pengeluaran</small>
     </h1>
     <ol class="breadcrumb">
@@ -35,7 +35,7 @@ $bulan_ini = date('n');
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Transaksi Pengeluaran Terverifikasi <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
+            <h3 class="box-title">Transaksi Pengeluaran <?php echo "(".$namabulan[$bulan_ini]. ")";?></h3>
             <div class="btn-group pull-right">            
             </div><hr>
             <?php 
@@ -85,6 +85,7 @@ $bulan_ini = date('n');
                     <th>DIVISI</th>
                     <th>JENIS BELANJA</th>
                     <th>JUMLAH (RUPIAH)</th>
+                    <!-- <th>RINCIAN</th> -->
                     <th>STATUS</th>
                   </tr>
                   </thead>
@@ -93,7 +94,7 @@ $bulan_ini = date('n');
                     include '../koneksi.php';
                     $no=1;
                     $bulan = date('m');
-                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND MONTH(master_pengeluaran.Tanggal)='$bulan' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
+                    $data = mysqli_query($koneksi,"SELECT master_pengeluaran.*, master_divisi.Nama_divisi, master_sumberdana.Jenis AS jenisdana, master_belanja.Jenis AS jenisbelanja FROM master_pengeluaran, master_divisi, master_sumberdana, master_belanja WHERE master_divisi.Id_divisi=master_pengeluaran.Id_divisi AND master_pengeluaran.Id_sumberdana=master_sumberdana.Id_sumberdana AND master_belanja.Id_jenisbelanja=master_pengeluaran.Id_jenis AND MONTH(master_pengeluaran.Tanggal)='$bulan' AND master_pengeluaran.Keterangan='Verifikasi' ORDER BY master_pengeluaran.Id_pengeluaran desc");
                     while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -110,7 +111,7 @@ $bulan_ini = date('n');
                           <?php if($d['Bukti_lpj']==''){ ?> 
 
                           <?php } else { ?> 
-                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_pengeluaran_<?php echo $d['Id_pengeluaran'] ?>">
                                 <i class="fa fa-eye"></i>
                               </button>
                           <?php } ?>
@@ -292,7 +293,7 @@ $bulan_ini = date('n');
                                   </tr>
                                   <tr>
                                     <th>TANGGAL</th>
-                                    <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                                    <td><?php echo $d['Tanggal']; ?></td>
                                   </tr>
                                   <tr>
                                     <th>SUMBER DANA</th>
@@ -308,10 +309,10 @@ $bulan_ini = date('n');
                                   </tr>
                                   <tr>
                                     <th>BESARAN</th>
-                                    <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
+                                    <td><?php echo $d['Jumlah']; ?></td>
                                   </tr>
                                   <tr>
-                                    <th>RINCIAN</th>
+                                    <th>KETERANGAN</th>
                                     <td><?php echo $d['Rincian']; ?></td>
                                   </tr>
                                   </table>
@@ -347,7 +348,7 @@ $bulan_ini = date('n');
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="pengeluaran_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
+                                  <a href="penerimaan_prosesverif.php?id=<?php echo $d['Id_pengeluaran'] ?>" class="btn btn-primary">Verifikasi</a>
                                 </div>
                               </div>
                             </div>
@@ -382,7 +383,7 @@ $bulan_ini = date('n');
                         <td><?php echo $d['jenisdana']; ?></td>
                         <td><?php echo $d['Nama_divisi']; ?></td>
                         <td><?php echo $d['jenisbelanja']; ?></td>
-                        <td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
+<td><?php echo "Rp. ".number_format($d['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                         <!-- <td><?php echo $d['Rincian']; ?></td> -->
                         <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>

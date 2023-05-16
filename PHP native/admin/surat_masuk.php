@@ -152,17 +152,17 @@
                     <th>OPSI</th>
                     <th>NO SURAT MASUK</th>
                     <th>NOMOR SURAT</th>
-                    <!--<th>TANGGAL</th>-->
-                    <!--<th>PERIHAL</th>-->
-                    <!--<th>TERIMA DARI</th>-->
-                    <!--<th>ISI</th>-->
+                    <th>TANGGAL</th>
+                    <th>PERIHAL</th>
+                    <th>TERIMA DARI</th>
+                    <th>ISI</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT surat_masuk.* FROM surat_masuk  ORDER BY surat_masuk.Id_Suratmasuk DESC");
+                  $data = mysqli_query($koneksi,"SELECT surat_masuk.* FROM surat_masuk  ORDER BY surat_masuk.Id_Suratmasuk DESC LIMIT 400");
                   while($d = mysqli_fetch_array($data)){
                       ?>
   
@@ -274,6 +274,26 @@
                               <div class="modal-body">
                               <table class="table table-condensed">
                                 <tr>
+                                  <th>NOMOR SURAT MASUK</th>
+                                  <td><?php echo $d['No_Suratmasuk']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>NOMOR SURAT</th>
+                                  <td><?php echo $d['Nomor_surat']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>PERIHAL</th>
+                                  <td><?php echo $d['Perihal']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>TERIMA DARI</th>
+                                  <td><?php echo $d['Terima_dari']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>ISI</th>
+                                  <td><?php echo $d['Isi']; ?></td>
+                                </tr>
+                                <tr>
                                   <th>TANGGAL DITERUSKAN</th>
                                   <td><?php echo $d['Tanggal_diteruskan']; ?></td>
                                 </tr>
@@ -331,10 +351,10 @@
                       </td>
                       <td><?php echo $d['No_Suratmasuk']; ?></td>
                       <td><?php echo $d['Nomor_surat']; ?></td>
-                      <!--<td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>-->
-                      <!--<td><?php echo $d['Perihal']; ?></td>-->
-                      <!--<td><?php echo $d['Terima_dari']; ?></td>-->
-                      <!--<td><?php echo $d['Isi']; ?></td>-->
+                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
+                      <td><?php echo $d['Perihal']; ?></td>
+                      <td><?php echo $d['Terima_dari']; ?></td>
+                      <td><?php echo $d['Isi']; ?></td>
                     </tr>
                     <?php 
                   }

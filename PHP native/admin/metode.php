@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      Metode Bayar
-      <small>Data Metode Bayar</small>
+      Metode
+      <small>Data Metode</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,7 +19,7 @@
         <div class="box box-info">
 
           <div class="box-header">
-            <h3 class="box-title">Data Metode Bayar</h3>
+            <h3 class="box-title">Data Metode</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
@@ -79,7 +79,7 @@
 
                       <div class="form-group">
                         <label>JENIS METODE BAYAR</label>
-                        <input type="text" name="jenis" required="required" class="form-control" placeholder="Masukkan Jenis Metode Bayar ..">
+                        <input type="text" name="jenis" required="required" class="form-control" placeholder="Masukkan Nama ..">
                       </div>
 
                     </div>

@@ -13,5 +13,5 @@ $tgl_pelaksanaan = $_POST['tgl_pelaksanaan'];
 $waktu_pelaksanaan = $_POST['waktu_pelaksanaan'];
 $tempat_pelaksanaan = $_POST['tempat_pelaksanaan'];
 
-mysqli_query($koneksi, "insert into Surat_masuk VALUES (NULL, '$no_suratmasuk','$no_surat', '$tanggal', '$perihal', '$terima_dari', '$isi', '$tanggal_diteruskan', '$catatan', '$kategori', '$tgl_pelaksanaan', '$waktu_pelaksanaan', '$tempat_pelaksanaan')") or die(mysqli_error($koneksi));
+mysqli_query($koneksi, "insert into surat_masuk VALUES (NULL, '$no_suratmasuk','$no_surat', '$tanggal', '$perihal', '$terima_dari', '$isi', '$tanggal_diteruskan', '$catatan', '$kategori', '$tgl_pelaksanaan', '$waktu_pelaksanaan', '$tempat_pelaksanaan')") or die(mysqli_error($koneksi));
 header("location: surat_masuk.php?alert=berhasil");

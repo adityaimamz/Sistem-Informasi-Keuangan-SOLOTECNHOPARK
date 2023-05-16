@@ -411,7 +411,7 @@ $hari_ini = date('w');
             <div class="chart tab-pane active" id="tab1">
 
               
-              <h4 class="text-center">Realisasi Penerimaan UPT KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
+              <h4 class="text-center">Realisasi Penerimaan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
               <?php 
                 $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Januari' AND Status='Voice' ");
                 $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='verifikasi' AND Bulan='Februari' AND Status='Voice' ");
@@ -437,7 +437,7 @@ $hari_ini = date('w');
               <br/>
               <br/>
 
-              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
+              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPTD KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
               <canvas id="myChart3" style="position: relative; height: 300px;"></canvas>
 
               <br/>
@@ -445,7 +445,7 @@ $hari_ini = date('w');
               <br/>
               <br/>
 
-              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPT KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
+              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPTD KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
               <?php 
                 $jan= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jan FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Januari' ");
                 $feb= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_feb FROM master_pengeluaran WHERE Keterangan='verifikasi' AND Bulan='Februari' ");

@@ -23,45 +23,25 @@
           <div class="box-body">
             <form method="post" action="" enctype="multipart/form-data">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-5">
 
                   <div class="form-group">
-                    <label>Mulai Tanggal</label>
-                    <input autocomplete="off" type="text" name="tanggal_awal" class="form-control datepicker2" placeholder="Mulai Tanggal" required="required">
+                    <label>Mulai Tanggal Masuk</label>
+                    <input autocomplete="off" type="text" name="tanggal_awal" class="form-control datepicker2" placeholder="Mulai Tanggal Masuk" required="required">
                   </div>
 
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-5">
 
                   <div class="form-group">
-                    <label>Sampai Tanggal</label>
-                    <input autocomplete="off" type="text" name="tanggal_akhir" class="form-control datepicker2" placeholder="Sampai Tanggal" required="required">
+                    <label>Sampai Tanggal Masuk</label>
+                    <input autocomplete="off" type="text" name="tanggal_akhir" class="form-control datepicker2" placeholder="Sampai Tanggal Masuk" required="required">
                   </div>
 
                 </div>
 
-                <div class="col-md-3">
-
-                  <div class="form-group">
-                    <label>Divisi</label>
-                    <select name="divisi" class="form-control" required="required">
-                      <option value="semua">- Semua Divisi -</option>
-                        <?php 
-                        include 'koneksi.php';
-                        $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Nama_divisi ASC");
-                        while($k = mysqli_fetch_array($divisi)){
-                          ?>
-                          <option value="<?php echo $k['Id_divisi']; ?>"><?php echo $k['Nama_divisi']; ?></option>
-                          <?php 
-                        }
-                        ?>
-                    </select>
-                  </div>
-
-                </div>
-
-                <div class="col-md-3">
+                <div class="col-md-2">
 
                   <div class="form-group">
                     <br/>
@@ -76,77 +56,72 @@
 
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Laporan Pegeluaran</h3>
+            <h3 class="box-title">Laporan Barang</h3>
           </div>
           <div class="box-body">
             <?php
-            if(isset($_POST['tanggal_akhir']) && isset($_POST['tanggal_awal']) && isset($_POST['divisi'])){
+            if(isset($_POST['tanggal_akhir']) && isset($_POST['tanggal_awal'])){
               $tgl1 = $_POST['tanggal_awal'];
               $tgl2 = $_POST['tanggal_akhir'];
-              $divisi = $_POST['divisi'];
             ?>
-              <div class="table-responsive">
-                <form class="form-horizontal" method="post" action="laporan_barang_pdf.php" enctype="multipart/form-data" target="_blank">
-                  <input type="hidden" name="tanggal_awal" id="tanggal_awal" value="<?php echo $_POST['tanggal_awal']; ?>"> 
-                  <input type="hidden" name="tanggal_akhir" id="tanggal_akhir" value="<?php echo $_POST['tanggal_akhir']; ?>">
-                  <input type="hidden" name="divisi" id="divisi" value="<?php echo $_POST['divisi']; ?>">
-                  <button class="btn bg-orange" type="submit" align="left" class="btn bg-orange" name="Print" id="Print">
-                    <i class="fa fa-print"></i> &nbsp PDF
-                  </button>
-                  <!-- <i class="fa fa-print"><input type="submit" align="left" class="btn bg-orange" name="Print" id="Print" value="PDF" /></i> -->
-                </form>
-                </br>
-
-                <table class="table table-bordered table-striped">
+              
+              <a href="laporan_barang_pdf.php?tanggal_awal=<?php echo $tgl1 ?>&tanggal_akhir=<?php echo $tgl2 ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
+              <br><br>
+              
+              <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th width="1%" rowspan="2">NO</th>
-                      <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
-                      <th width="1%" rowspan="2">KODE BARANG</th>
-                      <th rowspan="2" class="text-center">NAMA BARANG</th>
-                      <th rowspan="2" class="text-center">NAMA DIVISI</th>
-                      <th rowspan="2" class="text-center">LOKASI</th>
+                      <th>NO</th>
+                      <th>TANGGAL MASUK</th>
+                      <th>TANGGAL KELUAR</th>
+                      <th>NO REGISTRASI</th>
+                      <th>NAMA BARANG</th>
+                      <th>LOKASI GEDUNG</th>
+                      <th>LOKASI RUANGAN</th>
+                      <th>MERK</th>
+                      <th>LABEL STP</th>
+                      <th>LABEL PEMKOT</th>
+                      <th>JUMLAH</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <?php 
-                    include '../koneksi.php';
-                    $no=1;
-                    $total=0;                         
-                    if($divisi == "semua"){
-                      $data = "SELECT * FROM master_barang,master_divisi where master_divisi.Id_divisi = master_barang.Id_divisi and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2'";
-                    }else{
-                      $data = "SELECT master_divisi.Nama_divisi, master_barang.* FROM master_barang JOIN master_divisi ON master_divisi.Id_divisi = master_barang.Id_divisi WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_barang.Id_divisi = '$divisi'";
-                    }
-                    $result = mysqli_query($koneksi, $data);
-                    //memeriksa apakah ada data yang ditemukan
-                    if (mysqli_num_rows($result) > 0) { 
-                      while ($row = mysqli_fetch_assoc($result)) {
-                         //menampilkan tabel data
-                        ?>
-                      <tr>
-                        <td class="text-center"><?php echo $no++; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal'])); ?></td>
-                        <td class="text-center"><?php echo $row['Kode_barang']; ?></td>
+                    <?php 
+                      include '../koneksi.php';
+                      $no=1;
+                      $total=0;                         
+                      $data = "SELECT master_barang.* FROM master_barang WHERE Tanggal_masuk BETWEEN '$tgl1' AND '$tgl2' ORDER BY Tanggal_masuk ASC";
+                      $result = mysqli_query($koneksi, $data);
+                      //memeriksa apakah ada data yang ditemukan
+                      if (mysqli_num_rows($result) > 0) { 
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          //menampilkan tabel data
+                      ?>
+                    <tr>
+                      <td class="text-center"><?php echo $no++; ?></td>
+                        <td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal_masuk'])); ?></td>
+                        <td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal_keluar'])); ?></td>
+                        <td class="text-center"><?php echo $row['No_registrasi']; ?></td>
                         <td><?php echo $row['Nama_barang']; ?></td>
-                        <td><?php echo $row['Nama_divisi']; ?></td>
-                        <td><?php echo $row['Lokasi']; ?></td>
-                      </tr>
-                      <?php 
-                    }
-                  }else{ ?>
-                    <div class="alert alert-danger text-center">
-                      Data Kosong
-                    </div>
-                  <?php
-                  }
+                        <td><?php echo $row['Nama_gedung']; ?></td>
+                        <td><?php echo $row['Nama_ruanganarea']; ?></td>
+                        <td><?php echo $row['JenisMerkTipe']; ?></td>
+                        <td><?php echo $row['Kode_label_STP']; ?></td>
+                        <td><?php echo $row['Kode_label_pemkot']; ?></td>
+                        <td><?php echo $row['Jumlah_barang']; ?></td>
+                    </tr>
+                    <?php 
+                        }
+                      }
                     ?>
-                  </tbody>
+                </tbody>
                 </table>
               </div>
-
+              <!-- /.card-body -->
               <?php 
-            }else{
+            }else{ //isset data post
               ?>
 
               <div class="alert alert-info text-center">
@@ -157,6 +132,8 @@
             }
             ?>
 
+            </div>
+
           </div>
         </div>
 
@@ -165,4 +142,4 @@
   </section>
 
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'footer_laporan.php'; ?>

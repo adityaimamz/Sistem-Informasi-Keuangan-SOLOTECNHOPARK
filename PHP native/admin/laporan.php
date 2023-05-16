@@ -57,7 +57,7 @@
                   <div class="form-group">
                     <label>Divisi</label>
                     <select name="divisi" class="form-control" required="required">
-                      <option value="semua">- Semua Divisi -</option>
+                      <option value="semuadivisi">- Semua Divisi -</option>
                         <?php 
                         include 'koneksi.php';
                         $divisi = mysqli_query($koneksi,"SELECT * FROM master_divisi ORDER BY Nama_divisi ASC");
@@ -77,7 +77,7 @@
                   <div class="form-group">
                     <label>Sumber Dana</label>
                     <select name="sumberdana" class="form-control" required="required">
-                      <option value="semua">- Semua Sumber Dana -</option>
+                      <option value="semuadana">- Semua Sumber Dana -</option>
                         <?php 
                         include 'koneksi.php';
                         $dana = mysqli_query($koneksi,"SELECT * FROM master_sumberdana ORDER BY Jenis ASC");
@@ -102,80 +102,78 @@
           </div>
           <div class="box-body">
             <?php
-            if(isset($_POST['tanggal_akhir']) && isset($_POST['tanggal_awal']) && isset($_POST['divisi'])){
+            if(isset($_POST['tanggal_akhir']) && isset($_POST['tanggal_awal']) && isset($_POST['divisi']) && isset($_POST['sumberdana'])){
               $tgl1 = $_POST['tanggal_awal'];
               $tgl2 = $_POST['tanggal_akhir'];
               $divisi = $_POST['divisi'];
               $dana = $_POST['sumberdana'];
             ?>
-              <div class="table-responsive">
-                <form class="form-horizontal" method="post" action="laporan_pdf.php" enctype="multipart/form-data" target="_blank">
-                  <input type="hidden" name="tanggal_awal" id="tanggal_awal" value="<?php echo $_POST['tanggal_awal']; ?>"> 
-                  <input type="hidden" name="tanggal_akhir" id="tanggal_akhir" value="<?php echo $_POST['tanggal_akhir']; ?>">
-                  <input type="hidden" name="divisi" id="divisi" value="<?php echo $_POST['divisi']; ?>">
-                  <input type="hidden" name="sumberdana" id="sumberdana" value="<?php echo $_POST['sumberdana']; ?>">
-                  <button class="btn bg-orange" type="submit" align="left" class="btn bg-orange" name="Print" id="Print">
-                    <i class="fa fa-print"></i> &nbsp PDF
-                  </button>
-                  <!-- <i class="fa fa-print"><input type="submit" align="left" class="btn bg-orange" name="Print" id="Print" value="PDF" /></i> -->
-                </form>
-                </br>
-
-                <table class="table table-bordered table-striped">
+              <!-- <a href="laporan_excel.php?tanggal_awal=<?php echo $tgl1 ?>&tanggal_akhir=<?php echo $tgl2 ?>&divisi=<?php echo $divisi ?>&sumberdana=<?php echo $dana ?>" class="btn btn-sm btn-success"><i class="fa fa-file-excel-o"></i> &nbsp CSV</a> -->
+              <!-- <a href="divisi_csv.php"><button type="button" class="btn btn-success btn-sm">
+                <i class="fa fa-file-excel-o"></i> &nbsp CSV
+              </button></a> -->
+              <a href="laporan_print.php?tanggal_awal=<?php echo $tgl1 ?>&tanggal_akhir=<?php echo $tgl2 ?>&divisi=<?php echo $divisi ?>&sumberdana=<?php echo $dana ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
+              <br><br>
+              
+              <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th width="1%" rowspan="2">NO</th>
-                      <th width="10%" rowspan="2" class="text-center">TANGGAL</th>
-                      <th rowspan="2" class="text-center">SUMBER DANA</th>
-                      <th rowspan="2" class="text-center">DIVISI</th>
-                      <th rowspan="2" class="text-center">KETERANGAN</th>
-                      <th colspan="2" class="text-center">JUMLAH</th>
+                      <th>NO</th>
+                      <th>TANGGAL</th>
+                      <th>SUMBER DANA</th>
+                      <th>DIVISI</th>
+                      <th>KETERANGAN</th>
+                      <th>JUMLAH</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <?php 
-                    include '../koneksi.php';
-                    $no=1;
-                    $total=0;                         
-                    if($divisi == "semua"){
-                      $data = "SELECT * FROM master_pengeluaran,master_divisi,master_sumberdana where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2' and master_pengeluaran.Keterangan='verifikasi'";
-                    }else{
-                      $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi' AND master_pengeluaran.Id_sumberdana = '$dana' and master_pengeluaran.Keterangan='verifikasi'";
-                    }
-                    $result = mysqli_query($koneksi, $data);
-                    //memeriksa apakah ada data yang ditemukan
-                    if (mysqli_num_rows($result) > 0) { 
-                      while ($row = mysqli_fetch_assoc($result)) {
-                        $total=$total+$row['Jumlah'];
-                         //menampilkan tabel data
-                        ?>
-                      <tr>
-                        <td class="text-center"><?php echo $no++; ?></td>
-                        <td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal'])); ?></td>
-                        <td><?php echo $row['Jenis']; ?></td>
-                        <td><?php echo $row['Nama_divisi']; ?></td>
-                        <td><?php echo $row['Rincian']; ?></td>
-                        <td class="text-left"><?php echo "Rp. ".number_format($row['Jumlah'], 2, '.', ',')." ,-"; ?></td>
-                      </tr>
-                      <?php 
-                    }
-                  }else{ ?>
-                    <div class="alert alert-danger text-center">
-                      Data Kosong
-                    </div>
-                  <?php
-                  }
-                    ?>
+                    <?php 
+                      include '../koneksi.php';
+                      $no=1;
+                      $total=0;                         
+                      if($divisi == "semuadivisi" && $dana == "semuadana"){
+                        $data = "SELECT * FROM master_pengeluaran,master_divisi,master_sumberdana where master_divisi.Id_divisi = master_pengeluaran.Id_divisi and master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana and date(Tanggal)>='$tgl1' and date(Tanggal)<='$tgl2' and master_pengeluaran.Keterangan='verifikasi' ORDER BY Tanggal ASC";
+                      }elseif($divisi == "semuadivisi" && $dana != "semuadana"){
+                        $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_sumberdana = '$dana' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY Tanggal ASC";
+                      }elseif($dana == "semuadana" && $divisi != "semuadivisi"){
+                        $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi='$divisi' AND master_pengeluaran.Keterangan='verifikasi' ORDER BY Tanggal ASC";
+                      }else{
+                        $data = "SELECT master_divisi.Nama_divisi, master_pengeluaran.*,master_sumberdana.Jenis FROM master_pengeluaran JOIN master_divisi ON master_divisi.Id_divisi = master_pengeluaran.Id_divisi JOIN master_sumberdana ON master_sumberdana.Id_sumberdana=master_pengeluaran.Id_sumberdana WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_pengeluaran.Id_divisi = '$divisi' AND master_pengeluaran.Id_sumberdana = '$dana' and master_pengeluaran.Keterangan='verifikasi' ORDER BY Tanggal ASC";
+                      }
+                      $result = mysqli_query($koneksi, $data);
+                      //memeriksa apakah ada data yang ditemukan
+                      if (mysqli_num_rows($result) > 0) { 
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          $total=$total+$row['Jumlah'];
+                          //menampilkan tabel data
+                      ?>
                     <tr>
-                      <th colspan="4" class="text-right">TOTAL</th>
-                      <td colspan="2" class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total, 2, '.', ',')." ,-"; ?></td>
+                      <td class="text-center"><?php echo $no++; ?></td>
+                      <td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal'])); ?></td>
+                      <td><?php echo $row['Jenis']; ?></td>
+                      <td><?php echo $row['Nama_divisi']; ?></td>
+                      <td><?php echo $row['Rincian']; ?></td>
+                      <td class="text-left"><?php echo "Rp. ".number_format($row['Jumlah'], 2, '.', ',')." ,-"; ?></td>
                     </tr>
-                  </tbody>
+                    <?php 
+                        }
+                      }
+                    ?>
+                </tbody>
                 </table>
               </div>
-
+              <!-- /.card-body -->
+              <table class="table table-bordered table-striped">
+                <tr>
+                  <th colspan="6" class="text-right">TOTAL</th>
+                  <td class="text-center text-bold text-white bg-primary"><?php echo "Rp. ".number_format($total)." ,-"; ?></td>
+                </tr>
+              </table>
               <?php 
-            }else{
+            }else{ //isset data post
               ?>
 
               <div class="alert alert-info text-center">
@@ -186,6 +184,9 @@
             }
             ?>
 
+            </div>
+            <!-- /.card -->
+
           </div>
         </div>
 
@@ -194,4 +195,4 @@
   </section>
 
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'footer_laporan.php'; ?>
