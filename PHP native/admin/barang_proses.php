@@ -24,28 +24,23 @@ if($filename == ""){
 // 	mysqli_query($koneksi, "INSERT INTO master_barang VALUES (NULL, '$nama_barang', '$nama_gedung', '$nama_ruangan_area', '$tanggal_masuk', '$tanggal_keluar', '$jenis_merk_tipe', '$kode_label_stp', '$kode_label_pemkot', '$jumlah_barang', '', '$drive', '$kondisi_barang','$catatan')") or die(mysqli_error($koneksi));
 // 	header("location:barang.php?alert=berhasil");
 
-// INSERT INTO `master_barang`(`Id_barang`, `Nama_barang`, `No_registrasi`, `Nama_gedung`, `Nama_ruanganarea`, `Tanggal_masuk`, `Tanggal_keluar`, `Tanggal_masuk_barang`, `JenisMerkTipe`, `Kode_label_STP`, `Kode_label_pemkot`, `Jumlah_barang`, `Gambar`, `Drive`, `Kondisi_barang`, `Catatan`)
-
-    mysqli_query($koneksi, "INSERT INTO `master_barang`(`Id_barang`, `Nama_barang`, `No_registrasi`, `Nama_gedung`, `Nama_ruanganarea`, `Tanggal_masuk`, `Tanggal_keluar`, `Tanggal_masuk_barang`, `JenisMerkTipe`, `Kode_label_STP`, `Kode_label_pemkot`, `Jumlah_barang`, `Gambar`, `Drive`, `Kondisi_barang`, `Catatan`) VALUES (NULL, '".mysqli_real_escape_string($koneksi, $nama_barang)."', '".mysqli_real_escape_string($koneksi, $registrasi)."', '".mysqli_real_escape_string($koneksi, $nama_gedung)."', '".mysqli_real_escape_string($koneksi, $nama_ruangan_area)."', '".mysqli_real_escape_string($koneksi, $tanggal_masuk)."', '".mysqli_real_escape_string($koneksi, $tanggal_keluar)."', '".mysqli_real_escape_string($koneksi, $tanggal_barang)."', '".mysqli_real_escape_string($koneksi, $jenis_merk_tipe)."', '".mysqli_real_escape_string($koneksi, $kode_label_stp)."', '".mysqli_real_escape_string($koneksi, $kode_label_pemkot)."', '".mysqli_real_escape_string($koneksi, $jumlah_barang)."', NULL, '".mysqli_real_escape_string($koneksi, $drive)."', '".mysqli_real_escape_string($koneksi, $kondisi_barang)."', '".mysqli_real_escape_string($koneksi, $catatan)."')") or die(mysqli_error($koneksi));
-	header("location:barang.php?alert=berhasil");
-
-    // $query = sprintf("INSERT INTO master_barang VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '' , '%s', '%s', '%s')",
-    //     mysqli_real_escape_string($koneksi, $nama_barang),
-    //     mysqli_real_escape_string($koneksi, $registrasi),
-    //     mysqli_real_escape_string($koneksi, $nama_gedung),
-    //     mysqli_real_escape_string($koneksi, $nama_ruangan_area),
-    //     mysqli_real_escape_string($koneksi, $tanggal_masuk),
-    //     mysqli_real_escape_string($koneksi, $tanggal_keluar),
-    //     mysqli_real_escape_string($koneksi, $tanggal_barang),
-    //     mysqli_real_escape_string($koneksi, $jenis_merk_tipe),
-    //     mysqli_real_escape_string($koneksi, $kode_label_stp),
-    //     mysqli_real_escape_string($koneksi, $kode_label_pemkot),
-    //     mysqli_real_escape_string($koneksi, $jumlah_barang),
-    //     mysqli_real_escape_string($koneksi, $drive),
-    //     mysqli_real_escape_string($koneksi, $kondisi_barang),
-    //     mysqli_real_escape_string($koneksi, $catatan));
+    $query = sprintf("INSERT INTO master_barang VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '%s', '%s', '%s')",
+        mysqli_real_escape_string($koneksi, $nama_barang),
+        mysqli_real_escape_string($koneksi, $registrasi),
+        mysqli_real_escape_string($koneksi, $nama_gedung),
+        mysqli_real_escape_string($koneksi, $nama_ruangan_area),
+        mysqli_real_escape_string($koneksi, $tanggal_masuk),
+        mysqli_real_escape_string($koneksi, $tanggal_keluar),
+        mysqli_real_escape_string($koneksi, $tanggal_barang),
+        mysqli_real_escape_string($koneksi, $jenis_merk_tipe),
+        mysqli_real_escape_string($koneksi, $kode_label_stp),
+        mysqli_real_escape_string($koneksi, $kode_label_pemkot),
+        mysqli_real_escape_string($koneksi, $jumlah_barang),
+        mysqli_real_escape_string($koneksi, $drive),
+        mysqli_real_escape_string($koneksi, $kondisi_barang),
+        mysqli_real_escape_string($koneksi, $catatan));
     
-    // mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
+    mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
     header("location:barang.php?alert=berhasil");
 
 }else{
@@ -56,24 +51,7 @@ if($filename == ""){
 	}else{
 		move_uploaded_file($_FILES['gambar']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
-		$query = sprintf("INSERT INTO master_barang VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')",
-            mysqli_real_escape_string($koneksi, $nama_barang),
-            mysqli_real_escape_string($koneksi, $registrasi),
-            mysqli_real_escape_string($koneksi, $nama_gedung),
-            mysqli_real_escape_string($koneksi, $nama_ruangan_area),
-            mysqli_real_escape_string($koneksi, $tanggal_masuk),
-            mysqli_real_escape_string($koneksi, $tanggal_keluar),
-            mysqli_real_escape_string($koneksi, $tanggal_barang),
-            mysqli_real_escape_string($koneksi, $jenis_merk_tipe),
-            mysqli_real_escape_string($koneksi, $kode_label_stp),
-            mysqli_real_escape_string($koneksi, $kode_label_pemkot),
-            mysqli_real_escape_string($koneksi, $jumlah_barang),
-            mysqli_real_escape_string($koneksi, $file_gambar),
-            mysqli_real_escape_string($koneksi, $drive),
-            mysqli_real_escape_string($koneksi, $kondisi_barang),
-            mysqli_real_escape_string($koneksi, $catatan));
-    
-        mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
-        header("location:barang.php?alert=berhasil");
+		mysqli_query($koneksi, "INSERT INTO master_barang VALUES (NULL, '$nama_barang',$registrasi, '$nama_gedung', '$nama_ruangan_area', '$tanggal_masuk', '$tanggal_keluar', '$jenis_merk_tipe', '$kode_label_stp', '$kode_label_pemkot', '$jumlah_barang', '$file_gambar', '$drive', '$kondisi_barang','$catatan')");
+		header("location:barang.php?alert=berhasil");
 	}
 }

@@ -132,10 +132,10 @@
                                 </div>
                                 <div class="modal-body">
 
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
+                                  <!-- <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>KODE PENERIMAAN</label>
                                     <input type="text" style="width:100%" name="Kode_penerimaan" required="required" class="form-control" value="<?php echo $d['Kode_penerimaan'] ?>" /readonly>
-                                  </div>
+                                  </div> -->
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>BULAN</label>
@@ -262,7 +262,7 @@
                                 </tr>
                                 <tr>
                                   <th>TANGGAL</th>
-                                  <td><?php echo $d['Tanggal']; ?></td>
+                                  <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
                                 </tr>
                                 <tr>
                                   <th>BULAN</th>
@@ -282,7 +282,7 @@
                                 </tr>
                                 <tr>
                                   <th>BESARAN</th>
-                                  <td><?php echo $d['Besaran_biaya']; ?></td>
+                                  <td><?php echo "Rp. ".number_format($d['Besaran_biaya'], 2, '.', ',')." ,-"; ?></td>
                                 </tr>
                                 <tr>
                                   <th>RINCIAN</th>
@@ -354,16 +354,16 @@
                       <!-- <td><?php echo $d['Keperluan']; ?></td> -->
                       <td class="text-center">
                         <?php if($d['Status']=='voice'){ ?>
-                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs" data-toggle="modal">Voice</button>
+                          <button title="Voice" type="button" class="btn bg-green btn-flat btn-xs">Voice</button>
                         <?php } else { ?>
-                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs" data-toggle="modal">Invoice</button>
+                          <button title="Invoice" type="button" class="btn bg-red btn-flat btn-xs">Invoice</button>
                         <?php } ?>
                       </td>
                       <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
                           <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" data-target="#edit_verifikasi<?php echo $d['Id_penerimaan'] ?>">Draft</button>
                         <?php } else { ?>
-                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Terverifikasi</button>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
                         <?php } ?>
                       </td>
                     </tr>

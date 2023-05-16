@@ -29,9 +29,6 @@ if($cek > 0){
 	}else if($data['Level'] == "Verifikator"){
 		$_SESSION['status'] = "verifikator_logedin";
 		header("location:verifikator/");
-	}else if($data['Level'] == "Barang"){
-		$_SESSION['status'] = "barang_logedin";
-		header("location:barang/");
 	}else{
 		header("location:login.php?alert=gagal");
 	}

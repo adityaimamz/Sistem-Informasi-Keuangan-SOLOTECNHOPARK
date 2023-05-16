@@ -5,7 +5,7 @@
   <section class="content-header">
     <h1>
       Sumber Belanja
-      <small>Data belanja</small>
+      <small>Data Sumber Belanja</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,11 +19,11 @@
         <div class="box box-info">
 
           <div class="box-header">
-            <h3 class="box-title">Data belanja</h3>
+            <h3 class="box-title">Data Sumber Belanja</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i> &nbsp Tambah belanja Bayar
+                <i class="fa fa-plus"></i> &nbsp Tambah Sumber Belanja
               </button>
               &nbsp
 
@@ -78,7 +78,7 @@
 
                       <div class="form-group">
                         <label>JENIS SUMBER BELANJA</label>
-                        <input type="text" name="jenis" required="required" class="form-control" placeholder="Masukkan Nama ..">
+                        <input type="text" name="jenis" required="required" class="form-control" placeholder="Masukkan Jenis Sumber Dana ..">
                       </div>
 
                     </div>

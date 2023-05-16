@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      dana
-      <small>Data dana</small>
+      Sumber Dana
+      <small>Data Sumber Dana</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -80,7 +80,7 @@
 
                       <div class="form-group">
                         <label>JENIS SUMBER DANA</label>
-                        <input type="text" name="jenis" required="required" class="form-control" placeholder="Masukkan Nama ..">
+                        <input type="text" name="jenis" required="required" class="form-control" placeholder="Masukkan Jenis Sumber Dana ..">
                       </div>
 
                     </div>
@@ -99,7 +99,7 @@
                 <thead>
                   <tr>
                     <th>NO</th>
-                    <th>JENIS DANA BAYAR</th>
+                    <th>JENIS SUMBER DANA</th>
                     <th>OPSI</th>
                   </tr>
                 </thead>

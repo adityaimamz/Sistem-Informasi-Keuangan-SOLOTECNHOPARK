@@ -276,26 +276,6 @@ $tanggal = date('Y-m-d');
                               </div>
                               <div class="modal-body">
                               <table class="table table-condensed">
-                              <tr>
-                                  <th>NOMOR SURAT MASUK</th>
-                                  <td><?php echo $d['No_Suratmasuk']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>NOMOR SURAT</th>
-                                  <td><?php echo $d['Nomor_surat']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>PERIHAL</th>
-                                  <td><?php echo $d['Perihal']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>TERIMA DARI</th>
-                                  <td><?php echo $d['Terima_dari']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>ISI</th>
-                                  <td><?php echo $d['Isi']; ?></td>
-                                </tr>
                                 <tr>
                                   <th>TANGGAL DITERUSKAN</th>
                                   <td><?php echo $d['Tanggal_diteruskan']; ?></td>

@@ -97,31 +97,17 @@
           </li>
 
           <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i>
-                <span>DATA MASTER</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="accordion-collapse collapse show"><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
-              </ul>
-            </li>
-            
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-cogs"></i>
-                <span>PERATURAN</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="accordion-collapse collapse show"><a href="peraturan.php"><i class="fa fa-circle-o"></i> Data Peraturan</a></li>
-              </ul>
-            </li>
-            
+          <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>DATA MASTER</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="accordion-collapse collapse show"><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
+          </ul>
+        </li>
         <script>
         $(function () {
           $('.treeview').tree();
@@ -155,9 +141,7 @@
               <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form pengeluaran</a></li> -->
             </ul>
 
-          </li>
-          
-          <li class="treeview">
+            <li class="treeview">
             <a href="#">
               <i class="fa fa-print"></i>
               <span>LAPORAN</span>
@@ -166,12 +150,12 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="surat_masuk_laporan.php"><i class="fa fa-circle-o"></i> Laporan Surat Masuk</a></li>
-              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i> Laporan Surat Keluar</a></li>
-              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i> Laporan Agenda</a></li>
+              <li><a href="surat_masuk_laporan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
+              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i> Laporan Pengeluaran</a></li>
+              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
             </ul>
           </li>
-          
+
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>LOGOUT</span>

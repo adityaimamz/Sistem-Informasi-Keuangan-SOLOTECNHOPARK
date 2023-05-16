@@ -78,7 +78,7 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": true, "autoWidth": true,
-      "buttons": ["excel", "print", "colvis"]
+      "buttons": ["copy", "excel", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
@@ -123,7 +123,10 @@
 
 
 </script>
+
+
 <script>
+
 
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
@@ -133,29 +136,17 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: '',
             data: [
+              <?php 
+$bulan_array = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+$total = array();
+foreach($bulan_array as $key => $bulan) {
+  $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='".($key+1)."'");
+  $p = mysqli_fetch_assoc($pengunjung);
+  $total[$bulan] = $p['pengunjung_bulan'];
+  echo '"' . $p['pengunjung_bulan'] . '",';
+}
+?>
 
-                // $bulan_array = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-                // $total = array();
-                // foreach($bulan_array as $key => $bulan) {
-                //   $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='".($key+1)."'");
-                //   $p = mysqli_fetch_assoc($pengunjung);
-                //   $total[$bulan] = $p['pengunjung_bulan'];
-                //   echo '"' . $p['pengunjung_bulan'] . '",';
-                // }
-                
-                
-                <?php while ($p = mysqli_fetch_array($agenda_januari)) { echo '"' . $p['total_agenda_januari'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_februari)) { echo '"' . $p['total_agenda_februari'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_maret)) { echo '"' . $p['total_agenda_maret'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_april)) { echo '"' . $p['total_agenda_april'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_mei)) { echo '"' . $p['total_agenda_mei'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_juni)) { echo '"' . $p['total_agenda_juni'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_juli)) { echo '"' . $p['total_agenda_juli'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_agustus)) { echo '"' . $p['total_agenda_agustus'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_september)) { echo '"' . $p['total_agenda_september'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_oktober)) { echo '"' . $p['total_agenda_oktober'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_november)) { echo '"' . $p['total_agenda_november'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_desember)) { echo '"' . $p['total_agenda_desember'] . '",';}?>,
 				],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

@@ -166,7 +166,7 @@ $bulan_ini = date('n');
                   include '../koneksi.php';
                   $no=1;
                   $bulan = date('m');
-                $data = mysqli_query($koneksi,"SELECT master_agenda.*, master_keterangan.Keterangan FROM master_agenda LEFT JOIN master_keterangan ON master_agenda.Id_keterangan=master_keterangan.Id_keterangan WHERE MONTH(master_agenda.Tanggal)='$bulan' order by Id_agenda desc;");
+                  $data = mysqli_query($koneksi,"SELECT * FROM master_agenda WHERE MONTH(master_agenda.Tanggal)='$bulan' order by Id_agenda desc;");
                   while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>

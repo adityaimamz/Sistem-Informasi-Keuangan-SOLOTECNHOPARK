@@ -76,12 +76,8 @@
                     <div class="modal-body">
 
                     <div class="form-group">
-                        <label>TANGGAL MULAI</label>
-                        <input type="date" name="tanggal_mulai"  class="form-control" placeholder="Masukkan Acara..">
-                    </div>
-                    <div class="form-group">
-                        <label>TANGGAL AKHIR</label>
-                        <input type="date" name="tanggal_akhir"  class="form-control" placeholder="Masukkan Acara..">
+                        <label>TANGGAL</label>
+                        <input type="date" name="tanggal"  class="form-control">
                     </div>
                     <div class="form-group">
                         <label>PUKUL</label>
@@ -113,22 +109,11 @@
                     </div>
                     <div class="form-group">
                         <label>KETERANGAN</label>
-                        <select name="keterangan" class="form-control">
-                          <option value="">- Pilih -</option>
-                          <?php 
-                          include 'koneksi.php';
-                          $keterangan = mysqli_query($koneksi,"SELECT * FROM master_keterangan ORDER BY Id_keterangan ASC");
-                          while($k = mysqli_fetch_array($keterangan)){
-                            ?>
-                            <option value="<?php echo $k['Id_keterangan']; ?>"><?php echo $k['Keterangan']; ?></option>
-                            <?php 
-                          }
-                          ?>
-                        </select>
+                        <input type="text" name="keterangan"  class="form-control" placeholder="Masukkan Keterangan..">
                     </div>
                     <div class="form-group">
                         <label>PIC</label>
-                        <input type="text" name="pic" class="form-control" placeholder="Masukkan Nama PIC..">
+                        <input type="text" name="pic"  class="form-control" placeholder="Masukkan Nama PIC..">
                     </div>
 
                     </div>
@@ -149,8 +134,7 @@
                   <tr>
                   <th>NO</th>
                     <th>OPSI</th>
-                    <th>TANGGAL MULAI</th>
-                    <th>TANGGAL AKHIR</th>
+                    <th>TANGGAL</th>
                     <th>PUKUL</th>
                     <th>ACARA</th>
                     <th>INSTANSI</th>
@@ -165,119 +149,61 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT master_agenda.*, master_keterangan.Keterangan FROM master_agenda LEFT JOIN master_keterangan ON master_agenda.Id_keterangan=master_keterangan.Id_keterangan order by Id_agenda desc");
+                  $data = mysqli_query($koneksi,"SELECT * FROM master_agenda order by Id_agenda desc;");
                   while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
-                      <td>
-                          <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_agenda_<?php echo $d['Id_agenda'] ?>">
-                            <i class="fa fa-list"></i>
-                          </button>
+                      <td>    
+
                           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_agenda_<?php echo $d['Id_agenda'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_agenda_<?php echo $d['Id_agenda'] ?>">
-                            <i class="fa fa-trash"></i>
-                          </button>
 
-                        <!-- Modal detail -->
-                        <div class="modal fade" id="detail_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Detail</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                              <table class="table table-condensed">
-                                <tr>
-                                  <th>TANGGAL MULAI</th>
-                                  <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                                </tr>
-                                <tr>
-                                  <th>TANGGAL SELESAI</th>
-                                  <td><?php echo date('d-m-Y', strtotime($d['Tanggal_selesai'])); ?></td>
-                                </tr>
-                                <tr>
-                                  <th>PUKUL</th>
-                                  <td><?php echo $d['Pukul']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>ACARA</th>
-                                  <td><?php echo $d['Acara']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>INSTANSI</th>
-                                  <td><?php echo $d['Instansi']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>TEMPAT</th>
-                                  <td><?php echo $d['Tempat']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>KETERANGAN</th>
-                                  <td><?php echo $d['Keterangan']; ?></td>
-                                </tr>
-                                <tr>
-                                  <th>PIC</th>
-                                  <td><?php echo $d['Pic']; ?></td>
-                                </tr>
-                                </table>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <!-- Modal Update -->
-                        <form action="agenda_update.php" method="post" enctype="multipart/form-data">
-                          <div class="modal fade" id="edit_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Edit agenda</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                        <label>TANGGAL MULAI</label>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_agenda_<?php echo $d['Id_agenda'] ?>">
+                              <i class="fa fa-trash"></i>
+                            </button>
+
+
+                            <!-- Modal Update -->
+                            <form action="agenda_update.php" method="post" enctype="multipart/form-data">
+                              <div class="modal fade" id="edit_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title" id="exampleModalLabel">Edit agenda</h4>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                      <div class="form-group" style="width:100%;margin-bottom:20px">
+                                        <label>TANGGAL</label>
                                         <input type="hidden" name="id" required="required" class="form-control" value="<?php echo $d['Id_agenda']; ?>">
-                                        <input type="text" style="width:100%" name="tanggal_mulai" class="form-control datepicker2" placeholder="Ubah Tanggal Mulai" value="<?php echo $d['Tanggal'] ?>">
-                                    </div>
-                                    
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                        <label>TANGGAL SELESAI</label>
-                                        <input type="text" style="width:100%" name="tanggal_selesai" class="form-control datepicker2" placeholder="Ubah Tanggal Selesai" value="<?php echo $d['Tanggal_selesai'] ?>">
-                                    </div>
+                                        <input type="text" style="width:100%" name="tanggal" class="form-control datepicker2" placeholder="Ubah Tanggal" value="<?php echo $d['Tanggal'] ?>">
+                                      </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>PUKUL</label>
                                       <input type="text" style="width:100%" name="pukul" required="required" class="form-control" value="<?php echo $d['Pukul'] ?>">
                                     </div>
-    
+
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>ACARA</label>
                                       <input type="text" style="width:100%" name="acara" required="required" class="form-control" value="<?php echo $d['Acara'] ?>">
                                     </div>
-    
+
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>INSTANSI</label>
                                       <input type="text" style="width:100%" name="instansi" required="required" class="form-control" value="<?php echo $d['Instansi'] ?>">
                                     </div>
-    
+
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>TEMPAT</label>
                                       <input type="text" style="width:100%" name="tempat" required="required" class="form-control" value="<?php echo $d['Tempat'] ?>">
                                     </div>
-    
+
                                     <div class="form-group" style="width:100%; margin-bottom:20px">
                                       <label>PERIHAL</label>
                                       <select name="perihal" style="width:100%" class="form-control" >
@@ -286,81 +212,57 @@
                                       <option value="Undangan">Undangan</option>
                                       </select>
                                     </div>
-    
+
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>JUMLAH PENGUNJUNG</label>
                                     <input type="text" style="width:100%" name="jumlah_pengunjung" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Jumlah_pengunjung'];?>">
                                   </div>
-    
+
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>KETERANGAN</label>
-                                    <select name="keterangan" style="width:100%" class="form-control" required="required">
-                                      <option value="">- Pilih -</option>
-                                      <?php 
-                                      $keterangan = mysqli_query($koneksi,"SELECT * FROM master_keterangan ORDER BY Id_keterangan ASC");
-                                      while($k = mysqli_fetch_array($keterangan)){
-                                        ?>
-                                        <option <?php if($d['Id_keterangan'] == $k['Id_keterangan']){echo "selected='selected'";} ?> value="<?php echo $k['Id_keterangan']; ?>"><?php echo $k['Keterangan']; ?></option>
-                                        <?php 
-                                      }
-                                      ?>
-                                    </select>
+                                    <label>keterangan</label>
+                                    <input type="text" style="width:100%" name="keterangan" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Keterangan'];?>">
                                   </div>
-                                  
-                                  <!--<div class="form-group" style="width:100%;margin-bottom:20px">-->
-                                  <!--  <label>keterangan</label>-->
-                                  <!--  <input type="text" style="width:100%" name="keterangan" required="required" class="form-control" placeholder="Masukkan Jumlah .." value="<?php echo $d['Keterangan'];?>">-->
-                                  <!--</div>-->
-    
+
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>PIC</label>
-                                    <input type="text" style="width:100%" name="pic" required="required" class="form-control" placeholder="Ubah nama Pic.." value="<?php echo $d['Pic'];?>">
+                                    <input type="text" style="width:100%" name="pic" required="required" class="form-control" placeholder="Ganti nama Pic.." value="<?php echo $d['Pic'];?>">
                                   </div>
-                                  
+
+
                                   </div>
                                   <div class="modal-footer">  
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                   </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+
+                          <!-- Modal Hapus -->
+                          <div class="modal fade" id="hapus_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+
+                                  <p>Yakin ingin menghapus data ini ?</p>
+
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                  <a href="agenda_hapus.php?id=<?php echo $d['Id_agenda'] ?>" class="btn btn-primary">Hapus</a>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </form>
-
-                      <!-- Modal Hapus -->
-                      <div class="modal fade" id="hapus_agenda_<?php echo $d['Id_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-
-                              <p>Yakin ingin menghapus data ini ?</p>
-
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                              <a href="agenda_hapus.php?id=<?php echo $d['Id_agenda'] ?>" class="btn btn-primary">Hapus</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
                       </td>
-                        <td><?php echo date('d-m-Y', strtotime($d['Tanggal'])); ?></td>
-                        <td>
-                            <?php 
-                                if($d['Tanggal_selesai']=='0000-00-00'){
-                                    echo "";
-                                }else{
-                                    echo date('d-m-Y', strtotime($d['Tanggal_selesai']));
-                                }
-                            ?>
-                        </td>
+                        <td><?php echo $d['Tanggal']; ?></td>
                         <td><?php echo $d['Pukul']; ?></td>
                         <td><?php echo $d['Acara']; ?></td>
                         <td><?php echo $d['Instansi']; ?></td>

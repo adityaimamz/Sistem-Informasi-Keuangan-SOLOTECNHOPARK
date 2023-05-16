@@ -83,7 +83,7 @@ $tahun = date('Y');
                   include '../koneksi.php';
                   $no=1;
                   $tahun = date('Y');
-                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice'AND YEAR(master_penerimaan.Tanggal)='$tahun' ORDER BY master_penerimaan.Id_penerimaan DESC");
+                  $data = mysqli_query($koneksi,"SELECT master_penerimaan.* FROM master_penerimaan WHERE master_penerimaan.Status='invoice' AND YEAR(master_penerimaan.Tanggal)='$tahun' AND master_penerimaan.Keterangan='verifikasi' ORDER BY master_penerimaan.Id_penerimaan DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
@@ -297,9 +297,9 @@ $tahun = date('Y');
                       </td>
                       <td class="text-center">
                         <?php if($d['Keterangan']=='nonverifikasi'){ ?>
-                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs" data-toggle="modal" <?php echo $d['Id_penerimaan'] ?>">Draft</button>
+                          <button title="Verifikasi" type="button" class="btn bg-orange btn-flat btn-xs">Draft</button>
                         <?php } else { ?>
-                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs" data-toggle="modal">Terverifikasi</button>
+                          <button title="Sudah Terverifikasi" type="button" class="btn bg-blue btn-flat btn-xs">Terverifikasi</button>
                         <?php } ?>
                       </td>
 

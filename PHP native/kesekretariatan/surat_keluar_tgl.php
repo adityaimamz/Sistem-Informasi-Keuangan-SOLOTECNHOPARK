@@ -139,7 +139,7 @@ $tanggal = date('Y-m-d');
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT surat_keluar.* FROM surat_keluar WHERE surat_keluar.Tanggal='$tanggal' ORDER BY surat_keluar.id_Suratkeluar DESC");
+                  $data = mysqli_query($koneksi,"SELECT surat_keluar.* FROM surat_keluar WHERE surat_masuk.Tanggal='$tanggal' ORDER BY surat_keluar.id_Suratkeluar DESC");
                   while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
