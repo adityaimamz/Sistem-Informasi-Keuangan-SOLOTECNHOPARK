@@ -408,10 +408,9 @@ $hari_ini = date('w');
           </ul>
 
           <div class="tab-content" style="padding: 20px">
-
             <div class="chart tab-pane active" id="tab1">
 
-              
+              <br>
               <h4 class="text-center">Realisasi Jumlah Kunjungan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
                   <?php
                     $agenda_januari= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_januari FROM master_agenda WHERE month(Tanggal)='01' AND year(Tanggal)='2023' ");
@@ -429,40 +428,98 @@ $hari_ini = date('w');
                   ?>
               <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
 
-            </div>
-            <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
-              
-            </div>
-          </div>
-          <div class="tab-content" style="padding: 20px">
-
-            <div class="chart tab-pane active" id="tab1">
-
-              
+              <br>
               <h4 class="text-center">Realisasi Kesekretariatan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Jenis</b></h4>
-              <?php 
-                $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
-                $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-                $agenda= mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agenda FROM master_agenda");
-
-              ?>
+                <?php 
+                  $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
+                  $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
+                  $agenda= mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agenda FROM master_agenda");
+                ?>
               <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
 
-            </div>
-            <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
-              
-            </div>
-            </div>
+              <br>
+              <h4 class="text-center">Realisasi Jumlah Kunjungan UPTD KST SOLO TECHNOPARK Tahun 2023 Berdasarkan <b>Tempat</b></h4>
+                <?php 
+                  // Query for Shopee
+                  $agenda_shopee = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_shopee FROM master_agenda WHERE Id_keterangan='1'");
+                  // Query for Bukalapak
+                  $agenda_bukalapak = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bukalapak FROM master_agenda WHERE Id_keterangan='2'");
+                  // Query for Tokopedia
+                  $agenda_tokopedia = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_tokopedia FROM master_agenda WHERE Id_keterangan='3'");
+                  // Query for GoTo
+                  $agenda_goto = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_goto FROM master_agenda WHERE Id_keterangan='4'");
+                  // Query for Blibli
+                  $agenda_blibli = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_blibli FROM master_agenda WHERE Id_keterangan='5'");
+                  // Query for Bank Mandiri
+                  $agenda_bankmandiri = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bankmandiri FROM master_agenda WHERE Id_keterangan='6'");
+                  // Query for Amazon Web Service
+                  $agenda_aws = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_aws FROM master_agenda WHERE Id_keterangan='7'");
+                  // Query for Garena
+                  $agenda_garena = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_garena FROM master_agenda WHERE Id_keterangan='8'");
+                  // Query for ACER-Gloria Taiwan-ICE Institute
+                  $agenda_acer = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_acer FROM master_agenda WHERE Id_keterangan='9'");
+                  // Query for SKK Migas
+                  $agenda_skk = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_skk FROM master_agenda WHERE Id_keterangan='10'");
+                  // Query for Petronas
+                  $agenda_petronas = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_petronas FROM master_agenda WHERE Id_keterangan='11'");
+                  // Query for Petrotekno
+                  $agenda_petrotekno = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_petrotekno FROM master_agenda WHERE Id_keterangan='12'");
+                  // Query for Pertamina Hulu Energi
+                  $agenda_phe = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_phe FROM master_agenda WHERE Id_keterangan='13'");
+                  // Query for Quest Motor
+                  $agenda_questmotor = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_questmotor FROM master_agenda WHERE Id_keterangan='14'");
+                  // Query for Indofarma
+                  $agenda_indofarma = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_indofarma FROM master_agenda WHERE Id_keterangan='15'");
+                  // Query for Nestle
+                  $agenda_nestle = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_nestle FROM master_agenda WHERE Id_keterangan='16'");
+                  // Query for BSSN
+                  $agenda_bssn = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bssn FROM master_agenda WHERE Id_keterangan='17'");
+                  // Query for Kemendikbudristek Dikti
+                  $agenda_kemdikbudristek = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kemdikbudristek FROM master_agenda WHERE Id_keterangan='18'");
+                  // Query for Pijar Foundation
+                  $agenda_pijarfoundation = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_pijarfoundation FROM master_agenda WHERE Id_keterangan='19'");
+                  // Query for Apple Developer Academy @BINUS
+                  $agenda_appleacademy = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_appleacademy FROM master_agenda WHERE Id_keterangan='20'");
+                  // Query for UNISRI
+                  $agenda_unisri = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_unisri FROM master_agenda WHERE Id_keterangan='21'");
+                  // Query for UNIBA
+                  $agenda_uniba = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_uniba FROM master_agenda WHERE Id_keterangan='22'");
+                  // Query for LPDP
+                  $agenda_lpdp = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_lpdp FROM master_agenda WHERE Id_keterangan='23'");
+                  // Query for Scholar Official
+                  $agenda_scholarofficial = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_scholarofficial FROM master_agenda WHERE Id_keterangan='24'");
+                  // Query for Bappeda
+                  $agenda_bappeda = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bappeda FROM master_agenda WHERE Id_keterangan='25'");
+                  // Query for UNS
+                  $agenda_uns = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_uns FROM master_agenda WHERE Id_keterangan='26'");
+                  // Query for Inaspoc
+                  $agenda_inaspoc = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_inaspoc FROM master_agenda WHERE Id_keterangan='27'");
+                  // Query for UIN
+                  $agenda_uin = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_uin FROM master_agenda WHERE Id_keterangan='28'");
+                  // Query for Balitbanda
+                  $agenda_balitbanda = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_balitbanda FROM master_agenda WHERE Id_keterangan='29'");
+                  // Query for Kemenko
+                  $agenda_kemenko = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kemenko FROM master_agenda WHERE Id_keterangan='30'");
+                  // Query for Kunjungan Sekolah
+                  $agenda_kunjungansekolah = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kunjungansekolah FROM master_agenda WHERE Id_keterangan='31'");
+                  // Query for Kunjungan Universitas
+                  $agenda_kunjunganuniversitas = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kunjunganuniversitas FROM master_agenda WHERE Id_keterangan='32'");
+                  // Query for SSC
+                  $agenda_ssc = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_ssc FROM master_agenda WHERE Id_keterangan='33'");
+                  // Query for Kunjungan Instansi
+                  $agenda_kunjunganinstansi = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kunjunganinstansi FROM master_agenda WHERE Id_keterangan='34'");
+                  // Query for J&T
+                  $agenda_jnt = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_jnt FROM master_agenda WHERE Id_keterangan='35'");
+                ?>
+              <canvas id="myChart3" style="position: relative; height: 300px;"></canvas>
 
+            </div>
+          <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
         </div>
-
       </section>
       <!-- /.Left col -->
 
-
       <section class="col-lg-4">
-
-
         <!-- Calendar -->
         <div class="box box-solid bg-green-gradient">
           <div class="box-header">
@@ -476,8 +533,8 @@ $hari_ini = date('w');
           </div>
           <!-- /.box-body -->
         </div>
-
       </section>
+
       <!-- right col -->
     </div>
     <!-- /.row (main row) -->

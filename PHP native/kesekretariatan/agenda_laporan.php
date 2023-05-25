@@ -52,7 +52,7 @@
                         $keterangan = mysqli_query($koneksi,"SELECT * FROM master_keterangan ORDER BY Id_keterangan ASC");
                         while($k = mysqli_fetch_array($keterangan)){
                           ?>
-                          <option value="<?php echo $k['Keterangan']; ?>"><?php echo $k['Keterangan']; ?></option>
+                          <option value="<?php echo $k['Id_keterangan']; ?>"><?php echo $k['Keterangan']; ?></option>
                           <?php 
                         }
                         ?>
@@ -133,7 +133,7 @@
                         <td><?php echo $row['Keterangan']; ?></td>
                       </tr>
                       <?php 
-                    }
+                        }
                     }else{ ?>
                       <div class="alert alert-danger text-center">
                         Data Kosong

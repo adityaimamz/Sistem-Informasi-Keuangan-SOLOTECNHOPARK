@@ -162,7 +162,7 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT surat_masuk.* FROM surat_masuk  ORDER BY surat_masuk.Id_Suratmasuk DESC");
+                  $data = mysqli_query($koneksi,"SELECT surat_masuk.* FROM surat_masuk  ORDER BY surat_masuk.Id_Suratmasuk DESC LIMIT 100");
                   while($d = mysqli_fetch_array($data)){
                       ?>
   

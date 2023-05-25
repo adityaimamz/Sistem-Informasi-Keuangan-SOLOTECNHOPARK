@@ -119,6 +119,7 @@
               </a>
               <ul class="treeview-menu">
                 <li class="accordion-collapse collapse show"><a href="peraturan.php"><i class="fa fa-circle-o"></i> Data Peraturan</a></li>
+                 <li class="accordion-collapse collapse show"><a href="keterangan.php"><i class="fa fa-circle-o"></i> Data Keterangan</a></li>
               </ul>
             </li>
             

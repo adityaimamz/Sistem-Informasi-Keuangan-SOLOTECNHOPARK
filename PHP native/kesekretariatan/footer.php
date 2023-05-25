@@ -133,30 +133,19 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: '',
             data: [
-
-                // $bulan_array = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-                // $total = array();
-                // foreach($bulan_array as $key => $bulan) {
-                //   $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='".($key+1)."'");
-                //   $p = mysqli_fetch_assoc($pengunjung);
-                //   $total[$bulan] = $p['pengunjung_bulan'];
-                //   echo '"' . $p['pengunjung_bulan'] . '",';
-                // }
-                
-                
                 <?php while ($p = mysqli_fetch_array($agenda_januari)) { echo '"' . $p['total_agenda_januari'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_februari)) { echo '"' . $p['total_agenda_februari'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_maret)) { echo '"' . $p['total_agenda_maret'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_april)) { echo '"' . $p['total_agenda_april'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_mei)) { echo '"' . $p['total_agenda_mei'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_juni)) { echo '"' . $p['total_agenda_juni'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_juli)) { echo '"' . $p['total_agenda_juli'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_agustus)) { echo '"' . $p['total_agenda_agustus'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_september)) { echo '"' . $p['total_agenda_september'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_oktober)) { echo '"' . $p['total_agenda_oktober'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_november)) { echo '"' . $p['total_agenda_november'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda_desember)) { echo '"' . $p['total_agenda_desember'] . '",';}?>,
-				],
+                <?php while ($p = mysqli_fetch_array($agenda_februari)) { echo '"' . $p['total_agenda_februari'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_maret)) { echo '"' . $p['total_agenda_maret'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_april)) { echo '"' . $p['total_agenda_april'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_mei)) { echo '"' . $p['total_agenda_mei'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_juni)) { echo '"' . $p['total_agenda_juni'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_juli)) { echo '"' . $p['total_agenda_juli'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_agustus)) { echo '"' . $p['total_agenda_agustus'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_september)) { echo '"' . $p['total_agenda_september'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_oktober)) { echo '"' . $p['total_agenda_oktober'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_november)) { echo '"' . $p['total_agenda_november'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_desember)) { echo '"' . $p['total_agenda_desember'] . '",';}?>,
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -199,6 +188,7 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
 var ctx = document.getElementById("myChart2").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -207,10 +197,10 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: '',
             data: [
-				<?php while ($p = mysqli_fetch_array($suratmasuk)) { echo '"' . $p['total_suratmasuk'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($suratkeluar)) { echo '"' . $p['total_suratkeluar'] . '",';}?>,
-				<?php while ($p = mysqli_fetch_array($agenda)) { echo '"' . $p['total_agenda'] . '",';}?>,
-				],
+              <?php while ($p = mysqli_fetch_array($suratmasuk)) { echo '"' . $p['total_suratmasuk'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($suratkeluar)) { echo '"' . $p['total_suratkeluar'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($agenda)) { echo '"' . $p['total_agenda'] . '",';}?>,
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -253,6 +243,65 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+var ctx = document.getElementById("myChart3").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels : ["Shopee","","Bukalapak","","Tokopedia","","GoTo","","Blibli","","Bank Mandiri"],
+        datasets: [{
+            label: '',
+            data: [
+              <?php while ($p = mysqli_fetch_array($agenda_shopee)) { echo '"' . $p['total_agenda_shopee'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($agenda_bukalapak)) { echo '"' . $p['total_agenda_bukalapak'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($agenda_tokopedia)) { echo '"' . $p['total_agenda_tokopedia'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($agenda_goto)) { echo '"' . $p['total_agenda_goto'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($agenda_blibli)) { echo '"' . $p['total_agenda_blibli'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($agenda_bankmandiri)) { echo '"' . $p['total_agenda_bankmandiri'] . '",';}?>
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255,99,132,1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // gunakan fungsi callback untuk mengubah format uang
+                    callback: function(value, index, values) {
+                        return value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
+                    }
+                }
+            }]
+        }
+    }
+});
+
 </script>
 </body>
 </html>

@@ -118,7 +118,7 @@
         });
         </script>
 
-              <li class="treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-user"></i>
               <span>KESEKRETARIATAN</span>
@@ -129,14 +129,13 @@
             <ul class="treeview-menu" style="display: none;">
               <li><a href="surat_masuk.php"><i class="fa fa-circle-o"></i> Data Surat Masuk</a></li>
               <li><a href="surat_keluar.php"><i class="fa fa-circle-o"></i> Data Surat Keluar</a></li>
-              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Agenda</a></li>
             </ul>
           </li>
 
           <li class="treeview">
             <a href="#">
               <i class="fa fa-dollar"></i>
-              <span>PENERIMAAN</span>
+              <span>PENGARSIPAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -144,33 +143,34 @@
             <ul class="treeview-menu" style="display: none;">
               <li><a href="penerimaan.php"><i class="fa fa-circle-o"></i> Data Penerimaan</a></li>
               <li><a href="tagihan.php"><i class="fa fa-circle-o"></i> Data Tagihan</a></li>
+              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
             </ul>
           </li>
 
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-dollar"></i>
-              <span>PENGELUARAN</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
-              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form Pengeluaran</a></li> -->
-            </ul>
-          </li>
+          <!--<li class="treeview">-->
+          <!--  <a href="#">-->
+          <!--    <i class="fa fa-dollar"></i>-->
+          <!--    <span>PENGELUARAN</span>-->
+          <!--    <span class="pull-right-container">-->
+          <!--      <i class="fa fa-angle-left pull-right"></i>-->
+          <!--    </span>-->
+          <!--  </a>-->
+          <!--  <ul class="treeview-menu" style="display: none;">-->
+          <!--    <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>-->
+          <!--  </ul>-->
+          <!--</li>-->
 
           <li class="treeview">
             <a href="#">
               <i class="fa fa-briefcase"></i>
-              <span>BARANG</span>
+              <span>PENGELOLAAN KAWASAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="barang.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Agenda</a></li>
             </ul>
           </li>
 
