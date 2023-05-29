@@ -110,6 +110,7 @@
             <li><a href="dana.php"><i class="fa fa-circle-o"></i> Data Sumber Dana</a></li>
             <li><a href="belanja.php"><i class="fa fa-circle-o"></i> Data Jenis Belanja</a></li>
             <li><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
+                 <li class="accordion-collapse collapse show"><a href="keterangan.php"><i class="fa fa-circle-o"></i> Data Keterangan</a></li>            
           </ul>
         </li>
         <script>
@@ -120,7 +121,7 @@
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-user"></i>
+              <i class="fa fa-briefcase"></i>
               <span>KESEKRETARIATAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -134,16 +135,16 @@
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-dollar"></i>
+              <i class="fa fa-archive"></i>
               <span>PENGARSIPAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="penerimaan.php"><i class="fa fa-circle-o"></i> Data Penerimaan</a></li>
-              <li><a href="tagihan.php"><i class="fa fa-circle-o"></i> Data Tagihan</a></li>
-              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>
+              <li><a href="penerimaan.php"><i class="fa fa-circle-o"></i> Arsip SPJ Dokumen penerimaan</a></li>
+              <li><a href="tagihan.php"><i class="fa fa-circle-o"></i> Arsip SPJ Dokumen Tagihan</a></li>
+              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Arsip SPJ Dokumen Pengeluaran</a></li>
             </ul>
           </li>
 
@@ -162,15 +163,15 @@
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-briefcase"></i>
+              <i class="fa fa-institution"></i>
               <span>PENGELOLAAN KAWASAN</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="barang.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
-              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Agenda</a></li>
+              <li><a href="barang.php"><i class="fa fa-circle-o"></i> Pengelolaan Aset</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Pengelolaan Kunjungan</a></li>
             </ul>
           </li>
 
@@ -183,9 +184,25 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="penerimaan_laporan.php"><i class="fa fa-circle-o"></i> Laporan Penerimaan</a></li>
-              <li><a href="laporan.php"><i class="fa fa-circle-o"></i> Laporan Pengeluaran</a></li>
-              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
+              <li><a href="penerimaan_laporan.php"><i class="fa fa-circle-o"></i>Laporan Penerimaan</a></li>
+              <li><a href="laporan.php"><i class="fa fa-circle-o"></i>Laporan Pengeluaran</a></li>
+              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i>Laporan Aset Kawasan</a></li>
+            </ul>
+          </li>
+          
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-area-chart"></i>
+              <span>INFOGRAFIS</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="Infografis_kesekretariatan.php"><i class="fa fa-circle-o"></i>Infografis Kesekretariatan</a></li>
+              <li><a href="Infografis_arsip.php"><i class="fa fa-circle-o"></i>Infografis Pengarsipan</a></li>
+              <li><a href="Infografis_kawasan.php"><i class="fa fa-circle-o"></i>Infografis Pengelolaan Kawasan</a></li>
+              <li><a href="404.php"><i class="fa fa-circle-o"></i>Infografis HRD</a></li>
             </ul>
           </li>
 

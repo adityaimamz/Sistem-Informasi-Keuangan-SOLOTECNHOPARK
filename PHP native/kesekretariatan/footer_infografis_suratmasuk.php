@@ -68,7 +68,6 @@
 <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script src="../assets/js/main.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -120,22 +119,31 @@
     autoclose: true,
     format: 'yyyy/mm/dd',
   });
-
-
 </script>
+
 <script>
 
-var ctx = document.getElementById("myChart2").getContext('2d');
+var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels : ["Surat Masuk","","Surat Keluar"],
+        labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
         datasets: [{
             label: '',
             data: [
-              <?php while ($p = mysqli_fetch_array($suratmasuk)) { echo '"' . $p['total_suratmasuk'] . '",';}?>,
-              <?php while ($p = mysqli_fetch_array($suratkeluar)) { echo '"' . $p['total_suratkeluar'] . '",';}?>,
-            ],
+				<?php while ($p = mysqli_fetch_array($januari)) { echo '"' . $p['januari_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($februari)) { echo '"' . $p['februari_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($maret)) { echo '"' . $p['maret_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($april)) { echo '"' . $p['april_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($mei)) { echo '"' . $p['mei_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juni)) { echo '"' . $p['juni_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juli)) { echo '"' . $p['juli_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agustus)) { echo '"' . $p['agustus_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($september)) { echo '"' . $p['september_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($oktober)) { echo '"' . $p['oktober_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($november)) { echo '"' . $p['november_smasuk'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($desember)) { echo '"' . $p['desember_smasuk'] . '",';}?>,
+				],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -178,6 +186,7 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
 
 </script>
 </body>

@@ -105,17 +105,20 @@
           <li class="treeview">
             <a href="#">
               <i class="fa fa-briefcase"></i>
-              <span>BARANG</span>
+              <span>PENGELOLAAN ASET</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="barang.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
+              <li><a href="barang.php"><i class="fa fa-circle-o"></i> Pengelolaan Aset Kawasan</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Pengelolaan Kunjungan Kawasan</a></li>
             </ul>
           </li>
 
-          <li class="treeview">
+
+
+            <li class="treeview">
             <a href="#">
               <i class="fa fa-print"></i>
               <span>LAPORAN</span>
@@ -124,7 +127,22 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
+              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i>Laporan Pengeluaran</a></li>
+              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i>Laporan Aset Kawasan</a></li>
+            </ul>
+          </li>
+
+                  <li class="treeview">
+            <a href="#">
+              <i class="fa fa-area-chart"></i>
+              <span>INFOGRAFIS</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="Infografis_barang.php"><i class="fa fa-circle-o"></i> Infografis Real Time Aset</a></li>
+              <li><a href="Infografis_agenda.php"><i class="fa fa-circle-o"></i> Infografis Real Time Kunjungan</a></li>
             </ul>
           </li>
 

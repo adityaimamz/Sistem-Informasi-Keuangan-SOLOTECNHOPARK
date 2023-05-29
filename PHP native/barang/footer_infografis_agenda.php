@@ -5,11 +5,8 @@
     </div>
     <strong>Build & developed by MSIB batch 3 intern 2023</strong> - Solo Techno Park Analyzer (Soto Panaz)
   </footer>
-
   
 </div>
-
-
 
 <script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -68,7 +65,6 @@
 <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script src="../assets/js/main.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -121,20 +117,31 @@
     format: 'yyyy/mm/dd',
   });
 
-
 </script>
+
 <script>
 
-var ctx = document.getElementById("myChart2").getContext('2d');
+
+var ctx = document.getElementById("myChart1").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels : ["Surat Masuk","","Surat Keluar"],
+      labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
         datasets: [{
             label: '',
             data: [
-              <?php while ($p = mysqli_fetch_array($suratmasuk)) { echo '"' . $p['total_suratmasuk'] . '",';}?>,
-              <?php while ($p = mysqli_fetch_array($suratkeluar)) { echo '"' . $p['total_suratkeluar'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_januari)) { echo '"' . $p['total_agenda_januari'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_februari)) { echo '"' . $p['total_agenda_februari'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_maret)) { echo '"' . $p['total_agenda_maret'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_april)) { echo '"' . $p['total_agenda_april'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_mei)) { echo '"' . $p['total_agenda_mei'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_juni)) { echo '"' . $p['total_agenda_juni'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_juli)) { echo '"' . $p['total_agenda_juli'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_agustus)) { echo '"' . $p['total_agenda_agustus'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_september)) { echo '"' . $p['total_agenda_september'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_oktober)) { echo '"' . $p['total_agenda_oktober'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_november)) { echo '"' . $p['total_agenda_november'] . '",';}?>,
+                <?php while ($p = mysqli_fetch_array($agenda_desember)) { echo '"' . $p['total_agenda_desember'] . '",';}?>,
             ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

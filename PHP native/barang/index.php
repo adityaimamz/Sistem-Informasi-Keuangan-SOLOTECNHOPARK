@@ -211,6 +211,179 @@ $hari_ini = date('w');
           </div>
         </div>
       </div>
+      
+      <!-- DATA AGENDA -->
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $tanggal = date('Y-m-d');
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agendahari FROM master_agenda WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agendahari']
+              ?>
+            </h4>
+            <p>Agenda Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php
+            $bulan = date('m');
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agendabulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agendabulan']
+              ?>
+            </h4>
+            <p>Agenda Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $tahun = date('Y');
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agendatahun FROM master_agenda WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agendatahun']
+              ?>
+            </h4>
+            <p>Agenda Tahun Ini (<?php echo $tahun;?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $agenda = mysqli_query($koneksi,"SELECT count(Id_agenda) as total_agenda FROM master_agenda");
+            $p = mysqli_fetch_assoc($agenda);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_agenda']
+              ?>
+            </h4>
+            <p>Seluruh Agenda</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="agenda.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      
+      <!--Data jumlah pengunjung-->
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $tanggal = date('Y-m-d');
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_hari FROM master_agenda WHERE Tanggal='$tanggal'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_hari'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengunjung Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $bulan = date('m');
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_bulan FROM master_agenda WHERE month(Tanggal)='$bulan'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_bulan'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengunjung Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $tahun = date('Y');
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung_tahun FROM master_agenda  WHERE year(Tanggal)='$tahun'");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung_tahun'])
+              ?>
+            </h4>
+            <p>Jumlah Data Pengunjung Tahun Ini (<?php echo $tahun;?>)</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-orange">
+          <div class="inner">
+            <?php 
+            $pengunjung = mysqli_query($koneksi,"SELECT sum(Jumlah_pengunjung) as pengunjung FROM master_agenda");
+            $p = mysqli_fetch_assoc($pengunjung);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+              echo "".number_format($p['pengunjung'])
+              ?>
+            </h4>
+            <p>Jumlah Seluruh Data Pengunjung</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      
     </div>
     <!-- /.row -->
     <!-- Main row -->
@@ -223,7 +396,7 @@ $hari_ini = date('w');
 
           <ul class="nav nav-tabs pull-right">
             <!-- <li><a href="#tab2" data-toggle="tab">Pemasukan</a></li> -->
-            <li class="active"><a href="#tab1" data-toggle="tab">Pemasukan & Pengeluaran</a></li>
+            <!--<li class="active"><a href="#tab1" data-toggle="tab">Pemasukan & Pengeluaran</a></li>-->
             <li class="pull-left header">Grafik</li>
           </ul>
 
@@ -232,56 +405,98 @@ $hari_ini = date('w');
             <div class="chart tab-pane active" id="tab1">
 
               
-              <h4 class="text-center">Realisasi Penerimaan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
-              <?php 
-                $januari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_januari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Januari' AND Status='Voice' ");
-                $februari= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_februari FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Februari' AND Status='Voice' ");
-                $maret= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_maret FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Maret' AND Status='Voice' ");
-                $april= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_april FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='April' AND Status='Voice' ");
-                $mei= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_mei FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Mei' AND Status='Voice' ");
-                $juni= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juni FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juni' AND Status='Voice' ");
-                $juli= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_juli FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Juli' AND Status='Voice' ");
-                $agustus= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_agustus FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Agustus' AND Status='Voice' ");
-                $september= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_september FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='September' AND Status='Voice' ");
-                $oktober= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_oktober FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Oktober' AND Status='Voice' ");
-                $november= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_november FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='November' AND Status='Voice' ");
-                $desember= mysqli_query($koneksi,"SELECT SUM(besaran_biaya) AS total_desember FROM master_penerimaan WHERE Keterangan='Verifikasi' AND Bulan='Desember' AND Status='Voice' ");
-              ?>
+              <h4 class="text-center">Realisasi Jumlah Kunjungan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
+                  <?php
+                    $agenda_januari= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_januari FROM master_agenda WHERE month(Tanggal)='01' AND year(Tanggal)='2023' ");
+                    $agenda_februari= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_februari FROM master_agenda WHERE month(Tanggal)='02' AND year(Tanggal)='2023' ");
+                    $agenda_maret= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_maret FROM master_agenda WHERE month(Tanggal)='03' AND year(Tanggal)='2023' ");
+                    $agenda_april= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_april FROM master_agenda WHERE month(Tanggal)='04' AND year(Tanggal)='2023' ");
+                    $agenda_mei= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_mei FROM master_agenda WHERE month(Tanggal)='05' AND year(Tanggal)='2023' ");
+                    $agenda_juni= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_juni FROM master_agenda WHERE month(Tanggal)='06' AND year(Tanggal)='2023' ");
+                    $agenda_juli= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_juli FROM master_agenda WHERE month(Tanggal)='07' AND year(Tanggal)='2023' ");
+                    $agenda_agustus= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_agustus FROM master_agenda WHERE month(Tanggal)='08' AND year(Tanggal)='2023' ");
+                    $agenda_september= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_september FROM master_agenda WHERE month(Tanggal)='09' AND year(Tanggal)='2023' ");
+                    $agenda_oktober= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_oktober FROM master_agenda WHERE month(Tanggal)='10' AND year(Tanggal)='2023' ");
+                    $agenda_november= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_november FROM master_agenda WHERE month(Tanggal)='11' AND year(Tanggal)='2023' ");
+                    $agenda_desember= mysqli_query($koneksi,"SELECT SUM(Jumlah_pengunjung) AS total_agenda_desember FROM master_agenda WHERE month(Tanggal)='12' AND year(Tanggal)='2023' ");
+                  ?>
               <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
 
-              <br/>
-              <br/>
-
-              <h4 class="text-center">Grafik Penerimaan Tahun 2023 berdasarkan Metode Bayar</h4>
-              <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
-
-              <br/>
-              <br/>
-
-              <h4 class="text-center">Realisasi Pengeluaran/Belanja UPTD KST SOLO TECHNOPARK Per <b>Divisi</b> Tahun 2023 </h4>
+              <br>
+              <h4 class="text-center">Realisasi Jumlah Kunjungan UPTD KST SOLO TECHNOPARK Tahun 2023 Berdasarkan <b>Tempat</b></h4>
+                <?php 
+                  // Query for Shopee
+                  $agenda_shopee = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_shopee FROM master_agenda WHERE Id_keterangan='1'");
+                  // Query for Bukalapak
+                  $agenda_bukalapak = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bukalapak FROM master_agenda WHERE Id_keterangan='2'");
+                  // Query for Tokopedia
+                  $agenda_tokopedia = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_tokopedia FROM master_agenda WHERE Id_keterangan='3'");
+                  // Query for GoTo
+                  $agenda_goto = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_goto FROM master_agenda WHERE Id_keterangan='4'");
+                  // Query for Blibli
+                  $agenda_blibli = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_blibli FROM master_agenda WHERE Id_keterangan='5'");
+                  // Query for Bank Mandiri
+                  $agenda_bankmandiri = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bankmandiri FROM master_agenda WHERE Id_keterangan='6'");
+                  // Query for Amazon Web Service
+                  $agenda_aws = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_aws FROM master_agenda WHERE Id_keterangan='7'");
+                  // Query for Garena
+                  $agenda_garena = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_garena FROM master_agenda WHERE Id_keterangan='8'");
+                  // Query for ACER-Gloria Taiwan-ICE Institute
+                  $agenda_acer = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_acer FROM master_agenda WHERE Id_keterangan='9'");
+                  // Query for SKK Migas
+                  $agenda_skk = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_skk FROM master_agenda WHERE Id_keterangan='10'");
+                  // Query for Petronas
+                  $agenda_petronas = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_petronas FROM master_agenda WHERE Id_keterangan='11'");
+                  // Query for Petrotekno
+                  $agenda_petrotekno = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_petrotekno FROM master_agenda WHERE Id_keterangan='12'");
+                  // Query for Pertamina Hulu Energi
+                  $agenda_phe = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_phe FROM master_agenda WHERE Id_keterangan='13'");
+                  // Query for Quest Motor
+                  $agenda_questmotor = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_questmotor FROM master_agenda WHERE Id_keterangan='14'");
+                  // Query for Indofarma
+                  $agenda_indofarma = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_indofarma FROM master_agenda WHERE Id_keterangan='15'");
+                  // Query for Nestle
+                  $agenda_nestle = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_nestle FROM master_agenda WHERE Id_keterangan='16'");
+                  // Query for BSSN
+                  $agenda_bssn = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bssn FROM master_agenda WHERE Id_keterangan='17'");
+                  // Query for Kemendikbudristek Dikti
+                  $agenda_kemdikbudristek = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kemdikbudristek FROM master_agenda WHERE Id_keterangan='18'");
+                  // Query for Pijar Foundation
+                  $agenda_pijarfoundation = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_pijarfoundation FROM master_agenda WHERE Id_keterangan='19'");
+                  // Query for Apple Developer Academy @BINUS
+                  $agenda_appleacademy = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_appleacademy FROM master_agenda WHERE Id_keterangan='20'");
+                  // Query for UNISRI
+                  $agenda_unisri = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_unisri FROM master_agenda WHERE Id_keterangan='21'");
+                  // Query for UNIBA
+                  $agenda_uniba = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_uniba FROM master_agenda WHERE Id_keterangan='22'");
+                  // Query for LPDP
+                  $agenda_lpdp = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_lpdp FROM master_agenda WHERE Id_keterangan='23'");
+                  // Query for Scholar Official
+                  $agenda_scholarofficial = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_scholarofficial FROM master_agenda WHERE Id_keterangan='24'");
+                  // Query for Bappeda
+                  $agenda_bappeda = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_bappeda FROM master_agenda WHERE Id_keterangan='25'");
+                  // Query for UNS
+                  $agenda_uns = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_uns FROM master_agenda WHERE Id_keterangan='26'");
+                  // Query for Inaspoc
+                  $agenda_inaspoc = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_inaspoc FROM master_agenda WHERE Id_keterangan='27'");
+                  // Query for UIN
+                  $agenda_uin = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_uin FROM master_agenda WHERE Id_keterangan='28'");
+                  // Query for Balitbanda
+                  $agenda_balitbanda = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_balitbanda FROM master_agenda WHERE Id_keterangan='29'");
+                  // Query for Kemenko
+                  $agenda_kemenko = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kemenko FROM master_agenda WHERE Id_keterangan='30'");
+                  // Query for Kunjungan Sekolah
+                  $agenda_kunjungansekolah = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kunjungansekolah FROM master_agenda WHERE Id_keterangan='31'");
+                  // Query for Kunjungan Universitas
+                  $agenda_kunjunganuniversitas = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kunjunganuniversitas FROM master_agenda WHERE Id_keterangan='32'");
+                  // Query for SSC
+                  $agenda_ssc = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_ssc FROM master_agenda WHERE Id_keterangan='33'");
+                  // Query for Kunjungan Instansi
+                  $agenda_kunjunganinstansi = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_kunjunganinstansi FROM master_agenda WHERE Id_keterangan='34'");
+                  // Query for J&T
+                  $agenda_jnt = mysqli_query($koneksi, "SELECT SUM(Jumlah_pengunjung) AS total_agenda_jnt FROM master_agenda WHERE Id_keterangan='35'");
+                ?>
               <canvas id="myChart3" style="position: relative; height: 300px;"></canvas>
-
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-
-              <h4 class="text-center">Progress Realisasi Pengeluaran/Belanja UPTD KST SOLO TECHNOPARK Per <b>Bulan</b> Tahun 2023 </h4>
-              <?php 
-                $jan= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jan FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Januari' ");
-                $feb= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_feb FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Februari' ");
-                $mart= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mart FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Maret' ");
-                $apr= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_apr FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='April' ");
-                $mi= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_mi FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Mei' ");
-                $jun= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jun FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juni' ");
-                $jul= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_jul FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Juli' ");
-                $agust= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_agust FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Agustus' ");
-                $sept= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_sept FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='September' ");
-                $okt= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_okt FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Oktober' ");
-                $nov= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_nov FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='November' ");
-                $des= mysqli_query($koneksi,"SELECT SUM(Jumlah) AS total_des FROM master_pengeluaran WHERE Keterangan='Verifikasi' AND Bulan='Desember' ");
-              ?>
-              <canvas id="myChart4" style="position: relative; height: 300px;"></canvas>
 
               <br/>
               <br/>
@@ -289,7 +504,6 @@ $hari_ini = date('w');
 
             </div>
             <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
-              b
             </div>
           </div>
 

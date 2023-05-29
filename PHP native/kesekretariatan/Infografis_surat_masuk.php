@@ -27,12 +27,12 @@ $hari_ini = date('w');
 
   <section class="content-header">
     <h1>
-      Dashboard GO
-      <small>Control panel</small>
+      INFOGRAFIS
+      <small>Kesekretariatan</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Dashboard</li>
+      <li class="active">Infografis</li>
     </ol>
   </section>
 
@@ -40,9 +40,9 @@ $hari_ini = date('w');
 
     <div class="row">
 
-      <!-- DATA SURAT MASUK -->
+      <!--Surat Masuk-->
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
+        <div class="small-box bg-blue">
           <div class="inner">
             <?php 
             $tanggal = date('Y-m-d');
@@ -64,7 +64,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
+        <div class="small-box bg-blue">
           <div class="inner">
             <?php
             $bulan = date('m');
@@ -86,7 +86,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
+        <div class="small-box bg-blue">
           <div class="inner">
             <?php 
             $tahun = date('Y');
@@ -108,7 +108,7 @@ $hari_ini = date('w');
       </div>
 
       <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
+        <div class="small-box bg-blue">
           <div class="inner">
             <?php 
             $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
@@ -128,97 +128,6 @@ $hari_ini = date('w');
         </div>
       </div>
 
-      <!-- DATA SURAT KELUAR -->
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $tanggal = date('Y-m-d');
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarhari FROM surat_keluar WHERE Tanggal='$tanggal'");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluarhari']
-              ?>
-            </h4>
-            <p>Surat Keluar Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $bulan = date('m');
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarbulan FROM surat_keluar WHERE month(Tanggal)='$bulan'");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluarbulan']
-              ?>
-            </h4>
-            <p>Surat Keluar Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $tahun = date('Y');
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluartahun FROM surat_keluar WHERE year(Tanggal)='$tahun'");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluartahun']
-              ?>
-            </h4>
-            <p>Surat Keluar Tahun Ini (<?php echo $tahun;?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluar']
-              ?>
-            </h4>
-            <p>Seluruh Surat Keluar</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      
     </div>
     <!-- /.row -->
     <!-- Main row -->
@@ -231,27 +140,48 @@ $hari_ini = date('w');
 
           <ul class="nav nav-tabs pull-right">
             <!-- <li><a href="#tab2" data-toggle="tab">Pemasukan</a></li> -->
-            <!--<li class="active"><a href="#tab1" data-toggle="tab">Pemasukan & pengeluaran</a></li>-->
+            <li class="active"><a href="#tab1" data-toggle="tab">Surat Masuk</a></li>
             <li class="pull-left header">Grafik</li>
           </ul>
 
           <div class="tab-content" style="padding: 20px">
+
             <div class="chart tab-pane active" id="tab1">
-                
-              <br>
-              <h4 class="text-center">Realisasi Kesekretariatan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Jenis</b></h4>
-                <?php 
-                  $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
-                  $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-                ?>
-              <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
+    
+            <h4 class="text-center">Jumlah Surat Masuk UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Bulan</b></h4>
+              <?php 
+               $januari= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS januari_smasuk FROM surat_masuk WHERE month(Tanggal)='01' AND year(Tanggal)='2023' ");
+                $februari= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS februari_smasuk FROM surat_masuk WHERE month(Tanggal)='02' AND year(Tanggal)='2023' ");
+                $maret= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS maret_smasuk FROM surat_masuk WHERE month(Tanggal)='03' AND year(Tanggal)='2023' ");
+                $april= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS april_smasuk FROM surat_masuk WHERE month(Tanggal)='04' AND year(Tanggal)='2023' ");
+                $mei= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS mei_smasuk FROM surat_masuk WHERE month(Tanggal)='05' AND year(Tanggal)='2023' ");
+                $juni= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS juni_smasuk FROM surat_masuk WHERE month(Tanggal)='06' AND year(Tanggal)='2023' ");
+                $juli= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS juli_smasuk FROM surat_masuk WHERE month(Tanggal)='07' AND year(Tanggal)='2023' ");
+                $agustus= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS agustus_smasuk FROM surat_masuk WHERE month(Tanggal)='08' AND year(Tanggal)='2023' ");
+                $september= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS september_smasuk FROM surat_masuk WHERE month(Tanggal)='09' AND year(Tanggal)='2023' ");
+                $oktober= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS oktober_smasuk FROM surat_masuk WHERE month(Tanggal)='10' AND year(Tanggal)='2023' ");
+                $november= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS november_smasuk FROM surat_masuk WHERE month(Tanggal)='11' AND year(Tanggal)='2023' ");
+                $desember= mysqli_query($koneksi,"SELECT COUNT(Id_Suratmasuk) AS desember_smasuk FROM surat_masuk WHERE month(Tanggal)='12' AND year(Tanggal)='2023' ");
+              ?>
+              <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
+
+              <br/>
+              <br/>
             </div>
-          <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
+            <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
+              <!-- b -->
+            </div>
+          </div>
+
         </div>
+
       </section>
       <!-- /.Left col -->
 
+
       <section class="col-lg-4">
+
+
         <!-- Calendar -->
         <div class="box box-solid bg-green-gradient">
           <div class="box-header">
@@ -265,13 +195,13 @@ $hari_ini = date('w');
           </div>
           <!-- /.box-body -->
         </div>
-      </section>
 
+      </section>
       <!-- right col -->
     </div>
     <!-- /.row (main row) -->
   </section>
 
 </div>
-<div id="preloader"></div>
-<?php include 'footer.php'; ?>
+
+<?php include 'footer_infografis_suratmasuk.php'; ?>

@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.5
     </div>
-    <strong>Build & developed by MSIB batch 3 intern 2023</strong> - Solo Techno Park Finance Analyzer (Soto Panaz)
+    <strong>Build & developed by MSIB batch 3 intern 2023</strong> - Solo Techno Park Analyzer (Soto Panaz)
   </footer>
 
   

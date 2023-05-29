@@ -106,6 +106,7 @@
               </a>
               <ul class="treeview-menu">
                 <li class="accordion-collapse collapse show"><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
+                 <li class="accordion-collapse collapse show"><a href="keterangan.php"><i class="fa fa-circle-o"></i> Data Keterangan</a></li>                
               </ul>
             </li>
             
@@ -119,7 +120,6 @@
               </a>
               <ul class="treeview-menu">
                 <li class="accordion-collapse collapse show"><a href="peraturan.php"><i class="fa fa-circle-o"></i> Data Peraturan</a></li>
-                 <li class="accordion-collapse collapse show"><a href="keterangan.php"><i class="fa fa-circle-o"></i> Data Keterangan</a></li>
               </ul>
             </li>
             
@@ -129,33 +129,16 @@
         });
         </script>
 
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-dollar"></i>
-              <span>SURAT</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+          <li>
+            <a href="surat_masuk.php">
+              <i class="fa fa-file"></i> <span>DATA SURAT MASUK</span>
             </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="surat_masuk.php"><i class="fa fa-circle-o"></i> Data Surat Masuk</a></li>
-              <li><a href="surat_keluar.php"><i class="fa fa-circle-o"></i> Data Surat Keluar</a></li>
-            </ul>
           </li>
-
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-dollar"></i>
-              <span>AGENDA</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+          
+          <li>
+            <a href="surat_keluar.php">
+              <i class="fa fa-file"></i> <span>DATA SURAT KELUAR</span>
             </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Data Agenda STP</a></li>
-              <!-- <li><a href="pengeluaran_tambah.php"><i class="fa fa-circle-o"></i> Form pengeluaran</a></li> -->
-            </ul>
-
           </li>
           
           <li class="treeview">
@@ -168,8 +151,21 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="surat_masuk_laporan.php"><i class="fa fa-circle-o"></i> Laporan Surat Masuk</a></li>
-              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i> Laporan Surat Keluar</a></li>
-              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i> Laporan Agenda</a></li>
+              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i> Lapiran Surat Keluar</a></li>
+            </ul>
+          </li>
+          
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-area-chart"></i>
+              <span>INFOGRAFIS</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="Infografis_surat_keluar.php"><i class="fa fa-circle-o"></i>Infografis Surat Keluar</a></li>
+              <li><a href="Infografis_surat_masuk.php"><i class="fa fa-circle-o"></i>Infografis Surat Masuk</a></li>
             </ul>
           </li>
           

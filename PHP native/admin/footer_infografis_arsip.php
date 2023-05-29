@@ -68,7 +68,6 @@
 <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script src="../assets/js/main.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -123,19 +122,29 @@
 
 
 </script>
-<script>
 
-var ctx = document.getElementById("myChart2").getContext('2d');
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels : ["Surat Masuk","","Surat Keluar"],
+        labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
         datasets: [{
             label: '',
             data: [
-              <?php while ($p = mysqli_fetch_array($suratmasuk)) { echo '"' . $p['total_suratmasuk'] . '",';}?>,
-              <?php while ($p = mysqli_fetch_array($suratkeluar)) { echo '"' . $p['total_suratkeluar'] . '",';}?>,
-            ],
+				<?php while ($p = mysqli_fetch_array($januari)) { echo '"' . $p['total_januari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($februari)) { echo '"' . $p['total_februari'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($maret)) { echo '"' . $p['total_maret'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($april)) { echo '"' . $p['total_april'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($mei)) { echo '"' . $p['total_mei'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juni)) { echo '"' . $p['total_juni'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($juli)) { echo '"' . $p['total_juli'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($agustus)) { echo '"' . $p['total_agustus'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($september)) { echo '"' . $p['total_september'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($oktober)) { echo '"' . $p['total_oktober'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($november)) { echo '"' . $p['total_november'] . '",';}?>,
+				<?php while ($p = mysqli_fetch_array($desember)) { echo '"' . $p['total_desember'] . '",';}?>,
+				],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -171,7 +180,7 @@ var myChart = new Chart(ctx, {
                 ticks: {
                     // gunakan fungsi callback untuk mengubah format uang
                     callback: function(value, index, values) {
-                        return value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
+                        return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
                     }
                 }
             }]
@@ -179,6 +188,70 @@ var myChart = new Chart(ctx, {
     }
 });
 
+var ctx = document.getElementById("myChart1").getContext('2d');
+var myChart = new Chart(ctx, {
+	type: 'bar',
+	data: {
+		labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
+		datasets: [{
+			label: '',
+			data: [
+				<?php while ($a = mysqli_fetch_array($jan)) { echo '"' . $a['total_jan'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($feb)) { echo '"' . $a['total_feb'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($mart)) { echo '"' . $a['total_mart'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($apr)) { echo '"' . $a['total_apr'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($mi)) { echo '"' . $a['total_mi'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($jun)) { echo '"' . $a['total_jun'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($jul)) { echo '"' . $a['total_jul'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($agust)) { echo '"' . $a['total_agust'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($sept)) { echo '"' . $a['total_sept'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($okt)) { echo '"' . $a['total_okt'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($nov)) { echo '"' . $a['total_nov'] . '",';}?>,
+				<?php while ($a = mysqli_fetch_array($des)) { echo '"' . $a['total_des'] . '",';}?>,
+				],
+			backgroundColor: [
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(54, 162, 235, 0.2)',
+			'rgba(255, 206, 86, 0.2)',
+			'rgba(75, 192, 192, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(54, 162, 235, 0.2)',
+			'rgba(255, 206, 86, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(54, 162, 235, 0.2)',
+			'rgba(255, 206, 86, 0.2)',
+			'rgba(255, 99, 132, 0.2)'
+			],
+			borderColor: [
+			'rgba(255,99,132,1)',
+			'rgba(54, 162, 235, 1)',
+			'rgba(255, 206, 86, 1)',
+			'rgba(75, 192, 192, 1)',
+			'rgba(255,99,132,1)',
+			'rgba(54, 162, 235, 1)',
+			'rgba(255, 206, 86, 1)',
+			'rgba(255,99,132,1)',
+			'rgba(54, 162, 235, 1)',
+			'rgba(255, 206, 86, 1)',
+			'rgba(255,99,132,1)'
+			],
+			borderWidth: 1
+		}]
+	},
+	options: {
+		scales: {
+			yAxes: [{
+				ticks: {
+					// beginAtZero:true
+					// gunakan fungsi callback untuk mengubah format uang
+					callback: function(value, index, values) {
+						return 'Rp ' + value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
+					}
+				}
+			}]
+		}
+	}
+});
 </script>
 </body>
 </html>
