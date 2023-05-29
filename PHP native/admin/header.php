@@ -174,6 +174,20 @@
               <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Pengelolaan Kunjungan</a></li>
             </ul>
           </li>
+          
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-institution"></i>
+              <span>INFORMASI HRD</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="profil.php"><i class="fa fa-circle-o"></i>Database Karyawan</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i>E-Performance Karyawan</a></li>
+            </ul>
+          </li>
 
           <li class="treeview">
             <a href="#">
@@ -203,6 +217,8 @@
               <li><a href="Infografis_arsip.php"><i class="fa fa-circle-o"></i>Infografis Pengarsipan</a></li>
               <li><a href="Infografis_kawasan.php"><i class="fa fa-circle-o"></i>Infografis Pengelolaan Kawasan</a></li>
               <li><a href="404.php"><i class="fa fa-circle-o"></i>Infografis HRD</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i>Infografis Kinerha Karyawan</a></li>       
             </ul>
           </li>
 
