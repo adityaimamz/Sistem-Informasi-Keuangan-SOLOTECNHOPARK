@@ -20,6 +20,9 @@ if($cek > 0){
 	if($data['Level'] == "Administrator"){
 		$_SESSION['status'] = "administrator_logedin";
 		header("location:admin/");
+	}else if($data['Level'] == "keuangan"){
+		$_SESSION['status'] = "keuangan_logedin";
+		header("location:keuangan/");
 	}else if($data['Level'] == "Manager"){
 		$_SESSION['status'] = "manager_logedin";
 		header("location:manager/");
