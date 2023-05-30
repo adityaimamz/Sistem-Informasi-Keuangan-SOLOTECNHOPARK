@@ -32,6 +32,9 @@ if($cek > 0){
 	}else if($data['Level'] == "Barang"){
 		$_SESSION['status'] = "barang_logedin";
 		header("location:barang/");
+	}else if($data['Level'] == "Hrd"){
+		$_SESSION['status'] = "hrd_logedin";
+		header("location:hrd/");
 	}else{
 		header("location:login.php?alert=gagal");
 	}
