@@ -63,12 +63,6 @@
                             <i class="fa fa-list"></i>
                         </button>
 
-                       
-
-                        <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" href="edit_karyawan.php">
-                          <i class="fa fa-cog"></i>
-                        </button>
-
                         <?php if($d['Bukti']==''){ ?> 
                         <?php } else { ?> 
                             <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
