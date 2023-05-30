@@ -21,10 +21,9 @@
             <h3 class="box-title">Daftar Karyawan</h3>
             <div class="btn-group pull-right">            
 
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="#tambah_karyawan.php
-              ">
+            <a href="tambah_karyawan.php"><button type="button" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus"></i> &nbsp Tambah Data Karyawan
-              </button>
+              </button></a>
               &nbsp
 
               <a href="data_karyawan_csv.php"><button type="button" class="btn btn-success btn-sm">
@@ -52,30 +51,30 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT Karyawan_masuk.* FROM Karyawan_masuk  ORDER BY Karyawan_masuk.Id_Karyawanmasuk DESC LIMIT 100");
+                  $data = mysqli_query($koneksi,"SELECT karyawan.* FROM karyawan ORDER BY karyawan.Id_karyawan DESC LIMIT 100");
                   while($d = mysqli_fetch_array($data)){
                       ?>
   
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td>    
-                      <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_Karyawanmasuk_<?php echo $d['Id_Karyawanmasuk'] ?>">
+                      <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_karyawan_<?php echo $d['Id_karyawan'] ?>">
                             <i class="fa fa-list"></i>
                         </button>
 
-                        <?php if($d['Bukti']==''){ ?> 
+                        <?php if($d['Foto']==''){ ?> 
                         <?php } else { ?> 
                             <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_penerimaan'] ?>">
                               <i class="fa fa-eye"></i>
                             </button>
                         <?php } ?>
 
-                        <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_Karyawanmasuk_<?php echo $d['Id_Karyawanmasuk'] ?>">
+                        <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_karyawan_<?php echo $d['Id_karyawan'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
 
                         <!-- modal hapus -->
-                        <div class="modal fade" id="hapus_Karyawanmasuk_<?php echo $d['Id_Karyawanmasuk'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapus_karyawan_<?php echo $d['Id_karyawan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -91,7 +90,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <a href="Karyawan_masuk_hapus.php?id=<?php echo $d['Id_Karyawanmasuk'] ?>" class="btn btn-primary">Hapus</a>
+                                <a href="karyawan_hapus.php?id=<?php echo $d['Id_karyawan'] ?>" class="btn btn-primary">Hapus</a>
                               </div>
                             </div>
                           </div>
@@ -99,7 +98,7 @@
                       </td>
                       <td><?php echo $d['No_induk_karyawan']; ?></td>
                       <td><?php echo $d['Nama']; ?></td>
-                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tanggal_lahir'])); ?></td>
+                      <td class="text-center"><?php echo date('d-m-Y', strtotime($d['Tgl_lahir'])); ?></td>
                     </tr>
                     <?php 
                   }
