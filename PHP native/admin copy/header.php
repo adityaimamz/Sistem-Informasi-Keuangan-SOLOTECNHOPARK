@@ -28,7 +28,7 @@
   <?php 
   include '../koneksi.php';
   session_start();
-  if($_SESSION['status'] != "hrd_logedin"){
+  if($_SESSION['status'] != "administrator_logedin"){
     header("location:../login.php?alert=belum_login");
   }
   ?>
@@ -95,20 +95,24 @@
               <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
             </a>
           </li>
-
-          <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i>
-                <span>DATA MASTER</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>              
-              </ul>
-            </li>
-            
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>DATA MASTER</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="accordion-collapse collapse show"><a href="divisi.php"><i class="fa fa-circle-o"></i> Data Divisi</a></li>
+            <li><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>
+            <li><a href="metode.php"><i class="fa fa-circle-o"></i> Data Metode Bayar</a></li>
+            <li><a href="dana.php"><i class="fa fa-circle-o"></i> Data Sumber Dana</a></li>
+            <li><a href="belanja.php"><i class="fa fa-circle-o"></i> Data Jenis Belanja</a></li>
+            <li><a href="pegawai.php"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
+                 <li class="accordion-collapse collapse show"><a href="keterangan.php"><i class="fa fa-circle-o"></i> Data Keterangan</a></li>            
+          </ul>
+        </li>
         <script>
         $(function () {
           $('.treeview').tree();
@@ -117,18 +121,88 @@
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-print"></i>
+              <i class="fa fa-briefcase"></i>
+              <span>KESEKRETARIATAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="surat_masuk.php"><i class="fa fa-circle-o"></i> Data Surat Masuk</a></li>
+              <li><a href="surat_keluar.php"><i class="fa fa-circle-o"></i> Data Surat Keluar</a></li>
+            </ul>
+          </li>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-archive"></i>
+              <span>PENGARSIPAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="penerimaan.php"><i class="fa fa-circle-o"></i> Arsip SPJ Dokumen penerimaan</a></li>
+              <li><a href="tagihan.php"><i class="fa fa-circle-o"></i> Arsip SPJ Dokumen Tagihan</a></li>
+              <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Arsip SPJ Dokumen Pengeluaran</a></li>
+            </ul>
+          </li>
+
+          <!--<li class="treeview">-->
+          <!--  <a href="#">-->
+          <!--    <i class="fa fa-dollar"></i>-->
+          <!--    <span>PENGELUARAN</span>-->
+          <!--    <span class="pull-right-container">-->
+          <!--      <i class="fa fa-angle-left pull-right"></i>-->
+          <!--    </span>-->
+          <!--  </a>-->
+          <!--  <ul class="treeview-menu" style="display: none;">-->
+          <!--    <li><a href="pengeluaran.php"><i class="fa fa-circle-o"></i> Data Pengeluaran</a></li>-->
+          <!--  </ul>-->
+          <!--</li>-->
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-institution"></i>
+              <span>PENGELOLAAN KAWASAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="barang.php"><i class="fa fa-circle-o"></i> Pengelolaan Aset</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Pengelolaan Kunjungan</a></li>
+            </ul>
+          </li>
+          
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-institution"></i>
               <span>INFORMASI HRD</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="database_karyawan.php"><i class="fa fa-circle-o"></i>Database Karyawan</a></li>
-              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i>E-Performance Karyawan</a></li>
+              <li><a href="profil.php"><i class="fa fa-circle-o"></i>Database Karyawan</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i>E-Performance Karyawan</a></li>
             </ul>
           </li>
 
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-print"></i>
+              <span>LAPORAN</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="penerimaan_laporan.php"><i class="fa fa-circle-o"></i>Laporan Penerimaan</a></li>
+              <li><a href="laporan.php"><i class="fa fa-circle-o"></i>Laporan Pengeluaran</a></li>
+              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i>Laporan Aset Kawasan</a></li>
+            </ul>
+          </li>
           
           <li class="treeview">
             <a href="#">
@@ -139,11 +213,15 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="Infografis_surat_keluar.php"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
-              <li><a href="Infografis_surat_masuk.php"><i class="fa fa-circle-o"></i>Infografis Kinerja Karyawan</a></li>
+              <li><a href="Infografis_kesekretariatan.php"><i class="fa fa-circle-o"></i>Infografis Kesekretariatan</a></li>
+              <li><a href="Infografis_arsip.php"><i class="fa fa-circle-o"></i>Infografis Pengarsipan</a></li>
+              <li><a href="Infografis_kawasan.php"><i class="fa fa-circle-o"></i>Infografis Pengelolaan Kawasan</a></li>
+              <li><a href="404.php"><i class="fa fa-circle-o"></i>Infografis HRD</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
+              <li><a href="agenda.php"><i class="fa fa-circle-o"></i>Infografis Kinerha Karyawan</a></li>       
             </ul>
           </li>
-          
+
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
