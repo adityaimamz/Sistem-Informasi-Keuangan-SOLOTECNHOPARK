@@ -106,6 +106,10 @@
               </a>
               <ul class="treeview-menu">
                 <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>              
+                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data Jabatan</a></li>
+                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data Cuti</a></li>
+                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data Unit Kerja</a></li> 
+                             
               </ul>
             </li>
             
