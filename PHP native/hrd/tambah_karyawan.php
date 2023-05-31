@@ -33,48 +33,34 @@
             </ul>
             <div class="tab-content">
             <!--Profile -->
-              <div class="active tab-pane" id="profil">
-              <form class="form-horizontal">
+            <div class="active tab-pane" id="profil">
+              <form class="form-horizontal" action="tambah_profile_proses.php" method="POST" enctype="multipart/form-data">
+                  
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Namor Induk Karyawan</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Masukan nomor induk Karyawan">
+                      <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan">
                     </div>
                   </div>
+
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
-
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Masukan Nama Karyawan">
-                      </div>
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Karyawan">
                     </div>
-                    <div class="form-group">
-                      <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
-
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName" placeholder="Masukan Tanggal Lahir Karyawan">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="inputName" class="col-sm-2 control-label">Fotp</label>
-
-                      <div class="col-sm-10">
-                        <input type="file" name="trnfoto" class="form-control">
-                        <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
-                      </div>
-                    </div>
-
-               
-                  <div class="form-group">
                   </div>
-<<<<<<< HEAD
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Tempat Lahir</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukan Tempat Lahir Karyawan">
+                    </div>
+                  </div>
 
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
-
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="tanggallahir" class="form-control datepicker2" placeholder="Masukan Tanggal Lahir Karyawan">
+                      <input type="text" class="form-control datepicker2" id="tgllahir" name="tgllahir" placeholder="Masukan Tanggal Lahir Karyawan">
                     </div>
                   </div>
 
@@ -103,7 +89,7 @@
                         <option value="">- Pilih -</option>
                         <?php 
                         include 'koneksi.php';
-                        $unit = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Id_unit_kerja ASC");
+                        $unit = mysqli_query($koneksi,"SELECT * FROM unit_kerja ORDER BY Id_unit_kerja ASC");
                         while($k = mysqli_fetch_array($unit)){
                           ?>
                           <option value="<?php echo $k['Id_unit_kerja']; ?>"><?php echo $k['Nama_unit_kerja']; ?></option>
@@ -115,24 +101,22 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Foto</label>
-
+                    <label for="inputEmail" class="col-sm-2 control-label">Foto</label>
                     <div class="col-sm-10">
                       <input type="file" name="trnfoto" class="form-control">
                       <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
                     </div>
                   </div>
 
-=======
->>>>>>> f42a282ad77d1894c6385857412947671e241fa7
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-danger">Submit</button>
                     </div>
                   </div>
-                </form>
-              </div>
-              <!-- /Profile -->
+                  
+              </form>
+            </div>
+            <!-- /Profile -->
 
             <!--.Jabatan -->
             <div class="tab-pane" id="jabatan">
