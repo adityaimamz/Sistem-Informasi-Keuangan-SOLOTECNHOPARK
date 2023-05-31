@@ -39,35 +39,35 @@
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Namor Induk Karyawan</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan">
+                      <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan" required="required">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Karyawan">
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Karyawan" required="required">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Tempat Lahir</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukan Tempat Lahir Karyawan">
+                      <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukan Tempat Lahir Karyawan" required="required">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control datepicker2" id="tgllahir" name="tgllahir" placeholder="Masukan Tanggal Lahir Karyawan">
+                      <input type="text" class="form-control datepicker2" id="tgllahir" name="tgllahir" placeholder="Masukan Tanggal Lahir Karyawan" required="required">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
                     <div class="col-sm-10">
-                      <select name="jabatan" class="form-control">
+                      <select name="jabatan" class="form-control" required="required">
                         <option value="">- Pilih -</option>
                         <?php 
                         include 'koneksi.php';
@@ -85,7 +85,7 @@
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Unit Kerja</label>
                     <div class="col-sm-10">
-                      <select name="unit" class="form-control">
+                      <select name="unit" class="form-control" required="required">
                         <option value="">- Pilih -</option>
                         <?php 
                         include 'koneksi.php';
@@ -103,7 +103,7 @@
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Foto</label>
                     <div class="col-sm-10">
-                      <input type="file" name="trnfoto" class="form-control">
+                      <input type="file" name="trnfoto" class="form-control" required="required">
                       <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
                     </div>
                   </div>
@@ -120,36 +120,44 @@
 
             <!--.Jabatan -->
             <div class="tab-pane" id="jabatan">
-              <form class="form-horizontal">
+              <form class="form-horizontal" action="tambah_riwayat_jabatan_proses.php" method="POST" enctype="multipart/form-data">
+                  
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
+                    <div class="col-sm-10">
+                      <select name="karyawan" class="form-control" required="required">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
+                        while($k = mysqli_fetch_array($karyawan)){
+                          ?>
+                          <option value="<?php echo $k['Id_karyawan']; ?>"><?php echo $k['Nama']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">TMT</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Masukan TMT">
+                      <input type="text" class="form-control" id="tmt" name="tmt" placeholder="Masukan TMT" required="required">
                     </div>
                   </div>
+
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
-
                     <div class="col-sm-10">
-                    <select name="jabatan" class="form-control">
-                          <option value="">- Pilih -</option>
-                          <?php 
-                          include 'koneksi.php';
-                          $jabatan = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Nama_jabatan ASC");
-                          while($k = mysqli_fetch_array($jabatan)){
-                            ?>
-                            <option value="<?php echo $k['Id_jabatan']; ?>"><?php echo $k['Nama_jabatan']; ?></option>
-                            <?php 
-                          }
-                          ?>
-                        </select>
+                      <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Riwayat Jabatan Kerja Karyawan" required="required">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Unit</label>
+                    <label for="inputName" class="col-sm-2 control-label">Unit Kerja</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Masukan Unit Karyawan">
+                      <input type="text" class="form-control" id="unit" name="unit" placeholder="Riwayat Unit Kerja Karyawan" required="required">
                     </div>
                   </div>
                   <div class="form-group">
