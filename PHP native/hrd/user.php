@@ -99,8 +99,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label>LEVEL</label>
-                        <input type="text" name="level" required="required" class="form-control" placeholder="Masukkan Level ..">
+                        <input type="hidden" name="level" value="karyawan">
                       </div>
 
                     </div>
