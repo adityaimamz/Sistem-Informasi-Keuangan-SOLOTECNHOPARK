@@ -37,37 +37,37 @@
               <form class="form-horizontal" action="tambah_profile_proses.php" method="POST" enctype="multipart/form-data">
                   
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Namor Induk Karyawan</label>
+                    <label for="inputName" class="col-sm-2 control-label">Nomor Induk Karyawan</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan" required="required">
+                      <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Karyawan" required="required">
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Karyawan">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Tempat Lahir</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukan Tempat Lahir Karyawan" required="required">
+                      <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukan Tempat Lahir Karyawan">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control datepicker2" id="tgllahir" name="tgllahir" placeholder="Masukan Tanggal Lahir Karyawan" required="required">
+                      <input type="text" class="form-control datepicker2" id="tgllahir" name="tgllahir" placeholder="Masukan Tanggal Lahir Karyawan">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
                     <div class="col-sm-10">
-                      <select name="jabatan" class="form-control" required="required">
+                      <select name="jabatan" class="form-control">
                         <option value="">- Pilih -</option>
                         <?php 
                         include 'koneksi.php';
@@ -85,7 +85,7 @@
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Unit Kerja</label>
                     <div class="col-sm-10">
-                      <select name="unit" class="form-control" required="required">
+                      <select name="unit" class="form-control">
                         <option value="">- Pilih -</option>
                         <?php 
                         include 'koneksi.php';
@@ -103,7 +103,7 @@
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Foto</label>
                     <div class="col-sm-10">
-                      <input type="file" name="trnfoto" class="form-control" required="required">
+                      <input type="file" name="trnfoto" class="form-control">
                       <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
                     </div>
                   </div>
@@ -125,7 +125,7 @@
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
                     <div class="col-sm-10">
-                      <select name="karyawan" class="form-control" required="required">
+                      <select name="karyawan" class="form-control">
                         <option value="">- Pilih -</option>
                         <?php 
                         include 'koneksi.php';
@@ -143,21 +143,21 @@
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">TMT</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="tmt" name="tmt" placeholder="Masukan TMT" required="required">
+                      <input type="text" class="form-control" id="tmt" name="tmt" placeholder="Masukan TMT">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Riwayat Jabatan Kerja Karyawan" required="required">
+                      <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Riwayat Jabatan Kerja Karyawan">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Unit Kerja</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="unit" name="unit" placeholder="Riwayat Unit Kerja Karyawan" required="required">
+                      <input type="text" class="form-control" id="unit" name="unit" placeholder="Riwayat Unit Kerja Karyawan">
                     </div>
                   </div>
                   <div class="form-group">
