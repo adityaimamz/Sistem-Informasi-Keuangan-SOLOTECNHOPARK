@@ -59,9 +59,12 @@
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td>    
-                        <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_karyawan_<?php echo $d['Id_karyawan'] ?>">
-                            <i class="fa fa-list"></i>
+                      <a href="edit_karyawan.php" title="Detail">
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_karyawan_<?php echo $d['Id_karyawan'] ?>">
+                          <i class="fa fa-list"></i>
                         </button>
+                      </a>
+
 
                         <?php if($d['Foto']==''){ ?> 
                         <?php } else { ?> 
