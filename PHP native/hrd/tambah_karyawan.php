@@ -65,6 +65,42 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
+                    <div class="col-sm-10">
+                      <select name="jabatan" class="form-control">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $jabatan = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Id_jabatan ASC");
+                        while($k = mysqli_fetch_array($jabatan)){
+                          ?>
+                          <option value="<?php echo $k['Id_jabatan']; ?>"><?php echo $k['Nama_jabatan']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Unit Kerja</label>
+                    <div class="col-sm-10">
+                      <select name="unit" class="form-control">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $unit = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Id_unit_kerja ASC");
+                        while($k = mysqli_fetch_array($unit)){
+                          ?>
+                          <option value="<?php echo $k['Id_unit_kerja']; ?>"><?php echo $k['Nama_unit_kerja']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Foto</label>
 
                     <div class="col-sm-10">
