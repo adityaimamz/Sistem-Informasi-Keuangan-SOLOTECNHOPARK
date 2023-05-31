@@ -28,7 +28,7 @@
   <?php 
   include '../koneksi.php';
   session_start();
-  if($_SESSION['status'] != "hrd_logedin"){
+  if($_SESSION['status'] != "karyawan_logedin"){
     header("location:../login.php?alert=belum_login");
   }
   ?>
@@ -86,8 +86,6 @@
         </div>
 
         <ul class="sidebar-menu" data-widget="tree">
-          <h4 style="color:white;" align="center"><b><?php echo $_SESSION['nama'];?></b></h4>
-          <h6 style="color:white;" align="center"><i class="fa fa-circle text-success"></i> Online</h6>
           <li class="header">NAVIGASI</li>
 
           <li>
