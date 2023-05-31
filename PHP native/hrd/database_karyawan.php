@@ -59,7 +59,7 @@
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td>    
-                      <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_karyawan_<?php echo $d['Id_karyawan'] ?>">
+                        <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_karyawan_<?php echo $d['Id_karyawan'] ?>">
                             <i class="fa fa-list"></i>
                         </button>
 
@@ -70,7 +70,6 @@
                             </button>
                         <?php } ?>
 
-                        <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_Karyawanmasuk_<?php echo $d['Id_karyawan'] ?>">
                         <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_karyawan_<?php echo $d['Id_karyawan'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
