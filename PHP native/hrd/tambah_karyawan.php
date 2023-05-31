@@ -68,6 +68,63 @@
                
                   <div class="form-group">
                   </div>
+<<<<<<< HEAD
+
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="tanggallahir" class="form-control datepicker2" placeholder="Masukan Tanggal Lahir Karyawan">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
+                    <div class="col-sm-10">
+                      <select name="jabatan" class="form-control">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $jabatan = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Id_jabatan ASC");
+                        while($k = mysqli_fetch_array($jabatan)){
+                          ?>
+                          <option value="<?php echo $k['Id_jabatan']; ?>"><?php echo $k['Nama_jabatan']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Unit Kerja</label>
+                    <div class="col-sm-10">
+                      <select name="unit" class="form-control">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $unit = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Id_unit_kerja ASC");
+                        while($k = mysqli_fetch_array($unit)){
+                          ?>
+                          <option value="<?php echo $k['Id_unit_kerja']; ?>"><?php echo $k['Nama_unit_kerja']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Foto</label>
+
+                    <div class="col-sm-10">
+                      <input type="file" name="trnfoto" class="form-control">
+                      <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
+                    </div>
+                  </div>
+
+=======
+>>>>>>> f42a282ad77d1894c6385857412947671e241fa7
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-danger">Submit</button>
