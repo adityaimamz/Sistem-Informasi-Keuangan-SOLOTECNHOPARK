@@ -8,7 +8,7 @@ $jabatan = $_POST['jabatan'];
 $unit = $_POST['unit'];
 
 $rand = rand();
-$allowed =  array('jpg','jpeg','png');
+$allowed =  array('jpg','jpeg','png', 'PNG');
 $filename = $_FILES['trnfoto']['name'];
 
 if($filename == ""){
