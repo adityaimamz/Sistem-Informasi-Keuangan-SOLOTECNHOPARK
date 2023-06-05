@@ -8,12 +8,12 @@ $jabatan = $_POST['jabatan'];
 $unit = $_POST['unit'];
 
 $rand = rand();
-$allowed =  array('jpg','jpeg','PNG');
+$allowed =  array('jpg','jpeg','png');
 $filename = $_FILES['trnfoto']['name'];
 
 if($filename == ""){
     mysqli_query($koneksi, "insert into karyawan values ('NULL','$nik','$nama','$tempatlahir','$tgllahir','','$jabatan','$unit')")or die(mysqli_error($koneksi));
-    header("location:tambah_karyawan.php?alert=berhasil");
+    header("location:tambah_karyawan_jabatan.php?alert=berhasil");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -23,6 +23,6 @@ if($filename == ""){
 	    move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$file_gambar = $rand.'_'.$filename;
 		mysqli_query($koneksi, "insert into karyawan values ('NULL','$nik','$nama','$tempatlahir','$tgllahir','$file_gambar','$jabatan','$unit')")or die(mysqli_error($koneksi));
-		header("location:tambah_karyawan.php?alert=berhasil");
+		header("location:tambah_karyawan_jabatan.php?alert=berhasil");
 	}
 }

@@ -7,4 +7,4 @@ $penyelenggara = $_POST['penyelenggara'];
 $tanggal = $_POST['tanggal'];
 
 mysqli_query($koneksi, "insert into riwayat_pelatihan values ('NULL','$nama','$tipe','$penyelenggara','$tanggal','$karyawan')")or die(mysqli_error($koneksi));
-header("location:tambah_karyawan.php?alert=berhasil");
+header("location:tambah_karyawan_hukuman.php?alert=berhasil");
