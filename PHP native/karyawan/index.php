@@ -45,6 +45,7 @@ $hari_ini = date('w');
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
+        
         <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
 
         <h4 align="center"><b><?php echo $_SESSION['nama'];?></b></h4>
@@ -87,46 +88,47 @@ $hari_ini = date('w');
       <div class="tab-content">
       <!--Profile -->
         <div class="active tab-pane" id="profil">
-        <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Namor Induk Karyawan</label>
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName" placeholder="Masukan nomor induk Karyawan" >
-              </div>
+        <div class="box-header">
+              <h3 class="box-title">Profil</h3>
             </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
-
-              <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Masukan Nama Karyawan">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
-
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputName" placeholder="Masukan Tanggal Lahir Karyawan">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="inputName" class="col-sm-2 control-label">Fotp</label>
-
-                <div class="col-sm-10">
-                  <input type="file" name="trnfoto" class="form-control">
-                  <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
-                </div>
-              </div>
-
-         
-            <div class="form-group">
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tr>
+                  <th></th>
+                  <th style="width: 70%"></th>
+                </tr>
+                <tr>
+                  <td>No Induk Karyawan</td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama</td>
+                  <td><?php echo $d['Nama']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir</td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir</td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Jabatan</td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Unit Kerja</td>
+                  <td><?php echo $d['Unit_kerja']; ?></td>
+                </tr>
+              </table>
             </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
+            <!-- /.box-body -->
         </div>
         <!-- /Profile -->
 

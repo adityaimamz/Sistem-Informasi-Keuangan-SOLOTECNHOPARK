@@ -81,7 +81,6 @@
       <section class="sidebar">
       <div class="user-panel">
           <div align="center">
-          <img src="../gambar/user.png" class="img-circle img-responsive" width="100" height="100">
           </div>
         </div>
 

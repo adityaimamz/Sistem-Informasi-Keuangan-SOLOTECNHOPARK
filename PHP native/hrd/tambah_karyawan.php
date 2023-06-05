@@ -478,211 +478,202 @@
               
                 <div class="tab-pane" id="ortu">
                   <div class="tab-content">
+                  <form class="form-horizontal" action="tambah_riwayat_keluarga_proses.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="active tab-pane" id="ortu">
-                      <form class="form-horizontal">
+                      <!-- <form class="form-horizontal"> -->
+                        <div class="form-group">
+                          <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
+                          <div class="col-sm-10">
+                            <select name="karyawan" class="form-control" required="required">
+                              <option value="">- Pilih -</option>
+                              <?php 
+                              include 'koneksi.php';
+                              $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
+                              while($k = mysqli_fetch_array($karyawan)){
+                                ?>
+                                <option value="<?php echo $k['Nama']; ?>"><?php echo $k['Nama']; ?></option>
+                                <?php 
+                              }
+                              ?>
+                            </select>
+                          </div>
+                        </div>
                         <div class="form-group">
                           <label for="inputNamaAyah" class="col-sm-2 control-label">Nama Ayah</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNamaAyah" placeholder="Masukkan Nama Ayah">
+                            <input type="text" class="form-control" id="namaayah" name="namayah" placeholder="Masukkan Nama Ayah">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirAyah" class="col-sm-2 control-label">Tempat Lahir Ayah</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirAyah" placeholder="Masukkan Tempat Lahir Ayah">
+                            <input type="text" class="form-control" id="tempatlahirayah" name="tempatlahirayah" placeholder="Masukkan Tempat Lahir Ayah">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirAyah" class="col-sm-2 control-label">Tanggal Lahir Ayah</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Ayah">
+                            <input type="text" name="tgllahirayah" class="form-control datepicker2" placeholder="Tanggal Lahir Ayah">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputNamaIbu" class="col-sm-2 control-label">Nama Ibu</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNamaIbu" placeholder="Masukkan Nama Ibu">
+                            <input type="text" class="form-control" id="namaibu" name="namaibu" placeholder="Masukkan Nama Ibu">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirIbu" class="col-sm-2 control-label">Tempat Lahir Ibu</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirIbu" placeholder="Masukkan Tempat Lahir Ibu">
+                            <input type="text" class="form-control" id="tempatlahiribu" name="tempatlahiribu" placeholder="Masukkan Tempat Lahir Ibu">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirIbu" class="col-sm-2 control-label">Tanggal Lahir Ibu</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Ibu">
+                            <input type="text" name="tgllahiribu" class="form-control datepicker2" placeholder="Tanggal Lahir Ibu">
                           </div>
                         </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Submit</button>
-                          </div>
-                        </div>
-                      </form>
+                      <!-- </form> -->
                     </div>
                     
                     <div class="tab-pane" id="pasangan">
-                      <form class="form-horizontal">
+                      <!-- <form class="form-horizontal"> -->
                         <div class="form-group">
                           <label for="inputNamaPasangan" class="col-sm-2 control-label">Nama Pasangan</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNamaPasangan" placeholder="Masukkan Nama Pasangan">
+                            <input type="text" class="form-control" id="namapasangan" name="namapasangan" placeholder="Masukkan Nama Pasangan">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirPasangan" class="col-sm-2 control-label">Tempat Lahir Pasangan</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirPasangan" placeholder="Masukkan Tempat Lahir Pasangan">
+                            <input type="text" class="form-control" id="tempatlahirpasangan" name="tempatlahirpasangan" placeholder="Masukkan Tempat Lahir Pasangan">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirPasangan" class="col-sm-2 control-label">Tanggal Lahir Pasangan</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Pasangan">
+                            <input type="text" name="tgllahirpasangan" class="form-control datepicker2" placeholder="Tanggal Lahir Pasangan">
                           </div>
                         </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Submit</button>
-                          </div>
-                        </div>
-                      </form>
+                      <!-- </form> -->
                     </div>
 
                     <div class="tab-pane" id="mertua">
-                      <form class="form-horizontal">
+                      <!-- <form class="form-horizontal"> -->
                         <div class="form-group">
                           <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNamaMertua" placeholder="Masukkan Nama Mertua">
+                            <input type="text" class="form-control" id="namamertua" name="namamertua" placeholder="Masukkan Nama Mertua">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirMertua" placeholder="Masukkan Tempat Lahir Mertua">
+                            <input type="text" class="form-control" id="tempatlahirmertua" name="tempatlahirmertua" placeholder="Masukkan Tempat Lahir Mertua">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
+                            <input type="text" name="tgllahirmertua" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
                           </div>
                         </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Submit</button>
-                          </div>
-                        </div>
-                      </form>
+                      <!-- </form> -->
                     </div>
 
                     <div class="tab-pane" id="anak">
-                      <form class="form-horizontal">
+                      <!-- <form class="form-horizontal"> -->
                         <div class="form-group">
                           <label for="inputAnak1" class="col-sm-2 control-label">Anak ke-1</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAnak1" placeholder="Masukkan Nama Anak ke-1">
+                            <input type="text" class="form-control" id="namaanak1" name="namaanak1" placeholder="Masukkan Nama Anak ke-1">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirAnak1" class="col-sm-2 control-label">Tempat Lahir Anak ke-1</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirAnak1" placeholder="Masukkan Tempat Lahir Anak ke-1">
+                            <input type="text" class="form-control" id="tempatlahiranak1" name="tempatlahiranak1" placeholder="Masukkan Tempat Lahir Anak ke-1">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirAnak1" class="col-sm-2 control-label">Tanggal Lahir Anak ke-1</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-1">
+                            <input type="text" name="tgllahiranak1" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-1">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputAnak2" class="col-sm-2 control-label">Anak ke-2</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAnak2" placeholder="Masukkan Nama Anak ke-2">
+                            <input type="text" class="form-control" id="namaanak2" name="namaanak2" placeholder="Masukkan Nama Anak ke-2">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirAnak2" class="col-sm-2 control-label">Tempat Lahir Anak ke-2</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirAnak2" placeholder="Masukkan Tempat Lahir Anak ke-2">
+                            <input type="text" class="form-control" id="tempatlahiranak2" name="tempatlahiranak2" placeholder="Masukkan Tempat Lahir Anak ke-2">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirAnak2" class="col-sm-2 control-label">Tanggal Lahir Anak ke-2</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-2">
+                            <input type="text" name="tgllahiranak2" namae="tgllahiranak2" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-2">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputAnak3" class="col-sm-2 control-label">Anak ke-3</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAnak3" placeholder="Masukkan Nama Anak ke-3">
+                            <input type="text" class="form-control" id="namaanak3"  name="namaanak3" placeholder="Masukkan Nama Anak ke-3">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirAnak3" class="col-sm-2 control-label">Tempat Lahir Anak ke-3</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirAnak3" placeholder="Masukkan Tempat Lahir Anak ke-3">
+                            <input type="text" class="form-control" id="tempatlahiranak3" name="tempatlahiranak3" placeholder="Masukkan Tempat Lahir Anak ke-3">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirAnak3" class="col-sm-2 control-label">Tanggal Lahir Anak ke-3</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-3">
+                            <input type="text" name="tgllahiranak3" name="tgllahiranak3" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-3">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputAnak4" class="col-sm-2 control-label">Anak ke-4</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAnak4" placeholder="Masukkan Nama Anak ke-4">
+                            <input type="text" class="form-control" id="namaanak4" name="namaanak4" placeholder="Masukkan Nama Anak ke-4">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirAnak4" class="col-sm-2 control-label">Tempat Lahir Anak ke-4</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirAnak4" placeholder="Masukkan Tempat Lahir Anak ke-4">
+                            <input type="text" class="form-control" id="tempatlahiranak4" name="tempatlahiranak4" placeholder="Masukkan Tempat Lahir Anak ke-4">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirAnak4" class="col-sm-2 control-label">Tanggal Lahir Anak ke-4</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-4">
+                            <input type="text" name="tgllahiranak4" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-4">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputAnak5" class="col-sm-2 control-label">Anak ke-5</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAnak5" placeholder="Masukkan Nama Anak ke-5">
+                            <input type="text" class="form-control" id="namaanak5" name="namaanak5" placeholder="Masukkan Nama Anak ke-5">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTempatLahirAnak5" class="col-sm-2 control-label">Tempat Lahir Anak ke-5</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTempatLahirAnak5" placeholder="Masukkan Tempat Lahir Anak ke-5">
+                            <input type="text" class="form-control" id="tempatlahiranak5" name="tempatlahiranak5" placeholder="Masukkan Tempat Lahir Anak ke-5">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputTanggalLahirAnak5" class="col-sm-2 control-label">Tanggal Lahir Anak ke-5</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-5">
+                            <input type="text" name="tgllahiranak5" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-5">
                           </div>
                         </div>
                         <div class="form-group">
@@ -691,12 +682,13 @@
                         </div>
                         <div class="form-group">
                           <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Submit</button>
+                            <button type="submit" class="btn btn-danger">Finish Submit</button>
                           </div>
                         </div>
-                      </form>
+                      <!-- </form> -->
                     </div>
                     
+                  </form>
                   </div>
                   <!-- /.tab-pane -->
                 </div>
