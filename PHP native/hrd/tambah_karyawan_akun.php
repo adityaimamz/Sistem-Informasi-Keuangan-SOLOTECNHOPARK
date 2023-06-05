@@ -22,18 +22,18 @@
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
+              <li><a href="#profil" data-toggle="tab">Profil</a></li>
               <li><a href="#jabatan" data-toggle="tab">Riwayat Jabatan</a></li>
               <li><a href="#pendidikan" data-toggle="tab">Pendidikan</a></li>
               <li><a href="#pelatihan" data-toggle="tab">Pelatihan</a></li>
               <li><a href="#hukuman" data-toggle="tab">Hukuman Disiplin</a></li>
               <li><a href="#cuti" data-toggle="tab">Cuti</a></li>
               <li><a href="#keluarga" data-toggle="tab">Keluarga</a></li>
-              <li><a href="#akun" data-toggle="tab">Akun</a></li>
+              <li class="active"><a href="#akun" data-toggle="tab">Akun</a></li>
             </ul>
             <div class="tab-content">
               <!--Profile -->
-              <div class="active tab-pane" id="profil">
+              <div class="tab-pane" id="profil">
                 <form class="form-horizontal" action="tambah_profile_proses.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-group">
@@ -421,7 +421,7 @@
               <!-- /.Cuti -->
 
               <!-- Akun -->
-              <div class="tab-pane" id="akun">
+              <div class="active tab-pane" id="akun">
                 <form class="form-horizontal" action="tambah_akun_proses.php" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
