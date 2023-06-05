@@ -58,12 +58,15 @@
   
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
-                      <td>    
-                      <a href="edit_karyawan.php" title="Detail">
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_karyawan_<?php echo $d['Id_karyawan'] ?>">
+                      <td>
+                        <a data-toggle="tooltip" data-placement="top" title="Detail" style="margin-right:5px" class="btn btn-info btn-sm" href="detail_karyawan.php?id=<?php echo $d['Id_karyawan'] ?>">
+                          <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                      <!-- <a href="edit_karyawan.php" title="Detail">
+                        <a><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_karyawan_<?php echo $d['Id_karyawan'] ?>">
                           <i class="fa fa-list"></i>
                         </button>
-                      </a>
+                      </a> -->
 
 
                         <?php if($d['Foto']==''){ ?> 
