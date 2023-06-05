@@ -21,6 +21,12 @@ $namabulan = array(
 $bulan_ini = date('n');
 $hari_ini = date('w');
 ?>
+<?php
+  $query=$conn->prepare("SELECT karyawan.* FROM karyawan WHERE karyawan.Id_karyawan=?");
+  $query->bindParam(1, $_GET['Id_karyawan'], PDO::PARAM_STR|PDO::PARAM_INPUT_OUTPUT, 4000);
+  $query->execute();
+  $data=$query->fetch(PDO::FETCH_ASSOC);
+?>
 
 
 <div class="content-wrapper">
@@ -46,10 +52,10 @@ $hari_ini = date('w');
     <div class="box box-primary">
       <div class="box-body box-profile">
         
-        <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+      <img class="profile-user-img img-responsive img-circle" src="<?php echo ($data['foto'] == NULL) ? '../../dist/img/user4-128x128.jpg' : '../images/' . $data['foto']; ?>" alt="User profile picture">
 
-        <h4 align="center"><b><?php echo $_SESSION['nama'];?></b></h4>
-        <h6 align="center"><i class="fa fa-circle text-success"></i> Online</h6>
+      <h4 align="center"><b><?php echo $_SESSION['nama']; ?></b></h4>
+      <h6 align="center"><i class="fa fa-circle text-success"></i> Online</h6>
 
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">

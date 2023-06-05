@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      User
-      <small>Data Akun Karyawan</small>
+      Jabatan
+      <small>Data Jabatan</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,16 +19,16 @@
         <div class="box box-info">
 
           <div class="box-header">
-            <h3 class="box-title">Data Akun Karyawan</h3>
+            <h3 class="box-title">Data Jabatan</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i> &nbsp Tambah User
+                <i class="fa fa-plus"></i> &nbsp Tambah Jabatan
               </button>
 
               &nbsp
 
-              <a href="user_csv.php"><button type="button" class="btn btn-success btn-sm">
+              <a href="Jabatan_csv.php"><button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-file-excel-o"></i> &nbsp CSV
               </button></a>
 
@@ -41,7 +41,7 @@
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                       <h4><i class="icon fa fa-warning"></i> Peringatan !</h4>
                       Ekstensi Tidak Diperbolehkan
-                    </div>                
+                    </div>								
                     <?php
                   }elseif($_GET['alert']=="berhasil"){
                     ?>
@@ -49,7 +49,7 @@
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                       <h4><i class="icon fa fa-check"></i> Success</h4>
                       Berhasil Disimpan
-                    </div>                
+                    </div> 								
                     <?php
                   }elseif($_GET['alert']=="berhasilupdate"){
                     ?>
@@ -57,7 +57,7 @@
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                       <h4><i class="icon fa fa-check"></i> Success</h4>
                       Berhasil Update
-                    </div>                
+                    </div> 								
                     <?php
                   }
                 }
@@ -66,12 +66,12 @@
           <div class="box-body">
 
             <!-- Modal -->
-            <form action="user_proses.php" method="post" enctype="multipart/form-data">
+            <form action="jabatan_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title" id="exampleModalLabel">Tambah User</h4>
+                      <h4 class="modal-title" id="exampleModalLabel">Tambah Jabatan</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -79,27 +79,8 @@
                     <div class="modal-body">
 
                       <div class="form-group">
-                        <label>NAMA USER</label>
-                        <input type="text" name="nama" required="required" class="form-control" placeholder="Masukkan Nama ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>ALAMAT</label>
-                        <input type="text" name="alamat" required="required" class="form-control" placeholder="Masukkan Alamat ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>USERNAME</label>
-                        <input type="text" name="username" required="required" class="form-control" placeholder="Masukkan Username ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>PASSWORD</label>
-                        <input type="text" name="password" required="required" class="form-control" placeholder="Masukkan Password ..">
-                      </div>
-
-                      <div class="form-group">
-                        <input type="hidden" name="level" value="karyawan">
+                        <label>Nama Jabatan</label>
+                        <input type="text" name="Nama" required="required" class="form-control" placeholder="Masukkan Nama ..">
                       </div>
 
                     </div>
@@ -118,10 +99,7 @@
                 <thead>
                   <tr>
                     <th>NO</th>
-                    <th>NAMA USER</th>
-                    <th>ALAMAT</th>
-                    <th>USERNAME</th>
-                    <th>LEVEL</th>
+                    <th>Nama Jabatan </th>
                     <th>OPSI</th>
                   </tr>
                 </thead>
@@ -130,32 +108,27 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM master_user WHERE master_user.Level='Karyawan' order by Id_user desc");
+                  $data = mysqli_query($koneksi,"SELECT * FROM jabatan order by Id_jabatan desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
-                      <td><?php echo $d['Nama']; ?></td>
-                      <td><?php echo $d['Alamat']; ?></td>
-                      <td><?php echo $d['Username']; ?></td>
-                      <td><?php echo $d['Level']; ?></td>
+                      <td><?php echo $d['Nama_jabatan']; ?></td>
                       <td>    
-                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_user_<?php echo $d['Id_user'] ?>">
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_Jabatan_<?php echo $d['Id_jabatan'] ?>">
                           <i class="fa fa-cog"></i>
                         </button>
 
-                        <?php if($d['Id_user'] != 1){ ?>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_user_<?php echo $d['Id_user'] ?>">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_Jabatan_<?php echo $d['Id_jabatan'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
-                        <?php } ?>
 
-                        <form action="user_update.php" method="post" enctype="multipart/form-data">
-                          <div class="modal fade" id="edit_user_<?php echo $d['Id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form action="Jabatan_update.php" method="post" enctype="multipart/form-data">
+                          <div class="modal fade" id="edit_Jabatan_<?php echo $d['Id_jabatan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Edit User</h4>
+                                  <h4 class="modal-title" id="exampleModalLabel">Edit Jabatan</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -163,29 +136,9 @@
                                 <div class="modal-body">
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>NAMA</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_user'] ?>">
-                                    <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama'] ?>">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>ALAMAT</label>
-                                    <input type="text" style="width:100%" name="alamat" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Alamat'] ?>">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>USERNAME</label>
-                                    <input type="text" style="width:100%" name="username" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Username'] ?>">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>PASSWORD</label>
-                                    <input type="text" style="width:100%" name="password" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Password'] ?>">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>LEVEL</label>
-                                    <input type="text" style="width:100%" name="level" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Level'] ?>">
+                                    <label>Nama Jabatan</label>
+                                    <input type="hidden" name="id" value="<?php echo $d['Id_jabatan'] ?>">
+                                    <input type="text" style="width:100%" name="Nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama_jabatan'] ?>">
                                   </div>
 
                                 </div>
@@ -199,7 +152,7 @@
                         </form>
 
                         <!-- modal hapus -->
-                        <div class="modal fade" id="hapus_user_<?php echo $d['Id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapus_Jabatan_<?php echo $d['Id_jabatan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -215,7 +168,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <a href="user_hapus.php?id=<?php echo $d['Id_user'] ?>" class="btn btn-primary">Hapus</a>
+                                <a href="Jabatan_hapus.php?id=<?php echo $d['Id_jabatan'] ?>" class="btn btn-primary">Hapus</a>
                               </div>
                             </div>
                           </div>

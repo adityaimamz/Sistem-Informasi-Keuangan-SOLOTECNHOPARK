@@ -21,7 +21,7 @@
             <h3 class="box-title">Daftar Karyawan</h3>
             <div class="btn-group pull-right">            
 
-            <a href="tambah_karyawan.php"><button type="button" class="btn btn-primary btn-sm">
+            <a href="tambah_karyawan_profil.php"><button type="button" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus"></i> &nbsp Tambah Data Karyawan
               </button></a>
               &nbsp
