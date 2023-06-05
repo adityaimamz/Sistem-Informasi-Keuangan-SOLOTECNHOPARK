@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+<link rel="stylesheet" href="../assets/css/style2.css">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -421,67 +422,13 @@
               <!-- /.Cuti -->
 
               <!-- Akun -->
-              <div class="active tab-pane" id="akun">
-                <form class="form-horizontal" action="tambah_akun_proses.php" method="POST" enctype="multipart/form-data">
-                  <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
-                    <div class="col-sm-10">
-                      <select name="karyawan" class="form-control" required="required">
-                        <option value="">- Pilih -</option>
-                        <?php 
-                        include 'koneksi.php';
-                        $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
-                        while($k = mysqli_fetch_array($karyawan)){
-                          ?>
-                          <option value="<?php echo $k['Nama']; ?>"><?php echo $k['Nama']; ?></option>
-                          <?php 
-                        }
-                        ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputUsername" class="col-sm-2 control-label">Username</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username">
-                    </div>
-                  </div><div class="form-group">
-                    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan Password">
-                      <div class="input-group-append">
-                    </div>
-                    </div>
-                  </div>
-                  
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <!-- /.Akun -->
-
               <div class="tab-pane" id="keluarga">
-                <div class="nav-tabs-custom">
-                  <ul class="nav nav-tabs">
-                    <li class="active"><a href="#ortu" data-toggle="tab">Orang tua</a></li>
-                    <li><a href="#pasangan" data-toggle="tab">Pasangan</a></li>
-                    <li><a href="#mertua" data-toggle="tab">Mertua</a></li>
-                    <li><a href="#anak" data-toggle="tab">Anak</a></li>
-                </div>
-              
                 <div class="tab-pane" id="ortu">
                   <div class="tab-content">
                   <form class="form-horizontal" action="tambah_riwayat_keluarga_proses.php" method="POST" enctype="multipart/form-data">
-                    
                     <div class="active tab-pane" id="ortu">
                       <!-- <form class="form-horizontal"> -->
+
                         <div class="form-group">
                           <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
                           <div class="col-sm-10">
@@ -499,6 +446,9 @@
                             </select>
                           </div>
                         </div>
+                        <h4 class="keluarga_title">
+                        Data Orang Tua
+                        </h4>
                         <div class="form-group">
                           <label for="inputNamaAyah" class="col-sm-2 control-label">Nama Ayah</label>
                           <div class="col-sm-10">
@@ -540,6 +490,9 @@
                     
                     <div class="tab-pane" id="pasangan">
                       <!-- <form class="form-horizontal"> -->
+                      <h4 class="keluarga_title">
+                        Data Pasangan
+                        </h4>
                         <div class="form-group">
                           <label for="inputNamaPasangan" class="col-sm-2 control-label">Nama Pasangan</label>
                           <div class="col-sm-10">
@@ -563,6 +516,9 @@
 
                     <div class="tab-pane" id="mertua">
                       <!-- <form class="form-horizontal"> -->
+                      <h4 class="keluarga_title">
+                        Data Mertua
+                        </h4>
                         <div class="form-group">
                           <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Mertua</label>
                           <div class="col-sm-10">
@@ -586,6 +542,9 @@
 
                     <div class="tab-pane" id="anak">
                       <!-- <form class="form-horizontal"> -->
+                      <h4 class="keluarga_title">
+                        Data Anak ke-1
+                        </h4>
                         <div class="form-group">
                           <label for="inputAnak1" class="col-sm-2 control-label">Anak ke-1</label>
                           <div class="col-sm-10">
@@ -604,6 +563,9 @@
                             <input type="text" name="tgllahiranak1" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-1">
                           </div>
                         </div>
+                        <h4 class="keluarga_title">
+                        Data Anak ke-2
+                        </h4>
                         <div class="form-group">
                           <label for="inputAnak2" class="col-sm-2 control-label">Anak ke-2</label>
                           <div class="col-sm-10">
@@ -622,6 +584,9 @@
                             <input type="text" name="tgllahiranak2" namae="tgllahiranak2" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-2">
                           </div>
                         </div>
+                        <h4 class="keluarga_title">
+                        Data Anak ke-3
+                        </h4>
                         <div class="form-group">
                           <label for="inputAnak3" class="col-sm-2 control-label">Anak ke-3</label>
                           <div class="col-sm-10">
@@ -640,6 +605,9 @@
                             <input type="text" name="tgllahiranak3" name="tgllahiranak3" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-3">
                           </div>
                         </div>
+                        <h4 class="keluarga_title">
+                        Data Anak ke-4
+                        </h4>
                         <div class="form-group">
                           <label for="inputAnak4" class="col-sm-2 control-label">Anak ke-4</label>
                           <div class="col-sm-10">
@@ -658,6 +626,9 @@
                             <input type="text" name="tgllahiranak4" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-4">
                           </div>
                         </div>
+                        <h4 class="keluarga_title">
+                        Data Anak ke-5
+                        </h4>
                         <div class="form-group">
                           <label for="inputAnak5" class="col-sm-2 control-label">Anak ke-5</label>
                           <div class="col-sm-10">
@@ -689,9 +660,9 @@
                     </div>
                     
                   </form>
-                </div>
+                  </div>
                   <!-- /.tab-pane -->
-              </div>
+                </div>
             
             <!-- /.tab-content -->
           </div>
