@@ -1,17 +1,7 @@
 <?php 
 include 'header.php'; 
 $id_karyawan = $_GET['id'];
-$karyawan = mysqli_query($koneksi,"SELECT *
-FROM karyawan, unit_kerja, jabatan, riwayat_cuti, riwayat_hukuman, riwayat_jabatan, riwayat_keluarga, riwayat_pelatihan, riwayat_pendidikan
-WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja
-    AND karyawan.Id_jabatan = jabatan.Id_jabatan
-    AND karyawan.Id_karyawan = riwayat_cuti.Id_karyawan
-    AND karyawan.Id_karyawan = riwayat_hukuman.Id_karyawan
-    AND karyawan.Id_karyawan = riwayat_jabatan.Id_karyawan
-    AND karyawan.Id_karyawan = riwayat_keluarga.Id_karyawan
-    AND karyawan.Id_karyawan = riwayat_pelatihan.Id_karyawan
-    AND karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan
-    AND karyawan.Id_karyawan = '$id_karyawan'");
+$karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan = '$id_karyawan'");
 $profil = mysqli_fetch_assoc($karyawan);
 ?>
 <div class="content-wrapper">
@@ -36,10 +26,10 @@ $profil = mysqli_fetch_assoc($karyawan);
     <div class="box box-primary">
       <div class="box-body box-profile">
       <?php if($profil['Foto']==NULL){?>
-              <img class="profile-user-img img-responsive img-circle" src="../gambar/user.png" alt="User profile picture">
-              <?php }else{?>
-              <img class="profile-user-img img-responsive img-circle" src="../gambar/bukti/<?php echo $profil['Foto']; ?>" alt="User profile picture">
-              <?php } ?>
+        <img class="profile-user-img img-responsive img-circle" src="../gambar/user.png" alt="User profile picture">
+        <?php }else{?>
+        <img class="profile-user-img img-responsive img-circle" src="../gambar/bukti/<?php echo $profil['Foto']; ?>" alt="User profile picture">
+        <?php } ?>
 
         <h4 align="center"><b><?php echo $profil['Nama'];?></b></h4>
         <h6 align="center"><?php echo $profil['Nama_jabatan']; ?></h6>
@@ -119,9 +109,13 @@ $profil = mysqli_fetch_assoc($karyawan);
         </div>
         <!-- /Profile -->
 
-      <!--.Jabatan -->
-      <div class="tab-pane" id="jabatan">
-      <div class="box-body no-padding">
+        <!--.Jabatan -->
+        <?php 
+        $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_jabatan WHERE karyawan.Id_karyawan = riwayat_jabatan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+        $jabatan = mysqli_fetch_assoc($d);
+        ?>
+        <div class="tab-pane" id="jabatan">
+          <div class="box-body no-padding">
               <table class="table table-condensed">
                 <tr>
                   <th></th>
@@ -129,17 +123,17 @@ $profil = mysqli_fetch_assoc($karyawan);
                 </tr>
                 <tr>
                   <td>No Induk Karyawan</td>
-                  <td><?php echo $jabatan['No_induk_karyawan']; ?></td>
+                  <td><?php echo isset($jabatan['No_induk_karyawan']) ? $jabatan['No_induk_karyawan'] : ''; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>Nama</td>
-                  <td><?php echo $jabatan['Nama']; ?></td>
+                  <td><?php echo isset($jabatan['Nama']) ? $jabatan['Nama'] : ''; ?></td>
                 </tr>
                 <tr>
                   <td>Tempat Lahir</td>
-                  <td><?php echo $jabatan['Tempat_lahir']; ?></td>
+                  <td><?php echo isset($jabatan['Tempat_lahir']) ? $jabatan['Tempat_lahir'] : ''; ?></td>
                   <td>
                   </td>
                 </tr>
@@ -157,7 +151,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                 </tr>
                 <tr>
                   <td>Unit Kerja</td>
-                  <td><?php echo $jabatan['Nama_unit_kerja']; ?></td>
+                  <td><?php echo $jabatan['Unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
