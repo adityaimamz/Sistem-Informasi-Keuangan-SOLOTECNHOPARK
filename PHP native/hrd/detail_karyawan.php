@@ -122,8 +122,8 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo isset($jabatan['No_induk_karyawan']) ? $jabatan['No_induk_karyawan'] : ''; ?></td>
+                  <td>TMT</td>
+                  <td><?php echo isset($jabatan['TMT']) ? $jabatan['TMT'] : ''; ?></td>
                   <td>
                   </td>
                 </tr>
