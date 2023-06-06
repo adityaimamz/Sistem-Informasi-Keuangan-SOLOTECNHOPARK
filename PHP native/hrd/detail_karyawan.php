@@ -139,7 +139,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                 </tr>
                 <tr>
                   <td>Tanggal Lahir</td>
-                  <td><?php echo $jabatan['Tgl_lahir']; ?></td>
+                  <td><?php echo isset($jabatan['Tgllahir']) ? $jabatan['Tgllahir'] : ''; ?></td>
                   <td>
                   </td>
                 </tr>
