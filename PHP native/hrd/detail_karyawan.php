@@ -128,36 +128,20 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $jabatan['No_induk_karyawan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama</td>
-                  <td><?php echo $jabatan['Nama']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $jabatan['Tempat_lahir']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $jabatan['Tgl_lahir']; ?></td>
+                  <td>TMT</td>
+                  <td><?php echo $profil['TMT']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
-                  <td>
-                  </td>
+                  <td><?php echo $profil['Jabatan']; ?></td>
                 </tr>
                 <tr>
                   <td>Unit Kerja</td>
-                  <td><?php echo $jabatan['Nama_unit_kerja']; ?></td>
+                  <td><?php echo $profil['Unit_kerja']; ?></td>
+                  <td>
+                  </td>
                 </tr>
               </table>
             </div>
@@ -173,36 +157,32 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Tingkat</td>
+                  <td><?php echo $profil['Tingkat']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Jurusan</td>
+                  <td><?php echo $profil['Jurusan']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Nama Instansi</td>
+                  <td><?php echo $profil['Nama_instansi']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>Gekar</td>
+                  <td><?php echo $profil['Gelar']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
+                  <td>Tahun Lulus</td>
+                  <td><?php echo $profil['Tahun_lulus']; ?></td>
                   <td>
                   </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
@@ -218,36 +198,26 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Nama Diklat</td>
+                  <td><?php echo $profil['Nama_diklat']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Tipe Diklat</td>
+                  <td><?php echo $profil['Tipe_diklat']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Penyelenggara Diklat</td>
+                  <td><?php echo $profil['Penyelenggara']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>Tanggal Lulus</td>
+                  <td><?php echo $profil['Tgl_lulus']; ?></td>
                   <td>
                   </td>
-                </tr>
-                <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
@@ -263,36 +233,26 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Nama Pelanggaran</td>
+                  <td><?php echo $profil['Pelanggaran']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Nama Hukuman</td>
+                  <td><?php echo $profil['Hukuman']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Tingkat Hukuman</td>
+                  <td><?php echo $profil['Tingkat_hukuman']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>Tanggal SK</td>
+                  <td><?php echo $profil['Tgl_sk']; ?></td>
                   <td>
                   </td>
-                </tr>
-                <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
@@ -308,36 +268,32 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Id Cuti</td>
+                  <td><?php echo $profil['Id_cuti']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Tanggal SK</td>
+                  <td><?php echo $profil['tgl_SK']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Keperluan</td>
+                  <td><?php echo $profil['Keperluan']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>Mulai Cuti</td>
+                  <td><?php echo $profil['mulai_cuti']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
+                  <td>Selesai Cuti</td>
+                  <td><?php echo $profil['selesai_cuti']; ?></td>
                   <td>
                   </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
@@ -402,43 +358,43 @@ $profil = mysqli_fetch_assoc($karyawan);
                     
         <div class="tab-content">       
         <div class="active tab-pane" id="ortu">
-        <            <div class="box-body no-padding">
+        <div class="box-body no-padding">
               <table class="table table-condensed">
                 <tr>
                   <th></th>
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Nama Ayah</td>
+                  <td><?php echo $profil['nama_ayah']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Tempat Lahir Ayah</td>
+                  <td><?php echo $profil['tempatlahir_ayah']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Tanggal Lahir Ayah</td>
+                  <td><?php echo $profil['tgllahir_ayah']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>Nama Ibu</td>
+                  <td><?php echo $profil['nama_ibu']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
+                  <td>Tempat Lahir Ibu</td>
+                  <td><?php echo $profil['tempatlahir_ibu']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
+                  <td>Tanggal Lahir Ibu</td>
+                  <td><?php echo $profil['tgllahir_ibu']; ?></td>
                 </tr>
               </table>
             </div>
@@ -452,36 +408,20 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Nama Pasangan</td>
+                  <td><?php echo $profil['nama_pasangan']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Tempat Lahir Pasangan</td>
+                  <td><?php echo $profil['tempatlahir_pasangan']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Tanggal Lahir Pasangan</td>
+                  <td><?php echo $profil['tgllahir_pasangan']; ?></td>
                   <td>
                   </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
@@ -496,36 +436,20 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Nama Mertua</td>
+                  <td><?php echo $profil['nama_mertua']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Tempat Lahir Mertua</td>
+                  <td><?php echo $profil['tempatlahir_mertua']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Tanggal Lahir Mertua</td>
+                  <td><?php echo $profil['tgllahir_mertua']; ?></td>
                   <td>
                   </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
@@ -540,36 +464,84 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>Nama Anak ke-1</td>
+                  <td><?php echo $profil['nama_anak1']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
+                  <td>Tempat Lahir Anak ke-1</td>
+                  <td><?php echo $profil['tempatlahir_anak1']; ?></td>
                 </tr>
                 <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>Tanggal Lahir Anak ke-1</td>
+                  <td><?php echo $profil['tgllahir_anak1']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>Nama Anak ke-2</td>
+                  <td><?php echo $profil['nama_anak2']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
+                  <td>Tempat Lahir Anak ke-2</td>
+                  <td><?php echo $profil['tempatlahir_anak2']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-2</td>
+                  <td><?php echo $profil['tgllahir_anak2']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
+                  <td>Nama Anak ke-3</td>
+                  <td><?php echo $profil['nama_anak3']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-3</td>
+                  <td><?php echo $profil['tempatlahir_anak3']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-3</td>
+                  <td><?php echo $profil['tgllahir_anak3']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama Anak ke-4</td>
+                  <td><?php echo $profil['nama_anak4']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-4</td>
+                  <td><?php echo $profil['tempatlahir_anak4']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-4</td>
+                  <td><?php echo $profil['tgllahir_anak4']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama Anak ke-5</td>
+                  <td><?php echo $profil['nama_anak5']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-5</td>
+                  <td><?php echo $profil['tempatlahir_anak5']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-5</td>
+                  <td><?php echo $profil['tgllahir_anak5']; ?></td>
+                  <td>
+                  </td>
                 </tr>
               </table>
             </div>
