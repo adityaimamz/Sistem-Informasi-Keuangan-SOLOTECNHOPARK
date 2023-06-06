@@ -28,7 +28,7 @@
               <li><a href="#pendidikan" data-toggle="tab">Pendidikan</a></li>
               <li><a href="#pelatihan" data-toggle="tab">Pelatihan</a></li>
               <li><a href="#hukuman" data-toggle="tab">Hukuman Disiplin</a></li>
-              <li  class="active"><a href="#cuti" data-toggle="tab">Cuti</a></li>
+              <li class="active"><a href="#cuti" data-toggle="tab">Cuti</a></li>
               <li><a href="#keluarga" data-toggle="tab">Keluarga</a></li>
               <li><a href="#akun" data-toggle="tab">Akun</a></li>
             </ul>
@@ -566,21 +566,39 @@
                         Data Mertua
                         </h4>
                         <div class="form-group">
-                          <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Mertua</label>
+                          <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Ayah Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="namamertua" name="namamertua" placeholder="Masukkan Nama Mertua">
+                            <input type="text" class="form-control" id="namaayahmertua" name="namaayahmertua" placeholder="Masukkan Nama Mertua">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Mertua</label>
+                          <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Ayah Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="tempatlahirmertua" name="tempatlahirmertua" placeholder="Masukkan Tempat Lahir Mertua">
+                            <input type="text" class="form-control" id="tempatlahirayahmertua" name="tempatlahirayahmertua" placeholder="Masukkan Tempat Lahir Mertua">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Mertua</label>
+                          <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Ayah Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tgllahirmertua" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
+                            <input type="text" name="tgllahirayahmertua" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Ibu Mertua</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="namaibumertua" name="namaibumertua" placeholder="Masukkan Nama Mertua">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Ibu Mertua</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="tempatlahiribumertua" name="tempatlahiribumertua" placeholder="Masukkan Tempat Lahir Mertua">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Ibu Mertua</label>
+                          <div class="col-sm-10">
+                            <input type="text" name="tgllahiribumertua" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
                           </div>
                         </div>
                       <!-- </form> -->
@@ -740,4 +758,4 @@
     isPasswordShown = !isPasswordShown;
   });
 </script>
-<?php include 'footer.php'; ?> 
+<?php include 'footer.php'; ?>
