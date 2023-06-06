@@ -71,7 +71,7 @@
 
                         <?php if($d['Foto']==''){ ?> 
                         <?php } else { ?> 
-                            <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_penerimaan_<?php echo $d['Id_karyawan'] ?>">
+                            <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_karyawan_<?php echo $d['Id_karyawan'] ?>">
                               <i class="fa fa-eye"></i>
                             </button>
                         <?php } ?>
@@ -79,6 +79,46 @@
                         <button title="Delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_karyawan_<?php echo $d['Id_karyawan'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
+
+                        <!-- Modal lihat -->
+                        <div class="modal fade" id="lihat_karyawan_<?php echo $d['Id_karyawan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Lihat Bukti Upload</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <embed src="../gambar/bukti/<?php echo $d['Foto']; ?>" type="application/pdf" width="100%" height="480px" />
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      <!-- Modal lihat -->
+                      <div class="modal fade" id="lihat_karyawan_<?php echo $d['Id_karyawan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Lihat Bukti Upload</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <embed src="../gambar/bukti/<?php echo $d['Bukti']; ?>" type="application/pdf" width="100%" height="400px" />
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
                         <!-- modal hapus -->
                         <div class="modal fade" id="hapus_karyawan_<?php echo $d['Id_karyawan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
