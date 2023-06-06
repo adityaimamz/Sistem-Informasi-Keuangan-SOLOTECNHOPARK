@@ -110,131 +110,104 @@ $profil = mysqli_fetch_assoc($karyawan);
         <!-- /Profile -->
 
         <!--.Jabatan -->
-        <?php 
-        $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_jabatan WHERE karyawan.Id_karyawan = riwayat_jabatan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-        $jabatan = mysqli_fetch_assoc($d);
-        ?>
         <div class="tab-pane" id="jabatan">
           <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>TMT</td>
-                  <td><?php echo isset($jabatan['TMT']) ? $jabatan['TMT'] : ''; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama</td>
-                  <td><?php echo isset($jabatan['Nama']) ? $jabatan['Nama'] : ''; ?></td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo isset($jabatan['Tempat_lahir']) ? $jabatan['Tempat_lahir'] : ''; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo isset($jabatan['Tgllahir']) ? $jabatan['Tgllahir'] : ''; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $jabatan['Jabatan']; ?></td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $jabatan['Unit_kerja']; ?></td>
-                </tr>
-              </table>
+            <div class="box">
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tr>
+                    <th>TMT SK</th>
+                    <th>JABATAN</th>
+                    <th>UNIT KERJA</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_jabatan WHERE karyawan.Id_karyawan = riwayat_jabatan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($jabatan = mysqli_fetch_assoc($d)){
+                  ?>
+                  <tr>
+                    <td><?php echo isset($jabatan['TMT']) ? $jabatan['TMT'] : ''; ?></td>
+                    <td><?php echo isset($jabatan['Jabatan']) ? $jabatan['Jabatan'] : ''; ?></td>
+                    <td><?php echo isset($jabatan['Unit_kerja']) ? $jabatan['Unit_kerja'] : ''; ?></td>
+                  </tr>
+                  <?php
+                    }
+                  ?>
+                </table>
+              </div>
+              <!-- /.box-body -->
             </div>
+          </div>
         </div>
         <!-- /.Jabatan -->
 
-         <!--.Pendidikan -->
-         <div class="tab-pane" id="pendidikan">
-         <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>Tingkat</td>
-                  <td><?php echo $profil['Tingkat']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jurusan</td>
-                  <td><?php echo $profil['Jurusan']; ?></td>
-                </tr>
-                <tr>
-                  <td>Nama Instansi</td>
-                  <td><?php echo $profil['Nama_instansi']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Gekar</td>
-                  <td><?php echo $profil['Gelar']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tahun Lulus</td>
-                  <td><?php echo $profil['Tahun_lulus']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-              </table>
+        <!--.Pendidikan -->
+        <div class="tab-pane" id="pendidikan">
+          <div class="box-body no-padding">
+            <div class="box">
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tr>
+                    <th>TANGGAL LULUS</th>
+                    <th>TINGKAT</th>
+                    <th>JURUSAN</th>
+                    <th>SEKOLAH/KAMPUS</th>
+                    <th>GELAR</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($pendidikan = mysqli_fetch_assoc($d)){
+                  ?>
+                  <tr>
+                    <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Tingkat']) ? $pendidikan['Tingkat'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Jurusan']) ? $pendidikan['Jurusan'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Nama_instansi']) ? $pendidikan['Nama_instansi'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Gelar']) ? $pendidikan['Gelar'] : ''; ?></td>
+                  </tr>
+                  <?php
+                    }
+                  ?>
+                </table>
+              </div>
+              <!-- /.box-body -->
             </div>
-        </div>
-        <!-- /.Pendidikan -->
-
-         <!-- .Pelatihan -->
-         <div class="tab-pane" id="pelatihan">
-         <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>Nama Diklat</td>
-                  <td><?php echo $profil['Nama_diklat']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tipe Diklat</td>
-                  <td><?php echo $profil['Tipe_diklat']; ?></td>
-                </tr>
-                <tr>
-                  <td>Penyelenggara Diklat</td>
-                  <td><?php echo $profil['Penyelenggara']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lulus</td>
-                  <td><?php echo $profil['Tgl_lulus']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-              </table>
-            </div>
+          </div>
         </div>
         <!-- /.Pelatihan -->
 
         <!-- .Hukuman -->
         <div class="tab-pane" id="hukuman">
-        <div class="box-body no-padding">
+          <div class="box-body no-padding">
+            <div class="box">
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tr>
+                    <th>TANGGAL SK</th>
+                    <th>PELANGGARAN</th>
+                    <th>HUKUMAN</th>
+                    <th>TINGKAT HUKUMAN</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    $pendidikan = mysqli_fetch_assoc($d);
+                    while($pendidikan = mysqli_fetch_assoc($d)){
+                  ?>
+                  <tr>
+                    <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Tingkat']) ? $pendidikan['Tingkat'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Jurusan']) ? $pendidikan['Jurusan'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Nama_instansi']) ? $pendidikan['Nama_instansi'] : ''; ?></td>
+                  </tr>
+                  <?php
+                    }
+                  ?>
+                </table>
+              </div>
+            <!-- /.box-body -->
+            </div>
               <table class="table table-condensed">
                 <tr>
                   <th></th>
