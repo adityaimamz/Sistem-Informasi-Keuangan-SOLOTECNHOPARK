@@ -422,7 +422,53 @@
               <!-- /.Cuti -->
 
               <!-- Akun -->
-              <div class="tab-pane" id="keluarga">
+              <div class="tab-pane" id="akun">
+                <form class="form-horizontal" action="tambah_akun_proses.php" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
+                    <div class="col-sm-10">
+                      <select name="karyawan" class="form-control" required="required">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
+                        while($k = mysqli_fetch_array($karyawan)){
+                          ?>
+                          <option value="<?php echo $k['Nama']; ?>"><?php echo $k['Nama']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username">
+                    </div>
+                  </div><div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan Password">
+                      <div class="input-group-append">
+                    </div>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- /.Akun -->
+
+              <div class="active tab-pane" id="keluarga">
                 <div class="tab-pane" id="ortu">
                   <div class="tab-content">
                   <form class="form-horizontal" action="tambah_riwayat_keluarga_proses.php" method="POST" enctype="multipart/form-data">
@@ -520,21 +566,39 @@
                         Data Mertua
                         </h4>
                         <div class="form-group">
-                          <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Mertua</label>
+                          <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Ayah Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="namamertua" name="namamertua" placeholder="Masukkan Nama Mertua">
+                            <input type="text" class="form-control" id="namaayahmertua" name="namaayahmertua" placeholder="Masukkan Nama Mertua">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Mertua</label>
+                          <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Ayah Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="tempatlahirmertua" name="tempatlahirmertua" placeholder="Masukkan Tempat Lahir Mertua">
+                            <input type="text" class="form-control" id="tempatlahirayahmertua" name="tempatlahirayahmertua" placeholder="Masukkan Tempat Lahir Mertua">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Mertua</label>
+                          <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Ayah Mertua</label>
                           <div class="col-sm-10">
-                            <input type="text" name="tgllahirmertua" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
+                            <input type="text" name="tgllahirayahmertua" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Ibu Mertua</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="namaibumertua" name="namaibumertua" placeholder="Masukkan Nama Mertua">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Ibu Mertua</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="tempatlahiribumertua" name="tempatlahiribumertua" placeholder="Masukkan Tempat Lahir Mertua">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Ibu Mertua</label>
+                          <div class="col-sm-10">
+                            <input type="text" name="tgllahiribumertua" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
                           </div>
                         </div>
                       <!-- </form> -->
@@ -694,4 +758,4 @@
     isPasswordShown = !isPasswordShown;
   });
 </script>
-<?php include 'footer.php'; ?> 
+<?php include 'footer.php'; ?>
