@@ -28,9 +28,23 @@
   <?php 
   include '../koneksi.php';
   session_start();
-  if($_SESSION['status'] != "karyawan_logedin"){
-    header("location:../login.php?alert=belum_login");
+
+  // Periksa apakah pengguna telah melakukan login dan sesi ID pengguna telah terisi
+  if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+    // Jika belum login, alihkan pengguna ke halaman login
+    header("Location:../login.php?alert=belum_login");
+    exit();
   }
+  
+  // Periksa apakah ID pengguna dalam sesi sesuai dengan ID yang diminta di URL
+  if (isset($_GET['id']) && $_SESSION['id'] != $_GET['id']) {
+    // Jika ID pengguna tidak sesuai, alihkan pengguna ke halaman dengan ID mereka sendiri
+    header("Location: ../karyawan?id=" . $_SESSION['id']);
+    exit();
+  }
+  
+  // ID pengguna dalam sesuai dengan ID yang diminta di URL, dapatkan ID pengguna dari URL
+  $id_karyawan = $_GET['id'];
   ?>
 
 </head>
@@ -79,10 +93,7 @@
 
     <aside class="main-sidebar">
       <section class="sidebar">
-      <div class="user-panel">
-          <div align="center">
-          </div>
-        </div>
+
 
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">NAVIGASI</li>

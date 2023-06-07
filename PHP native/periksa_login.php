@@ -12,7 +12,7 @@ $cek = mysqli_num_rows($login);
 if($cek > 0){
 	session_start();
 	$data = mysqli_fetch_assoc($login);
-	$_SESSION['id'] = $data['Id_user'];
+	$_SESSION['id'] = $data['Id_karyawan'];
 	$_SESSION['nama'] = $data['Nama'];
 	$_SESSION['username'] = $data['Username'];
 	$_SESSION['level'] = $data['Level'];
@@ -40,10 +40,12 @@ if($cek > 0){
 		header("location:hrd/");
 	}else if($data['Level'] == "Karyawan"){
 		$_SESSION['status'] = "karyawan_logedin";
-		header("location:karyawan/");
+		$id_karyawan = $data['Id_karyawan'];
+		header("location:karyawan?id=$id_karyawan/");
 	}else{
 		header("location:login.php?alert=gagal");
 	}
 }else{
 	header("location:login.php?alert=gagal");
 }
+?>
