@@ -2,3 +2,15 @@
   padding-left: 180px;
   font-weight: 500;
 }
+
+.tabdetail {
+ font-size: large;
+}
+
+th {
+  font-size: 15px;
+}
+
+td {
+  font-size: 15px;
+}
