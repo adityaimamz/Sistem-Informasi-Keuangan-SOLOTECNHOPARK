@@ -38,7 +38,7 @@
                 <form class="form-horizontal" action="tambah_profile_proses.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-group">
-                      <label for="inputName" class="col-sm-2 control-label">Namor Induk Karyawan</label>
+                      <label for="inputName" class="col-sm-2 control-label">Nomor Induk Karyawan</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan" required="required">
                       </div>

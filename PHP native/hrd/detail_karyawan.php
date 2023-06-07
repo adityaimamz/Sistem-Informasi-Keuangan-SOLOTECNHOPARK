@@ -40,7 +40,7 @@ $profil = mysqli_fetch_assoc($karyawan);
           </li>
         </ul>
 
-        <a href="edit_karyawan.php" class="btn btn-primary btn-block"><b>Edit Data Karyawan</b></a>
+        <a href="edit_karyawan.php?id=<?php echo $profil['Id_karyawan'] ?>" class="btn btn-primary btn-block"><b>Edit Data Karyawan</b></a>
       </div>
       <!-- /.box-body -->
     </div>
@@ -242,295 +242,292 @@ $profil = mysqli_fetch_assoc($karyawan);
 
          <!-- .Cuti -->
         <div class="tab-pane" id="cuti">
-        <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>Id Cuti</td>
-                  <td><?php echo $profil['Id_cuti']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tanggal SK</td>
-                  <td><?php echo $profil['tgl_SK']; ?></td>
-                </tr>
-                <tr>
-                  <td>Keperluan</td>
-                  <td><?php echo $profil['Keperluan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Mulai Cuti</td>
-                  <td><?php echo $profil['mulai_cuti']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Selesai Cuti</td>
-                  <td><?php echo $profil['selesai_cuti']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-              </table>
-            </div>
+          <div class="box-body no-padding">
+            <table class="table table-condensed">
+              <tr>
+                <th></th>
+                <th style="width: 70%"></th>
+              </tr>
+              <tr>
+                <td>Id Cuti</td>
+                <td><?php echo $profil['Id_cuti']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Tanggal SK</td>
+                <td><?php echo $profil['tgl_SK']; ?></td>
+              </tr>
+              <tr>
+                <td>Keperluan</td>
+                <td><?php echo $profil['Keperluan']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Mulai Cuti</td>
+                <td><?php echo $profil['mulai_cuti']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Selesai Cuti</td>
+                <td><?php echo $profil['selesai_cuti']; ?></td>
+                <td>
+                </td>
+              </tr>
+            </table>
           </div>
-            <!-- /.Cuti -->
+        </div>
+        <!-- /.Cuti -->
 
-             <!-- .Cuti -->
-             <div class="tab-pane" id="akun">
-             <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
-                </tr>
-              </table>
-            </div>
+        <!-- .akun -->
+        <div class="tab-pane" id="akun">
+          <div class="box-body no-padding">
+            <table class="table table-condensed">
+              <tr>
+                <th></th>
+                <th style="width: 70%"></th>
+              </tr>
+              <tr>
+                <td>No Induk Karyawan</td>
+                <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Nama</td>
+                <td><?php echo $profil['Nama']; ?></td>
+              </tr>
+              <tr>
+                <td>Tempat Lahir</td>
+                <td><?php echo $profil['Tempat_lahir']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Tanggal Lahir</td>
+                <td><?php echo $profil['Tgl_lahir']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Jabatan</td>
+                <td><?php echo $profil['Nama_jabatan']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Unit Kerja</td>
+                <td><?php echo $profil['Nama_unit_kerja']; ?></td>
+              </tr>
+            </table>
           </div>
+        </div>
 
-            <!-- /.Cuti -->
+        <!-- /.keluarga -->
         <div class="tab-pane" id="keluarga">
-        <div class="nav-tabs-custom">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#ortu" data-toggle="tab">Orang tua</a></li>
-        <li><a href="#pasangan" data-toggle="tab">Pasangan</a></li>
-        <li><a href="#mertua" data-toggle="tab">Mertua</a></li>
-        <li><a href="#anak" data-toggle="tab">Anak</a></li>
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#ortu" data-toggle="tab">Orang tua</a></li>
+              <li><a href="#pasangan" data-toggle="tab">Pasangan</a></li>
+              <li><a href="#mertua" data-toggle="tab">Mertua</a></li>
+              <li><a href="#anak" data-toggle="tab">Anak</a></li>
+              </div>
+              
+              <div class="tab-pane" id="ortu">
+                          
+              <div class="tab-content">       
+                <div class="active tab-pane" id="ortu">
+                  <div class="box-body no-padding">
+                    <table class="table table-condensed">
+                      <tr>
+                        <th></th>
+                        <th style="width: 70%"></th>
+                      </tr>
+                      <tr>
+                        <td>Nama Ayah</td>
+                        <td><?php echo $profil['nama_ayah']; ?></td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tempat Lahir Ayah</td>
+                        <td><?php echo $profil['tempatlahir_ayah']; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal Lahir Ayah</td>
+                        <td><?php echo $profil['tgllahir_ayah']; ?></td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Nama Ibu</td>
+                        <td><?php echo $profil['nama_ibu']; ?></td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tempat Lahir Ibu</td>
+                        <td><?php echo $profil['tempatlahir_ibu']; ?></td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal Lahir Ibu</td>
+                        <td><?php echo $profil['tgllahir_ibu']; ?></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+              <div class="tab-pane" id="pasangan">
+                <div class="box-body no-padding">
+                  <table class="table table-condensed">
+                    <tr>
+                      <th></th>
+                      <th style="width: 70%"></th>
+                    </tr>
+                    <tr>
+                      <td>Nama Pasangan</td>
+                      <td><?php echo $profil['nama_pasangan']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tempat Lahir Pasangan</td>
+                      <td><?php echo $profil['tempatlahir_pasangan']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Lahir Pasangan</td>
+                      <td><?php echo $profil['tgllahir_pasangan']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="mertua">
+                <div class="box-body no-padding">
+                  <table class="table table-condensed">
+                    <tr>
+                      <th></th>
+                      <th style="width: 70%"></th>
+                    </tr>
+                    <tr>
+                      <td>Nama Mertua</td>
+                      <td><?php echo $profil['nama_mertua']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tempat Lahir Mertua</td>
+                      <td><?php echo $profil['tempatlahir_mertua']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Lahir Mertua</td>
+                      <td><?php echo $profil['tgllahir_mertua']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="anak">
+                <div class="box-body no-padding">
+                  <table class="table table-condensed">
+                    <tr>
+                      <th></th>
+                      <th style="width: 70%"></th>
+                    </tr>
+                    <tr>
+                      <td>Nama Anak ke-1</td>
+                      <td><?php echo $profil['nama_anak1']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tempat Lahir Anak ke-1</td>
+                      <td><?php echo $profil['tempatlahir_anak1']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Lahir Anak ke-1</td>
+                      <td><?php echo $profil['tgllahir_anak1']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Nama Anak ke-2</td>
+                      <td><?php echo $profil['nama_anak2']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tempat Lahir Anak ke-2</td>
+                      <td><?php echo $profil['tempatlahir_anak2']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Lahir Anak ke-2</td>
+                      <td><?php echo $profil['tgllahir_anak2']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Nama Anak ke-3</td>
+                      <td><?php echo $profil['nama_anak3']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tempat Lahir Anak ke-3</td>
+                      <td><?php echo $profil['tempatlahir_anak3']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Lahir Anak ke-3</td>
+                      <td><?php echo $profil['tgllahir_anak3']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Nama Anak ke-4</td>
+                      <td><?php echo $profil['nama_anak4']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tempat Lahir Anak ke-4</td>
+                      <td><?php echo $profil['tempatlahir_anak4']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Lahir Anak ke-4</td>
+                      <td><?php echo $profil['tgllahir_anak4']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Nama Anak ke-5</td>
+                      <td><?php echo $profil['nama_anak5']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tempat Lahir Anak ke-5</td>
+                      <td><?php echo $profil['tempatlahir_anak5']; ?></td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Lahir Anak ke-5</td>
+                      <td><?php echo $profil['tgllahir_anak5']; ?></td>
+                      <td>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
         </div>
-        
-        <div class="tab-pane" id="ortu">
-                    
-        <div class="tab-content">       
-        <div class="active tab-pane" id="ortu">
-        <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>Nama Ayah</td>
-                  <td><?php echo $profil['nama_ayah']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Ayah</td>
-                  <td><?php echo $profil['tempatlahir_ayah']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Ayah</td>
-                  <td><?php echo $profil['tgllahir_ayah']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama Ibu</td>
-                  <td><?php echo $profil['nama_ibu']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Ibu</td>
-                  <td><?php echo $profil['tempatlahir_ibu']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Ibu</td>
-                  <td><?php echo $profil['tgllahir_ibu']; ?></td>
-                </tr>
-              </table>
-            </div>
-      </div>
-
-      <div class="tab-pane" id="pasangan">
-      <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>Nama Pasangan</td>
-                  <td><?php echo $profil['nama_pasangan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Pasangan</td>
-                  <td><?php echo $profil['tempatlahir_pasangan']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Pasangan</td>
-                  <td><?php echo $profil['tgllahir_pasangan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-              </table>
-            </div>
-        </div>
-
-
-        <div class="tab-pane" id="mertua">
-        <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>Nama Mertua</td>
-                  <td><?php echo $profil['nama_mertua']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Mertua</td>
-                  <td><?php echo $profil['tempatlahir_mertua']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Mertua</td>
-                  <td><?php echo $profil['tgllahir_mertua']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-              </table>
-            </div>
-        </div>
-
-
-        <div class="tab-pane" id="anak">
-        <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>Nama Anak ke-1</td>
-                  <td><?php echo $profil['nama_anak1']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Anak ke-1</td>
-                  <td><?php echo $profil['tempatlahir_anak1']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Anak ke-1</td>
-                  <td><?php echo $profil['tgllahir_anak1']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama Anak ke-2</td>
-                  <td><?php echo $profil['nama_anak2']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Anak ke-2</td>
-                  <td><?php echo $profil['tempatlahir_anak2']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Anak ke-2</td>
-                  <td><?php echo $profil['tgllahir_anak2']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama Anak ke-3</td>
-                  <td><?php echo $profil['nama_anak3']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Anak ke-3</td>
-                  <td><?php echo $profil['tempatlahir_anak3']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Anak ke-3</td>
-                  <td><?php echo $profil['tgllahir_anak3']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama Anak ke-4</td>
-                  <td><?php echo $profil['nama_anak4']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Anak ke-4</td>
-                  <td><?php echo $profil['tempatlahir_anak4']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Anak ke-4</td>
-                  <td><?php echo $profil['tgllahir_anak4']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama Anak ke-5</td>
-                  <td><?php echo $profil['nama_anak5']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir Anak ke-5</td>
-                  <td><?php echo $profil['tempatlahir_anak5']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir Anak ke-5</td>
-                  <td><?php echo $profil['tgllahir_anak5']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-              </table>
-            </div>
-        </div>
-
-
-      </div>
         <!-- /.tab-pane -->
+
       </div>
       
       <!-- /.tab-content -->
