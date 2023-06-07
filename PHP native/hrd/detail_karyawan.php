@@ -41,7 +41,7 @@ $profil = mysqli_fetch_assoc($karyawan);
           </li>
         </ul>
 
-        <a href="edit_karyawan.php" class="btn btn-primary btn-block"><b>Edit Data Karyawan</b></a>
+        <a href="edit_karyawan.php?id=<?php echo $profil['Id_karyawan'] ?>" class="btn btn-primary btn-block"><b>Edit Data Karyawan</b></a>
       </div>
       <!-- /.box-body -->
     </div>
@@ -523,6 +523,7 @@ $profil = mysqli_fetch_assoc($karyawan);
 
       </div>
         <!-- /.tab-pane -->
+
       </div>
       
       <!-- /.tab-content -->
