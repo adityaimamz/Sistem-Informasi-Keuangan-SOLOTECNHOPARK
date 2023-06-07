@@ -422,7 +422,7 @@
               <!-- /.Cuti -->
 
               <!-- Akun -->
-              <div class="tab-pane" id="akun">
+              <div class="active tab-pane" id="akun">
                 <form class="form-horizontal" action="tambah_akun_proses.php" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
@@ -434,12 +434,18 @@
                         $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
                         while($k = mysqli_fetch_array($karyawan)){
                           ?>
-                          <option value="<?php echo $k['Nama']; ?>"><?php echo $k['Nama']; ?></option>
+                          <option value="<?php echo $k['Id_karyawan']; ?>"><?php echo $k['Nama']; ?></option>
                           <?php 
                         }
                         ?>
                       </select>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="Nama Akun" class="col-sm-2 control-label">Nama Akun</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama akun">
+                      </div>
                   </div>
                   <div class="form-group">
                     <label for="inputUsername" class="col-sm-2 control-label">Username</label>
@@ -468,7 +474,7 @@
               </div>
               <!-- /.Akun -->
 
-              <div class="active tab-pane" id="keluarga">
+              <div class="tab-pane" id="keluarga">
                 <div class="tab-pane" id="ortu">
                   <div class="tab-content">
                   <form class="form-horizontal" action="tambah_riwayat_keluarga_proses.php" method="POST" enctype="multipart/form-data">

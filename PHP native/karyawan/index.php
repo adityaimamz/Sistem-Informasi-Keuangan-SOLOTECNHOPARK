@@ -3,34 +3,15 @@ include 'header.php';
 date_default_timezone_set('Asia/Jakarta');
 $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
 // array bulan dalam bahasa Indonesia
-$namabulan = array(
-  1 => "Januari",
-  2 => "Februari",
-  3 => "Maret",
-  4 => "April",
-  5 => "Mei",
-  6 => "Juni",
-  7 => "Juli",
-  8 => "Agustus",
-  9 => "September",
-  10 => "Oktober",
-  11 => "November",
-  12 => "Desember"
-);
-
-$bulan_ini = date('n');
-$hari_ini = date('w');
 ?>
 <?php
-  $query=$conn->prepare("SELECT karyawan.* FROM karyawan WHERE karyawan.Id_karyawan=?");
-  $query->bindParam(1, $_GET['Id_karyawan'], PDO::PARAM_STR|PDO::PARAM_INPUT_OUTPUT, 4000);
-  $query->execute();
-  $data=$query->fetch(PDO::FETCH_ASSOC);
+$id_karyawan = $_GET['id'];
+$karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan = '$id_karyawan'");
+$profil = mysqli_fetch_assoc($karyawan);
 ?>
 
-
+<link rel="stylesheet" href="../assets/css/style2.css">
 <div class="content-wrapper">
-
 <section class="content-header">
       <h1>
         Edit Data Karyawan
@@ -51,52 +32,45 @@ $hari_ini = date('w');
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
-        
-      <img class="profile-user-img img-responsive img-circle" src="<?php echo ($data['foto'] == NULL) ? '../../dist/img/user4-128x128.jpg' : '../images/' . $data['foto']; ?>" alt="User profile picture">
+      <?php if($profil['Foto']==NULL){?>
+        <img class="profile-user-img img-responsive img-circle" src="../gambar/user.png" alt="User profile picture">
+        <?php }else{?>
+        <img class="profile-user-img img-responsive img-circle" src="../gambar/bukti/<?php echo $profil['Foto']; ?>" alt="User profile picture">
+        <?php } ?>
 
-      <h4 align="center"><b><?php echo $_SESSION['nama']; ?></b></h4>
-      <h6 align="center"><i class="fa fa-circle text-success"></i> Online</h6>
+        <h3 align="center"><b><?php echo $profil['Nama'];?></b></h4>
+        <h4 align="center"><?php echo $profil['Nama_jabatan']; ?></h6>
+        <!-- <h6 align="center"><i class="fa fa-circle text-success"></i> Online</h6> -->
 
         <ul class="list-group list-group-unbordered">
-          <li class="list-group-item">
-            <b>Followers</b> <a class="pull-right">1,322</a>
-          </li>
-          <li class="list-group-item">
-            <b>Following</b> <a class="pull-right">543</a>
-          </li>
-          <li class="list-group-item">
-            <b>Friends</b> <a class="pull-right">13,287</a>
+
           </li>
         </ul>
 
-        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+        <a href="edit_karyawan.php" class="btn btn-primary btn-block"><b>Edit Data Karyawan</b></a>
       </div>
       <!-- /.box-body -->
     </div>
     <!-- /.box -->
 
-    
     <!-- /.box -->
   </div>
   <!-- /.col -->
   <div class="col-md-9">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
-        <li><a href="#jabatan" data-toggle="tab">Riwayat Jabatan</a></li>
-        <li><a href="#pendidikan" data-toggle="tab">Pendidikan</a></li>
-        <li><a href="#pelatihan" data-toggle="tab">Pelatihan</a></li>
-        <li><a href="#hukuman" data-toggle="tab">Hukuman Disiplin</a></li>
-        <li><a href="#cuti" data-toggle="tab">Cuti</a></li>
-        <li><a href="#keluarga" data-toggle="tab">Keluarga</a></li>
-        <li><a href="#akun" data-toggle="tab">Akun</a></li>
+        <li class="active tabdetail"><a href="#profil" data-toggle="tab">Profil</a></li>
+        <li><a class="tabdetail" href="#jabatan" data-toggle="tab">Riwayat Jabatan</a></li>
+        <li><a class="tabdetail" href="#pendidikan" data-toggle="tab">Pendidikan</a></li>
+        <li><a class="tabdetail" href="#pelatihan" data-toggle="tab">Pelatihan</a></li>
+        <li><a class="tabdetail" href="#hukuman" data-toggle="tab">Hukuman Disiplin</a></li>
+        <li><a class="tabdetail" href="#cuti" data-toggle="tab">Cuti</a></li>
+        <li><a class="tabdetail" href="#keluarga" data-toggle="tab">Keluarga</a></li>
+        <li><a class="tabdetail" href="#akun" data-toggle="tab">Akun</a></li>
       </ul>
       <div class="tab-content">
       <!--Profile -->
         <div class="active tab-pane" id="profil">
-        <div class="box-header">
-              <h3 class="box-title">Profil</h3>
-            </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
               <table class="table table-condensed">
@@ -106,31 +80,35 @@ $hari_ini = date('w');
                 </tr>
                 <tr>
                   <td>No Induk Karyawan</td>
+                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>Nama</td>
-                  <td><?php echo $d['Nama']; ?></td>
+                  <td><?php echo $profil['Nama']; ?></td>
                 </tr>
                 <tr>
                   <td>Tempat Lahir</td>
+                  <td><?php echo $profil['Tempat_lahir']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>Tanggal Lahir</td>
+                  <td><?php echo $profil['Tgl_lahir']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>Jabatan</td>
+                  <td><?php echo $profil['Nama_jabatan']; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
                   <td>Unit Kerja</td>
-                  <td><?php echo $d['Unit_kerja']; ?></td>
+                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
               </table>
             </div>
@@ -138,500 +116,414 @@ $hari_ini = date('w');
         </div>
         <!-- /Profile -->
 
-      <!--.Jabatan -->
-      <div class="tab-pane" id="jabatan">
-        <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">TMT</label>
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName" placeholder="Masukan TMT">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
-
-              <div class="col-sm-10">
-              <select name="jabatan" class="form-control">
-                    <option value="">- Pilih -</option>
-                    <?php 
-                    include 'koneksi.php';
-                    $jabatan = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Nama_jabatan ASC");
-                    while($k = mysqli_fetch_array($jabatan)){
-                      ?>
-                      <option value="<?php echo $k['Id_jabatan']; ?>"><?php echo $k['Nama_jabatan']; ?></option>
-                      <?php 
+        <!--.Jabatan -->
+        <div class="tab-pane" id="jabatan">
+          <div class="box-body no-padding">
+            <div class="box">
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tr>
+                    <th>TMT SK</th>
+                    <th>JABATAN</th>
+                    <th>UNIT KERJA</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_jabatan WHERE karyawan.Id_karyawan = riwayat_jabatan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($jabatan = mysqli_fetch_assoc($d)){
+                  ?>
+                  <tr>
+                    <td><?php echo isset($jabatan['TMT']) ? $jabatan['TMT'] : ''; ?></td>
+                    <td><?php echo isset($jabatan['Jabatan']) ? $jabatan['Jabatan'] : ''; ?></td>
+                    <td><?php echo isset($jabatan['Unit_kerja']) ? $jabatan['Unit_kerja'] : ''; ?></td>
+                  </tr>
+                  <?php
                     }
-                    ?>
-                  </select>
+                  ?>
+                </table>
               </div>
+              <!-- /.box-body -->
             </div>
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Unit</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Masukan Unit Karyawan">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
         <!-- /.Jabatan -->
 
-         <!--.Pendidikan -->
-         <div class="tab-pane" id="pendidikan">
-        <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Tingkat</label>
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName" placeholder="Masukan Tingkat Pendidikan">
+        <!--.Pendidikan -->
+        <div class="tab-pane" id="pendidikan">
+          <div class="box-body no-padding">
+            <div class="box">
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tr>
+                    <th>TANGGAL LULUS</th>
+                    <th>TINGKAT</th>
+                    <th>JURUSAN</th>
+                    <th>SEKOLAH/KAMPUS</th>
+                    <th>GELAR</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($pendidikan = mysqli_fetch_assoc($d)){
+                  ?>
+                  <tr>
+                    <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Tingkat']) ? $pendidikan['Tingkat'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Jurusan']) ? $pendidikan['Jurusan'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Nama_instansi']) ? $pendidikan['Nama_instansi'] : ''; ?></td>
+                    <td><?php echo isset($pendidikan['Gelar']) ? $pendidikan['Gelar'] : ''; ?></td>
+                  </tr>
+                  <?php
+                    }
+                  ?>
+                </table>
               </div>
+              <!-- /.box-body -->
             </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Jurusan</label>
-
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Masukan Jurusan">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Nama Instansi</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Masukan Nama Instansi">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputExperience" class="col-sm-2 control-label">Gelar</label>
-
-              <div class="col-sm-10">
-                <textarea class="form-control" id="inputExperience" placeholder="Masukan Gelar"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputSkills" class="col-sm-2 control-label">Tahun Lulus</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputSkills" placeholder="Masukan Tahun Lulus">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
         <!-- /.Pendidikan -->
 
-         <!-- .Pelatihan -->
-         <div class="tab-pane" id="pelatihan">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Nama Diklat</label>
-
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName" placeholder="Masukan Nama Diklat">
+        <!-- .Pelatihan -->
+        <div class="tab-pane" id="pelatihan">
+          <div class="box-body no-padding">
+            <div class="box">
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tr>
+                    <th>NAMA DIKLAT</th>
+                    <th>TIPE DIKLAT</th>
+                    <th>PENYELENGGARA</th>
+                    <th>TANGGAL LULUS</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pelatihan WHERE karyawan.Id_karyawan = riwayat_pelatihan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($pelatihan = mysqli_fetch_assoc($d)){
+                    ?>
+                    <tr>
+                        <td><?php echo isset($pelatihan['Nama_diklat']) ? $pelatihan['Nama_diklat'] : ''; ?></td>
+                        <td><?php echo isset($pelatihan['Tipe_diklat']) ? $pelatihan['Tipe_diklat'] : ''; ?></td>
+                        <td><?php echo isset($pelatihan['Penyelenggara']) ? $pelatihan['Penyelenggara'] : ''; ?></td>
+                        <td><?php echo isset($pelatihan['Tgl_lulus']) ? $pelatihan['Tgl_lulus'] : ''; ?></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
               </div>
+            <!-- /.box-body -->
             </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Tipe Diklat</label>
-
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Masukan Tipe Diklat">
-              </div>
             </div>
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Penyelenggara</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Masukan Penyelenggara">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputExperience" class="col-sm-2 control-label">Tanggal Lulus</label>
-
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lulus">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
+          </div>
         <!-- /.Pelatihan -->
 
-        <!-- .Hukuman -->
+         <!-- .Hukuman -->
         <div class="tab-pane" id="hukuman">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label for="inputPelanggaran" class="col-sm-2 control-label">Pelanggaran</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPelanggaran" placeholder="Masukkan Pelanggaran">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputHukuman" class="col-sm-2 control-label">Hukuman</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputHukuman" placeholder="Masukkan Hukuman">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputTingkatHukuman" class="col-sm-2 control-label">Tingkat Hukuman</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputTingkatHukuman" placeholder="Masukkan Tingkat Hukuman">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputTanggalSK" class="col-sm-2 control-label">Tanggal SK</label>
-                <div class="col-sm-10">
-                  <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal SK">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-danger">Submit</button>
-                </div>
-              </div>
-            </form>
+        <div class="box-body no-padding">
+             <table class="table table-striped">
+                  <tr>
+                    <th>PELANGGARAN</th>
+                    <th>HUKUMAN</th>
+                    <th>TINGKAT HUKUMAN</th>
+                    <th>TANGGAL SK</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_hukuman WHERE karyawan.Id_karyawan = riwayat_hukuman.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($hukuman = mysqli_fetch_assoc($d)){
+                    ?>
+                    <tr>
+                        <td><?php echo isset($hukuman['Pelanggaran']) ? $hukuman['Pelanggaran'] : ''; ?></td>
+                        <td><?php echo isset($hukuman['Hukuman']) ? $hukuman['Hukuman'] : ''; ?></td>
+                        <td><?php echo isset($hukuman['Tingkat_hukuman']) ? $hukuman['Tingkat_hukuman'] : ''; ?></td>
+                        <td><?php echo isset($hukuman['Tgl_sk']) ? $hukuman['Tgl_sk'] : ''; ?></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
           </div>
-        <!-- /.Hukuman -->
-
-         <!-- .Cuti -->
-        <div class="tab-pane" id="cuti">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label for="inputIdCuti" class="col-sm-2 control-label">Id Cuti</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputIdCuti" placeholder="Masukkan Id Cuti">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputTanggalSK" class="col-sm-2 control-label">Tanggal SK</label>
-                <div class="col-sm-10">
-                  <input type="text" name="tanggal" class="form-control datepicker2"  placeholder="Tanggal SK">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputKeperluan" class="col-sm-2 control-label">Keperluan</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputKeperluan" placeholder="Masukkan Keperluan">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputTanggalMulaiCuti" class="col-sm-2 control-label">Tanggal Mulai Cuti</label>
-                <div class="col-sm-10">
-                  <input type="text" name="tanggal" class="form-control datepicker2"  placeholder="Tanggal Mulai Cuti">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputTanggalSelesaiCuti" class="col-sm-2 control-label">Tanggal Selesai Cuti</label>
-                <div class="col-sm-10">
-                  <input type="text" name="tanggal" class="form-control datepicker2"  placeholder="Tanggal Selesai Cuti">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-danger">Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
-            <!-- /.Cuti -->
+            <!-- /.Hukuman -->
 
              <!-- .Cuti -->
-             <div class="tab-pane" id="akun">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label for="inputNamaPegawai" class="col-sm-2 control-label">Nama Pegawai</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputNamaPegawai" placeholder="Masukkan Nama Pegawai">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputUsername" class="col-sm-2 control-label">Username</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputUsername" placeholder="Masukkan Username">
-                </div>
-              </div><div class="form-group">
-                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Masukkan Password">
-                  <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="showPasswordBtn">Tampilkan</button>
-                </div>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-danger">Submit</button>
-                </div>
-              </div>
-            </form>
+             <div class="tab-pane" id="cuti">
+        <div class="box-body no-padding">
+          <table class="table table-striped">
+                  <tr>
+                    <th>TANGGAL SK</th>
+                    <th>JENIS CUTI</th>
+                    <th>KEPERLUAN</th>
+                    <th>MULAI CUTI</th>
+                    <th>SELESAI CUTI</th>
+                  </tr>
+                  <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_cuti WHERE karyawan.Id_karyawan = riwayat_cuti.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($cuti = mysqli_fetch_assoc($d)){
+                    ?>
+                    <tr>
+                        <td><?php echo isset($cuti['tgl_SK']) ? $cuti['tgl_SK'] : ''; ?></td>
+                        <td><?php echo isset($cuti['jenis_cuti']) ? $cuti['jenis_cuti'] : ''; ?></td>
+                        <td><?php echo isset($cuti['Keperluan']) ? $cuti['Keperluan'] : ''; ?></td>
+                        <td><?php echo isset($cuti['mulai_cuti']) ? $cuti['mulai_cuti'] : ''; ?></td>
+                        <td><?php echo isset($cuti['selesai_cuti']) ? $cuti['selesai_cuti'] : ''; ?></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
           </div>
+          <!-- /.Cuti -->
 
-            <!-- /.Cuti -->
+            <!-- .Akun -->
+            <div class="tab-pane" id="akun">
+             <div class="box-body no-padding">
+             <table class="table table-condensed">
+                <tr>
+                  <th></th>
+                  <th style="width: 70%"></th>
+                </tr>
+                <tr>
+                  <td>No Induk Karyawan</td>
+                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama</td>
+                  <td><?php echo $profil['Nama']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir</td>
+                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir</td>
+                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Jabatan</td>
+                  <td><?php echo $profil['Nama_jabatan']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Unit Kerja</td>
+                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
+                </tr>
+              </table>
+            </div>
+        </div>
+          <!-- /.Akun -->
+
         <div class="tab-pane" id="keluarga">
         <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#ortu" data-toggle="tab">Orang tua</a></li>
-        <li><a href="#pasangan" data-toggle="tab">Pasangan</a></li>
-        <li><a href="#mertua" data-toggle="tab">Mertua</a></li>
-        <li><a href="#anak" data-toggle="tab">Anak</a></li>
+        <li class="active tabdetail"><a href="#ortu" data-toggle="tab">Orang tua</a></li>
+        <li><a class="tabdetail" href="#pasangan" data-toggle="tab">Pasangan</a></li>
+        <li><a class="tabdetail"href="#mertua" data-toggle="tab">Mertua</a></li>
+        <li><a class="tabdetail"href="#anak" data-toggle="tab">Anak</a></li>
         </div>
-        
-        <div class="tab-pane" id="ortu">
-                    
+          
         <div class="tab-content">       
         <div class="active tab-pane" id="ortu">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="inputNamaAyah" class="col-sm-2 control-label">Nama Ayah</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputNamaAyah" placeholder="Masukkan Nama Ayah">
+        <div class="box-body no-padding">
+        <table class="table table-condensed">
+        <?php 
+        $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_keluarga WHERE karyawan.Id_karyawan = riwayat_keluarga.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+        $keluarga = mysqli_fetch_assoc($d)
+      ?>
+                <tr>
+                  <th></th>
+                  <th style="width: 70%"></th>
+                </tr>
+                <tr>
+                  <td>Nama Ayah</td>
+                  <td><?php echo isset($keluarga['nama_ayah']) ? $keluarga['nama_ayah'] : ''; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Ayah</td>
+                  <td><?php echo isset($keluargal['tempatlahir_ayah']) ? $keluargal['tempatlahir_ayah'] : ''; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Ayah</td>
+                  <td><?php echo isset($keluarga['tgllahir_ayah']) ? $keluarga['tgllahir_ayah'] : ''; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama Ibu</td>
+                  <td><?php echo isset($keluarga['nama_ibu']) ? $keluarga['nama_ibu'] : ''; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Ibu</td>
+                  <td><?php echo isset($keluarga['tempatlahir_ibu']) ? $keluarga['tempatlahir_ibu'] : ''; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Ibu</td>
+                  <td><?php echo isset($keluarga['tgllahir_ibu']) ? $keluarga['tgllahir_ibu'] : ''; ?></td>
+                </tr>
+
+              </table>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="inputTempatLahirAyah" class="col-sm-2 control-label">Tempat Lahir Ayah</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputTempatLahirAyah" placeholder="Masukkan Tempat Lahir Ayah">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputTanggalLahirAyah" class="col-sm-2 control-label">Tanggal Lahir Ayah</label>
-            <div class="col-sm-10">
-              <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Ayah">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputNamaIbu" class="col-sm-2 control-label">Nama Ibu</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputNamaIbu" placeholder="Masukkan Nama Ibu">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputTempatLahirIbu" class="col-sm-2 control-label">Tempat Lahir Ibu</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputTempatLahirIbu" placeholder="Masukkan Tempat Lahir Ibu">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputTanggalLahirIbu" class="col-sm-2 control-label">Tanggal Lahir Ibu</label>
-            <div class="col-sm-10">
-              <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Ibu">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-danger">Submit</button>
-            </div>
-          </div>
-        </form>
       </div>
 
       <div class="tab-pane" id="pasangan">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputNamaPasangan" class="col-sm-2 control-label">Nama Pasangan</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputNamaPasangan" placeholder="Masukkan Nama Pasangan">
-              </div>
+      <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tr>
+                  <th></th>
+                  <th style="width: 70%"></th>
+                </tr>
+                <tr>
+                  <td>Nama Pasangan</td>
+                  <td><?php echo $profil['nama_pasangan']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Pasangan</td>
+                  <td><?php echo $profil['tempatlahir_pasangan']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Pasangan</td>
+                  <td><?php echo $profil['tgllahir_pasangan']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+              </table>
             </div>
-            <div class="form-group">
-              <label for="inputTempatLahirPasangan" class="col-sm-2 control-label">Tempat Lahir Pasangan</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTempatLahirPasangan" placeholder="Masukkan Tempat Lahir Pasangan">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTanggalLahirPasangan" class="col-sm-2 control-label">Tanggal Lahir Pasangan</label>
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Pasangan">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
         </div>
 
 
         <div class="tab-pane" id="mertua">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputNamaMertua" class="col-sm-2 control-label">Nama Mertua</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputNamaMertua" placeholder="Masukkan Nama Mertua">
-              </div>
+        <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tr>
+                  <th></th>
+                  <th style="width: 70%"></th>
+                </tr>
+                <tr>
+                  <td>Nama Mertua</td>
+                  <td><?php echo $profil['nama_mertua']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Mertua</td>
+                  <td><?php echo $profil['tempatlahir_mertua']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Mertua</td>
+                  <td><?php echo $profil['tgllahir_mertua']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+              </table>
             </div>
-            <div class="form-group">
-              <label for="inputTempatLahirMertua" class="col-sm-2 control-label">Tempat Lahir Mertua</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTempatLahirMertua" placeholder="Masukkan Tempat Lahir Mertua">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTanggalLahirMertua" class="col-sm-2 control-label">Tanggal Lahir Mertua</label>
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Mertua">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
         </div>
 
 
         <div class="tab-pane" id="anak">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputAnak1" class="col-sm-2 control-label">Anak ke-1</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputAnak1" placeholder="Masukkan Nama Anak ke-1">
-              </div>
+        <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tr>
+                  <th></th>
+                  <th style="width: 70%"></th>
+                </tr>
+                <tr>
+                  <td>Nama Anak ke-1</td>
+                  <td><?php echo $profil['nama_anak1']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-1</td>
+                  <td><?php echo $profil['tempatlahir_anak1']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-1</td>
+                  <td><?php echo $profil['tgllahir_anak1']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama Anak ke-2</td>
+                  <td><?php echo $profil['nama_anak2']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-2</td>
+                  <td><?php echo $profil['tempatlahir_anak2']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-2</td>
+                  <td><?php echo $profil['tgllahir_anak2']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama Anak ke-3</td>
+                  <td><?php echo $profil['nama_anak3']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-3</td>
+                  <td><?php echo $profil['tempatlahir_anak3']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-3</td>
+                  <td><?php echo $profil['tgllahir_anak3']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama Anak ke-4</td>
+                  <td><?php echo $profil['nama_anak4']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-4</td>
+                  <td><?php echo $profil['tempatlahir_anak4']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-4</td>
+                  <td><?php echo $profil['tgllahir_anak4']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama Anak ke-5</td>
+                  <td><?php echo $profil['nama_anak5']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tempat Lahir Anak ke-5</td>
+                  <td><?php echo $profil['tempatlahir_anak5']; ?></td>
+                </tr>
+                <tr>
+                  <td>Tanggal Lahir Anak ke-5</td>
+                  <td><?php echo $profil['tgllahir_anak5']; ?></td>
+                  <td>
+                  </td>
+                </tr>
+              </table>
             </div>
-            <div class="form-group">
-              <label for="inputTempatLahirAnak1" class="col-sm-2 control-label">Tempat Lahir Anak ke-1</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTempatLahirAnak1" placeholder="Masukkan Tempat Lahir Anak ke-1">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTanggalLahirAnak1" class="col-sm-2 control-label">Tanggal Lahir Anak ke-1</label>
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-1">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAnak2" class="col-sm-2 control-label">Anak ke-2</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputAnak2" placeholder="Masukkan Nama Anak ke-2">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTempatLahirAnak2" class="col-sm-2 control-label">Tempat Lahir Anak ke-2</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTempatLahirAnak2" placeholder="Masukkan Tempat Lahir Anak ke-2">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTanggalLahirAnak2" class="col-sm-2 control-label">Tanggal Lahir Anak ke-2</label>
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-2">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAnak3" class="col-sm-2 control-label">Anak ke-3</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputAnak3" placeholder="Masukkan Nama Anak ke-3">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTempatLahirAnak3" class="col-sm-2 control-label">Tempat Lahir Anak ke-3</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTempatLahirAnak3" placeholder="Masukkan Tempat Lahir Anak ke-3">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTanggalLahirAnak3" class="col-sm-2 control-label">Tanggal Lahir Anak ke-3</label>
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-3">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAnak4" class="col-sm-2 control-label">Anak ke-4</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputAnak4" placeholder="Masukkan Nama Anak ke-4">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTempatLahirAnak4" class="col-sm-2 control-label">Tempat Lahir Anak ke-4</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTempatLahirAnak4" placeholder="Masukkan Tempat Lahir Anak ke-4">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTanggalLahirAnak4" class="col-sm-2 control-label">Tanggal Lahir Anak ke-4</label>
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-4">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAnak5" class="col-sm-2 control-label">Anak ke-5</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputAnak5" placeholder="Masukkan Nama Anak ke-5">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTempatLahirAnak5" class="col-sm-2 control-label">Tempat Lahir Anak ke-5</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputTempatLahirAnak5" placeholder="Masukkan Tempat Lahir Anak ke-5">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTanggalLahirAnak5" class="col-sm-2 control-label">Tanggal Lahir Anak ke-5</label>
-              <div class="col-sm-10">
-                <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lahir Anak ke-5">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
         </div>
 
 
