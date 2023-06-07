@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-<link rel="stylesheet" href="../assets/css/style2.css">
+  <link rel="stylesheet" href="../assets/css/style2.css">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-
+   
       <div class="row">
         
         <!-- /.col -->
@@ -38,7 +38,7 @@
                 <form class="form-horizontal" action="tambah_profile_proses.php" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-group">
-                      <label for="inputName" class="col-sm-2 control-label">Namor Induk Karyawan</label>
+                      <label for="inputName" class="col-sm-2 control-label">Nomor Induk Karyawan</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan" required="required">
                       </div>
@@ -731,6 +731,37 @@
             <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->
+          </div><hr>
+            <?php 
+                if(isset($_GET['alert'])){
+                  if($_GET['alert']=='gagal'){
+                    ?>
+                    <div class="alert alert-warning alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4><i class="icon fa fa-warning"></i> Peringatan !</h4>
+                      Ekstensi Tidak Diperbolehkan
+                    </div>                
+                    <?php
+                  }elseif($_GET['alert']=="berhasil"){
+                    ?>
+                    <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4><i class="icon fa fa-check"></i> Success</h4>
+                      Data Keluarga Berhasil Disimpan
+                    </div>                
+                    <?php
+                  }elseif($_GET['alert']=="berhasilupdate"){
+                    ?>
+                    <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4><i class="icon fa fa-check"></i> Success</h4>
+                      Berhasil Update
+                    </div>                
+                    <?php
+                  }
+                }
+                ?>
+          </div>
         </div>
         <!-- /.col -->
       </div>
