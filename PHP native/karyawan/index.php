@@ -11,6 +11,7 @@ $profil = mysqli_fetch_assoc($karyawan);
 ?>
 
 <link rel="stylesheet" href="../assets/css/style2.css">
+
 <div class="content-wrapper">
 <section class="content-header">
       <h1>
