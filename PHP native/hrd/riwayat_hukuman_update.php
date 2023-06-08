@@ -8,5 +8,5 @@ $tingkat = $_POST['tingkat'];
 $tanggal = $_POST['tanggal'];
 
 mysqli_query($koneksi, "UPDATE riwayat_hukuman SET Pelanggaran='$pelanggaran', Hukuman='$hukuman', Tingkat_hukuman='$tingkat', Tgl_sk='$tanggal' WHERE Id_hukuman='$id'") or die(mysqli_error($koneksi));
-header("location:edit_karyawan.php?alert=berhasilupdate&id=" . urlencode($idk));
+header("location:edit_karyawan_hukuman.php?alert=berhasilupdate&id=" . urlencode($idk));
 ?>

@@ -8,5 +8,5 @@ $penyelenggara = $_POST['penyelenggara'];
 $tanggal = $_POST['tanggal'];
 
 mysqli_query($koneksi, "UPDATE riwayat_pelatihan SET Nama_diklat='$nama', Tipe_diklat='$tipe', Penyelenggara='$penyelenggara', Tgl_lulus='$tanggal' WHERE Id_pelatihan='$id'") or die(mysqli_error($koneksi));
-header("location:edit_karyawan.php?alert=berhasilupdate&id=" . urlencode($idk));
+header("location:edit_karyawan_pelatihan.php?alert=berhasilupdate&id=" . urlencode($idk));
 ?>
