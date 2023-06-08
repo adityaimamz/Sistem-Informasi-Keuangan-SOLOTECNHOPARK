@@ -47,7 +47,7 @@ $profil = mysqli_fetch_assoc($karyawan);
           </li>
         </ul>
 
-        <a href="edit_karyawan.php" class="btn btn-primary btn-block"><b>Edit Data Karyawan</b></a>
+        <!-- <a href="edit_karyawan.php" class="btn btn-primary btn-block"><b>Edit Data Karyawan</b></a> -->
       </div>
       <!-- /.box-body -->
     </div>
@@ -68,51 +68,52 @@ $profil = mysqli_fetch_assoc($karyawan);
         <li><a class="tabdetail" href="#keluarga" data-toggle="tab">Keluarga</a></li>
         <li><a class="tabdetail" href="#akun" data-toggle="tab">Akun</a></li>
       </ul>
+      
       <div class="tab-content">
-      <!--Profile -->
+        <!--Profile -->
         <div class="active tab-pane" id="profil">
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
-                </tr>
-              </table>
-            </div>
-            <!-- /.box-body -->
+          <!-- /.box-header -->
+          <div class="box-body no-padding">
+            <table class="table table-condensed">
+              <tr>
+                <th></th>
+                <th style="width: 70%"></th>
+              </tr>
+              <tr>
+                <td>No Induk Karyawan</td>
+                <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Nama</td>
+                <td><?php echo $profil['Nama']; ?></td>
+              </tr>
+              <tr>
+                <td>Tempat Lahir</td>
+                <td><?php echo $profil['Tempat_lahir']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Tanggal Lahir</td>
+                <td><?php echo $profil['Tgl_lahir']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Jabatan</td>
+                <td><?php echo $profil['Nama_jabatan']; ?></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td>Unit Kerja</td>
+                <td><?php echo $profil['Nama_unit_kerja']; ?></td>
+              </tr>
+            </table>
+          </div>
+          <!-- /.box-body -->
         </div>
         <!-- /Profile -->
 
@@ -218,37 +219,37 @@ $profil = mysqli_fetch_assoc($karyawan);
           </div>
         <!-- /.Pelatihan -->
 
-         <!-- .Hukuman -->
+        <!-- .Hukuman -->
         <div class="tab-pane" id="hukuman">
-        <div class="box-body no-padding">
-             <table class="table table-striped">
-                  <tr>
-                    <th>PELANGGARAN</th>
-                    <th>HUKUMAN</th>
-                    <th>TINGKAT HUKUMAN</th>
-                    <th>TANGGAL SK</th>
-                  </tr>
-                  <?php 
-                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_hukuman WHERE karyawan.Id_karyawan = riwayat_hukuman.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-                    while($hukuman = mysqli_fetch_assoc($d)){
-                    ?>
-                    <tr>
-                        <td><?php echo isset($hukuman['Pelanggaran']) ? $hukuman['Pelanggaran'] : ''; ?></td>
-                        <td><?php echo isset($hukuman['Hukuman']) ? $hukuman['Hukuman'] : ''; ?></td>
-                        <td><?php echo isset($hukuman['Tingkat_hukuman']) ? $hukuman['Tingkat_hukuman'] : ''; ?></td>
-                        <td><?php echo isset($hukuman['Tgl_sk']) ? $hukuman['Tgl_sk'] : ''; ?></td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                </table>
-            </div>
+          <div class="box-body no-padding">
+            <table class="table table-striped">
+              <tr>
+                <th>PELANGGARAN</th>
+                <th>HUKUMAN</th>
+                <th>TINGKAT HUKUMAN</th>
+                <th>TANGGAL SK</th>
+              </tr>
+              <?php 
+              $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_hukuman WHERE karyawan.Id_karyawan = riwayat_hukuman.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+              while($hukuman = mysqli_fetch_assoc($d)){
+              ?>
+              <tr>
+                <td><?php echo isset($hukuman['Pelanggaran']) ? $hukuman['Pelanggaran'] : ''; ?></td>
+                <td><?php echo isset($hukuman['Hukuman']) ? $hukuman['Hukuman'] : ''; ?></td>
+                <td><?php echo isset($hukuman['Tingkat_hukuman']) ? $hukuman['Tingkat_hukuman'] : ''; ?></td>
+                <td><?php echo isset($hukuman['Tgl_sk']) ? $hukuman['Tgl_sk'] : ''; ?></td>
+              </tr>
+              <?php
+              }
+              ?>
+            </table>
           </div>
-            <!-- /.Hukuman -->
+        </div>
+        <!-- /.Hukuman -->
 
-             <!-- .Cuti -->
-             <div class="tab-pane" id="cuti">
-        <div class="box-body no-padding">
+        <!-- .Cuti -->
+        <div class="tab-pane" id="cuti">
+          <div class="box-body no-padding">
           <table class="table table-striped">
                   <tr>
                     <th>TANGGAL SK</th>
