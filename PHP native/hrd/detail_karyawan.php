@@ -269,10 +269,6 @@ $profil = mysqli_fetch_assoc($karyawan);
               <div class="box-body no-padding">
                 <table class="table table-condensed">
                   <tr>
-                    <th></th>
-                    <th style="width: 70%"></th>
-                  </tr>
-                  <tr>
                     <td>No Induk Karyawan</td>
                     <td><?php echo $profil['No_induk_karyawan']; ?></td>
                     <td>
@@ -332,7 +328,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                       </tr>
                       <tr>
                         <td>Tempat Lahir Ayah</td>
-                        <td><?php echo isset($keluargal['tempatlahir_ayah']) ? $keluargal['tempatlahir_ayah'] : ''; ?></td>
+                        <td><?php echo isset($keluarga['tempatlahir_ayah']) ? $keluarga['tempatlahir_ayah'] : ''; ?></td>
                       </tr>
                       <tr>
                         <td>Tanggal Lahir Ayah</td>

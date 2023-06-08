@@ -285,10 +285,6 @@ $profil = mysqli_fetch_assoc($karyawan);
                     while($akun = mysqli_fetch_assoc($d)){
                   ?>
                 <tr>
-                  <th></th>
-                  <th style="width: 70%"></th>
-                </tr>
-                <tr>
                   <td>Nama</td>
                   <td><?php echo isset($akun['Nama']) ? $akun['Nama'] : ''; ?></td>
                   <td>
