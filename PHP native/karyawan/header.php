@@ -104,22 +104,11 @@
             </a>
           </li>
 
-          <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i>
-                <span>DATA MASTER</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>              
-                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data Jabatan</a></li>
-                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data Cuti</a></li>
-                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data Unit Kerja</a></li> 
-                             
-              </ul>
-            </li>
+          <li>
+            <a href="eperformance.php">
+              <i class="fa fa-file"></i> <span>E-PERFORMANCE</span>
+            </a>
+          </li>
             
         <script>
         $(function () {
@@ -127,35 +116,7 @@
         });
         </script>
 
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-print"></i>
-              <span>INFORMASI HRD</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="database_karyawan.php"><i class="fa fa-circle-o"></i>Database Karyawan</a></li>
-              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i>E-Performance Karyawan</a></li>
-            </ul>
-          </li>
-
-          
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-area-chart"></i>
-              <span>INFOGRAFIS</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="Infografis_surat_keluar.php"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
-              <li><a href="Infografis_surat_masuk.php"><i class="fa fa-circle-o"></i>Infografis Kinerja Karyawan</a></li>
-            </ul>
-          </li>
-          
+        
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>LOGOUT</span>

@@ -11,6 +11,7 @@ $profil = mysqli_fetch_assoc($karyawan);
 ?>
 
 <link rel="stylesheet" href="../assets/css/style2.css">
+
 <div class="content-wrapper">
 <section class="content-header">
       <h1>
@@ -18,8 +19,6 @@ $profil = mysqli_fetch_assoc($karyawan);
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="database_karyawan.php">Database Karyawan</a></li>
-        <li class="active">Edit Data Karyawan</li>
       </ol>
     </section>
 
@@ -281,42 +280,39 @@ $profil = mysqli_fetch_assoc($karyawan);
             <div class="tab-pane" id="akun">
              <div class="box-body no-padding">
              <table class="table table-condensed">
+             <?php 
+                    $d = mysqli_query($koneksi,"SELECT * FROM karyawan, master_user WHERE karyawan.Id_karyawan = master_user.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                    while($akun = mysqli_fetch_assoc($d)){
+                  ?>
                 <tr>
                   <th></th>
                   <th style="width: 70%"></th>
                 </tr>
                 <tr>
-                  <td>No Induk Karyawan</td>
-                  <td><?php echo $profil['No_induk_karyawan']; ?></td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
                   <td>Nama</td>
-                  <td><?php echo $profil['Nama']; ?></td>
-                </tr>
-                <tr>
-                  <td>Tempat Lahir</td>
-                  <td><?php echo $profil['Tempat_lahir']; ?></td>
+                  <td><?php echo isset($akun['Nama']) ? $akun['Nama'] : ''; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Tanggal Lahir</td>
-                  <td><?php echo $profil['Tgl_lahir']; ?></td>
+                  <td>Alamat</td>
+                  <td><?php echo isset($akun['Alamat']) ? $akun['Alamat'] : ''; ?></td>
+                </tr>
+                <tr>
+                  <td>Username</td>
+                  <td><?php echo isset($akun['Username']) ? $akun['Username'] : ''; ?></td>
                   <td>
                   </td>
                 </tr>
                 <tr>
-                  <td>Jabatan</td>
-                  <td><?php echo $profil['Nama_jabatan']; ?></td>
+                  <td>Password</td>
+                  <td><?php echo isset($akun['Password']) ? $akun['Password'] : ''; ?></td>
                   <td>
                   </td>
                 </tr>
-                <tr>
-                  <td>Unit Kerja</td>
-                  <td><?php echo $profil['Nama_unit_kerja']; ?></td>
-                </tr>
+                <?php
+                    }
+                    ?>
               </table>
             </div>
         </div>

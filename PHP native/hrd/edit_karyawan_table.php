@@ -29,8 +29,8 @@ $profil = mysqli_fetch_assoc($karyawan);
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
-              <li><a href="#jabatan" data-toggle="tab">Riwayat Jabatan</a></li>
+              <li><a href="#profil" data-toggle="tab">Profil</a></li>
+              <li class="active"><a href="#jabatan" data-toggle="tab">Riwayat Jabatan</a></li>
               <li><a href="#pendidikan" data-toggle="tab">Pendidikan</a></li>
               <li><a href="#pelatihan" data-toggle="tab">Pelatihan</a></li>
               <li><a href="#hukuman" data-toggle="tab">Hukuman Disiplin</a></li>
@@ -40,7 +40,7 @@ $profil = mysqli_fetch_assoc($karyawan);
             </ul>
             <div class="tab-content">
               <!--Profile -->
-              <div class="active tab-pane" id="profil">
+              <div class="tab-pane" id="profil">
                 <form class="form-horizontal" action="edit_profil_proses.php" method="POST" enctype="multipart/form-data">
                     
                   <div class="form-group">
@@ -242,7 +242,6 @@ $profil = mysqli_fetch_assoc($karyawan);
                         <th>NAMA INSTANSI</th>
                         <th>GELAR</th>
                         <th>TAHUN LULUS</th>
-                        <th>AKSI</th>
                       </tr>
                       <?php 
                         $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
@@ -277,7 +276,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                                   <label>Tingkat</label>
                                   <input type="hidden" name="id" value="<?php echo $pendidikan['Id_pendidikan'] ?>">
                                   <input type="hidden" name="idk" value="<?php echo $pendidikan['Id_karyawan'] ?>">
-                                  <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
+                                  <input type="text" style="width:100%" name="tmt" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
@@ -297,7 +296,7 @@ $profil = mysqli_fetch_assoc($karyawan);
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>Tahun lulus</label>
-                                  <input type="text" style="width:100%" name="tahun" required="required" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
+                                  <input type="text" style="width:100%" name="tahunlulus" required="required" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
                                 </div>
                             
                                 <div class="form-group">
@@ -349,331 +348,183 @@ $profil = mysqli_fetch_assoc($karyawan);
               <!-- /.Pendidikan -->
 
                <!-- .Pelatihan -->
-               <div class="tab-pane" id="pelatihan">
-                    <div class="box">
-                      <!-- /.box-header -->
-                      <div class="box-body no-padding">
-                        <table class="table table-striped">
-                          <tr>
-                          <th>NAMA DIKLAT</th>
-                          <th>TIPE DIKLAT</th>
-                          <th>PENYELENGGARA</th>
-                          <th>TANGGAL LULUS</th>
-                          <th>AKSI</th>
-                          </tr>
-                          <?php 
-                            $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pelatihan WHERE karyawan.Id_karyawan = riwayat_pelatihan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-                            while($pelatihan = mysqli_fetch_assoc($d)){
+              <div class="tab-pane" id="pelatihan">
+                <form class="form-horizontal" action="tambah_riwayat_diklat_proses.php" method="POST" enctype="multipart/form-data">
+                  
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
+                    <div class="col-sm-10">
+                      <select name="karyawan" class="form-control" required="required">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
+                        while($k = mysqli_fetch_array($karyawan)){
                           ?>
-                          <tr>
-                            <td><?php echo isset($pelatihan['Nama_diklat']) ? $pelatihan['Nama_diklat'] : ''; ?></td>
-                            <td><?php echo isset($pelatihan['Tipe_diklat']) ? $pelatihan['Tipe_diklat'] : ''; ?></td>
-                            <td><?php echo isset($pelatihan['Penyelenggara']) ? $pelatihan['Penyelenggara'] : ''; ?></td>
-                            <td><?php echo isset($pelatihan['Tgl_lulus']) ? $pelatihan['Tgl_lulus'] : ''; ?></td>
-                            <td>    
-                              <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_riwayat_pelatihan_<?php echo $pelatihan['Id_pelatihan'] ?>">
-                                <i class="fa fa-cog"></i>
-                              </button>
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat_pelatihan_<?php echo $pelatihan['Id_pelatihan'] ?>">
-                                <i class="fa fa-trash"></i>
-                              </button>
-                              <form action="riwayat_pelatihan_update.php" method="post" enctype="multipart/form-data">
-                                <div class="modal fade" id="edit_riwayat_pelatihan_<?php echo $pelatihan['Id_pelatihan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Edit Riwayat Pelatihan</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="form-group" style="width:100%;margin-bottom:20px">
-                                          <label>Nama Diklat</label>
-                                          <input type="hidden" name="id" value="<?php echo $pelatihan['Id_pelatihan'] ?>">
-                                          <input type="hidden" name="idk" value="<?php echo $pelatihan['Id_karyawan'] ?>">
-                                          <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Ubah Nama Diklat .." value="<?php echo $pelatihan['Nama_diklat'] ?>">
-                                        </div>
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Tipe Diklat</label>
-                                      <input type="text" style="width:100%" name="tipe" required="required" class="form-control" placeholder="Ubah Tipe Diklat .." value="<?php echo $pelatihan['Tipe_diklat'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Penyelenggara</label>
-                                      <input type="text" style="width:100%" name="penyelenggara" required="required" class="form-control" placeholder="Ubah Penyelenggara .." value="<?php echo $pelatihan['Penyelenggara'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Tanggal Lulus</label>
-                                      <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Ubah Tanggal Lulus .." value="<?php echo $pelatihan['Tgl_lulus'] ?>">
-                                    </div>
-                                  
-                                    <div class="form-group">
-                                      <div class="col-sm-offset-2 col-sm-10">
-                                      </div>
-                                    </div>
-
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-
-                          <!-- modal hapus -->
-                          <div class="modal fade" id="hapus_riwayat_pelatihan_<?php echo $pelatihan['Id_pelatihan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <p>Yakin ingin menghapus data ini ? <?php echo $pelatihan['Id_karyawan'] ?></p>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="riwayat_pelatihan_hapus.php?id=<?php echo $pelatihan['Id_pelatihan'] ?>&idk=<?php echo $pelatihan['Id_karyawan'] ?>" class="btn btn-primary">Hapus</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                        </td>
-                      </tr>
-                      <?php
+                          <option value="<?php echo $k['Id_karyawan']; ?>"><?php echo $k['Nama']; ?></option>
+                          <?php 
                         }
-                      ?>
-                    </table>
-                  </div>
+                        ?>
+                      </select>
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Nama Diklat</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Diklat" required="required">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Tipe Diklat</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="tipe" name="tipe" placeholder="Masukan Tipe Diklat" required="required">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Penyelenggara</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="penyelenggara" name="penyelenggara" placeholder="Masukan Penyelenggara">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputExperience" class="col-sm-2 control-label">Tanggal Lulus</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="tanggal" class="form-control datepicker2" placeholder="Tanggal Lulus" required="required">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
               <!-- /.Pelatihan -->
 
               <!-- .Hukuman -->
               <div class="tab-pane" id="hukuman">
-                  <div class="box">
-                      <!-- /.box-header -->
-                      <div class="box-body no-padding">
-                        <table class="table table-striped">
-                          <tr>
-                            <th>PELANGGARAN</th>
-                            <th>HUKUMAN</th>
-                            <th>TINGKAT HUKUMAN</th>
-                            <th>TGL SK</th>
-                            <th>AKSI</th>
-                          </tr>
-                          <?php 
-                            $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_hukuman WHERE karyawan.Id_karyawan = riwayat_hukuman.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-                            while($hukuman = mysqli_fetch_assoc($d)){
+                <form class="form-horizontal" action="tambah_riwayat_hukuman_proses.php" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
+                    <div class="col-sm-10">
+                      <select name="karyawan" class="form-control" required="required">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
+                        while($k = mysqli_fetch_array($karyawan)){
                           ?>
-                          <tr>
-                            <td><?php echo isset($hukuman['Pelanggaran']) ? $hukuman['Pelanggaran'] : ''; ?></td>
-                            <td><?php echo isset($hukuman['Hukuman']) ? $hukuman['Hukuman'] : ''; ?></td>
-                            <td><?php echo isset($hukuman['Tingkat_hukuman']) ? $hukuman['Tingkat_hukuman'] : ''; ?></td>
-                            <td><?php echo isset($hukuman['Tgl_sk']) ? $hukuman['Tgl_sk'] : ''; ?></td>
-                            <td>    
-                              <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_riwayat_hukuman_<?php echo $hukuman['Id_hukuman'] ?>">
-                                <i class="fa fa-cog"></i>
-                              </button>
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat_hukuman_<?php echo $hukuman['Id_hukuman'] ?>">
-                                <i class="fa fa-trash"></i>
-                              </button>
-                              <form action="riwayat_hukuman_update.php" method="post" enctype="multipart/form-data">
-                                <div class="modal fade" id="edit_riwayat_hukuman_<?php echo $hukuman['Id_hukuman'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Edit Riwayat Hukuman</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="form-group" style="width:100%;margin-bottom:20px">
-                                          <label>Pelanggaran</label>
-                                          <input type="hidden" name="id" value="<?php echo $hukuman['Id_hukuman'] ?>">
-                                          <input type="hidden" name="idk" value="<?php echo $hukuman['Id_karyawan'] ?>">
-                                          <input type="text" style="width:100%" name="pelanggaran" required="required" class="form-control" placeholder="Ubah Pelanggaran .." value="<?php echo $hukuman['Pelanggaran'] ?>">
-                                        </div>
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Hukuman</label>
-                                      <input type="text" style="width:100%" name="hukuman" required="required" class="form-control" placeholder="Ubah Hukuman .." value="<?php echo $hukuman['Hukuman'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Tingkat Hukuman</label>
-                                      <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah Tingkat Hukuman .." value="<?php echo $hukuman['Tingkat_hukuman'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Tanggal SK</label>
-                                      <input type="text" style="width:100%" name="tanggal_sk" required="required" class="form-control" placeholder="Ubah Tanggal SK .." value="<?php echo $hukuman['Tgl_sk'] ?>">
-                                    </div>
-                                              
-                                    <div class="form-group">
-                                      <div class="col-sm-offset-2 col-sm-10">
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-
-                          <!-- modal hapus -->
-                          <div class="modal fade" id="hapus_riwayat_hukuman_<?php echo $hukuman['Id_hukuman'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <p>Yakin ingin menghapus data ini ? <?php echo $hukuman['Id_karyawan'] ?></p>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="riwayat_hukuman_hapus.php?id=<?php echo $hukuman['Id_hukuman'] ?>&idk=<?php echo $hukuman['Id_karyawan'] ?>" class="btn btn-primary">Hapus</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <?php
+                          <option value="<?php echo $k['Id_karyawan']; ?>"><?php echo $k['Nama']; ?></option>
+                          <?php 
                         }
-                      ?>
-                    </table>
+                        ?>
+                      </select>
+                    </div>
                   </div>
+                  <div class="form-group">
+                    <label for="inputPelanggaran" class="col-sm-2 control-label">Pelanggaran</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="pelanggaran" name="pelanggaran" placeholder="Masukkan Pelanggaran">
+                    </div>
                   </div>
-                </div>
+                  <div class="form-group">
+                    <label for="inputHukuman" class="col-sm-2 control-label">Hukuman</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="hukuman" name="hukuman" placeholder="Masukkan Hukuman">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTingkatHukuman" class="col-sm-2 control-label">Tingkat Hukuman</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="tingkat" name="tingkat" placeholder="Masukkan Tingkat Hukuman">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTanggalSK" class="col-sm-2 control-label">Tanggal SK</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="tanggal" name="tanggal" class="form-control datepicker2" placeholder="Tanggal SK">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
               <!-- /.Hukuman -->
 
               <!-- .Cuti -->
               <div class="tab-pane" id="cuti">
-                  <div class="box">
-                      <!-- /.box-header -->
-                      <div class="box-body no-padding">
-                        <table class="table table-striped">
-                          <tr>
-                            <th>TGL SK</th>
-                            <th>JENIS CUTI</th>
-                            <th>KEPERLUAN</th>
-                            <th>MULAI CUTI</th>
-                            <th>SELESAI CUTI</th>
-                            <th>AKSI</th>
-                          </tr>
-                          <?php 
-                            $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_cuti WHERE karyawan.Id_karyawan = riwayat_cuti.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-                            while($cuti = mysqli_fetch_assoc($d)){
+                <form class="form-horizontal" action="tambah_riwayat_cuti_proses.php" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
+                    <div class="col-sm-10">
+                      <select name="karyawan" class="form-control" required="required">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
+                        while($k = mysqli_fetch_array($karyawan)){
                           ?>
-                          <tr>
-                            <td><?php echo isset($cuti['tgl_SK']) ? $cuti['tgl_SK'] : ''; ?></td>
-                            <td><?php echo isset($cuti['jenis_cuti']) ? $cuti['jenis_cuti'] : ''; ?></td>
-                            <td><?php echo isset($cuti['Keperluan']) ? $cuti['Keperluan'] : ''; ?></td>
-                            <td><?php echo isset($cuti['mulai_cuti']) ? $cuti['mulai_cuti'] : ''; ?></td>
-                            <td><?php echo isset($cuti['selesai_cuti']) ? $cuti['selesai_cuti'] : ''; ?></td>
-                            <td>    
-                              <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_riwayat_cuti_<?php echo $cuti['Id_riwayatcuti'] ?>">
-                                <i class="fa fa-cog"></i>
-                              </button>
-                              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat_cuti_<?php echo $cuti['Id_riwayatcuti'] ?>">
-                                <i class="fa fa-trash"></i>
-                              </button>
-                              <!--modal update-->
-                              <form action="riwayat_cuti_update.php" method="post" enctype="multipart/form-data">
-                                <div class="modal fade" id="edit_riwayat_cuti_<?php echo $cuti['Id_riwayatcuti'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Edit Riwayat Cuti</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="form-group" style="width:100%;margin-bottom:20px">
-                                          <label>Tanggal SK</label>
-                                          <input type="hidden" name="id" value="<?php echo $cuti['Id_riwayatcuti'] ?>">
-                                          <input type="hidden" name="idk" value="<?php echo $cuti['Id_karyawan'] ?>">
-                                          <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Ubah Tanggal SK .." value="<?php echo $cuti['tgl_SK'] ?>">
-                                        </div>
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Jenis Cuti</label>
-                                      <input type="text" style="width:100%" name="jenis_cuti" required="required" class="form-control" placeholder="Ubah Jenis Cuti .." value="<?php echo $cuti['jenis_cuti'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Keperluan</label>
-                                      <input type="text" style="width:100%" name="keperluan" required="required" class="form-control" placeholder="Ubah Keperluan .." value="<?php echo $cuti['Keperluan'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Mulai Cuti</label>
-                                      <input type="text" style="width:100%" name="mulai_cuti" required="required" class="form-control" placeholder="Ubah Mulai Cuti .." value="<?php echo $cuti['mulai_cuti'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Selesai Cuti</label>
-                                      <input type="text" style="width:100%" name="selesai_cuti" required="required" class="form-control" placeholder="Ubah Selesai Cuti .." value="<?php echo $cuti['selesai_cuti'] ?>">
-                                    </div>
-                                              
-                                    <div class="form-group">
-                                      <div class="col-sm-offset-2 col-sm-10">
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-
-                          <!-- modal hapus -->
-                          <div class="modal fade" id="hapus_riwayat_cuti_<?php echo $cuti['Id_riwayatcuti'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <p>Yakin ingin menghapus data ini ? <?php echo $cuti['Id_karyawan'] ?></p>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                  <a href="riwayat_cuti_hapus.php?id=<?php echo $cuti['Id_riwayatcuti'] ?>&idk=<?php echo $cuti['Id_karyawan'] ?>" class="btn btn-primary">Hapus</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <?php
+                          <option value="<?php echo $k['Id_karyawan']; ?>"><?php echo $k['Nama']; ?></option>
+                          <?php 
                         }
-                      ?>
-                    </table>
+                        ?>
+                      </select>
+                    </div>
                   </div>
+                  <div class="form-group">
+                    <label for="inputTanggalSK" class="col-sm-2 control-label">Tanggal SK</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="tanggal" name="tanggal" class="form-control datepicker2"  placeholder="Tanggal SK">
+                    </div>
                   </div>
-                </div>
+                  <div class="form-group">
+                    <label for="inputKeperluan" class="col-sm-2 control-label">Jenis Cuti</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="jenis" name="jenis" placeholder="Masukkan Jenis Cuti yang di ambil">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputKeperluan" class="col-sm-2 control-label">Keperluan</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan Keperluan">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTanggalMulaiCuti" class="col-sm-2 control-label">Tanggal Mulai Cuti</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="tglmulai" id="tglmulai" class="form-control datepicker2"  placeholder="Tanggal Mulai Cuti">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTanggalSelesaiCuti" class="col-sm-2 control-label">Tanggal Selesai Cuti</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="tglselesai" id="tglselesai" class="form-control datepicker2"  placeholder="Tanggal Selesai Cuti">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
               <!-- /.Cuti -->
 
               <!-- Akun -->

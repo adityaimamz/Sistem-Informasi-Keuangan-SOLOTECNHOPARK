@@ -15,7 +15,7 @@ $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if($filename == ""){
     mysqli_query($koneksi, "update karyawan set No_induk_karyawan='$nik',Nama='$nama', Tempat_lahir='$tempatlahir', Tgl_lahir='$tgllahir', Id_jabatan='$jabatan', Id_unit_kerja='$unit' where Id_karyawan='$id'") or die(mysqli_error($koneksi));
-    header("location:edit_jabatan.php?alert=berhasilupdate&id=" . urlencode($id));
+    header("location:edit_karyawan_table.php?alert=berhasilupdate&id=" . urlencode($id));
 	// header("location:edit_jabatan.php?alert=berhasilupdate");
 }else{
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -26,6 +26,6 @@ if($filename == ""){
 		move_uploaded_file($_FILES['trnfoto']['tmp_name'], '../gambar/bukti/'.$rand.'_'.$filename);
 		$xgambar = $rand.'_'.$filename;
 		mysqli_query($koneksi, "update karyawan set No_induk_karyawan='$nik', Nama='$nama', Tempat_lahir='$tempatlahir', Tgl_lahir='$tgllahir', Foto='$xgambar', Id_jabatan='$jabatan', Id_unit_kerja='$unit' where Id_karyawan='$id'");
-		header("location:edit_jabatan.php?alert=berhasilupdate&id=" . urlencode($id));
+		header("location:edit_karyawan_table.php?alert=berhasilupdate&id=" . urlencode($id));
 	}
 }
