@@ -164,22 +164,21 @@ $profil = mysqli_fetch_assoc($karyawan);
                         <td><?php echo isset($pendidikan['Gelar']) ? $pendidikan['Gelar'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
                         <td>    
-                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>">
-                            <i class="fa fa-cog"></i>
-                          </button>
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>">
-                            <i class="fa fa-trash"></i>
-                          </button>
+                        <button title="Edit Ijazah" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>">
+                          <i class="fa fa-cog"></i>
+                        </button>
+
+
                           
                           <?php if($pendidikan['Ijazah']==''){ ?> 
                           <?php } else { ?> 
-                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>">
+                              <button title="Lihat Ijazah" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>">
                                 <i class="fa fa-eye"></i>
                               </button>
                           <?php } ?>
 
                           <form action="riwayat_pendidikan_update.php" method="post" enctype="multipart/form-data">
-                            <div class="modal fade" id="edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="edit_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -189,38 +188,19 @@ $profil = mysqli_fetch_assoc($karyawan);
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Tingkat</label>
-                                      <input type="hidden" name="id" value="<?php echo $pendidikan['Id_pendidikan'] ?>">
-                                      <input type="hidden" name="idk" value="<?php echo $pendidikan['Id_karyawan'] ?>">
-                                      <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
+                                    <div class="form-group">
+                                      <label for="inputIjazah" class="col-sm-2 control-label">Ijazah</label>
+                                      <div class="col-sm-10">
+                                        <input type="file" name="trnijazah" class="form-control">
+                                        <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
+                                        <p class="help-block">Bila File <?php echo "<a class='fancybox btn btn-xs btn-primary' target=_blank href='../gambar/ijazah/$pendidikan[Ijazah]'>$pendidikan[Ijazah]</a>";?> tidak dirubah kosongkan saja</p>
+                                      </div>
                                     </div>
 
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Jurusan</label>
-                                      <input type="text" style="width:100%" name="jurusan" required="required" class="form-control" placeholder="Ubah Jurusan .." value="<?php echo $pendidikan['Jurusan'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Nama Instansi</label>
-                                      <input type="text" style="width:100%" name="instansi" required="required" class="form-control" placeholder="Ubah Nama Instansi .." value="<?php echo $pendidikan['Nama_instansi'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Gelar</label>
-                                      <input type="text" style="width:100%" name="gelar" required="required" class="form-control" placeholder="Ubah Gelar .." value="<?php echo $pendidikan['Gelar'] ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>Tahun lulus</label>
-                                      <input type="text" style="width:100%" name="tahun" required="required" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
-                                    </div>
-                                
                                     <div class="form-group">
                                       <div class="col-sm-offset-2 col-sm-10">
                                       </div>
                                     </div>
-
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
