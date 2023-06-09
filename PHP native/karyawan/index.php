@@ -154,7 +154,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                           <th>IJAZAH</th>
                         </tr>
                         <?php 
-                          $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                          $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan, tingkat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND tingkat_pendidikan.Id_tingkat_pendidikan=riwayat_pendidikan.Id_tingkat_pendidikan AND karyawan.Id_karyawan = '$id_karyawan'");
                           while($pendidikan = mysqli_fetch_assoc($d)){
                         ?>
                         <tr>
@@ -167,84 +167,110 @@ $profil = mysqli_fetch_assoc($karyawan);
                           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>">
-                        <i class="fa fa-trash"></i>
-                      </button>
+                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                          
+                          <?php if($pendidikan['Ijazah']==''){ ?> 
+                          <?php } else { ?> 
+                              <button title="View" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>">
+                                <i class="fa fa-eye"></i>
+                              </button>
+                          <?php } ?>
 
+                          <form action="riwayat_pendidikan_update.php" method="post" enctype="multipart/form-data">
+                            <div class="modal fade" id="edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Edit Riwayat Pendidikan</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>Tingkat</label>
+                                      <input type="hidden" name="id" value="<?php echo $pendidikan['Id_pendidikan'] ?>">
+                                      <input type="hidden" name="idk" value="<?php echo $pendidikan['Id_karyawan'] ?>">
+                                      <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
+                                    </div>
 
-                      <form action="riwayat_pendidikan_update.php" method="post" enctype="multipart/form-data">
-                        <div class="modal fade" id="edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Edit Riwayat Pendidikan</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="form-group" style="width:100%;margin-bottom:20px">
-                                  <label>Tingkat</label>
-                                  <input type="hidden" name="id" value="<?php echo $pendidikan['Id_pendidikan'] ?>">
-                                  <input type="hidden" name="idk" value="<?php echo $pendidikan['Id_karyawan'] ?>">
-                                  <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
-                                </div>
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>Jurusan</label>
+                                      <input type="text" style="width:100%" name="jurusan" required="required" class="form-control" placeholder="Ubah Jurusan .." value="<?php echo $pendidikan['Jurusan'] ?>">
+                                    </div>
 
-                                <div class="form-group" style="width:100%;margin-bottom:20px">
-                                  <label>Jurusan</label>
-                                  <input type="text" style="width:100%" name="jurusan" required="required" class="form-control" placeholder="Ubah Jurusan .." value="<?php echo $pendidikan['Jurusan'] ?>">
-                                </div>
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>Nama Instansi</label>
+                                      <input type="text" style="width:100%" name="instansi" required="required" class="form-control" placeholder="Ubah Nama Instansi .." value="<?php echo $pendidikan['Nama_instansi'] ?>">
+                                    </div>
 
-                                <div class="form-group" style="width:100%;margin-bottom:20px">
-                                  <label>Nama Instansi</label>
-                                  <input type="text" style="width:100%" name="instansi" required="required" class="form-control" placeholder="Ubah Nama Instansi .." value="<?php echo $pendidikan['Nama_instansi'] ?>">
-                                </div>
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>Gelar</label>
+                                      <input type="text" style="width:100%" name="gelar" required="required" class="form-control" placeholder="Ubah Gelar .." value="<?php echo $pendidikan['Gelar'] ?>">
+                                    </div>
 
-                                <div class="form-group" style="width:100%;margin-bottom:20px">
-                                  <label>Gelar</label>
-                                  <input type="text" style="width:100%" name="gelar" required="required" class="form-control" placeholder="Ubah Gelar .." value="<?php echo $pendidikan['Gelar'] ?>">
-                                </div>
+                                    <div class="form-group" style="width:100%;margin-bottom:20px">
+                                      <label>Tahun lulus</label>
+                                      <input type="text" style="width:100%" name="tahun" required="required" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
+                                    </div>
+                                
+                                    <div class="form-group">
+                                      <div class="col-sm-offset-2 col-sm-10">
+                                      </div>
+                                    </div>
 
-                                <div class="form-group" style="width:100%;margin-bottom:20px">
-                                  <label>Tahun lulus</label>
-                                  <input type="text" style="width:100%" name="tahun" required="required" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
-                                </div>
-                            
-                                <div class="form-group">
-                                  <div class="col-sm-offset-2 col-sm-10">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                   </div>
                                 </div>
-
                               </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                          </form>
+
+                           <!-- Modal Lihat -->
+                           <div class="modal fade" id="lihat_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Lihat Ijazah</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <embed src="../gambar/bukti/<?php echo $pendidikan['Ijazah']; ?>" type="application/pdf" width="100%" height="400px" />
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </form>
 
-                      <!-- modal hapus -->
-                      <div class="modal fade" id="hapus_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Yakin ingin menghapus data ini ? <?php echo $pendidikan['Id_karyawan'] ?></p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                              <a href="riwayat_pendidikan_hapus.php?id=<?php echo $pendidikan['Id_pendidikan'] ?>&idk=<?php echo $pendidikan['Id_karyawan'] ?>" class="btn btn-primary">Hapus</a>
+                          <!-- modal hapus -->
+                          <div class="modal fade" id="hapus_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Yakin ingin menghapus data ini ? <?php echo $pendidikan['Id_karyawan'] ?></p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                  <a href="riwayat_pendidikan_hapus.php?id=<?php echo $pendidikan['Id_pendidikan'] ?>&idk=<?php echo $pendidikan['Id_karyawan'] ?>" class="btn btn-primary">Hapus</a>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
                     </td>
                   </tr>
                   <?php
