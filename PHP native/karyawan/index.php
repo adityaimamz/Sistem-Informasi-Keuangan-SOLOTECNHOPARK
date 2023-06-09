@@ -141,69 +141,119 @@ $profil = mysqli_fetch_assoc($karyawan);
             <!--.Pendidikan -->
             <div class="tab-pane" id="pendidikan">
               <div class="box-body no-padding">
-                <div class="box">
-                  <!-- /.box-header -->
-                  <div class="box-body no-padding">
-                    <table class="table table-striped">
-                      <tr>
-                        <th>TANGGAL LULUS</th>
-                        <th>TINGKAT</th>
-                        <th>JURUSAN</th>
-                        <th>SEKOLAH/KAMPUS</th>
-                        <th>GELAR</th>
-                      </tr>
-                      <?php 
-                        $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-                        while($pendidikan = mysqli_fetch_assoc($d)){
-                      ?>
-                      <tr>
-                        <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
+              <div class="box">
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                      <table class="table table-striped">
+                        <tr>
+                          <th>TINGKAT PENDIDIKAN</th>
+                          <th>JURUSAN</th>
+                          <th>NAMA INSTANSI</th>
+                          <th>GELAR</th>
+                          <th>TAHUN LULUS</th>
+                          <th>IJAZAH</th>
+                        </tr>
+                        <?php 
+                          $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                          while($pendidikan = mysqli_fetch_assoc($d)){
+                        ?>
+                        <tr>
                         <td><?php echo isset($pendidikan['Tingkat']) ? $pendidikan['Tingkat'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Jurusan']) ? $pendidikan['Jurusan'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Nama_instansi']) ? $pendidikan['Nama_instansi'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Gelar']) ? $pendidikan['Gelar'] : ''; ?></td>
-                      </tr>
-                      <?php
-                        }
-                      ?>
-                    </table>
-                  </div>
-                  <!-- /.box-body -->
-                </div>
-              </div>
-            </div>
-            <!-- /.Pendidikan -->
+                        <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
+                        <td>    
+                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>">
+                            <i class="fa fa-cog"></i>
+                          </button>
+                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>">
+                        <i class="fa fa-trash"></i>
+                      </button>
 
-            <!-- .Pelatihan -->
-            <div class="tab-pane" id="pelatihan">
-              <div class="box-body no-padding">
-                <div class="box">
-                  <!-- /.box-header -->
-                  <div class="box-body no-padding">
-                    <table class="table table-striped">
-                      <tr>
-                        <th>NAMA DIKLAT</th>
-                        <th>TIPE DIKLAT</th>
-                        <th>PENYELENGGARA</th>
-                        <th>TANGGAL LULUS</th>
-                      </tr>
-                      <?php 
-                        $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pelatihan WHERE karyawan.Id_karyawan = riwayat_pelatihan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-                        while($pelatihan = mysqli_fetch_assoc($d)){
-                        ?>
-                        <tr>
-                          <td><?php echo isset($pelatihan['Nama_diklat']) ? $pelatihan['Nama_diklat'] : ''; ?></td>
-                          <td><?php echo isset($pelatihan['Tipe_diklat']) ? $pelatihan['Tipe_diklat'] : ''; ?></td>
-                          <td><?php echo isset($pelatihan['Penyelenggara']) ? $pelatihan['Penyelenggara'] : ''; ?></td>
-                          <td><?php echo isset($pelatihan['Tgl_lulus']) ? $pelatihan['Tgl_lulus'] : ''; ?></td>
-                        </tr>
-                        <?php
-                        }
-                        ?>
-                    </table>
-                  </div>
-                <!-- /.box-body -->
-                </div>
+
+                      <form action="riwayat_pendidikan_update.php" method="post" enctype="multipart/form-data">
+                        <div class="modal fade" id="edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Edit Riwayat Pendidikan</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group" style="width:100%;margin-bottom:20px">
+                                  <label>Tingkat</label>
+                                  <input type="hidden" name="id" value="<?php echo $pendidikan['Id_pendidikan'] ?>">
+                                  <input type="hidden" name="idk" value="<?php echo $pendidikan['Id_karyawan'] ?>">
+                                  <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
+                                </div>
+
+                                <div class="form-group" style="width:100%;margin-bottom:20px">
+                                  <label>Jurusan</label>
+                                  <input type="text" style="width:100%" name="jurusan" required="required" class="form-control" placeholder="Ubah Jurusan .." value="<?php echo $pendidikan['Jurusan'] ?>">
+                                </div>
+
+                                <div class="form-group" style="width:100%;margin-bottom:20px">
+                                  <label>Nama Instansi</label>
+                                  <input type="text" style="width:100%" name="instansi" required="required" class="form-control" placeholder="Ubah Nama Instansi .." value="<?php echo $pendidikan['Nama_instansi'] ?>">
+                                </div>
+
+                                <div class="form-group" style="width:100%;margin-bottom:20px">
+                                  <label>Gelar</label>
+                                  <input type="text" style="width:100%" name="gelar" required="required" class="form-control" placeholder="Ubah Gelar .." value="<?php echo $pendidikan['Gelar'] ?>">
+                                </div>
+
+                                <div class="form-group" style="width:100%;margin-bottom:20px">
+                                  <label>Tahun lulus</label>
+                                  <input type="text" style="width:100%" name="tahun" required="required" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
+                                </div>
+                            
+                                <div class="form-group">
+                                  <div class="col-sm-offset-2 col-sm-10">
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
+                      <!-- modal hapus -->
+                      <div class="modal fade" id="hapus_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Yakin ingin menghapus data ini ? <?php echo $pendidikan['Id_karyawan'] ?></p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              <a href="riwayat_pendidikan_hapus.php?id=<?php echo $pendidikan['Id_pendidikan'] ?>&idk=<?php echo $pendidikan['Id_karyawan'] ?>" class="btn btn-primary">Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <?php
+                    }
+                  ?>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
                 </div>
               </div>
             <!-- /.Pelatihan -->

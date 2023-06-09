@@ -232,23 +232,23 @@ $profil = mysqli_fetch_assoc($karyawan);
 
                <!--.Pendidikan -->
                <div class="active tab-pane" id="pendidikan">
-               <div class="box">
-                  <!-- /.box-header -->
-                  <div class="box-body no-padding">
-                    <table class="table table-striped">
-                      <tr>
-                        <th>TINGKAT PENDIDIKAN</th>
-                        <th>JURUSAN</th>
-                        <th>NAMA INSTANSI</th>
-                        <th>GELAR</th>
-                        <th>TAHUN LULUS</th>
-                        <th>AKSI</th>
-                      </tr>
-                      <?php 
-                        $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
-                        while($pendidikan = mysqli_fetch_assoc($d)){
-                      ?>
-                      <tr>
+                <div class="box">
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                      <table class="table table-striped">
+                        <tr>
+                          <th>TINGKAT PENDIDIKAN</th>
+                          <th>JURUSAN</th>
+                          <th>NAMA INSTANSI</th>
+                          <th>GELAR</th>
+                          <th>TAHUN LULUS</th>
+                          <th>AKSI</th>
+                        </tr>
+                        <?php 
+                          $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                          while($pendidikan = mysqli_fetch_assoc($d)){
+                        ?>
+                        <tr>
                         <td><?php echo isset($pendidikan['Tingkat']) ? $pendidikan['Tingkat'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Jurusan']) ? $pendidikan['Jurusan'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Nama_instansi']) ? $pendidikan['Nama_instansi'] : ''; ?></td>

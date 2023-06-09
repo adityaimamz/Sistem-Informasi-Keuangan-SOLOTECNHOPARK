@@ -261,6 +261,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                         <i class="fa fa-trash"></i>
                       </button>
 
+
                       <form action="riwayat_pendidikan_update.php" method="post" enctype="multipart/form-data">
                         <div class="modal fade" id="edit_riwayat_pendidikan_<?php echo $pendidikan['Id_pendidikan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
