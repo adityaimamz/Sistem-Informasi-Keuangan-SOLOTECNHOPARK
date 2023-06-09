@@ -262,6 +262,40 @@ $profil = mysqli_fetch_assoc($karyawan);
             </div>
                 </div>
               </div>
+
+
+            <!-- .Pelatihan -->
+            <div class="tab-pane" id="pelatihan">
+              <div class="box-body no-padding">
+                <div class="box">
+                  <!-- /.box-header -->
+                  <div class="box-body no-padding">
+                    <table class="table table-striped">
+                      <tr>
+                        <th>NAMA DIKLAT</th>
+                        <th>TIPE DIKLAT</th>
+                        <th>PENYELENGGARA</th>
+                        <th>TANGGAL LULUS</th>
+                      </tr>
+                      <?php 
+                        $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pelatihan WHERE karyawan.Id_karyawan = riwayat_pelatihan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
+                        while($pelatihan = mysqli_fetch_assoc($d)){
+                        ?>
+                        <tr>
+                          <td><?php echo isset($pelatihan['Nama_diklat']) ? $pelatihan['Nama_diklat'] : ''; ?></td>
+                          <td><?php echo isset($pelatihan['Tipe_diklat']) ? $pelatihan['Tipe_diklat'] : ''; ?></td>
+                          <td><?php echo isset($pelatihan['Penyelenggara']) ? $pelatihan['Penyelenggara'] : ''; ?></td>
+                          <td><?php echo isset($pelatihan['Tgl_lulus']) ? $pelatihan['Tgl_lulus'] : ''; ?></td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </table>
+                  </div>
+                <!-- /.box-body -->
+                </div>
+                </div>
+              </div>
             <!-- /.Pelatihan -->
 
             <!-- .Hukuman -->
