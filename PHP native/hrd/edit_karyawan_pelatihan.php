@@ -29,10 +29,10 @@ $profil = mysqli_fetch_assoc($karyawan);
         <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
+              <li><a href="#profil" data-toggle="tab">Profil</a></li>
               <li><a href="#jabatan" data-toggle="tab">Riwayat Jabatan</a></li>
               <li><a href="#pendidikan" data-toggle="tab">Pendidikan</a></li>
-              <li><a href="#pelatihan" data-toggle="tab">Pelatihan</a></li>
+              <li class="active"><a href="#pelatihan" data-toggle="tab">Pelatihan</a></li>
               <li><a href="#hukuman" data-toggle="tab">Hukuman Disiplin</a></li>
               <li><a href="#cuti" data-toggle="tab">Cuti</a></li>
               <li><a href="#keluarga" data-toggle="tab">Keluarga</a></li>
@@ -40,7 +40,7 @@ $profil = mysqli_fetch_assoc($karyawan);
             </ul>
             <div class="tab-content">
               <!--Profile -->
-              <div class="active tab-pane" id="profil">
+              <div class="tab-pane" id="profil">
                 <form class="form-horizontal" action="edit_profil_proses.php" method="POST" enctype="multipart/form-data">
                     
                   <div class="form-group">
@@ -349,7 +349,7 @@ $profil = mysqli_fetch_assoc($karyawan);
               <!-- /.Pendidikan -->
 
                <!-- .Pelatihan -->
-               <div class="tab-pane" id="pelatihan">
+               <div class="active tab-pane" id="pelatihan">
                     <div class="box">
                       <!-- /.box-header -->
                       <div class="box-body no-padding">
