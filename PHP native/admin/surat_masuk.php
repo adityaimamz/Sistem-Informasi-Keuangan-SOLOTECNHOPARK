@@ -111,13 +111,13 @@
                     <div class="form-group">
                       <label>KATEGORI </label>
                       <select name="kategori" class="form-control" required="required">
-                              <option value="">- Pilih -</option>
-                              <option value="Permohonan">Permohonan</option>
-                              <option value="Kunjungan">Kunjungan</option>
-                              <option value="Undangan">Undangan</option>
-                              <option value="Jawaban">Jawaban</option>
-                              <option value="Berita_acara">Berita Acara</option>
-                            </select>
+                        <option value="">- Pilih -</option>
+                        <option value="Permohonan">Permohonan</option>
+                        <option value="Kunjungan">Kunjungan</option>
+                        <option value="Undangan">Undangan</option>
+                        <option value="Jawaban">Jawaban</option>
+                        <option value="Berita_acara">Berita Acara</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>TANGGAL PELAKSANAAN</label>

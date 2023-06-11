@@ -97,43 +97,57 @@
           </li>
 
           <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i>
-                <span>DATA MASTER</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>              
-                <li class="accordion-collapse collapse show"><a href="jabatan.php"><i class="fa fa-circle-o"></i> Data Jabatan</a></li>
-                <li class="accordion-collapse collapse show"><a href="cuti.php"><i class="fa fa-circle-o"></i> Data Cuti</a></li>
-                <li class="accordion-collapse collapse show"><a href="unit_kerja.php"><i class="fa fa-circle-o"></i> Data Unit Kerja</a></li> 
-                             
-              </ul>
-            </li>
-            
-        <script>
-        $(function () {
-          $('.treeview').tree();
-        });
-        </script>
+            <a href="#">
+              <i class="fa fa-folder"></i>
+              <span>DATA MASTER</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>              
+              <li class="accordion-collapse collapse show"><a href="jabatan.php"><i class="fa fa-circle-o"></i> Data Jabatan</a></li>
+              <li class="accordion-collapse collapse show"><a href="cuti.php"><i class="fa fa-circle-o"></i> Data Cuti</a></li>
+              <li class="accordion-collapse collapse show"><a href="unit_kerja.php"><i class="fa fa-circle-o"></i> Data Unit Kerja</a></li> 
+                            
+            </ul>
+          </li>
+
+          <li>
+            <a href="database_karyawan.php">
+              <i class="fa fa-users"></i>
+              <span>KARYAWAN</span>
+            </a>
+          </li>
 
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-print"></i>
-              <span>INFORMASI HRD</span>
+              <i class="fa fa-pie-chart"></i>
+              <span>PENILAIAN KINERJA</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="database_karyawan.php"><i class="fa fa-circle-o"></i>Database Karyawan</a></li>
-              <li><a href="surat_keluar_laporan.php"><i class="fa fa-circle-o"></i>E-Performance Karyawan</a></li>
+              <li><a href="rencana_kinerja/rencana_kinerja.php"><i class="fa fa-circle-o"></i>Perencanaan Kinerja</a></li>
+              <li><a href="Infografis_surat_masuk.php"><i class="fa fa-circle-o"></i>Nilai Kinerja</a></li>
             </ul>
           </li>
 
-          
+          <li>
+            <a href="database_karyawan.php">
+              <i class="fa fa-user"></i>
+              <span>KINERJA SAYA</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="database_karyawan.php">
+              <i class="fa fa-history"></i>
+              <span>HISTORY</span>
+            </a>
+          </li>
+
           <li class="treeview">
             <a href="#">
               <i class="fa fa-area-chart"></i>

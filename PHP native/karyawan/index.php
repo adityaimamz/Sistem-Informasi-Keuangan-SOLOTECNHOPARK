@@ -191,7 +191,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                                     <div class="form-group">
                                       <label for="inputIjazah" class="col-sm-2 control-label">Ijazah</label>
                                       <div class="col-sm-10">
-                                        <input type="file" name="trnijazah" class="form-control">
+                                        <input type="file" name="trnfoto" class="form-control">
                                         <small>File yang di perbolehkan *JPG | *jpeg | *PNG</small>
                                         <p class="help-block">Bila File <?php echo "<a class='fancybox btn btn-xs btn-primary' target=_blank href='../gambar/ijazah/$pendidikan[Ijazah]'>$pendidikan[Ijazah]</a>";?> tidak dirubah kosongkan saja</p>
                                       </div>

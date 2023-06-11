@@ -57,7 +57,7 @@ $profil = mysqli_fetch_assoc($karyawan);
             <li><a class="tabdetail" href="#hukuman" data-toggle="tab">Hukuman Disiplin</a></li>
             <li><a class="tabdetail" href="#cuti" data-toggle="tab">Cuti</a></li>
             <li><a class="tabdetail" href="#keluarga" data-toggle="tab">Keluarga</a></li>
-            <li><a class="tabdetail" href="#akun" data-toggle="tab">Akun</a></li>
+            <!-- <li><a class="tabdetail" href="#akun" data-toggle="tab">Akun</a></li> -->
           </ul>
           
           <div class="tab-content">

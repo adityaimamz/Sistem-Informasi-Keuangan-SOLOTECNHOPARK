@@ -194,5 +194,5 @@
     </div>
   </section>
 
-</div>
+<!-- </div> -->
 <?php include 'footer_laporan.php'; ?>
