@@ -130,23 +130,23 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li class="active"><a href="../rencana_kinerja.php"><i class="fa fa-circle-o"></i>Perencanaan Kinerja</a></li>
-              <li><a href="../Infografis_surat_masuk.php"><i class="fa fa-circle-o"></i>Nilai Kinerja</a></li>
+              <!-- <li><a href="../Infografis_surat_masuk.php"><i class="fa fa-circle-o"></i>Nilai Kinerja</a></li> -->
             </ul>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="../database_karyawan.php">
               <i class="fa fa-user"></i>
               <span>KINERJA SAYA</span>
             </a>
-          </li>
+          </li> -->
 
-          <li>
+          <!-- <li>
             <a href="../database_karyawan.php">
               <i class="fa fa-history"></i>
               <span>HISTORY</span>
             </a>
-          </li>
+          </li> -->
 
           <li class="treeview">
             <a href="#">

@@ -164,12 +164,10 @@ $profil = mysqli_fetch_assoc($karyawan);
                         <td><?php echo isset($pendidikan['Gelar']) ? $pendidikan['Gelar'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
                         <td>    
-                        <button title="Edit Ijazah" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>">
-                          <i class="fa fa-cog"></i>
+                        <button title="Upload Ijazah" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>">
+                          <i class="fa fa-upload"></i>
                         </button>
 
-
-                          
                           <?php if($pendidikan['Ijazah']==''){ ?> 
                           <?php } else { ?> 
                               <button title="Lihat Ijazah" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lihat_ijazah_<?php echo $pendidikan['Id_pendidikan'] ?>">

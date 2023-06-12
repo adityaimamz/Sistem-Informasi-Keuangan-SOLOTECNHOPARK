@@ -86,6 +86,23 @@ $profil = mysqli_fetch_assoc($karyawan);
                                 <tbody>
                                     <?php 
                                     $no=1;
+                                    $karyawan = "SELECT *
+             FROM karyawan
+             INNER JOIN unit_kerja ON karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja
+             INNER JOIN jabatan ON karyawan.Id_jabatan = jabatan.Id_jabatan
+             LEFT JOIN penilaian ON karyawan.Id_karyawan = penilaian.karyawan_penilai AND penilaian.bulan = '$bulan'
+             WHERE karyawan_dinilai = '$id' AND penilaian.karyawan_penilai IS NULL";
+
+
+                                    // $karyawan = "SELECT *
+                                    //             FROM karyawan, unit_kerja, jabatan
+                                    //             WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja
+                                    //             AND karyawan.Id_jabatan = jabatan.Id_jabatan
+                                    //             AND karyawan.Id_karyawan NOT IN (
+                                    //                 SELECT Id_karyawan
+                                    //                 FROM penilaian
+                                    //                 WHERE Bulan = '" . $bulan . "'
+                                    //             )";
                                     $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan";
                                     $result = mysqli_query($koneksi, $karyawan);
                                     //memeriksa apakah ada data yang ditemukan
@@ -128,9 +145,8 @@ $profil = mysqli_fetch_assoc($karyawan);
                   </thead>
                   <tbody>
                     <?php 
-                      // include '../../koneksi.php';
                       $no=1;
-                      $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan, penilaian WHERE karyawan.Id_karyawan=penilaian.karyawan_penilai AND karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan_dinilai='$id' ";
+                      $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan, penilaian WHERE karyawan.Id_karyawan=penilaian.karyawan_penilai AND karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan_dinilai='$id' AND penilaian.bulan='$bulan' ";
                       $result = mysqli_query($koneksi, $karyawan);
                       //memeriksa apakah ada data yang ditemukan
                       if (mysqli_num_rows($result) > 0) { 

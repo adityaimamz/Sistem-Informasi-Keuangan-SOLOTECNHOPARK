@@ -93,87 +93,81 @@
 
     <aside class="main-sidebar">
       <section class="sidebar">
-
-
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">NAVIGASI</li>
-
           <li>
             <a href="index.php">
               <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
             </a>
           </li>
-
           <li>
-            <a href="eperformance.php">
-              <i class="fa fa-file"></i> <span>E-PERFORMANCE</span>
+            <a href="nilai_kinerja/form_penilaian.php">
+              <i class="fa fa-edit"></i>
+              <span>NILAI REKAN</span>
             </a>
           </li>
-            
-        <script>
-        $(function () {
-          $('.treeview').tree();
-        });
-        </script>
-
-        
+          <li>
+            <a href="nilai_kinerja/kinerja_saya.php">
+              <i class="fa fa-user"></i>
+              <span>KINERJA SAYA</span>
+            </a>
+          </li>
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
             </a>
           </li>
-
           <li class="header">TIME</li>
-          <h5 class="text-center" style="color:white;">
-            <script type='text/javascript'>
+            <h5 class="text-center" style="color:white;">
+              <script type='text/javascript'>
 
-            var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-            var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
-            var date = new Date();
-            var day = date.getDate();
-            var month = date.getMonth();
-            var thisDay = date.getDay(),
-                thisDay = myDays[thisDay];
-            var yy = date.getYear();
-            var year = (yy < 1000) ? yy + 1900 : yy;
-            document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
-            //-->
-            </script>
-            <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
-            </style><div id="clock"></div>
-            <script type="text/javascript">
-            function showTime() {
-                var a_p = "";
-                var today = new Date();
-                var curr_hour = today.getHours();
-                var curr_minute = today.getMinutes();
-                var curr_second = today.getSeconds();
-                if (curr_hour < 12) {
-                    a_p = "AM";
-                } else {
-                    a_p = "PM";
-                }
-                if (curr_hour == 0) {
-                    curr_hour = 12;
-                }
-                if (curr_hour > 12) {
-                    curr_hour = curr_hour - 12;
-                }
-                curr_hour = checkTime(curr_hour);
-                curr_minute = checkTime(curr_minute);
-                curr_second = checkTime(curr_second);
-             document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
-                }
+              var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+              var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+              var date = new Date();
+              var day = date.getDate();
+              var month = date.getMonth();
+              var thisDay = date.getDay(),
+                  thisDay = myDays[thisDay];
+              var yy = date.getYear();
+              var year = (yy < 1000) ? yy + 1900 : yy;
+              document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+              //-->
+              </script>
+              <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
+              </style><div id="clock"></div>
+              <script type="text/javascript">
+              function showTime() {
+                  var a_p = "";
+                  var today = new Date();
+                  var curr_hour = today.getHours();
+                  var curr_minute = today.getMinutes();
+                  var curr_second = today.getSeconds();
+                  if (curr_hour < 12) {
+                      a_p = "AM";
+                  } else {
+                      a_p = "PM";
+                  }
+                  if (curr_hour == 0) {
+                      curr_hour = 12;
+                  }
+                  if (curr_hour > 12) {
+                      curr_hour = curr_hour - 12;
+                  }
+                  curr_hour = checkTime(curr_hour);
+                  curr_minute = checkTime(curr_minute);
+                  curr_second = checkTime(curr_second);
+              document.getElementById('clock').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
+                  }
 
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i;
-                }
-                return i;
-            }
-            setInterval(showTime, 500);
-            </script>
-          </h5>
+              function checkTime(i) {
+                  if (i < 10) {
+                      i = "0" + i;
+                  }
+                  return i;
+              }
+              setInterval(showTime, 500);
+              </script>
+            </h5>
           
         </ul>
       </section>
