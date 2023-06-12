@@ -85,7 +85,7 @@
                       </div>
                       <div class="form-group">
                         <label>Tanggal Lahir</label>
-                        <input type="date" name="tanggal_lahir" class="form-control datepicker2" placeholder="Masukkan Tanggal Lahir..">
+                        <input type="text" name="tanggal_lahir" class="form-control datepicker2" placeholder="Masukkan Tanggal Lahir..">
                       </div>
                       <div class="form-group">
                         <label>Alamat</label>
@@ -101,7 +101,7 @@
                       </div>
                       <div class="form-group">
                         <label>Jadwal Pelatihan</label>
-                        <input type="date" name="jadwal_pelatihan" class="form-control datepicker2" placeholder="Masukkan Jadwal Pelatihan..">
+                        <input type="text" name="jadwal_pelatihan" class="form-control datepicker2" placeholder="Masukkan Jadwal Pelatihan..">
                       </div>
                       <div class="form-group">
                         <label>Angkatan</label>
@@ -153,10 +153,10 @@
                           <button title="Detail" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_diklat_<?php echo $d['Id_diklat'] ?>">
                             <i class="fa fa-list"></i>
                           </button>
-                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_diklat_<?php echo $d['Id_diklat'] ?>">
+                          <button title="Edit" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_diklat_<?php echo $d['Id_diklat'] ?>">
                             <i class="fa fa-cog"></i>
                           </button>
-                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_diklat_<?php echo $d['Id_diklat'] ?>">
+                          <button title="Hapus" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_diklat_<?php echo $d['Id_diklat'] ?>">
                             <i class="fa fa-trash"></i>
                           </button>
 
@@ -231,6 +231,7 @@
                                 <div class="modal-body">  
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>NAMA</label>
+                                  <input type="hidden" name="id" required="required" class="form-control" value="<?php echo $d['Id_diklat']; ?>">
                                   <input type="text" style="width:100%" name="nama" required="required" class="form-control" value="<?php echo $d['Nama']; ?>">
                                 </div>
 
