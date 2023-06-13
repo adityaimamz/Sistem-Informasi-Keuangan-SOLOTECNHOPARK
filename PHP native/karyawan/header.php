@@ -96,12 +96,12 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">NAVIGASI</li>
           <li>
-            <a href="index.php">
+            <a href="index.php?id=<?php echo $_SESSION['id']?>">
               <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
             </a>
           </li>
           <li>
-            <a href="nilai_kinerja/form_penilaian.php">
+            <a href="nilai_kinerja/penilaian.php?id=<?php echo $_SESSION['id']?>">
               <i class="fa fa-edit"></i>
               <span>NILAI REKAN</span>
             </a>

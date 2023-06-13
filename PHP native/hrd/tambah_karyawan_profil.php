@@ -433,7 +433,7 @@
                         $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan ORDER BY Id_karyawan ASC");
                         while($k = mysqli_fetch_array($karyawan)){
                           ?>
-                          <option value="<?php echo $k['Nama']; ?>"><?php echo $k['Nama']; ?></option>
+                          <option value="<?php echo $k['Id_karyawan']; ?>"><?php echo $k['Nama']; ?></option>
                           <?php 
                         }
                         ?>

@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="../../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
 
   <!-- DataTables -->
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -96,12 +98,12 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">NAVIGASI</li>
           <li>
-            <a href="../index.php">
+            <a href="../index.php?id=<?php echo $_SESSION['id']?>">
               <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
             </a>
           </li>
           <li>
-            <a href="nilai_kinerja/form_penilaian.php">
+            <a href="nilai_kinerja/penilaian.php?id=<?php echo $_SESSION['id']?>">
               <i class="fa fa-edit"></i>
               <span>NILAI REKAN</span>
             </a>

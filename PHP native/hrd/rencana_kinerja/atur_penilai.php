@@ -29,23 +29,23 @@ $profil = mysqli_fetch_assoc($karyawan);
           <div class="box-body">
             <table class="table table-condensed">
                 <tr>
-                    <td>No Induk Karyawan</td>
+                    <th>No Induk Karyawan</th>
                     <td><?php echo $profil['No_induk_karyawan']; ?></td>
                 </tr>
                 <tr>
-                    <td>Nama</td>
+                    <th>Nama</th>
                     <td><?php echo $profil['Nama']; ?></td>
                 </tr>
                 <tr>
-                    <td>Jabatan</td>
+                    <th>Jabatan</th>
                     <td><?php echo $profil['Nama_jabatan']; ?></td>
                 </tr>
                 <tr>
-                    <td>Unit Kerja</td>
+                    <th>Unit Kerja</th>
                     <td><?php echo $profil['Nama_unit_kerja']; ?></td>
                 </tr>
                 <tr>
-                    <td>Bulan Penilaian</td>
+                    <th>Bulan Penilaian</th>
                     <td><?php echo $bulan; ?></td>
                 </tr>
             </table>

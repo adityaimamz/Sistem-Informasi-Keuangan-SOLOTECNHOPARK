@@ -1,11 +1,17 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'header.php'; 
+$id = $_GET['id'];
+$bulan = $_GET['bulan'];
+$karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan = '$id'");
+$profil = mysqli_fetch_assoc($karyawan);
+?>
 
 <div class="content-wrapper">
 
   <section class="content-header">
     <h1>
-      PENILAIAN KINERJA
-      <small>Penilaian Karyawan</small>
+      FORM PENILAIAN
+      <small>Form Penilaian Karyawan</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,99 +24,94 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Penilaian Karyawan</h3>
+            <h3 class="box-title">Karyawan yang Dinilai</h3>
           </div>
           <div class="box-body">
-            <form method="post" action="" enctype="multipart/form-data">
-              
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group">
-                    <label>Bulan</label>
-                    <select name="bulan" class="form-control" required="required">
-                      <option value="">- Pilih Bulan -</option>
-                      <?php
-                      $bulan = array(
-                          'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-                          'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-                      );
-                      
-                      foreach ($bulan as $value) {
-                          echo "<option value='$value'>$value</option>";
-                      }
-                      ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <br/>
-                    <input type="submit" name="submit" value="TAMPILKAN" class="btn btn-sm btn-primary btn-block">
-                  </div>
-                </div>
-              </div>
-            </form>
+            <table class="table table-condensed">
+                <tr>
+                    <th>No Induk Karyawan</th>
+                    <td><?php echo $profil['No_induk_karyawan']; ?></td>
+                </tr>
+                <tr>
+                    <th>Nama</th>
+                    <td><?php echo $profil['Nama']; ?></td>
+                </tr>
+                <tr>
+                    <th>Jabatan</th>
+                    <td><?php echo $profil['Nama_jabatan']; ?></td>
+                </tr>
+                <tr>
+                    <th>Unit Kerja</th>
+                    <td><?php echo $profil['Nama_unit_kerja']; ?></td>
+                </tr>
+                <tr>
+                    <th>Bulan Penilaian</th>
+                    <td><?php echo $bulan; ?></td>
+                </tr>
+            </table>
           </div>
         </div>
 
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Perencanaan Penilaian Karyawan</h3>
+            <h3 class="box-title">Form Penilaian</h3>
           </div>
           <div class="box-body">
-            <?php
-            if(isset($_POST['bulan'])){
-              $bulan = $_POST['bulan'];
-            ?>
-              <div class="card">
+            <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table class="table table-condensed">
                   <thead>
                     <tr>
-                      <th>NO</th>
-                      <th>NAMA KARYAWAN</th>
-                      <th>JABATAN</th>
-                      <th>UNIT KERJA</th>
-                      <th>AKSI</th>
+                      <th colspan="4" class="text-center">UNSUR PENILAIAN</th>
+                      <th class="text-center">BOBOT/NILAI</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php 
-                      // include '../../koneksi.php';
-                      $no=1;
-                      $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan, penilaian WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan";
-                      $result = mysqli_query($koneksi, $karyawan);
-                      //memeriksa apakah ada data yang ditemukan
-                      if (mysqli_num_rows($result) > 0) { 
-                        while ($row = mysqli_fetch_assoc($result)) {
-                      ?>
                     <tr>
-                      <td class="text-center"><?php echo $no++; ?></td>
-                      <td><?php echo $row['Nama']; ?></td>
-                      <td><?php echo $row['Nama_jabatan']; ?></td>
-                      <td><?php echo $row['Nama_unit_kerja']; ?></td>
-                      <td class="text-center">
-                        <a href="atur_penilai.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan ?>" class="btn btn-primary">Proses</a>
+                      <th colspan="5">Kehadiran</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">A</td>
+                      <td colspan="3">Tidak masuk kerja termasuk sakit</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" disabled>
+                            Minimal skin radio
+                          </label>
+                        </div>
                       </td>
                     </tr>
-                    <?php 
-                        }
-                      }
-                    ?>
-                  </tbody>
+                    <tr>
+                      <td rowspan="4"></td>
+                      <td>Tidak masuk kerja</td>
+                      <td>0 hari</td>
+                    </tr>
+                    <tr>
+                      <td>Tidak masuk kerja</td>
+                      <td>1-2 hari</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Tidak masuk kerja</td>
+                      <td>3-5 hari</td>
+                    </tr>
+                    <tr>
+                      <td>Tidak masuk kerja</td>
+                      <td> > 5 hari</td>
+                    </tr>
+                </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
-              <?php 
-            }else{ //isset data post
-              ?>
-              <div class="alert alert-info text-center">
-                Silahkan Pilih Bulan Terlebih Dulu.
-              </div>
-              <?php
-            }
-            ?>
 
             </div>
             <!-- /.card -->
