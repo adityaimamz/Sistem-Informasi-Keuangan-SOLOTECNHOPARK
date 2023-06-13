@@ -38,188 +38,188 @@ $hari_ini = date('w');
 
   <section class="content">
 
-    <div class="row">
+  <div class="row">
 
-      <!-- DATA SURAT MASUK -->
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
-          <div class="inner">
-            <?php 
-            $tanggal = date('Y-m-d');
-            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukhari FROM surat_masuk WHERE Tanggal='$tanggal'");
-            $p = mysqli_fetch_assoc($suratmasuk);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-             echo $p['total_suratmasukhari']
-              ?>
-            </h4>
-            <p>Surat Masuk Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_masuk_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
-          <div class="inner">
-            <?php
-            $bulan = date('m');
-            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukbulan FROM surat_masuk WHERE month(Tanggal)='$bulan'");
-            $p = mysqli_fetch_assoc($suratmasuk);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-                echo $p['total_suratmasukbulan']
-              ?>
-            </h4>
-            <p>Surat Masuk Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_masuk_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
-          <div class="inner">
-            <?php 
-            $tahun = date('Y');
-            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuktahun FROM surat_masuk WHERE year(Tanggal)='$tahun'");
-            $p = mysqli_fetch_assoc($suratmasuk);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-                echo $p['total_suratmasuktahun']
-              ?>
-            </h4>
-            <p>Surat Masuk Tahun Ini (<?php echo $tahun;?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_masuk_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
-          <div class="inner">
-            <?php 
-            $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
-            $p = mysqli_fetch_assoc($suratmasuk);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-             echo $p['total_suratmasuk']
-              ?>
-            </h4>
-            <p>Seluruh Surat Masuk</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_masuk.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <!-- DATA SURAT KELUAR -->
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $tanggal = date('Y-m-d');
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarhari FROM surat_keluar WHERE Tanggal='$tanggal'");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluarhari']
-              ?>
-            </h4>
-            <p>Surat Keluar Hari Ini (<?php echo date('d-m-Y', strtotime($tanggal));?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $bulan = date('m');
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarbulan FROM surat_keluar WHERE month(Tanggal)='$bulan'");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluarbulan']
-              ?>
-            </h4>
-            <p>Surat Keluar Bulan Ini (<?php echo $namabulan[$bulan_ini];?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $tahun = date('Y');
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluartahun FROM surat_keluar WHERE year(Tanggal)='$tahun'");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluartahun']
-              ?>
-            </h4>
-            <p>Surat Keluar Tahun Ini (<?php echo $tahun;?>)</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <?php 
-            $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-            $p = mysqli_fetch_assoc($suratkeluar);
-            ?>
-            <h4 style="font-weight: bolder">
-            <?php 
-             echo $p['total_suratkeluar']
-              ?>
-            </h4>
-            <p>Seluruh Surat Keluar</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="surat_keluar.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      
+<!-- DATA SURAT MASUK -->
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-green">
+    <div class="inner">
+      <?php 
+      $tanggal = date('Y-m-d');
+      $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukhari FROM surat_masuk WHERE Tanggal='$tanggal'");
+      $p = mysqli_fetch_assoc($suratmasuk);
+      ?>
+      <h4 style="font-weight: bolder">
+        <?php 
+       echo $p['total_suratmasukhari']
+        ?>
+      </h4>
+      <p>Karyawan Pendidikan SMA</p>
     </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_masuk_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-green">
+    <div class="inner">
+      <?php
+      $bulan = date('m');
+      $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukbulan FROM surat_masuk WHERE month(Tanggal)='$bulan'");
+      $p = mysqli_fetch_assoc($suratmasuk);
+      ?>
+      <h4 style="font-weight: bolder">
+        <?php 
+          echo $p['total_suratmasukbulan']
+        ?>
+      </h4>
+      <p>Karyawan Pendidikan Perguruan Tinggi</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_masuk_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-green">
+    <div class="inner">
+      <?php 
+      $tahun = date('Y');
+      $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuktahun FROM surat_masuk WHERE year(Tanggal)='$tahun'");
+      $p = mysqli_fetch_assoc($suratmasuk);
+      ?>
+      <h4 style="font-weight: bolder">
+        <?php 
+          echo $p['total_suratmasuktahun']
+        ?>
+      </h4>
+      <p>Karyawan Masa Kerja 0-2 Tahun</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_masuk_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-green">
+    <div class="inner">
+      <?php 
+      $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
+      $p = mysqli_fetch_assoc($suratmasuk);
+      ?>
+      <h4 style="font-weight: bolder">
+        <?php 
+       echo $p['total_suratmasuk']
+        ?>
+      </h4>
+      <p>Karyawan Masa Kerja 2-5 Tahun</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_masuk.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+<!-- DATA SURAT KELUAR -->
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-red">
+    <div class="inner">
+      <?php 
+      $tanggal = date('Y-m-d');
+      $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarhari FROM surat_keluar WHERE Tanggal='$tanggal'");
+      $p = mysqli_fetch_assoc($suratkeluar);
+      ?>
+      
+      <h4 style="font-weight: bolder">
+      <?php 
+       echo $p['total_suratkeluarhari']
+        ?>
+      </h4>
+      <p>Karyawan Masa Kerja 5-10 Tahun</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_keluar_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-red">
+    <div class="inner">
+      <?php 
+      $bulan = date('m');
+      $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluarbulan FROM surat_keluar WHERE month(Tanggal)='$bulan'");
+      $p = mysqli_fetch_assoc($suratkeluar);
+      ?>
+      
+      <h4 style="font-weight: bolder">
+      <?php 
+       echo $p['total_suratkeluarbulan']
+        ?>
+      </h4>
+      <p>Karyawan Masa Kerja 10 tahun keatas</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_keluar_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-red">
+    <div class="inner">
+      <?php 
+      $tahun = date('Y');
+      $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluartahun FROM surat_keluar WHERE year(Tanggal)='$tahun'");
+      $p = mysqli_fetch_assoc($suratkeluar);
+      ?>
+      
+      <h4 style="font-weight: bolder">
+      <?php 
+       echo $p['total_suratkeluartahun']
+        ?>
+      </h4>
+      <p>Karyawan cluster nilai 0-25</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_keluar_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-red">
+    <div class="inner">
+      <?php 
+      $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
+      $p = mysqli_fetch_assoc($suratkeluar);
+      ?>
+      <h4 style="font-weight: bolder">
+      <?php 
+       echo $p['total_suratkeluar']
+        ?>
+      </h4>
+      <p>Karyawan cluster nilai 25-50</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+    </div>
+    <a href="surat_keluar.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+
+</div>
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">
@@ -239,7 +239,7 @@ $hari_ini = date('w');
             <div class="chart tab-pane active" id="tab1">
                 
               <br>
-              <h4 class="text-center">Realisasi Kesekretariatan UPTD KST SOLO TECHNOPARK Tahun 2023 Per <b>Jenis</b></h4>
+              <h4 class="text-center">Nilai Rata-rata karyawan per bulan</h4>
                 <?php 
                   $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
                   $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
