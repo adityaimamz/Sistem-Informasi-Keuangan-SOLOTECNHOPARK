@@ -84,31 +84,296 @@ $profil = mysqli_fetch_assoc($karyawan);
                             <input type="radio" name="r1" class="minimal">
                           </label>
                           <label>
-                            <input type="radio" name="r1" class="minimal" disabled>
-                            Minimal skin radio
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
                           </label>
                         </div>
                       </td>
                     </tr>
                     <tr>
-                      <td rowspan="4"></td>
-                      <td>Tidak masuk kerja</td>
+                      <td class="text-center">4</td>
                       <td>0 hari</td>
                     </tr>
                     <tr>
-                      <td>Tidak masuk kerja</td>
-                      <td>1-2 hari</td>
-                      
+                    <td class="text-center">3</td>
+                      <td >1-2 hari</td>
                     </tr>
                     <tr>
-                      <td>Tidak masuk kerja</td>
+                      <td class="text-center">2</td>
                       <td>3-5 hari</td>
                     </tr>
                     <tr>
-                      <td>Tidak masuk kerja</td>
+                      <td class="text-center">1</td>
                       <td> > 5 hari</td>
                     </tr>
+
+
+                    <tr>
+                      <th colspan="5">Kehadiran</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">B</td>
+                      <td colspan="3">Interupsi/Pulang Awal</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>0-6 kali</td>
+                    </tr>
+                    <tr>
+                    <td class="text-center">3</td>
+                      <td>7-12 kali</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td>13-20 kali</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">1</td>
+
+                      <td>0-6 kali</td>
+                    </tr>
+                <tr>
+                      <th colspan="5">Kehadiran</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">C</td>
+                      <td colspan="3">Keterlambatan</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>0-2 kali</td>
+                    </tr>
+                    <tr>
+                    <td class="text-center">3</td>
+                      <td>3-5 kali</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td>6-10 kali</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td> > 10 kali</td>
+                    </tr>
+
+                    <tr>
+                      <th colspan="5">Perilaku pergaulan</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">A</td>
+                      <td colspan="3">Kejujuran</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>Berperilaku sangat jujur</td>
+                    </tr>
+                      <td class="text-center">2</td>
+                      <td>Pernah berperilaku tidak jujur</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td> Sering berperilaku tidak jujur</td>
+                    </tr>
+
+                    <tr>
+                      <th colspan="5">Perilaku pergaulan</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">A</td>
+                      <td colspan="3">Respek/Penghargaan kepada orang lain</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>Menghargai (ngajeni) orang lain</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td>Mempertimbangkan orang lain</td>
+                    </tr>
+                      <td class="text-center">2</td>
+                      <td>Pernah tidak menghargai orang lain</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>Tidak menghargai orang lain</td>
+                    </tr>
+
+                    <tr>
+                      <th colspan="5">Perilaku pergaulan</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">A</td>
+                      <td colspan="3">Respek/Penghargaan kepada orang lain</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>Keberadaannya sangat diperlukan/diharapkan</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td>Keberadaannya diperlukan/diharapkan</td>
+                    </tr>
+                      <td class="text-center">2</td>
+                      <td>Keberadaannya tidak berpengaruh</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>Keberadaannya tidak diharapkan</td>
+                    </tr>
+
+                    <tr>
+                      <th colspan="5">Perilaku pergaulan</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">A</td>
+                      <td colspan="3">Terbuka terhadap saran dan kritik</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>Orang lain dengan enak dapat menyampaikan kritik dan saran secara spontan</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td>Orang lain tidak sungkan menyampaikan kritik dan saran ketika diminta</td>
+                    </tr>
+                      <td class="text-center">2</td>
+                      <td>Orang lain enggan menyampaikan kritik  dan saran ketika diminta</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>Orang lain dengan terpaksa menyampaikan kritik dan saran</td>
+                    </tr>
+
+                    <tr>
+                      <th colspan="5">Perilaku pergaulan</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">A</td>
+                      <td colspan="3">Peduli pada orang lainn</td>
+                      <td rowspan="5">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal">
+                          </label>
+                          <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>Sangat peduli pada peristiwa yang dialami orang lain</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td>Peduli pada peristiwa yang dialami orang lain</td>
+                    </tr>
+                      <td class="text-center">2</td>
+                      <td>Kurang peduli pada peristiwa yang dialami orang lain</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>Tidak peduli pada peristiwa yang dialami orang lain</td>
+                    </tr>
                 </tbody>
+                
                 </table>
               </div>
               <!-- /.card-body -->
