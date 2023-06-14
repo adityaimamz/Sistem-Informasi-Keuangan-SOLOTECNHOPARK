@@ -63,58 +63,60 @@ include 'header.php';
             <?php
             if(isset($_POST['bulan'])){
               $bulan = $_POST['bulan'];
-            ?>
-              <div class="card">
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>NO</th>
-                      <th>NAMA KARYAWAN</th>
-                      <th>JABATAN</th>
-                      <th>UNIT KERJA</th>
-                      <th>AKSI</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $no=1;
-                      $id=$_SESSION['id'];
-                      var_dump($id);
-                      $cek = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE penilaian.karyawan_penilai ='$id'");
-                      if (mysqli_num_rows($cek) > 0) {
-                          $hasil = mysqli_fetch_assoc($cek);
-                          $karyawanDinilai = $hasil['karyawan_dinilai'];
-                          var_dump($karyawanDinilai);
+              $id = $_SESSION['id'];
+              $cek = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE karyawan_penilai = '$id' AND bulan='$bulan' ");
+              if (mysqli_num_rows($cek) > 0) {
+                ?>
+                <div class="card">
+                  <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>NO</th>
+                          <th>NAMA KARYAWAN</th>
+                          <th>JABATAN</th>
+                          <th>UNIT KERJA</th>
+                          <th>AKSI</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 1;
+                        while ($row = mysqli_fetch_assoc($cek)) {
+                          $karyawanDinilai = $row['karyawan_dinilai'];
                           $data = "SELECT * FROM karyawan, jabatan, unit_kerja WHERE karyawan.Id_jabatan=jabatan.Id_jabatan AND unit_kerja.Id_unit_kerja=karyawan.Id_unit_kerja AND karyawan.Id_karyawan='$karyawanDinilai' ";
                           $result = mysqli_query($koneksi, $data);
-                          //memeriksa apakah ada data yang ditemukan
-                          if (mysqli_num_rows($result) > 0) { 
+                          if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                          ?>
-                        <tr>
-                          <td class="text-center"><?php echo $no++; ?></td>
-                          <td><?php echo $row['Nama']; ?></td>
-                          <td><?php echo $row['Nama_jabatan']; ?></td>
-                          <td><?php echo $row['Nama_unit_kerja']; ?></td>
-                          <td class="text-center">
-                            <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan ?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
-                          </td>
-                        </tr>
-                        <?php 
+                              ?>
+                              <tr>
+                                <td class="text-center"><?php echo $no++; ?></td>
+                                <td><?php echo $row['Nama']; ?></td>
+                                <td><?php echo $row['Nama_jabatan']; ?></td>
+                                <td><?php echo $row['Nama_unit_kerja']; ?></td>
+                                <td class="text-center">
+                                <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>" class="btn btn-primary btn-block"><b>Nilai</b></a>
+                                  <!-- <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan']; ?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a> -->
+                                </td>
+                              </tr>
+                            <?php 
                             }
                           }
-                      } else {
-                          var_dump('ini ksongS');
-                      }
-                      ?>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-              <?php 
-            }else{ //isset data post
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <?php 
+              } else {
+                ?>
+                <div class="alert alert-warning text-center">
+                  Tidak ada karyawan yang ditunjuk untuk dinilai.
+                </div>
+                <?php
+              }
+            } else {
               ?>
               <div class="alert alert-info text-center">
                 Silahkan Pilih Bulan Terlebih Dulu.
@@ -122,9 +124,6 @@ include 'header.php';
               <?php
             }
             ?>
-
-            </div>
-            <!-- /.card -->
 
           </div>
         </div>
