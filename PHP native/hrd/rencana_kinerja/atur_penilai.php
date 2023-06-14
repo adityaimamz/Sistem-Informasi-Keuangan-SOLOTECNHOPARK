@@ -86,24 +86,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                                 <tbody>
                                     <?php 
                                     $no=1;
-                                    $karyawan = "SELECT *
-             FROM karyawan
-             INNER JOIN unit_kerja ON karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja
-             INNER JOIN jabatan ON karyawan.Id_jabatan = jabatan.Id_jabatan
-             LEFT JOIN penilaian ON karyawan.Id_karyawan = penilaian.karyawan_penilai AND penilaian.bulan = '$bulan'
-             WHERE karyawan_dinilai = '$id' AND penilaian.karyawan_penilai IS NULL";
-
-
-                                    // $karyawan = "SELECT *
-                                    //             FROM karyawan, unit_kerja, jabatan
-                                    //             WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja
-                                    //             AND karyawan.Id_jabatan = jabatan.Id_jabatan
-                                    //             AND karyawan.Id_karyawan NOT IN (
-                                    //                 SELECT Id_karyawan
-                                    //                 FROM penilaian
-                                    //                 WHERE Bulan = '" . $bulan . "'
-                                    //             )";
-                                    $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan";
+                                    $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan !='$id' ";
                                     $result = mysqli_query($koneksi, $karyawan);
                                     //memeriksa apakah ada data yang ditemukan
                                     if (mysqli_num_rows($result) > 0) { 
@@ -157,6 +140,32 @@ $profil = mysqli_fetch_assoc($karyawan);
                       <td><?php echo $row['Nama']; ?></td>
                       <td><?php echo $row['Nama_jabatan']; ?></td>
                       <td><?php echo $row['Nama_unit_kerja']; ?></td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_penilai_<?php echo $row['Id_penilaian'] ?>">
+                          <i class="fa fa-trash"></i>
+                        </button>
+
+                        <!-- modal hapus -->
+                        <div class="modal fade" id="hapus_penilai_<?php echo $row['Id_penilaian'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="exampleModalLabel">Peringatan!</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Yakin ingin menghapus data ini ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                  <a href="penilaian_hapus.php?idk=<?php echo $row['karyawan_dinilai'] ?>&bulan=<?php echo $bulan ?>&id=<?php echo $row['Id_penilaian'] ?>" class="btn btn-primary">Hapus</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </td>
                     </tr>
                     <?php 
                         }

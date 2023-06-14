@@ -122,5 +122,4 @@
     </div>
   </section>
 
-</div>
 <?php include 'footer_kinerja.php'; ?>

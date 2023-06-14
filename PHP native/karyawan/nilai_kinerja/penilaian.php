@@ -1,4 +1,6 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'header.php'; 
+?>
 
 <div class="content-wrapper">
 
@@ -79,25 +81,34 @@
                     <?php
                       $no=1;
                       $id=$_SESSION['id'];
-                      $karyawan = "SELECT * FROM karyawan, penilaian, jabatan, unit_kerja WHERE karyawan.Id_jabatan=jabatan.Id_jabatan AND karyawan.Id_unit_kerja=unit_kerja.Id_unit_kerja AND karyawan.Id_karyawan = penilaian.karyawan_penilai AND penilaian.karyawan_penilai = '$id' AND penilaian.bulan= '$bulan' ";
-                      $result = mysqli_query($koneksi, $karyawan);
-                      //memeriksa apakah ada data yang ditemukan
-                      if (mysqli_num_rows($result) > 0) { 
-                        while ($row = mysqli_fetch_assoc($result)) {
-                      ?>
-                    <tr>
-                      <td class="text-center"><?php echo $no++; ?></td>
-                      <td><?php echo $row['Nama']; ?></td>
-                      <td><?php echo $row['Nama_jabatan']; ?></td>
-                      <td><?php echo $row['Nama_unit_kerja']; ?></td>
-                      <td class="text-center">
-                        <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan ?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
-                      </td>
-                    </tr>
-                    <?php 
-                        }
+                      var_dump($id);
+                      $cek = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE penilaian.karyawan_penilai ='$id'");
+                      if (mysqli_num_rows($cek) > 0) {
+                          $hasil = mysqli_fetch_assoc($cek);
+                          $karyawanDinilai = $hasil['karyawan_dinilai'];
+                          var_dump($karyawanDinilai);
+                          $data = "SELECT * FROM karyawan, jabatan, unit_kerja WHERE karyawan.Id_jabatan=jabatan.Id_jabatan AND unit_kerja.Id_unit_kerja=karyawan.Id_unit_kerja AND karyawan.Id_karyawan='$karyawanDinilai' ";
+                          $result = mysqli_query($koneksi, $data);
+                          //memeriksa apakah ada data yang ditemukan
+                          if (mysqli_num_rows($result) > 0) { 
+                            while ($row = mysqli_fetch_assoc($result)) {
+                          ?>
+                        <tr>
+                          <td class="text-center"><?php echo $no++; ?></td>
+                          <td><?php echo $row['Nama']; ?></td>
+                          <td><?php echo $row['Nama_jabatan']; ?></td>
+                          <td><?php echo $row['Nama_unit_kerja']; ?></td>
+                          <td class="text-center">
+                            <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan ?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
+                          </td>
+                        </tr>
+                        <?php 
+                            }
+                          }
+                      } else {
+                          var_dump('ini ksongS');
                       }
-                    ?>
+                      ?>
                   </tbody>
                 </table>
               </div>
