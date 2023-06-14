@@ -95,7 +95,7 @@ include 'header.php';
                                 <td><?php echo $row['Nama_jabatan']; ?></td>
                                 <td><?php echo $row['Nama_unit_kerja']; ?></td>
                                 <td class="text-center">
-                                <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>" class="btn btn-primary btn-block"><b>Nilai</b></a>
+                                <a href="form_penilaian.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>" class="btn btn-primary btn-block"><b>Nilai</b></a>
                                   <!-- <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan']; ?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a> -->
                                 </td>
                               </tr>

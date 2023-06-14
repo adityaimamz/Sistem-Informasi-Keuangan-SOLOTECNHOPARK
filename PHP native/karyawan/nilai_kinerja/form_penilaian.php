@@ -1,6 +1,6 @@
 <?php 
 include 'header.php'; 
-$id = $_GET['id'];
+$id = $_GET['dinilai'];
 $bulan = $_GET['bulan'];
 $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan = '$id'");
 $profil = mysqli_fetch_assoc($karyawan);

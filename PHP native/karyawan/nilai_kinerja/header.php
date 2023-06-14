@@ -34,14 +34,14 @@
   // Periksa apakah pengguna telah melakukan login dan sesi ID pengguna telah terisi
   if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
     // Jika belum login, alihkan pengguna ke halaman login
-    header("Location:../login.php?alert=belum_login");
+    header("Location:../../login.php?alert=belum_login");
     exit();
   }
   
   // Periksa apakah ID pengguna dalam sesi sesuai dengan ID yang diminta di URL
   if (isset($_GET['id']) && $_SESSION['id'] != $_GET['id']) {
     // Jika ID pengguna tidak sesuai, alihkan pengguna ke halaman dengan ID mereka sendiri
-    header("Location: ../karyawan?id=" . $_SESSION['id']);
+    header("Location: ../../karyawan?id=" . $_SESSION['id']);
     exit();
   }
   
