@@ -115,22 +115,7 @@
               <li><a href="agenda.php"><i class="fa fa-circle-o"></i> Pengelolaan Kunjungan Kawasan</a></li>
             </ul>
           </li>
-
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-briefcase"></i>
-              <span>DIKLAT</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: none;">
-              <li><a href="diklat.php"><i class="fa fa-circle-o"></i> Data Siswa Pelatihan</a></li>
-            </ul>
-          </li>
-
-
-
+          
             <li class="treeview">
             <a href="#">
               <i class="fa fa-print"></i>
@@ -140,7 +125,7 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i>Laporan Pengeluaran</a></li>
+              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i>Laporan Agenda</a></li>
               <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i>Laporan Aset Kawasan</a></li>
             </ul>
           </li>

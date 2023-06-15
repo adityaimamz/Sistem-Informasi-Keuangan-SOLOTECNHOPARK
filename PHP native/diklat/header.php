@@ -126,8 +126,7 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="agenda_laporan.php"><i class="fa fa-circle-o"></i>Laporan Pengeluaran</a></li>
-              <li><a href="laporan_barang.php"><i class="fa fa-circle-o"></i>Laporan Aset Kawasan</a></li>
+              <li><a href="diklat_laporan.php"><i class="fa fa-circle-o"></i>Laporan Diklat</a></li>
             </ul>
           </li>
 
@@ -140,9 +139,8 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="Infografis_barang.php"><i class="fa fa-circle-o"></i> Infografis Real Time Aset</a></li>
-              <li><a href="Infografis_agenda.php"><i class="fa fa-circle-o"></i> Infografis Real Time Kunjungan</a></li>
-            </ul>
+              <li><a href="Infografis_diklat.php"><i class="fa fa-circle-o"></i> Infografis Peserta Diklat</a></li>
+           </ul>
           </li>
 
           <li>
