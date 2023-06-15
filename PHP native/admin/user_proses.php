@@ -6,5 +6,5 @@ $username = $_POST['username'];
 $password = md5($_POST['password']);
 $level = $_POST['level'];
 
-mysqli_query($koneksi, "insert into master_user values (NULL,'$nama', '$alamat', '$username','$password', '$level')");
+mysqli_query($koneksi, "insert into master_user values (NULL,'$nama', '$alamat', '$username','$password', '$level','')");
 header("location:user.php");

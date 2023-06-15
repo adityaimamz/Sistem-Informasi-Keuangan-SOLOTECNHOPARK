@@ -38,6 +38,9 @@ if($cek > 0){
 	}else if($data['Level'] == "Hrd"){
 		$_SESSION['status'] = "hrd_logedin";
 		header("location:hrd/");
+	}else if($data['Level'] == "LayananTeknis"){
+		$_SESSION['status'] = "diklat_logedin";
+		header("location:diklat/");
 	}else if($data['Level'] == "Karyawan"){
 		$_SESSION['status'] = "karyawan_logedin";
 		$id_karyawan = $data['Id_karyawan'];

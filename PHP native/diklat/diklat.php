@@ -96,8 +96,8 @@
                         <input type="text" name="jurusan" class="form-control" placeholder="Masukkan Jurusan..">
                       </div>
                       <div class="form-group">
-                        <label>status</label>
-                        <input type="text" name="status" class="form-control" placeholder="Masukkan status..">
+                        <label>Keterangan</label>
+                        <input type="text" name="keterangan" class="form-control" placeholder="Masukkan keterangan..">
                       </div>
                       <div class="form-group">
                         <label>Jadwal Pelatihan</label>
@@ -111,6 +111,21 @@
                         <label>Penyaluran</label>
                         <input type="text" name="penyaluran" class="form-control" placeholder="Masukkan Penyaluran..">
                       </div>
+                      <div class="form-group">
+                        <label>STATUS</label>
+                        <select name="status" class="form-control">
+                          <option value="">- Pilih -</option>
+                          <?php 
+                          include 'koneksi.php';
+                          $status = mysqli_query($koneksi,"SELECT * FROM master_status ORDER BY Id_status ASC");
+                          while($k = mysqli_fetch_array($status)){
+                            ?>
+                            <option value="<?php echo $k['Id_status']; ?>"><?php echo $k['Status']; ?></option>
+                            <?php 
+                          }
+                          ?>
+                        </select>
+                    </div>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -128,23 +143,21 @@
                   <thead>
                   <tr>
                   <th>NO</th>
-                    <th>OPSI</th>
-                    <th>NAMA</th>
-                    <th>TEMPAT LAHIR</th>
-                    <th>TANGGAL LAHIR</th>
-                    <th>ALAMAT</th>
-                    <th>JURUSAN</th>
-                    <th>status</th>
-                    <th>JADWAL PELATIHAN</th>
-                    <th>ANGKATAN</th>
-                    <th>PENYALURAN</th>
+                  <th>OPSI</th>
+                  <th>NAMA</th>
+                  <th>TEMPAT LAHIR</th>
+                  <th>TANGGAL LAHIR</th>
+                  <th>JURUSAN</th>
+                  <th>ANGKATAN</th>
+                  <th>PENYALURAN</th>
+                  <th>STATUS</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi, "SELECT * FROM diklat ORDER BY Id_diklat DESC;");
+                  $data = mysqli_query($koneksi, "SELECT diklat.*, master_status.Status FROM diklat LEFT JOIN master_status ON diklat.Id_status=master_status.Id_status ORDER BY Id_diklat DESC;");
                   while($d = mysqli_fetch_array($data)){
                       ?>
                       <tr>
@@ -193,8 +206,8 @@
                                   <td><?php echo $d['Jurusan']; ?></td>
                                 </tr>
                                 <tr>
-                                  <th>status</th>
-                                  <td><?php echo $d['status']; ?></td>
+                                  <th>KETERANGAN</th>
+                                  <td><?php echo $d['Keterangan']; ?></td>
                                 </tr>
                                 <tr>
                                   <th>JADWAL PELATIHAN</th>
@@ -207,6 +220,10 @@
                                 <tr>
                                   <th>PENYALURAN</th>
                                   <td><?php echo $d['Penyaluran']; ?></td>
+                                </tr>
+                                <tr>
+                                  <th>STATUS</th>
+                                  <td><?php echo $d['Status']; ?></td>
                                 </tr>
                                 </table>
                               </div>
@@ -231,58 +248,58 @@
                                 <div class="modal-body">  
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>NAMA</label>
-                                  <input type="hidden" name="id" required="required" class="form-control" value="<?php echo $d['Id_diklat']; ?>">
-                                  <input type="text" style="width:100%" name="nama" required="required" class="form-control" value="<?php echo $d['Nama']; ?>">
+                                  <input type="hidden" name="id"  class="form-control" value="<?php echo $d['Id_diklat']; ?>">
+                                  <input type="text" style="width:100%" name="nama"  class="form-control" value="<?php echo $d['Nama']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>TEMPAT LAHIR</label>
-                                  <input type="text" style="width:100%" name="tempat_lahir" required="required" class="form-control" value="<?php echo $d['Tempat_lahir']; ?>">
+                                  <input type="text" style="width:100%" name="tempat_lahir"  class="form-control" value="<?php echo $d['Tempat_lahir']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>TANGGAL LAHIR</label>
-                                  <input type="text" style="width:100%" name="tanggal_lahir" required="required" class="form-control datepicker2" placeholder="Ubah Tanggal Lahir" value="<?php echo $d['Tanggal_lahir']; ?>">
+                                  <input type="text" style="width:100%" name="tanggal_lahir"  class="form-control datepicker2" placeholder="Ubah Tanggal Lahir" value="<?php echo $d['Tanggal_lahir']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>ALAMAT</label>
-                                  <input type="text" style="width:100%" name="alamat" required="required" class="form-control" value="<?php echo $d['Alamat']; ?>">
+                                  <input type="text" style="width:100%" name="alamat"  class="form-control" value="<?php echo $d['Alamat']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>JURUSAN</label>
-                                  <input type="text" style="width:100%" name="jurusan" required="required" class="form-control" value="<?php echo $d['Jurusan']; ?>">
+                                  <input type="text" style="width:100%" name="jurusan"  class="form-control" value="<?php echo $d['Jurusan']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
-                                  <label>status</label>
-                                  <input type="text" style="width:100%" name="status" required="required" class="form-control" value="<?php echo $d['status']; ?>">
+                                  <label>KETERANGAN</label>
+                                  <input type="text" style="width:100%" name="keterangan"  class="form-control" value="<?php echo $d['Keterangan']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>JADWAL PELATIHAN</label>
-                                  <input type="text" style="width:100%" name="jadwal_pelatihan" required="required" class="form-control datepicker2" value="<?php echo $d['Jadwal_pelatihan']; ?>">
+                                  <input type="text" style="width:100%" name="jadwal_pelatihan"  class="form-control datepicker2" value="<?php echo $d['Jadwal_pelatihan']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>ANGKATAN</label>
-                                  <input type="text" style="width:100%" name="angkatan" required="required" class="form-control" value="<?php echo $d['Angkatan']; ?>">
+                                  <input type="text" style="width:100%" name="angkatan"  class="form-control" value="<?php echo $d['Angkatan']; ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>PENYALURAN</label>
-                                  <input type="text" style="width:100%" name="penyaluran" required="required" class="form-control" value="<?php echo $d['Penyaluran']; ?>">
+                                  <input type="text" style="width:100%" name="penyaluran"  class="form-control" value="<?php echo $d['Penyaluran']; ?>">
                                 </div>
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                     <label>STATUS</label>
-                                    <select name="status" style="width:100%" class="form-control" required="required">
+                                    <select name="status" style="width:100%" class="form-control" >
                                       <option value="">- Pilih -</option>
                                       <?php 
                                       $status = mysqli_query($koneksi,"SELECT * FROM master_status ORDER BY Id_status ASC");
                                       while($k = mysqli_fetch_array($status)){
                                         ?>
-                                        <option <?php if($d['Id_status'] == $k['Id_status']){echo "selected='selected'";} ?> value="<?php echo $k['Id_status']; ?>"><?php echo $k['status']; ?></option>
+                                        <option <?php if($d['Id_status'] == $k['Id_status']){echo "selected='selected'";} ?> value="<?php echo $k['Id_status']; ?>"><?php echo $k['Status']; ?></option>
                                         <?php 
                                       }
                                       ?>
@@ -325,17 +342,14 @@
                       <td><?php echo $d['Nama']; ?></td>
                       <td><?php echo $d['Tempat_lahir']; ?></td>
                       <td><?php echo date('d-m-Y', strtotime($d['Tanggal_lahir'])); ?></td>
-                      <td><?php echo $d['Alamat']; ?></td>
                       <td><?php echo $d['Jurusan']; ?></td>
-                      <td><?php echo $d['status']; ?></td>
-                      <td><?php echo date('d-m-Y', strtotime($d['Jadwal_pelatihan'])); ?></td>
                       <td><?php echo $d['Angkatan']; ?></td>
                       <td><?php echo $d['Penyaluran']; ?></td>
-
+                      <td><?php echo $d['Status']; ?></td>
                     </tr>
                     <?php 
                   }
-                  ?>
+                  ?>                    
                 </tbody>
                 </table>
               </div>
