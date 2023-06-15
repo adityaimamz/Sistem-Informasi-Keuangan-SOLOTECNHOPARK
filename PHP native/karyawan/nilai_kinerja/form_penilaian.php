@@ -61,227 +61,132 @@ $profil = mysqli_fetch_assoc($karyawan);
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-condensed">
+                <!-- <table border="1"> -->
                   <thead>
                     <tr>
-                      <th colspan="4" class="text-center">UNSUR PENILAIAN</th>
-                      <th class="text-center">BOBOT/NILAI</th>
+                      <th colspan="2" class="text-center">UNSUR PENILAIAN</th>
+                      <th colspan="4" class="text-center">BOBOT/NILAI</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th colspan="5">Kehadiran</th>
+                      <th colspan="2">Kehadiran</th>
+                      <th>1</th>
+                      <th>2</th>
+                      <th>3</th>
+                      <th>4</th>
                     </tr>
                     <tr>
                       <td class="text-center">A</td>
-                      <td colspan="3">Tidak masuk kerja termasuk sakit</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
+                      <td>Tidak masuk kerja termasuk sakit</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        Keterangan : <br>
+                        0 hari (4) <br>
+                        1-2 hari (3) <br>
+                        3-5 hari (2) <br>
+                        > 5 hari (1)
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-center">4</td>
-                      <td>0 hari</td>
-                    </tr>
-                    <tr>
-                    <td class="text-center">3</td>
-                      <td >1-2 hari</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">2</td>
-                      <td>3-5 hari</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td> > 5 hari</td>
-                    </tr>
-
-
-                    <tr>
-                      <th colspan="5">Kehadiran</th>
+                      <th colspan="2">Kehadiran</th>
                     </tr>
                     <tr>
                       <td class="text-center">B</td>
-                      <td colspan="3">Interupsi/Pulang Awal</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
+                      <td>Interupsi/Pulang Awal</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        Keterangan : <br>
+                        0-6 kali (4) <br>
+                        7-12 kali (3) <br>
+                        13-20 kali (2) <br>
+                        0-6 kali (1)
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-center">4</td>
-                      <td>0-6 kali</td>
-                    </tr>
-                    <tr>
-                    <td class="text-center">3</td>
-                      <td>7-12 kali</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">2</td>
-                      <td>13-20 kali</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-
-                      <td>0-6 kali</td>
-                    </tr>
-                <tr>
-                      <th colspan="5">Kehadiran</th>
+                      <th colspan="2">Kehadiran</th>
                     </tr>
                     <tr>
                       <td class="text-center">C</td>
-                      <td colspan="3">Keterlambatan</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
+                      <td>Keterlambatan</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        Keterangan : <br>
+                        0-2 kali (4) <br>
+                        3-5 kali (3) <br>
+                        6-10 kali (2) <br>
+                        > 10 kali (1)
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-center">4</td>
-                      <td>0-2 kali</td>
-                    </tr>
-                    <tr>
-                    <td class="text-center">3</td>
-                      <td>3-5 kali</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">2</td>
-                      <td>6-10 kali</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td> > 10 kali</td>
-                    </tr>
-
-                    <tr>
-                      <th colspan="5">Perilaku pergaulan</th>
+                      <th colspan="2">Perilaku pergaulan</th>
                     </tr>
                     <tr>
                       <td class="text-center">A</td>
-                      <td colspan="3">Kejujuran</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
+                      <td>Kejujuran</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        Keterangan : <br>
+                        Berperilaku sangat jujur (4) <br>
+                        Pernah berperilaku tidak jujur (2) <br>
+                        Sering berperilaku tidak jujur (1)
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-center">4</td>
-                      <td>Berperilaku sangat jujur</td>
-                    </tr>
-                      <td class="text-center">2</td>
-                      <td>Pernah berperilaku tidak jujur</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td> Sering berperilaku tidak jujur</td>
-                    </tr>
-
-                    <tr>
-                      <th colspan="5">Perilaku pergaulan</th>
+                      <th colspan="2">Perilaku pergaulan</th>
                     </tr>
                     <tr>
                       <td class="text-center">A</td>
-                      <td colspan="3">Respek/Penghargaan kepada orang lain</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
+                      <td>Respek/Penghargaan kepada orang lain</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        Keterangan : <br>
+                        Menghargai (ngajeni) orang lain (4) <br>
+                        Mempertimbangkan orang lain (3) <br>
+                        Pernah tidak menghargai orang lain (2) <br>
+                        Tidak menghargai orang lain (1)
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-center">4</td>
-                      <td>Menghargai (ngajeni) orang lain</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">3</td>
-                      <td>Mempertimbangkan orang lain</td>
-                    </tr>
-                      <td class="text-center">2</td>
-                      <td>Pernah tidak menghargai orang lain</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td>Tidak menghargai orang lain</td>
-                    </tr>
-
-                    <tr>
-                      <th colspan="5">Perilaku pergaulan</th>
+                      <th colspan="2">Perilaku pergaulan</th>
                     </tr>
                     <tr>
                       <td class="text-center">A</td>
-                      <td colspan="3">Respek/Penghargaan kepada orang lain</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
-                      </td>
+                      <td>Respek/Penghargaan kepada orang lain</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
                     </tr>
                     <tr>
                       <td class="text-center">4</td>
@@ -300,25 +205,15 @@ $profil = mysqli_fetch_assoc($karyawan);
                     </tr>
 
                     <tr>
-                      <th colspan="5">Perilaku pergaulan</th>
+                      <th colspan="2">Perilaku pergaulan</th>
                     </tr>
                     <tr>
                       <td class="text-center">A</td>
-                      <td colspan="3">Terbuka terhadap saran dan kritik</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
-                      </td>
+                      <td>Terbuka terhadap saran dan kritik</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
                     </tr>
                     <tr>
                       <td class="text-center">4</td>
@@ -335,27 +230,16 @@ $profil = mysqli_fetch_assoc($karyawan);
                       <td class="text-center">1</td>
                       <td>Orang lain dengan terpaksa menyampaikan kritik dan saran</td>
                     </tr>
-
                     <tr>
-                      <th colspan="5">Perilaku pergaulan</th>
+                      <th colspan="2">Perilaku pergaulan</th>
                     </tr>
                     <tr>
                       <td class="text-center">A</td>
-                      <td colspan="3">Peduli pada orang lainn</td>
-                      <td rowspan="5">
-                        <!-- radio -->
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal">
-                          </label>
-                          <label>
-                            <input type="radio" name="r1" class="minimal" checked>
-                          </label>
-                        </div>
-                      </td>
+                      <td>Peduli pada orang lainn</td>
+                      <td><input type="radio" name="r1_1" class="minimal" value="1"></td>
+                      <td><input type="radio" name="r1_2" class="minimal" value="2"></td>
+                      <td><input type="radio" name="r1_3" class="minimal" value="3"></td>
+                      <td><input type="radio" name="r1_4" class="minimal" value="4"></td>
                     </tr>
                     <tr>
                       <td class="text-center">4</td>
@@ -372,8 +256,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                       <td class="text-center">1</td>
                       <td>Tidak peduli pada peristiwa yang dialami orang lain</td>
                     </tr>
-                </tbody>
-                
+                  </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
