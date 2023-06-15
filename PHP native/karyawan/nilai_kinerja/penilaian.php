@@ -83,6 +83,8 @@ include 'header.php';
                         <?php
                         $no = 1;
                         while ($row = mysqli_fetch_assoc($cek)) {
+                          $idp = $row['Id_penilaian'];
+                          $nilai = $row['Total_nilai'];
                           $karyawanDinilai = $row['karyawan_dinilai'];
                           $data = "SELECT * FROM karyawan, jabatan, unit_kerja WHERE karyawan.Id_jabatan=jabatan.Id_jabatan AND unit_kerja.Id_unit_kerja=karyawan.Id_unit_kerja AND karyawan.Id_karyawan='$karyawanDinilai' ";
                           $result = mysqli_query($koneksi, $data);
@@ -95,8 +97,14 @@ include 'header.php';
                                 <td><?php echo $row['Nama_jabatan']; ?></td>
                                 <td><?php echo $row['Nama_unit_kerja']; ?></td>
                                 <td class="text-center">
-                                <a href="form_penilaian.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>" class="btn btn-primary btn-block"><b>Nilai</b></a>
-                                  <!-- <a href="form_penilaian.php?id=<?php echo $row['Id_karyawan']; ?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a> -->
+                                  <?php 
+                                  if($nilai==NULL){
+                                    echo "";
+                                  }else{?>
+                                    <a href="form_penilaian.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>&idp=<?php echo $idp;?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
+                                  <?php 
+                                  }
+                                  ?>
                                 </td>
                               </tr>
                             <?php 
