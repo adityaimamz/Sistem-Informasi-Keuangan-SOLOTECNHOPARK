@@ -97,14 +97,7 @@ include 'header.php';
                                 <td><?php echo $row['Nama_jabatan']; ?></td>
                                 <td><?php echo $row['Nama_unit_kerja']; ?></td>
                                 <td class="text-center">
-                                  <?php 
-                                  if($nilai==NULL){
-                                    echo "";
-                                  }else{?>
                                     <a href="form_penilaian.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>&idp=<?php echo $idp;?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
-                                  <?php 
-                                  }
-                                  ?>
                                 </td>
                               </tr>
                             <?php 

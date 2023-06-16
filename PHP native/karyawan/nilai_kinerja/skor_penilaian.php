@@ -52,7 +52,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                 </tr>
                 <tr>
                     <th>Skor</th>
-                    <td><?php echo $total; ?></td>
+                    <td><?php echo $total/11; ?></td>
                 </tr>
             </table>
           </div>

@@ -103,7 +103,7 @@
             </a>
           </li>
           <li>
-            <a href="nilai_kinerja/penilaian.php?id=<?php echo $_SESSION['id']?>">
+            <a href="penilaian.php?id=<?php echo $_SESSION['id']?>">
               <i class="fa fa-edit"></i>
               <span>NILAI REKAN</span>
             </a>
