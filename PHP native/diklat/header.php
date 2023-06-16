@@ -115,6 +115,19 @@
             </ul>
           </li>
 
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-briefcase"></i>
+              <span>INKUBATOR</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+              <li><a href="inkubator.php"><i class="fa fa-circle-o"></i> Data peserta inkubator</a></li>
+            </ul>
+          </li>
+
 
 
             <li class="treeview">
