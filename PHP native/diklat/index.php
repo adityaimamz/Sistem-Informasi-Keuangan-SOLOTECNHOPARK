@@ -59,7 +59,7 @@ $hari_ini = date('w');
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="diklat_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="diklat.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -105,6 +105,75 @@ $hari_ini = date('w');
             <i class="ion ion-stats-bars"></i>
           </div>
           <a href="diklat_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+       <!-- DATA INKUBATOR -->
+       <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php 
+            $tanggal = date('Y-m-d');
+            $inkubator = mysqli_query($koneksi,"SELECT count(Id_inkubator) as total_inkubator FROM inkubator ");
+            $p = mysqli_fetch_assoc($inkubator);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_inkubator']
+              ?>
+            </h4>
+            <p>Total Semua Peserta inkubator</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="diklat.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php
+            $bulan = date('m');
+            $inkubator = mysqli_query($koneksi,"SELECT count(Id_inkubator) as total_inkubatoraktif FROM inkubator LEFT JOIN status_inkubator ON inkubator.Id_statusinkubator=status_inkubator.Id_statusinkubator WHERE inkubator.Id_statusinkubator = '1'");
+            $p = mysqli_fetch_assoc($inkubator);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_inkubatoraktif']
+              ?>
+            </h4>
+            <p>Jumlah Peserta Status Aktif</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="inkubator_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      
+      
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <?php
+            $bulan = date('m');
+            $inkubator = mysqli_query($koneksi,"SELECT count(Id_inkubator) as total_inkubatoraktif FROM inkubator LEFT JOIN status_inkubator ON inkubator.Id_statusinkubator=status_inkubator.Id_statusinkubator WHERE inkubator.Id_statusinkubator = '2'");
+            $p = mysqli_fetch_assoc($inkubator);
+            ?>
+            <h4 style="font-weight: bolder">
+              <?php 
+             echo $p['total_inkubatoraktif']
+              ?>
+            </h4>
+            <p>Jumlah Peserta Status Tidak Aktif</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="inkubator_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 

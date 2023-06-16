@@ -130,7 +130,7 @@ var ctx = document.getElementById("myChart2").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels : ["Surat Masuk","","Surat Keluar"],
+        labels : ["Belum Bekerja","","Sudah Bekerja"],
         datasets: [{
             label: '',
             data: [
