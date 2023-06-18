@@ -22,9 +22,9 @@
             <h3 class="box-title">Data Akun Karyawan</h3>
             <div class="btn-group pull-right">            
 
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+              <a href="../tambah_karyawan_akun.php"><button type="button" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus"></i> &nbsp Tambah User
-              </button>
+              </button></a>
 
               &nbsp
 
@@ -59,6 +59,8 @@
                       Berhasil Update
                     </div>                
                     <?php
+                  }else{
+
                   }
                 }
                 ?>
@@ -119,7 +121,6 @@
                   <tr>
                     <th>NO</th>
                     <th>NAMA USER</th>
-                    <th>ALAMAT</th>
                     <th>USERNAME</th>
                     <th>LEVEL</th>
                     <th>OPSI</th>
@@ -128,7 +129,7 @@
 
                 <tbody>
                   <?php 
-                  include '../koneksi.php';
+                  include '../../koneksi.php';
                   $no=1;
                   $data = mysqli_query($koneksi,"SELECT * FROM master_user WHERE master_user.Level='Karyawan' order by Id_user desc");
                   while($d = mysqli_fetch_array($data)){
@@ -136,7 +137,6 @@
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td><?php echo $d['Nama']; ?></td>
-                      <td><?php echo $d['Alamat']; ?></td>
                       <td><?php echo $d['Username']; ?></td>
                       <td><?php echo $d['Level']; ?></td>
                       <td>    

@@ -19,7 +19,7 @@ $r10 = $_POST['r10'] ?? 0;
 $r11 = $_POST['r11'] ?? 0;
 
 $total = $r1 + $r2 + $r3 + $r4 + $r5 + $r6 + $r7 + $r8 + $r9 + $r10 + $r11;
-$mean = round(($total / 11),2);
+$mean = $total/11;
 
 mysqli_query($koneksi, "update penilaian set Total_nilai='$total', Ratarata_nilai='$mean' where Id_penilaian='$idp'")  or die(mysqli_error($koneksi));
 header("Location: skor_penilaian.php?dinilai=" . urlencode($id_karyawan) . "&bulan=" . urlencode($bulan) . "&idp=" . urlencode($idp). "&mean=" . urlencode($mean));

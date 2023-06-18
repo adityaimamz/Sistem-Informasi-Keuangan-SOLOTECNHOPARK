@@ -26,14 +26,42 @@
               </button></a>
               &nbsp
               &nbsp
-
               <a href="data_karyawan_csv.php"><button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-file-excel-o"></i> &nbsp CSV
               </button></a>
-
             </div><hr>
+            <?php 
+                if(isset($_GET['alert'])){
+                  if($_GET['alert']=='gagal'){
+                    ?>
+                    <div class="alert alert-warning alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4><i class="icon fa fa-warning"></i> Peringatan !</h4>
+                      Ekstensi Tidak Diperbolehkan
+                    </div>                
+                    <?php
+                  }elseif($_GET['alert']=="berhasil"){
+                    ?>
+                    <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4><i class="icon fa fa-check"></i> Success</h4>
+                      Berhasil Disimpan
+                    </div>                
+                    <?php
+                  }elseif($_GET['alert']=="berhasilupdate"){
+                    ?>
+                    <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4><i class="icon fa fa-check"></i> Success</h4>
+                      Berhasil Update
+                    </div>                
+                    <?php
+                  }else{
+                    
+                  }
+                }
+                ?>
           </div>
-
           <div class="box-body">
             <div class="card">
               <!-- /.card-header -->

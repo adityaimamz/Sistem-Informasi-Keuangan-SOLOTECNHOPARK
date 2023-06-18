@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 $data = mysqli_query($koneksi,"SELECT * FROM master_user order by Id_user desc");
 // header kolom pada file CSV
 $csv_header = array("NO", "ID USER","NAMA USER", "ALAMAT","USERNAME", "PASSWORD", "LEVEL");

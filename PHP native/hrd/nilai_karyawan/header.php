@@ -130,7 +130,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li class="active"><a href="../rencana_kinerja.php"><i class="fa fa-circle-o"></i>Perencanaan Kinerja</a></li>
-              <li><a href="nilai_karyawan/rekap_penilaian.php"><i class="fa fa-circle-o"></i>Rekap Penilaian</a></li>
+              <li><a href="rekap_penilaian.php"><i class="fa fa-circle-o"></i>Rekap Penilaian</a></li>
             </ul>
           </li>
 

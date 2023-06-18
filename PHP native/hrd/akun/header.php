@@ -6,30 +6,30 @@
   <title>Administrator - Keuangan STP</title>
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../assets/bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
-  <link rel="shortcut icon" href="../assets/dist/img/logo stp-01.png" type="image/x-icon">
+  <link rel="stylesheet" href="../../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../assets/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../assets/dist/css/AdminLTE.min.css">
+  <link rel="shortcut icon" href="../../assets/dist/img/logo stp-01.png" type="image/x-icon">
 
-  <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../assets/bower_components/morris.js/morris.css">
-  <link rel="stylesheet" href="../assets/bower_components/jvectormap/jquery-jvectormap.css">
-  <link rel="stylesheet" href="../assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <link rel="stylesheet" href="../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="../../assets/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../assets/bower_components/morris.js/morris.css">
+  <link rel="stylesheet" href="../../assets/bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="../../assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="../../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
   <?php 
-  include '../koneksi.php';
+  include '../../koneksi.php';
   session_start();
   if($_SESSION['status'] != "hrd_logedin"){
-    header("location:../login.php?alert=belum_login");
+    header("location:../../login.php?alert=belum_login");
   }
   ?>
 
@@ -70,7 +70,7 @@
               </a>
             </li>
             <li>
-              <a href="logout.php"><i class="fa fa-sign-out"></i> LOGOUT</a>
+              <a href="../logout.php"><i class="fa fa-sign-out"></i> LOGOUT</a>
             </li>
           </ul>
         </div>
@@ -81,7 +81,7 @@
       <section class="sidebar">
       <div class="user-panel">
           <div align="center">
-          <img src="../gambar/user.png" class="img-circle img-responsive" width="100" height="100">
+          <img src="../../gambar/user.png" class="img-circle img-responsive" width="100" height="100">
           </div>
         </div>
 
@@ -91,7 +91,7 @@
           <li class="header">NAVIGASI</li>
 
           <li>
-            <a href="index.php">
+            <a href="../index.php">
               <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
             </a>
           </li>
@@ -105,16 +105,16 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="accordion-collapse collapse show"><a href="akun/user.php"><i class="fa fa-circle-o"></i> Data User</a></li>              
-              <li class="accordion-collapse collapse show"><a href="jabatan.php"><i class="fa fa-circle-o"></i> Data Jabatan</a></li>
-              <li class="accordion-collapse collapse show"><a href="cuti.php"><i class="fa fa-circle-o"></i> Data Cuti</a></li>
-              <li class="accordion-collapse collapse show"><a href="unit_kerja.php"><i class="fa fa-circle-o"></i> Data Unit Kerja</a></li> 
+              <li class="accordion-collapse collapse show"><a href="user.php"><i class="fa fa-circle-o"></i> Data User</a></li>              
+              <li class="accordion-collapse collapse show"><a href="../jabatan.php"><i class="fa fa-circle-o"></i> Data Jabatan</a></li>
+              <li class="accordion-collapse collapse show"><a href="../cuti.php"><i class="fa fa-circle-o"></i> Data Cuti</a></li>
+              <li class="accordion-collapse collapse show"><a href="../unit_kerja.php"><i class="fa fa-circle-o"></i> Data Unit Kerja</a></li> 
                             
             </ul>
           </li>
 
           <li>
-            <a href="database_karyawan.php">
+            <a href="../database_karyawan.php">
               <i class="fa fa-users"></i>
               <span>KARYAWAN</span>
             </a>
@@ -129,7 +129,7 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="rencana_kinerja/rencana_kinerja.php"><i class="fa fa-circle-o"></i>Perencanaan Kinerja</a></li>
+              <li><a href="../rencana_kinerja/rencana_kinerja.php"><i class="fa fa-circle-o"></i>Perencanaan Kinerja</a></li>
               <li><a href="nilai_karyawan/rekap_penilaian.php"><i class="fa fa-circle-o"></i>Rekap Penilaian</a></li>
             </ul>
           </li>
@@ -157,13 +157,13 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="#"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i>Infografis Kinerja Karyawan</a></li>
+              <li><a href="#.php"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
+              <li><a href="#.php"><i class="fa fa-circle-o"></i>Infografis Kinerja Karyawan</a></li>
             </ul>
           </li>
           
           <li>
-            <a href="logout.php">
+            <a href="../logout.php">
               <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
             </a>
           </li>

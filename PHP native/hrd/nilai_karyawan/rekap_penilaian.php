@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      RENCANA PENILAIAN
-      <small>Perencanaan Penilaian Karyawan</small>
+      REKAP PENILAIAN
+      <small>Rekap Penilaian Karyawan</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,7 +18,7 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Rencana Penilaian Karyawan</h3>
+            <h3 class="box-title">Rekap Penilaian Karyawan</h3>
           </div>
           <div class="box-body">
             <form method="post" action="" enctype="multipart/form-data">
@@ -55,7 +55,7 @@
 
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Perencanaan Penilaian Karyawan</h3>
+            <h3 class="box-title">Rekap Penilaian Karyawan</h3>
           </div>
           <div class="box-body">
             <?php
@@ -72,27 +72,27 @@
                       <th>NAMA KARYAWAN</th>
                       <th>JABATAN</th>
                       <th>UNIT KERJA</th>
-                      <th>AKSI</th>
+                      <th>SKOR</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php 
                       // include '../../koneksi.php';
                       $no=1;
-                      $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan";
+                      $skor=0;
+                      $karyawan = "SELECT * FROM karyawan JOIN jabatan ON karyawan.Id_jabatan=jabatan.Id_jabatan JOIN unit_kerja ON unit_kerja.Id_unit_kerja=karyawan.Id_unit_kerja JOIN penilaian ON karyawan.Id_karyawan=penilaian.karyawan_dinilai WHERE penilaian.Ratarata_nilai!=0 group by penilaian.karyawan_penilai";
                       $result = mysqli_query($koneksi, $karyawan);
                       //memeriksa apakah ada data yang ditemukan
                       if (mysqli_num_rows($result) > 0) { 
                         while ($row = mysqli_fetch_assoc($result)) {
+                            $skor+=$row['Ratarata_nilai'];
                       ?>
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td><?php echo $row['Nama']; ?></td>
                       <td><?php echo $row['Nama_jabatan']; ?></td>
                       <td><?php echo $row['Nama_unit_kerja']; ?></td>
-                      <td class="text-center">
-                        <a href="atur_penilai.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan ?>" class="btn btn-primary">Proses</a>
-                      </td>
+                      <td class="text-center"><?php echo $skor; ?></td>
                     </tr>
                     <?php 
                         }

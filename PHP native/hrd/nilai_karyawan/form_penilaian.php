@@ -73,10 +73,10 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <tbody>
                     <tr>
                       <th colspan="2">PERILAKU PERGAULAN</th>
-                      <th>Kurang Cukup</th>
-                      <th>Cukup</th>
-                      <th>Baik</th>
-                      <th>Baik Sekali</th>
+                      <th>1</th>
+                      <th>2</th>
+                      <th>3</th>
+                      <th>4</th>
                     </tr>
                     <tr>
                       <td class="text-center">A</td>
@@ -89,12 +89,10 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Berperilaku sangat jujur (4)</li>
-                          <li>Pernah berperilaku tidak jujur (2) </li>
-                          <li>Sering berperilaku  tidak jujur (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Berperilaku sangat jujur (4) <br>
+                        Pernah berperilaku tidak jujur (2) <br>
+                        Sering berperilaku  tidak jujur (1)
                       </td>
                     </tr>
                     <tr>
@@ -108,13 +106,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Menghargai (ngajeni) orang lain (4)</li>
-                          <li>Mempertimbangkan orang lain (3)</li>
-                          <li>Pernah tidak menghargai orang lain (2)</li>
-                          <li>Tidak menghargai orang lain (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Menghargai (ngajeni) orang lain (4) <br>
+                        Mempertimbangkan orang lain (3) <br>
+                        Pernah tidak menghargai orang lain (2) <br>
+                        Tidak menghargai orang lain (1)
                       </td>
                     </tr>
                     <tr>
@@ -128,13 +124,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan : 
-                        <ol>
-                          <li>Keberadaannya sangat diperlukan/diharapkan (4)</li>
-                          <li>Keberadaannya diperlukan/diharapkan (3)</li>
-                          <li>Keberadaannya tidak berpengaruh (2)</li>
-                          <li>keberadaannya tidak diharapkan (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Keberadaannya sangat diperlukan/diharapkan (4) <br>
+                        Keberadaannya diperlukan/diharapkan (3) <br>
+                        Keberadaannya tidak berpengaruh (2) <br>
+                        keberadaannya tidak diharapkan (1)
                       </td>
                     </tr>
                     <tr>
@@ -148,13 +142,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan : 
-                        <ol>
-                          <li>Orang lain dengan enak dapat menyampaikan kritik dan saran secara spontan (4)</li>
-                          <li>Orang lain tidak sungkan menyampaikan kritik  dan saran ketika diminta (3)</li>
-                          <li>Orang lain enggan menyampaikan kritik  dan saran ketika diminta (2)</li>
-                          <li>Orang lain dengan terpaksa menyampaikan kritik dan saran (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Orang lain dengan enak dapat menyampaikan kritik dan saran secara spontan (4) <br>
+                        Orang lain tidak sungkan menyampaikan kritik  dan saran ketika diminta (3) <br>
+                        Orang lain enggan menyampaikan kritik  dan saran ketika diminta (2) <br>
+                        Orang lain dengan terpaksa menyampaikan kritik dan saran (1)
                       </td>
                     </tr>
                     <tr>
@@ -168,13 +160,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Sangat peduli pada peristiwa yang dialami orang lain (4)</li>
-                          <li>Peduli pada peristiwa yang dialami orang lain (3)</li>
-                          <li>Kurang peduli pada peristiwa yang dialami orang lain (2)</li>
-                          <li>Tidak peduli pada peristiwa yang dialami orang lain (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Sangat peduli pada peristiwa yang dialami orang lain (4) <br>
+                        Peduli pada peristiwa yang dialami orang lain (3) <br>
+                        Kurang peduli pada peristiwa yang dialami orang lain (2) <br>
+                        Tidak peduli pada peristiwa yang dialami orang lain (1)
                       </td>
                     </tr>
                     <tr>
@@ -191,13 +181,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Menguasai dasar-dasar, keahlian, metode, sistem, dan prosedur dalam pelaksanaan pekerjaannya dan juga bidang lainnya (4)</li>
-                          <li>Menguasai hanya ruang lingkup pekerjaannya sendiri (3)</li>
-                          <li>Kurang menguasai beberapa tahap pekerjaannya (2)</li>
-                          <li>Hanya mengetahui garis besar dari perusahannya (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Menguasai dasar-dasar, keahlian, metode, sistem, dan prosedur dalam pelaksanaan pekerjaannya dan juga bidang lainnya (4) <br>
+                        Menguasai hanya ruang lingkup pekerjaannya sendiri (3) <br>
+                        Kurang menguasai beberapa tahap pekerjaannya (2) <br>
+                        Hanya mengetahui garis besar dari perusahannya (1)
                       </td>
                     </tr>
                     <tr>
@@ -211,13 +199,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Mutu pekerjaan lebih tinggi dari standar atau rata-rata lebih tinggi dari standar (4)</li>
-                          <li>Mutu sesuai dengan standar (3)</li>
-                          <li>Kurang memuaskan, tapi mutu tidak jauh dari standar (2)</li>
-                          <li>Mutu pekerjaan jauh dari standar (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Mutu pekerjaan lebih tinggi dari standar atau rata-rata lebih tinggi dari standar (4) <br>
+                        Mutu sesuai dengan standar (3) <br>
+                        Kurang memuaskan, tapi mutu tidak jauh dari standar (2) <br>
+                        Mutu pekerjaan jauh dari standar (1)
                       </td>
                     </tr>
                     <tr>
@@ -231,13 +217,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Mampu menyelesaikan pekerjaan lebih cepat dari target waktu yang ditentukan (4)</li>
-                          <li>Pada umumnya dapat menyelesiakan pekerjaan sesuai dengan waktu yang ditentukan (3)</li>
-                          <li>Terlambat menyelesaikan pekerjaan menurut target waktu yang ditentukan (2)</li>
-                          <li>Tidak mampu menyelesaikan pekerjaan menurut target waktu yang ditentukan (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Mampu menyelesaikan pekerjaan lebih cepat dari target waktu yang ditentukan (4) <br>
+                        Pada umumnya dapat menyelesiakan pekerjaan sesuai dengan waktu yang ditentukan (3) <br>
+                        Terlambat menyelesaikan pekerjaan menurut target waktu yang ditentukan (2) <br>
+                        Tidak mampu menyelesaikan pekerjaan menurut target waktu yang ditentukan (1)
                       </td>
                     </tr>
                     <tr>
@@ -254,13 +238,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Atasan tidak perlu memberitahukan secara rinci tugas-tugas yang harus diselesaikan dan sangat dapat dipercaya /diandalkan terhadap tugas-tugasnya disamping perhatian terhadap tugas kelompok (4)</li>
-                          <li>Dapat dipercaya untuk menyelesaikan dengan baik tugas-tugas yang diuraikan dengan jelas (3)</li>
-                          <li>Terkadang lalai terhadap tugas yang menjadi tanggungjawabnya dan atasan masih perlu mengecek dan mengingatkan tugas-tugasnya secara rinci (2)</li>
-                          <li>Tidak bertanggungjawab dan tidak dapat dipercaya terhadap tugas dan pekerjaannya (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Atasan tidak perlu memberitahukan secara rinci tugas-tugas yang harus diselesaikan dan sangat dapat dipercaya /diandalkan terhadap tugas-tugasnya disamping perhatian terhadap tugas kelompok (4) <br>
+                        Dapat dipercaya untuk menyelesaikan dengan baik tugas-tugas yang diuraikan dengan jelas (3) <br>
+                        Terkadang lalai terhadap tugas yang menjadi tanggungjawabnya dan atasan masih perlu mengecek dan mengingatkan tugas-tugasnya secara rinci (2) <br>
+                        Tidak bertanggungjawab dan tidak dapat dipercaya terhadap tugas dan pekerjaannya (1)
                       </td>
                     </tr>
                     <tr>
@@ -274,13 +256,11 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan :
-                        <ol>
-                          <li>Mudah diajak kerjasama baik di dalam maupun di luar unit kerjanya (4)</li>
-                          <li>Dapat bekerjasama dengan kelompoknya (3)</li>
-                          <li>Kurang dapat bekerjasama dengan kelompoknya (2)</li>
-                          <li>Tidak dapat bekerjasama dengan kelompoknya (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Mudah diajak kerjasama baik di dalam maupun di luar unit kerjanya (4) <br>
+                        Dapat bekerjasama dengan kelompoknya (3) <br>
+                        Kurang dapat bekerjasama dengan kelompoknya (2) <br>
+                        Tidak dapat bekerjasama dengan kelompoknya (1)
                       </td>
                     </tr>
                     <tr>
@@ -294,17 +274,15 @@ $profil = mysqli_fetch_assoc($karyawan);
                     <tr>
                       <td></td>
                       <td>
-                        Keterangan : 
-                        <ol>
-                          <li>Sadar akan kesempatan memperbaiki pekerjaannya dan sering menampilkan ide-ide produktif (4)</li>
-                          <li>Bekerja tanpa menunggu perintah atasan, tidak perlu kontrol dan dapat dipercaya (3)</li>
-                          <li>Perlu dimotivasi untuk menyelesaikan pekerjaan secara rutin (2)</li>
-                          <li>Bekerja dengan menunggu instruksi atau perintah atasan (1)</li>
-                        </ol>
+                        Keterangan : <br>
+                        Sadar akan kesempatan memperbaiki pekerjaannya dan sering menampilkan ide-ide produktif (4) <br>
+                        Bekerja tanpa menunggu perintah atasan, tidak perlu kontrol dan dapat dipercaya (3) <br>
+                        Perlu dimotivasi untuk menyelesaikan pekerjaan secara rutin (2) <br>
+                        Bekerja dengan menunggu instruksi atau perintah atasan (1)
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="2"><h5 style="color:red;"><b>PERHATIAN : Anda TIDAK DAPAT mengubah data penilaian yang telah disimpan</b></td>
+                      <td colspan="2"></td>
                       <td colspan="4">
                         <div class="form-group">
                           <div class="col-sm-offset-2 col-sm-10">
