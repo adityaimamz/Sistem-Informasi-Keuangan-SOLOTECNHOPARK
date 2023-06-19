@@ -1,8 +1,9 @@
 <?php 
 include '../../koneksi.php';
-$id  = $_GET['id'];
-$idk  = $_GET['idk'];
+$idp  = $_GET['idp'];
+$dinilai  = $_GET['dinilai'];
 $bulan  = $_GET['bulan'];
 
-mysqli_query($koneksi, "delete from penilaian where Id_penilaian='$id'");
-header("Location: atur_penilai.php?id=" . urlencode($idk) . "&bulan=" . urlencode($bulan));
+mysqli_query($koneksi, "delete from rencana_penilaian where Id_rencana='$idp'");
+mysqli_query($koneksi, "delete from penilaian where Id_karyawan='$dinilai' AND Bulan='$bulan' ");
+header("Location: atur_penilai.php?dinilai=" . urlencode($dinilai) . "&bulan=" . urlencode($bulan));

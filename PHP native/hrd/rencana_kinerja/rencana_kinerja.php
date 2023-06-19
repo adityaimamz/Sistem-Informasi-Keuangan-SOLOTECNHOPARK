@@ -77,7 +77,6 @@
                   </thead>
                   <tbody>
                     <?php 
-                      // include '../../koneksi.php';
                       $no=1;
                       $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan";
                       $result = mysqli_query($koneksi, $karyawan);
@@ -91,7 +90,7 @@
                       <td><?php echo $row['Nama_jabatan']; ?></td>
                       <td><?php echo $row['Nama_unit_kerja']; ?></td>
                       <td class="text-center">
-                        <a href="atur_penilai.php?id=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan ?>" class="btn btn-primary">Proses</a>
+                        <a href="atur_penilai.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan ?>" class="btn btn-primary">Proses</a>
                       </td>
                     </tr>
                     <?php 
