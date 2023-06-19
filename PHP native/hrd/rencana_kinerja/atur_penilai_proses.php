@@ -5,5 +5,6 @@ $dinilai  = $_GET['dinilai'];
 $bulan = $_GET['bulan'];
 $tahun = date('Y');
 
-mysqli_query($koneksi, "insert into penilaian values (NULL,'$dinilai', '$penilai', '$bulan','$tahun','','')");
+mysqli_query($koneksi, "insert into penilaian values (NULL,'$dinilai', '$penilai','','')");
+mysqli_query($koneksi, "insert into penilaian values (NULL,'$dinilai', '', '', '$bulan','$tahun')");
 header("Location: atur_penilai.php?id=" . urlencode($dinilai) . "&bulan=" . urlencode($bulan));
