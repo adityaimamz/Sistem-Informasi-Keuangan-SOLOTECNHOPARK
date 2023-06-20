@@ -109,7 +109,7 @@
             </a>
           </li>
           <li>
-            <a href="nilai_kinerja/kinerja_diri.php">
+            <a href="kinerja_diri.php">
               <i class="fa fa-user"></i>
               <span>KINERJA SAYA</span>
             </a>
