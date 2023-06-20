@@ -1,6 +1,7 @@
 <?php 
 include 'header.php'; 
 $id = $_GET['dinilai'];
+$penilai = $_GET['penilai'];
 $idp = $_GET['idp'];
 $bulan = $_GET['bulan'];
 $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan = '$id'");
@@ -310,6 +311,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                           <div class="col-sm-offset-2 col-sm-10">
                             <input type="hidden" name="idp" id="idp" required="required" class="form-control" value="<?php echo $idp; ?>">
                             <input type="hidden" name="id_karyawan" id="id_karyawan" required="required" class="form-control" value="<?php echo $id; ?>">
+                            <input type="hidden" name="penilai" id="penilai" required="required" class="form-control" value="<?php echo $penilai; ?>">
                             <input type="hidden" name="bulan" id="bulan" required="required" class="form-control" value="<?php echo $bulan; ?>">
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </div>

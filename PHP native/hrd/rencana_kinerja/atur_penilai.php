@@ -135,7 +135,8 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <tbody>
                     <?php 
                       $no=1;
-                      $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan, rencana_penilaian, penilaian WHERE karyawan.Id_karyawan=rencana_penilaian.karyawan_penilai AND karyawan.Id_unit_kerja=unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan=jabatan.Id_jabatan AND rencana_penilaian.karyawan_penilai AND rencana_penilaian.karyawan_dinilai=penilaian.Id_karyawan AND karyawan_dinilai='$dinilai' AND penilaian.bulan='$bulan' group by penilaian.Id_karyawan";
+                      $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan, penilaian, rencana_penilaian WHERE karyawan.Id_karyawan=rencana_penilaian.karyawan_penilai AND karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND rencana_penilaian.karyawan_dinilai=penilaian.Id_karyawan AND penilaian.Id_karyawan='$dinilai' AND penilaian.bulan='$bulan' group by rencana_penilaian.karyawan_penilai";
+                      // $karyawan = "SELECT * FROM karyawan, unit_kerja, jabatan, penilaian, rencana_penilaian WHERE karyawan.Id_unit_kerja=unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan=jabatan.Id_jabatan AND penilaian.Id_karyawan=rencana_penilaian.karyawan_penilai AND penilaian.Id_karyawan='$penilai' AND penilaian.bulan='$bulan'";
                       $result = mysqli_query($koneksi, $karyawan);
                       //memeriksa apakah ada data yang ditemukan
                       if (mysqli_num_rows($result) > 0) { 

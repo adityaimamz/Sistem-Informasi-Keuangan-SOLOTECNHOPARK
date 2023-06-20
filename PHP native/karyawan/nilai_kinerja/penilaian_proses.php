@@ -4,6 +4,7 @@ $nilai = 0;
 $idp = $_POST['idp'];
 $id_karyawan = $_POST['id_karyawan'];
 $bulan = $_POST['bulan'];
+$penilai = $_POST['penilai'];
 
 // Mengambil nilai dari pergaulan A
 $r1 = $_POST['r1'] ?? 0;
@@ -26,14 +27,16 @@ $mean = round(($total / 11),2);
 // header("Location: skor_penilaian.php?dinilai=" . urlencode($id_karyawan) . "&bulan=" . urlencode($bulan) . "&idp=" . urlencode($idp). "&mean=" . urlencode($mean));
 
 // Cek apakah id_karyawan sudah memiliki nilai dalam tabel rekap_penilaian
-$query = mysqli_query($koneksi, "SELECT * FROM rekap_penilaian WHERE Id_karyawan = '$id_karyawan'");
-if (mysqli_num_rows($query) > 0) {
+// $query = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE Id_karyawan = '$id_karyawan'");
+// if (mysqli_num_rows($query) > 0) {
     // Jika sudah ada, lakukan update data rekap_penilaian
-    mysqli_query($koneksi, "UPDATE rekap_penilaian SET Total_nilairekan = Total_nilairekan + '$mean' WHERE Id_karyawan = '$id_karyawan'") or die(mysqli_error($koneksi));
-} else {
+    
+// } else {
     // Jika belum ada, lakukan insert data rekap_penilaian
-    mysqli_query($koneksi, "INSERT INTO rekap_penilaian (Id_rekap, Id_karyawan, Total_nilairekan) VALUES (NULL, '$id_karyawan', '$mean')") or die(mysqli_error($koneksi));
-}
+    // mysqli_query($koneksi, "INSERT INTO penilaian (NULL, '$id_karyawan', '$mean')") or die(mysqli_error($koneksi));
+// }
 
-mysqli_query($koneksi, "UPDATE penilaian SET Total_nilai = '$total', Ratarata_nilai = '$mean' WHERE Id_penilaian = '$idp'") or die(mysqli_error($koneksi));
+// mysqli_query($koneksi, "UPDATE penilaian SET Total_nilai = '$total', Ratarata_nilai = '$mean' WHERE Id_penilaian = '$idp'") or die(mysqli_error($koneksi));
+mysqli_query($koneksi, "UPDATE penilaian SET Ratarata_nilai = Ratarata_nilai + '$mean' WHERE Id_karyawan = '$id_karyawan'") or die(mysqli_error($koneksi));
+mysqli_query($koneksi, "UPDATE rencana_penilaian SET Ket_menilai = 'sudah' WHERE karyawan_penilai = '$penilai'") or die(mysqli_error($koneksi));
 header("Location: skor_penilaian.php?dinilai=" . urlencode($id_karyawan) . "&bulan=" . urlencode($bulan) . "&idp=" . urlencode($idp). "&mean=" . urlencode($mean));

@@ -64,7 +64,8 @@ include 'header.php';
             if(isset($_POST['bulan'])){
               $bulan = $_POST['bulan'];
               $id = $_SESSION['id'];
-              $cek = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE karyawan_penilai = '$id' AND bulan='$bulan' ");
+              //mengambil data berdasarkan session
+              $cek = mysqli_query($koneksi, "SELECT * FROM rencana_penilaian, penilaian WHERE rencana_penilaian.karyawan_dinilai=penilaian.Id_karyawan AND rencana_penilaian.karyawan_penilai = '$id' AND penilaian.bulan='$bulan' ");
               if (mysqli_num_rows($cek) > 0) {
                 ?>
                 <div class="card">
@@ -83,9 +84,10 @@ include 'header.php';
                         <?php
                         $no = 1;
                         while ($row = mysqli_fetch_assoc($cek)) {
-                          $idp = $row['Id_penilaian'];
-                          $nilai = $row['Total_nilai'];
+                          $idp = $row['Id_rencana'];
+                          $nilai = $row['Ratarata_nilai'];
                           $karyawanDinilai = $row['karyawan_dinilai'];
+                          //menampilkan data yg dinilai berdasarkan session
                           $data = "SELECT * FROM karyawan, jabatan, unit_kerja WHERE karyawan.Id_jabatan=jabatan.Id_jabatan AND unit_kerja.Id_unit_kerja=karyawan.Id_unit_kerja AND karyawan.Id_karyawan='$karyawanDinilai' ";
                           $result = mysqli_query($koneksi, $data);
                           if (mysqli_num_rows($result) > 0) {
@@ -98,12 +100,15 @@ include 'header.php';
                                 <td><?php echo $row['Nama_unit_kerja']; ?></td>
                                 <td class="text-center">
                                 <?php 
-                                if($nilai==0){?>
-                                  <a href="form_penilaian.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>&idp=<?php echo $idp;?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
-                                <?php }
-                                else{ ?>
+                                $id = $_SESSION['id'];
+                                $a = mysqli_query($koneksi, "SELECT penilaian.Ratarata_nilai FROM rencana_penilaian, penilaian WHERE rencana_penilaian.karyawan_dinilai=penilaian.Id_karyawan AND rencana_penilaian.karyawan_penilai = '$id' AND rencana_penilaian.Ket_menilai='sudah' AND penilaian.bulan='$bulan' ");
+                                if (mysqli_num_rows($a) > 0) {
+                                  // if($cek==0){?>
                                   <a href="#" class="btn btn-primary"><i class="fa fa-check"> Selesai Dinilai</i></a>
-                                <?php } ?>                                    
+                                  <?php }
+                                  else{ ?>
+                                  <a href="form_penilaian.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>&idp=<?php echo $idp;?>&penilai=<?php echo $id;?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
+                                  <?php } ?>                                    
                                 </td>
                               </tr>
                             <?php 
