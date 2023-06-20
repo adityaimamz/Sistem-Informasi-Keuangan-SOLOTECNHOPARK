@@ -80,19 +80,18 @@
                       // include '../../koneksi.php';
                       $no=1;
                       $skor=0;
-                      $karyawan = "SELECT * FROM karyawan JOIN jabatan ON karyawan.Id_jabatan=jabatan.Id_jabatan JOIN unit_kerja ON unit_kerja.Id_unit_kerja=karyawan.Id_unit_kerja JOIN penilaian ON karyawan.Id_karyawan=penilaian.karyawan_dinilai WHERE penilaian.Ratarata_nilai!=0 group by penilaian.karyawan_penilai";
+                      $karyawan = "SELECT * FROM karyawan JOIN jabatan ON karyawan.Id_jabatan=jabatan.Id_jabatan JOIN unit_kerja ON unit_kerja.Id_unit_kerja=karyawan.Id_unit_kerja JOIN penilaian ON karyawan.Id_karyawan=penilaian.Id_karyawan WHERE penilaian.Ratarata_nilai!=0 AND penilaian.bulan='$bulan' group by penilaian.Id_karyawan";
                       $result = mysqli_query($koneksi, $karyawan);
                       //memeriksa apakah ada data yang ditemukan
                       if (mysqli_num_rows($result) > 0) { 
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $skor+=$row['Ratarata_nilai'];
                       ?>
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
                       <td><?php echo $row['Nama']; ?></td>
                       <td><?php echo $row['Nama_jabatan']; ?></td>
                       <td><?php echo $row['Nama_unit_kerja']; ?></td>
-                      <td class="text-center"><?php echo $skor; ?></td>
+                      <td class="text-center"><?php echo round(($row['Ratarata_nilai']/3),2); ?></td>
                     </tr>
                     <?php 
                         }
