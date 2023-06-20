@@ -3,6 +3,22 @@ include 'header.php';
 date_default_timezone_set('Asia/Jakarta');
 $hari = array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
 // array bulan dalam bahasa Indonesia
+$namabulan = array(
+  1 => "Januari",
+  2 => "Februari",
+  3 => "Maret",
+  4 => "April",
+  5 => "Mei",
+  6 => "Juni",
+  7 => "Juli",
+  8 => "Agustus",
+  9 => "September",
+  10 => "Oktober",
+  11 => "November",
+  12 => "Desember"
+);
+
+$bulan_ini = date('n');
 ?>
 <?php
 $id_karyawan = $_GET['id'];
@@ -39,7 +55,14 @@ $profil = mysqli_fetch_assoc($karyawan);
             <h3 align="center"><b><?php echo $profil['Nama'];?></b></h4>
             <h4 align="center"><?php echo $profil['Nama_jabatan']; ?></h6>
             <!-- <h6 align="center"><i class="fa fa-circle text-success"></i> Online</h6> -->
+            <p class="text-muted text-center">Kinerja saya</p>
 
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Bulan (<?php echo $namabulan[$bulan_ini];?>)</b> <a class="pull-right">1,322</a>
+                </li>
+
+              </ul>
             <ul class="list-group list-group-unbordered">
               </li>
             </ul>
