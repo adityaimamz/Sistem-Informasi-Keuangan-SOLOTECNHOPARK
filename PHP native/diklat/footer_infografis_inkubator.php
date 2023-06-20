@@ -5,8 +5,11 @@
     </div>
     <strong>Build & developed by MSIB batch 3 intern 2023</strong> - Solo Techno Park Analyzer (Soto Panaz)
   </footer>
+
   
 </div>
+
+
 
 <script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -117,30 +120,23 @@
     format: 'yyyy/mm/dd',
   });
 
+
 </script>
+
 
 <script>
 
-var ctx = document.getElementById("myChart").getContext('2d');
+
+var ctx = document.getElementById("myChart2").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels : ["Januari","","Februari","","Maret","","April","","Mei","","Juni","","Juli","","Agustus","","September","","Oktober","","November","","Desember"],
+        labels : ["Aktif","Tidak aktif"],
         datasets: [{
             label: '',
             data: [
-                <?php while ($p = mysqli_fetch_array($barang_januari)) { echo '"' . $p['barang_januari'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_februari)) { echo '"' . $p['barang_februari'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_maret)) { echo '"' . $p['barang_maret'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_april)) { echo '"' . $p['barang_april'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_mei)) { echo '"' . $p['barang_mei'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_juni)) { echo '"' . $p['barang_juni'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_juli)) { echo '"' . $p['barang_juli'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_agustus)) { echo '"' . $p['barang_agustus'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_september)) { echo '"' . $p['barang_september'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_oktober)) { echo '"' . $p['barang_oktober'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_november)) { echo '"' . $p['barang_november'] . '",';}?>,
-                <?php while ($p = mysqli_fetch_array($barang_desember)) { echo '"' . $p['barang_desember'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($tidakaktif)) { echo '"' . $p['total_inkubatortidakaktif'] . '",';}?>,
+              <?php while ($p = mysqli_fetch_array($aktif)) { echo '"' . $p['total_inkubatoraktif'] . '",';}?>,
             ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

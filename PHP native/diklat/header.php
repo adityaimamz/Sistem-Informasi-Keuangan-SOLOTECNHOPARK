@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Administrator - Keuangan STP</title>
+  <title>Administrator - SITMA STP  </title>
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -49,7 +49,7 @@
   <header class="main-header">
       <a href="index.php" class="logo">
         <span class="logo-mini"><b><i class="fa fa-money"></i></b> </span>
-        <span class="logo-lg"><b>SotoPanaz</b>App</span>
+        <span class="logo-lg"><b>SITMA</b>App</span>
       </a>
       <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -140,6 +140,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="diklat_laporan.php"><i class="fa fa-circle-o"></i>Laporan Diklat</a></li>
+              <li><a href="inkubator_laporan.php"><i class="fa fa-circle-o"></i>Laporan IBT</a></li>
             </ul>
           </li>
 
@@ -153,6 +154,8 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
               <li><a href="Infografis_diklat.php"><i class="fa fa-circle-o"></i> Infografis Peserta Diklat</a></li>
+              <li><a href="Infografis_inkubator.php"><i class="fa fa-circle-o"></i> Infografis Peserta IBT</a></li>
+
            </ul>
           </li>
 

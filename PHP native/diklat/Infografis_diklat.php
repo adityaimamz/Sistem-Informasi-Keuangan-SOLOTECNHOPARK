@@ -163,4 +163,4 @@ $hari_ini = date('w');
 
 </div>
 <div id="preloader"></div>
-<?php include 'footer.php'; ?>
+<?php include 'footer_infografis_diklat.php'; ?>

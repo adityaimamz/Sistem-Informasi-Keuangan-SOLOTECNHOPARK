@@ -92,15 +92,11 @@ if(isset($_GET['status'])){
  				<thead>
  					<tr>
  						<th width="1%" rowspan="2">NO</th>
- 						<th width="10%" rowspan="2" class="text-center">NAMA</th>
- 						<th rowspan="2" class="text-center">TEMPAT LAHIR</th> 			
+ 						<th width="10%" rowspan="2" class="text-center">NAMA PERUSAHAAN</th>
+ 						<th rowspan="2" class="text-center">NAMA PENGUSUL</th> 			
 						<th rowspan="2" class="text-center">ALAMAT</th> 		
-                        <th rowspan="2" class="text-center">JURUSAN</th>
- 						<th rowspan="2" class="text-center">KETERANGAN</th>
- 						<th rowspan="2" class="text-center">JADWAL PELATIHAN</th>
- 						<th rowspan="2" class="text-center">ANGKATAN</th>
- 						<th class="text-center">PENYALURAN</th>
-                         <th rowspan="2" class="text-center">STATUS</th>
+ 						<th rowspan="2" class="text-center">TAHUN ANGKATAN</th>
+ 						<th rowspan="2" class="text-center">STATUS</th>
  					</tr>
  				</thead>
  				<tbody>
@@ -109,10 +105,10 @@ if(isset($_GET['status'])){
  					$no=1;
  					$total_Agenda=0;
 					 if ($status == "semua") {
-						$data = "SELECT * FROM diklat, master_status WHERE master_status.Id_status = diklat.Id_status ORDER BY Id_diklat ASC";
+						$data = "SELECT * FROM inkubator, status_inkubator WHERE status_inkubator.Id_statusinkubator = inkubator.Id_statusinkubator ORDER BY Id_inkubator ASC";
 					  } else {
-						$data = "SELECT  master_status.Status, diklat.* FROM diklat LEFT JOIN master_status ON diklat.Id_status=master_status.Id_status WHERE diklat.Id_status = '$status' ORDER BY Id_diklat ASC";
-					  }  
+						$data = "SELECT  status_inkubator.Status, inkubator.* FROM inkubator LEFT JOIN status_inkubator ON inkubator.Id_statusinkubator=status_inkubator.Id_statusinkubator WHERE inkubator.Id_statusinkubator = '$status' ORDER BY Id_inkubator ASC";
+					  }   
                       $result = mysqli_query($koneksi, $data);
                       //memeriksa apakah ada data yang ditemukan
                       if (mysqli_num_rows($result) > 0) { 
@@ -120,19 +116,14 @@ if(isset($_GET['status'])){
 
                            //menampilkan tabel data
                           ?>
- 						<tr>
-						 <td class="text-center"><?php echo $no++; ?></td>
-                            <td><?php echo $row['Nama']; ?></td>
-                            <td><?php echo $row['Tempat_lahir']; ?></td>
-                            <td><?php echo date('d-m-Y', strtotime($row['Tanggal_lahir'])); ?></td>
+                          <tr>
+                            <td class="text-center"><?php echo $no++; ?></td>
+                            <td><?php echo $row['Nama_startup']; ?></td>
+                            <td><?php echo $row['Nama_pengusul']; ?></td>
                             <td><?php echo $row['Alamat']; ?></td>
-                            <td><?php echo $row['Jurusan']; ?></td>
-                            <td><?php echo $row['Keterangan']; ?></td>
-                            <td><?php echo $row['Jadwal_pelatihan']; ?></td>
-                            <td><?php echo $row['Angkatan']; ?></td>
-                            <td><?php echo $row['Penyaluran']; ?></td>
+                            <td><?php echo $row['Tahun_angkatan']; ?></td>
                             <td><?php echo $row['Status']; ?></td>
- 						</tr>
+                          </tr>
  						<?php 
  					    }
                     }else{ // if num rows ?> 

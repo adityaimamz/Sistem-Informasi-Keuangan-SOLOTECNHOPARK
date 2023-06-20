@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      inkubator
-      <small>Data Peserta Solocorn</small>
+      Inkubator dan Bisnis
+      <small>Data Peserta</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,11 +18,11 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Data Peserta Solocorn</h3>
+            <h3 class="box-title">Data Peserta Solocorn dan Smeska</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i> &nbsp Tambah Data Siswa
+                <i class="fa fa-plus"></i> &nbsp Tambah
               </button>
               &nbsp
             <a href="inkubator_csv.php"><button type="button" class="btn btn-success btn-sm">
@@ -76,7 +76,7 @@
                     <div class="modal-body">
 
                     <div class="form-group">
-                        <label>NAMA STARTUP</label>
+                        <label>NAMA PERUSAHAAN</label>
                         <input type="text" name="nama_startup" class="form-control" placeholder="Masukkan Nama..">
                       </div>
                       <div class="form-group">
@@ -124,7 +124,7 @@
                   <tr>
                   <th>NO</th>
                   <th>OPSI</th>
-                  <th>NAMA STARTUP</th>
+                  <th>NAMA PERUSAHAAN</th>
                   <th>NAMA PENGUSUL</th>
                   <th>ALAMAT</th>
                   <th>TAHUN ANGKATAN</th>
@@ -164,7 +164,7 @@
                               <div class="modal-body">
                               <table class="table table-condensed">
                               <tr>
-                                <th>NAMA STARTUP</th>
+                                <th>NAMA PERUSAHAAN</th>
                                 <td><?php echo $d['Nama_startup']; ?></td>
                               </tr>
                               <tr>
@@ -193,69 +193,61 @@
                         </div>
                         
                      <!-- Modal Update -->
-                     <form action="inkubator_update.php" method="post" enctype="multipart/form-data">
-                          <div class="modal fade" id="edit_inkubator_<?php echo $d['Id_inkubator'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title" id="exampleModalLabel">Edit inkubator</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">  
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>NAMA STARTUP</label>
-                                      <input type="hidden" name="id" class="form-control" value="<?php echo $d['Id_inkubator']; ?>">
-                                      <input type="text" style="width:100%" name="nama_startup" class="form-control" value="<?php echo $d['Nama_startup']; ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>NAMA PENGUSUL</label>
-                                      <input type="text" style="width:100%" name="nama_pengusul" class="form-control" value="<?php echo $d['Nama_pengusul']; ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>ALAMAT</label>
-                                      <input type="text" style="width:100%" name="alamat" class="form-control" value="<?php echo $d['Alamat']; ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>KETERANGAN</label>
-                                      <input type="text" style="width:100%" name="keterangan" class="form-control" value="<?php echo $d['Keterangan']; ?>">
-                                    </div>
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>TAHUN ANGKATAN</label>
-                                      <input type="text" style="width:100%" name="tahun_angkatan" class="form-control" value="<?php echo $d['Tahun_angkatan']; ?>">
-                                    </div>
-
-
-                                    <div class="form-group" style="width:100%;margin-bottom:20px">
-                                      <label>STATUS</label>
-                                      <select name="status" style="width:100%" class="form-control">
-                                        <option value="">- Pilih -</option>
-                                        <?php 
-                                        $status = mysqli_query($koneksi,"SELECT * FROM status_inkubator ORDER BY Id_statusinkubator ASC");
-                                        while($k = mysqli_fetch_array($status)){
-                                        ?>
-                                        <option <?php if($d['Id_statusinkubator'] == $k['Id_statusinkubator']){echo "selected='selected'";} ?> value="<?php echo $k['Id_statusinkubator']; ?>"><?php echo $k['Status']; ?></option>
-                                        <?php 
-                                        }
-                                        ?>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  </div>
-                                  <div class="modal-footer">  
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                  </div>
+                  <form action="inkubator_update.php" method="post" enctype="multipart/form-data">
+                      <div class="modal fade" id="edit_inkubator_<?php echo $d['Id_inkubator'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="exampleModalLabel">Edit inkubator</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                             </div>
+                            <div class="modal-body">  
+                              <div class="form-group">
+                                <label for="nama_startup">NAMA PERUSAHAAN</label>
+                                <input type="hidden" name="id" class="form-control" value="<?php echo $d['Id_inkubator']; ?>">
+                                <input type="text" name="nama_startup" class="form-control" value="<?php echo $d['Nama_startup']; ?>">
+                              </div>
+                    
+                              <div class="form-group">
+                                <label for="nama_pengusul">NAMA PENGUSUL</label>
+                                <input type="text" name="nama_pengusul" class="form-control" value="<?php echo $d['Nama_pengusul']; ?>">
+                              </div>
+                    
+                              <div class="form-group">
+                                <label for="alamat">ALAMAT</label>
+                                <input type="text" name="alamat" class="form-control" value="<?php echo $d['Alamat']; ?>">
+                              </div>
+                    
+                              <div class="form-group">
+                                <label for="tahun_angkatan">TAHUN ANGKATAN</label>
+                                <input type="text" name="tahun_angkatan" class="form-control" value="<?php echo $d['Tahun_angkatan']; ?>">
+                              </div>
+                    
+                              <div class="form-group">
+                                <label for="status">STATUS</label>
+                                <select name="status" class="form-control">
+                                  <option value="">- Pilih -</option>
+                                  <?php 
+                                  $status = mysqli_query($koneksi, "SELECT * FROM status_inkubator ORDER BY Id_statusinkubator ASC");
+                                  while ($k = mysqli_fetch_array($status)) {
+                                    $selected = ($d['Id_statusinkubator'] == $k['Id_statusinkubator']) ? 'selected="selected"' : '';
+                                    echo '<option ' . $selected . ' value="' . $k['Id_statusinkubator'] . '">' . $k['Status'] . '</option>';
+                                  }
+                                  ?>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="modal-footer">  
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                           </div>
                         </div>
-                      </form>
+                      </div>
+                    </form>
+
 
                       <!-- Modal Hapus -->
                       <div class="modal fade" id="hapus_inkubator_<?php echo $d['Id_inkubator'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
