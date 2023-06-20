@@ -40,76 +40,7 @@ $hari_ini = date('w');
 
     <div class="row">
 
-      <!-- DATA diklat -->
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
-          <div class="inner">
-            <?php 
-            $tanggal = date('Y-m-d');
-            $diklat = mysqli_query($koneksi,"SELECT count(Id_diklat) as total_diklat FROM diklat ");
-            $p = mysqli_fetch_assoc($diklat);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-             echo $p['total_diklat']
-              ?>
-            </h4>
-            <p>Total Semua Peserta Diklat</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="diklat.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
-          <div class="inner">
-            <?php
-            $bulan = date('m');
-            $diklat = mysqli_query($koneksi,"SELECT count(Id_diklat) as total_diklatbekerja FROM diklat LEFT JOIN master_status ON diklat.Id_status=master_status.Id_status WHERE diklat.Id_status = '1'");
-            $p = mysqli_fetch_assoc($diklat);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-             echo $p['total_diklatbekerja']
-              ?>
-            </h4>
-            <p>Jumlah Peserta Diklat Sudah Bekerja</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="diklat_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-      
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
-          <div class="inner">
-            <?php
-            $bulan = date('m');
-            $diklat = mysqli_query($koneksi,"SELECT count(Id_diklat) as total_diklatbelumbekerja FROM diklat LEFT JOIN master_status ON diklat.Id_status=master_status.Id_status WHERE diklat.Id_status = '2'");
-            $p = mysqli_fetch_assoc($diklat);
-            ?>
-            <h4 style="font-weight: bolder">
-              <?php 
-             echo $p['total_diklatbelumbekerja']
-              ?>
-            </h4>
-            <p>Jumlah Peserta Diklat Belum Bekerja</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="diklat_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-
-       <!-- DATA INKUBATOR -->
-       <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-blue">
           <div class="inner">
             <?php 
@@ -197,20 +128,6 @@ $hari_ini = date('w');
     <div class="chart tab-pane active" id="tab1">
         
       <br>
-      <h4 class="text-center">Realisasi Jumlah Peserta Diklat UPTD KST SOLO TECHNOPARK berdasarkan Statis</h4>
-        <?php 
-          $belumbekerja= mysqli_query($koneksi,"SELECT count(Id_diklat) as total_diklatbelumbekerja FROM diklat LEFT JOIN master_status ON diklat.Id_status=master_status.Id_status WHERE diklat.Id_status = '2'");
-          $sudahbekerja= mysqli_query($koneksi,"SELECT count(Id_diklat) as total_diklatbekerja FROM diklat LEFT JOIN master_status ON diklat.Id_status=master_status.Id_status WHERE diklat.Id_status = '1'");
-        ?>
-      <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
-    </div>
-  <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
-</div>
-
-<div class="tab-content" style="padding: 20px">
-    <div class="chart tab-pane active" id="tab1">
-        
-      <br>
       <h4 class="text-center">Realisasi Jumlah Peserta dan Alumni Inkubator dan Bisnis UPTD KST SOLO TECHNOPARK berdasarkan Statis</h4>
         <?php 
           $tidakaktif= mysqli_query($koneksi,"SELECT count(Id_inkubator) as total_inkubatortidakaktif FROM inkubator LEFT JOIN status_inkubator ON inkubator.Id_statusinkubator=status_inkubator.Id_statusinkubator WHERE inkubator.Id_statusinkubator = '2'");
@@ -246,4 +163,4 @@ $hari_ini = date('w');
 
 </div>
 <div id="preloader"></div>
-<?php include 'footer.php'; ?>
+<?php include 'footer_infografis_inkubator.php'; ?>

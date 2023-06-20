@@ -5,7 +5,7 @@
   <section class="content-header">
     <h1>
       LAPORAN
-      <small>Data Laporan Peserta Diklat</small>
+      <small>Data Laporan Peserta Inkubator</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,7 +18,7 @@
       <section class="col-lg-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Filter Laporan Diklat</h3>
+            <h3 class="box-title">Filter Laporan Inkubator</h3>
           </div>
           <div class="box-body">
             <form method="post" action="" enctype="multipart/form-data">
@@ -32,10 +32,10 @@
                       <option value="semua">- Semua Status -</option>
                         <?php 
                         include 'koneksi.php';
-                        $status = mysqli_query($koneksi,"SELECT * FROM master_status ORDER BY Id_status ASC");
+                        $status = mysqli_query($koneksi,"SELECT * FROM status_inkubator ORDER BY Id_statusinkubator ASC");
                         while($k = mysqli_fetch_array($status)){
                           ?>
-                          <option value="<?php echo $k['Id_status']; ?>"><?php echo $k['Status']; ?></option>
+                          <option value="<?php echo $k['Id_statusinkubator']; ?>"><?php echo $k['Status']; ?></option>
                           <?php 
                         }
                         ?>
@@ -59,14 +59,14 @@
 
         <div class="box box-info">
           <div class="box-header">
-          <h3 class="box-title">Laporan diklat</h3>
+          <h3 class="box-title">Laporan inkubator</h3>
               </div>
               <div class="box-body">
               <?php
               if(isset($_POST['status'])){
                 $status = $_POST['status'];
               ?>
-                <a href="diklat_laporan_pdf.php?status=<?php echo $status ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
+                <a href="inkubator_laporan_pdf.php?status=<?php echo $status ?>" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> &nbsp PRINT</a>
                 <br><br>
 
 
@@ -77,16 +77,11 @@
                   <thead>
                     <tr>
                     <th>NO</th>
-                    <th>NAMA</th>
-                    <th>TEMPAT LAHIR</th>
-                    <th>TANGGAL LAHIR</th>
+                    <th>NAMA STARTUP</th>
+                    <th>NAMA PENGUSUL</th>
                     <th>ALAMAT</th>
-                    <th>JURUSAN</th>
-                    <th>KETERANGAN</th>
-                    <th>JADWAL PELATIHAN</th>
-                    <th>ANGKATAN</th>
-                    <th>PENYALURAN</th>
-                    <th>STATUS</th> 
+                    <th>TAHUN ANGKATAN</th>
+                    <th>STATUS</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -96,9 +91,9 @@
                     $total=0;                         
                     // $querydata = "SELECT metode_bayar.Jenis, master_penerimaan.* FROM master_penerimaan JOIN metode_bayar ON metode_bayar.Id_metode = master_penerimaan.Id_metode WHERE Tanggal BETWEEN '$tgl1' AND '$tgl2' AND master_penerimaan.Id_metode = '$metode'";
                     if ($status == "semua") {
-                      $data = "SELECT * FROM diklat, master_status WHERE master_status.Id_status = diklat.Id_status ORDER BY Id_diklat ASC";
+                      $data = "SELECT * FROM inkubator, status_inkubator WHERE status_inkubator.Id_statusinkubator = inkubator.Id_statusinkubator ORDER BY Id_inkubator ASC";
                     } else {
-                      $data = "SELECT  master_status.Status, diklat.* FROM diklat LEFT JOIN master_status ON diklat.Id_status=master_status.Id_status WHERE diklat.Id_status = '$status' ORDER BY Id_diklat ASC";
+                      $data = "SELECT  status_inkubator.Status, inkubator.* FROM inkubator LEFT JOIN status_inkubator ON inkubator.Id_statusinkubator=status_inkubator.Id_statusinkubator WHERE inkubator.Id_statusinkubator = '$status' ORDER BY Id_inkubator ASC";
                     }          
                     $result = mysqli_query($koneksi, $data);
                     //memeriksa apakah ada data yang ditemukan
@@ -108,15 +103,10 @@
                         ?>
                           <tr>
                             <td class="text-center"><?php echo $no++; ?></td>
-                            <td><?php echo $row['Nama']; ?></td>
-                            <td><?php echo $row['Tempat_lahir']; ?></td>
-                            <td><?php echo date('d-m-Y', strtotime($row['Tanggal_lahir'])); ?></td>
+                            <td><?php echo $row['Nama_startup']; ?></td>
+                            <td><?php echo $row['Nama_pengusul']; ?></td>
                             <td><?php echo $row['Alamat']; ?></td>
-                            <td><?php echo $row['Jurusan']; ?></td>
-                            <td><?php echo $row['Keterangan']; ?></td>
-                            <td><?php echo $row['Jadwal_pelatihan']; ?></td>
-                            <td><?php echo $row['Angkatan']; ?></td>
-                            <td><?php echo $row['Penyaluran']; ?></td>
+                            <td><?php echo $row['Tahun_angkatan']; ?></td>
                             <td><?php echo $row['Status']; ?></td>
                           </tr>
 

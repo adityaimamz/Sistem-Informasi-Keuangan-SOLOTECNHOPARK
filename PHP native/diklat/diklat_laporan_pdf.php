@@ -46,7 +46,7 @@ date_default_timezone_set('Asia/Jakarta');
  <body>
 	<div class="kop-surat">
 		<div class="logo-kiri">
-			<img src="../assets/dist/img/logo surakarta.png">
+		<img src="../assets/dist/img/logo surakarta.png">
 		</div>
 
 		<div class="judul-laporan">
@@ -93,7 +93,8 @@ if(isset($_GET['status'])){
  					<tr>
  						<th width="1%" rowspan="2">NO</th>
  						<th width="10%" rowspan="2" class="text-center">NAMA</th>
- 						<th rowspan="2" class="text-center">TEMPAT LAHIR</th> 			
+ 						<th rowspan="2" class="text-center">TEMPAT LAHIR</th> 	
+						 <th rowspan="2" class="text-center">TANGGAL LAHIR</th> 	
 						<th rowspan="2" class="text-center">ALAMAT</th> 		
                         <th rowspan="2" class="text-center">JURUSAN</th>
  						<th rowspan="2" class="text-center">KETERANGAN</th>
@@ -124,7 +125,7 @@ if(isset($_GET['status'])){
 						 <td class="text-center"><?php echo $no++; ?></td>
                             <td><?php echo $row['Nama']; ?></td>
                             <td><?php echo $row['Tempat_lahir']; ?></td>
-                            <td><?php echo date('d-m-Y', strtotime($row['Tanggal_lahir'])); ?></td>
+							<td class="text-center"><?php echo date('d-m-Y', strtotime($row['Tanggal_lahir'])); ?></td>
                             <td><?php echo $row['Alamat']; ?></td>
                             <td><?php echo $row['Jurusan']; ?></td>
                             <td><?php echo $row['Keterangan']; ?></td>
