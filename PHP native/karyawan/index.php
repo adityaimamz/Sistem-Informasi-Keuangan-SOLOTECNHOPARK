@@ -19,8 +19,6 @@ $namabulan = array(
 );
 
 $bulan_ini = date('n');
-?>
-<?php
 $id_karyawan = $_GET['id'];
 $karyawan = mysqli_query($koneksi,"SELECT * FROM karyawan, unit_kerja, jabatan WHERE karyawan.Id_unit_kerja = unit_kerja.Id_unit_kerja AND karyawan.Id_jabatan = jabatan.Id_jabatan AND karyawan.Id_karyawan = '$id_karyawan'");
 $profil = mysqli_fetch_assoc($karyawan);
@@ -57,12 +55,22 @@ $profil = mysqli_fetch_assoc($karyawan);
             <!-- <h6 align="center"><i class="fa fa-circle text-success"></i> Online</h6> -->
             <p class="text-muted text-center">Kinerja saya</p>
 
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Bulan (<?php echo $namabulan[$bulan_ini];?>)</b> <a class="pull-right">1,322</a>
-                </li>
-
-              </ul>
+            <ul class="list-group list-group-unbordered">
+              <li class="list-group-item">
+                  <?php
+                  $id = $_SESSION['id'];
+                  $bulan_ini = date('n');
+                  $d = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE Id_karyawan = '$id' AND Bulan='$namabulan[$bulan_ini]'");
+                  
+                  if(mysqli_num_rows($d) > 0) {
+                      $data = mysqli_fetch_assoc($d);
+                      ?>
+                      <b>Bulan (<?php echo $namabulan[$bulan_ini]; ?>)</b> <b><a class="pull-right"><?php echo round(($data['Ratarata_nilai']/3),2); ?></a></b>
+                  <?php } else { ?>
+                      <b>Bulan (<?php echo $namabulan[$bulan_ini]; ?>)</b> <a class="pull-right"><?php echo "Belum Tersedia"; ?></a>
+                  <?php } ?>
+              </li>
+            </ul>
             <ul class="list-group list-group-unbordered">
               </li>
             </ul>
