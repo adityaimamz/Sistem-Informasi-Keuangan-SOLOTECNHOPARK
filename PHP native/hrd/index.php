@@ -54,7 +54,7 @@ $hari_ini = date('w');
        echo $p['total_suratmasukhari']
         ?>
       </h4>
-      <p>Karyawan Pendidikan SMA</p>
+      <p>Pendidikan Jenjang SMA</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -76,7 +76,7 @@ $hari_ini = date('w');
           echo $p['total_suratmasukbulan']
         ?>
       </h4>
-      <p>Karyawan Pendidikan Perguruan Tinggi</p>
+      <p>Pend. Jenjang Perguruan Tinggi</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -98,7 +98,7 @@ $hari_ini = date('w');
           echo $p['total_suratmasuktahun']
         ?>
       </h4>
-      <p>Karyawan Masa Kerja 0-2 Tahun</p>
+      <p>Masa Kerja 0-2 Tahun</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -119,7 +119,7 @@ $hari_ini = date('w');
        echo $p['total_suratmasuk']
         ?>
       </h4>
-      <p>Karyawan Masa Kerja 2-5 Tahun</p>
+      <p>Masa Kerja 2-5 Tahun</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -143,7 +143,7 @@ $hari_ini = date('w');
        echo $p['total_suratkeluarhari']
         ?>
       </h4>
-      <p>Karyawan Masa Kerja 5-10 Tahun</p>
+      <p>Masa Kerja 5-10 Tahun</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -166,7 +166,7 @@ $hari_ini = date('w');
        echo $p['total_suratkeluarbulan']
         ?>
       </h4>
-      <p>Karyawan Masa Kerja 10 tahun keatas</p>
+      <p>Masa Kerja > 10 tahun</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -189,7 +189,7 @@ $hari_ini = date('w');
        echo $p['total_suratkeluartahun']
         ?>
       </h4>
-      <p>Karyawan cluster nilai 0-25</p>
+      <p>Cluster nilai 0-25</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -210,7 +210,7 @@ $hari_ini = date('w');
        echo $p['total_suratkeluar']
         ?>
       </h4>
-      <p>Karyawan cluster nilai 25-50</p>
+      <p>Cluster nilai 25-50</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
@@ -237,16 +237,38 @@ $hari_ini = date('w');
 
           <div class="tab-content" style="padding: 20px">
             <div class="chart tab-pane active" id="tab1">
-                
-              <br>
-              <h4 class="text-center">Nilai Rata-rata karyawan per bulan</h4>
-                <?php 
-                  $suratmasuk= mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasuk FROM surat_masuk");
-                  $suratkeluar= mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-                ?>
-              <canvas id="myChart2" style="position: relative; height: 300px;"></canvas>
-            </div>
-          <div class="chart tab-pane" id="tab2" style="position: relative; height: 300px;">
+              <h4 class="text-center">Nilai Rata-rata karyawan per bulan <b>2023</b></h4>
+              <?php
+              $months = [
+                  "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+              ];
+
+              $data = [];
+              foreach ($months as $month) {
+                  $query = mysqli_query($koneksi, "SELECT SUM(Ratarata_nilai)/(3*(COUNT(DISTINCT Id_karyawan))) AS rata_nilai FROM penilaian WHERE Bulan='$month' AND Tahun='2023'");
+                  $row = mysqli_fetch_assoc($query);
+                  $data[] = round(($row['rata_nilai']),2);
+              }
+              ?>
+              <canvas id="myChart" style="position: relative; height: 300px;"></canvas>
+              <br><br>
+
+              <h4 class="text-center">Nilai tertinggi karyawan per bulan<b>2023</b></h4>
+              <?php
+              $months = [
+                  "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+              ];
+
+              $data = [];
+              foreach ($months as $month) {
+                  $query = mysqli_query($koneksi, "SELECT MAX(Ratarata_nilai) AS nilai_tertinggi FROM penilaian WHERE Bulan='$month' AND Tahun='2023'");
+                  $row = mysqli_fetch_assoc($query);
+                  $data[] = round(($row['nilai_tertinggi']/3), 2);
+              }
+              ?>
+              <canvas id="myChart1" style="position: relative; height: 300px;"></canvas>
+          </div>
+
         </div>
       </section>
       <!-- /.Left col -->

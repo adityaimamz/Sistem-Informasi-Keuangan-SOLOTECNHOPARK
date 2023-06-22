@@ -99,16 +99,19 @@ include 'header.php';
                                 <td><?php echo $row['Nama_jabatan']; ?></td>
                                 <td><?php echo $row['Nama_unit_kerja']; ?></td>
                                 <td class="text-center">
-                                <?php 
-                                $id = $_SESSION['id'];
-                                $a = mysqli_query($koneksi, "SELECT penilaian.Ratarata_nilai FROM rencana_penilaian, penilaian WHERE rencana_penilaian.karyawan_dinilai=penilaian.Id_karyawan AND rencana_penilaian.karyawan_penilai = '$id' AND rencana_penilaian.Ket_menilai='sudah' AND penilaian.bulan='$bulan' ");
-                                if (mysqli_num_rows($a) > 0) {
-                                  // if($cek==0){?>
-                                  <a href="#" class="btn btn-primary"><i class="fa fa-check"> Selesai Dinilai</i></a>
-                                  <?php }
-                                  else{ ?>
-                                  <a href="form_penilaian.php?dinilai=<?php echo $row['Id_karyawan'] ?>&bulan=<?php echo $bulan;?>&idp=<?php echo $idp;?>&penilai=<?php echo $id;?>" class="btn btn-warning"><i class="fa fa-edit"> Nilai</i></a>
-                                  <?php } ?>                                    
+                                <?php
+                                  $idk = $row['Id_karyawan'];
+                                  $id = $_SESSION['id'];
+                                  $a = mysqli_query($koneksi, "SELECT * FROM rencana_penilaian, penilaian WHERE rencana_penilaian.karyawan_dinilai=penilaian.Id_karyawan AND rencana_penilaian.karyawan_penilai = '$id' AND rencana_penilaian.karyawan_dinilai='$idk' AND penilaian.bulan='$bulan' ");
+                                  $row = mysqli_fetch_assoc($a);
+                                  if ($row['Ket_menilai'] == "sudah") {
+                                      echo '<a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Selesai Dinilai</a>';
+                                  } else {
+                                      $dinilai = $row['Id_karyawan'];
+                                      $idp = $row['Id_penilaian'];
+                                      echo '<a href="form_penilaian.php?dinilai=' . $dinilai . '&bulan=' . $bulan . '&idp=' . $idp . '&penilai=' . $id . '" class="btn btn-warning"><i class="fa fa-edit"></i> Nilai</a>';
+                                  }
+                                  ?>                                 
                                 </td>
                               </tr>
                             <?php 

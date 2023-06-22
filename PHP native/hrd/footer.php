@@ -120,48 +120,19 @@
     autoclose: true,
     format: 'yyyy/mm/dd',
   });
-
-
 </script>
-<script>
 
-var ctx = document.getElementById("myChart2").getContext('2d');
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels : ["Surat Masuk","","Surat Keluar"],
+        labels: <?php echo json_encode($months); ?>,
         datasets: [{
-            label: '',
-            data: [
-              <?php while ($p = mysqli_fetch_array($suratmasuk)) { echo '"' . $p['total_suratmasuk'] . '",';}?>,
-              <?php while ($p = mysqli_fetch_array($suratkeluar)) { echo '"' . $p['total_suratkeluar'] . '",';}?>,
-            ],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(255, 99, 132, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(255,99,132,1)'
-            ],
+            label: 'Rata-rata Nilai',
+            data: <?php echo json_encode($data); ?>,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
         }]
     },
@@ -169,7 +140,6 @@ var myChart = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
-                    // gunakan fungsi callback untuk mengubah format uang
                     callback: function(value, index, values) {
                         return value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
                     }
@@ -178,7 +148,35 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-
 </script>
+
+<script>
+var ctx = document.getElementById("myChart1").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: <?php echo json_encode($months); ?>,
+        datasets: [{
+            label: 'Nilai Tertinggi',
+            data: <?php echo json_encode($data); ?>,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    callback: function(value, index, values) {
+                        return value.toLocaleString('id-ID', { minimumFractionDigits: 0 });
+                    }
+                }
+            }]
+        }
+    }
+});
+</script>
+
 </body>
 </html>
