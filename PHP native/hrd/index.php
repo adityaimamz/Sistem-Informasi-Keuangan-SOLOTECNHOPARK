@@ -103,7 +103,7 @@ $hari_ini = date('w');
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
     </div>
-    <a href="surat_masuk_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
@@ -124,7 +124,7 @@ $hari_ini = date('w');
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
     </div>
-    <a href="surat_masuk.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
@@ -148,7 +148,7 @@ $hari_ini = date('w');
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
     </div>
-    <a href="surat_keluar_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
@@ -171,7 +171,7 @@ $hari_ini = date('w');
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
     </div>
-    <a href="surat_keluar_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
@@ -179,43 +179,43 @@ $hari_ini = date('w');
   <div class="small-box bg-red">
     <div class="inner">
       <?php 
-      $tahun = date('Y');
-      $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluartahun FROM surat_keluar WHERE year(Tanggal)='$tahun'");
-      $p = mysqli_fetch_assoc($suratkeluar);
+      $cluster = mysqli_query($koneksi, "SELECT COUNT(Id_penilaian) AS jumlah_baris FROM penilaian WHERE Ratarata_nilai/3 >= 0 AND Ratarata_nilai/3 <= 2");
+      $p = mysqli_fetch_assoc($cluster);
       ?>
       
       <h4 style="font-weight: bolder">
       <?php 
-       echo $p['total_suratkeluartahun']
+       echo $p['jumlah_baris']
         ?>
       </h4>
-      <p>Cluster nilai 0-25</p>
+      <p>Cluster nilai 0-2</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
     </div>
-    <a href="surat_keluar_tahun.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
 <div class="col-lg-3 col-xs-6">
   <div class="small-box bg-red">
     <div class="inner">
-      <?php 
-      $suratkeluar = mysqli_query($koneksi,"SELECT count(Id_Suratkeluar) as total_suratkeluar FROM surat_keluar");
-      $p = mysqli_fetch_assoc($suratkeluar);
+    <?php 
+      $cluster = mysqli_query($koneksi,"SELECT COUNT(Id_penilaian) AS jumlah_baris FROM penilaian WHERE Ratarata_nilai/3 >= 3 AND Ratarata_nilai/3 <= 4");
+      $p = mysqli_fetch_assoc($cluster);
       ?>
+      
       <h4 style="font-weight: bolder">
       <?php 
-       echo $p['total_suratkeluar']
+       echo $p['jumlah_baris']
         ?>
       </h4>
-      <p>Cluster nilai 25-50</p>
+      <p>Cluster nilai 3-4</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
     </div>
-    <a href="surat_keluar.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
