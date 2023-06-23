@@ -46,12 +46,12 @@ $hari_ini = date('w');
     <div class="inner">
       <?php 
       $tanggal = date('Y-m-d');
-      $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukhari FROM surat_masuk WHERE Tanggal='$tanggal'");
-      $p = mysqli_fetch_assoc($suratmasuk);
+      $pendidikan = mysqli_query($koneksi,"SELECT count(Id_pendidikan) as pendidikan_sma FROM riwayat_pendidikan LEFT JOIN tingkat_pendidikan ON riwayat_pendidikan.Id_tingkat_pendidikan=tingkat_pendidikan.Id_tingkat_pendidikan WHERE riwayat_pendidikan.Id_tingkat_pendidikan = '4'");
+      $p = mysqli_fetch_assoc($pendidikan);
       ?>
       <h4 style="font-weight: bolder">
         <?php 
-       echo $p['total_suratmasukhari']
+       echo $p['pendidikan_sma']
         ?>
       </h4>
       <p>Pendidikan Jenjang SMA</p>
@@ -66,22 +66,22 @@ $hari_ini = date('w');
 <div class="col-lg-3 col-xs-6">
   <div class="small-box bg-green">
     <div class="inner">
-      <?php
-      $bulan = date('m');
-      $suratmasuk = mysqli_query($koneksi,"SELECT count(Id_Suratmasuk) as total_suratmasukbulan FROM surat_masuk WHERE month(Tanggal)='$bulan'");
-      $p = mysqli_fetch_assoc($suratmasuk);
+      <?php 
+      $tanggal = date('Y-m-d');
+      $pendidikan = mysqli_query($koneksi,"SELECT count(Id_pendidikan) as pendidikan_S1 FROM riwayat_pendidikan LEFT JOIN tingkat_pendidikan ON riwayat_pendidikan.Id_tingkat_pendidikan=tingkat_pendidikan.Id_tingkat_pendidikan WHERE riwayat_pendidikan.Id_tingkat_pendidikan = '5'");
+      $p = mysqli_fetch_assoc($pendidikan);
       ?>
       <h4 style="font-weight: bolder">
         <?php 
-          echo $p['total_suratmasukbulan']
+       echo $p['pendidikan_S1']
         ?>
       </h4>
-      <p>Pend. Jenjang Perguruan Tinggi</p>
+      <p>Karyawan Pendidikan D1</p>
     </div>
     <div class="icon">
       <i class="ion ion-stats-bars"></i>
     </div>
-    <a href="surat_masuk_bulan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="surat_masuk_tgl.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
