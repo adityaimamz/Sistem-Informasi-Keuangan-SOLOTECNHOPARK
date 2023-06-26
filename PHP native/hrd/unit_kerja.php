@@ -4,8 +4,8 @@
 
   <section class="content-header">
     <h1>
-      User
-      <small>Data Akun Karyawan</small>
+      Unit Kerja
+      <small>Data Unit Kerja</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,11 +19,11 @@
         <div class="box box-info">
 
           <div class="box-header">
-            <h3 class="box-title">Data Akun Karyawan</h3>
+            <h3 class="box-title">Data Unit Kerja</h3>
             <div class="btn-group pull-right">            
 
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i> &nbsp Tambah User
+                <i class="fa fa-plus"></i> &nbsp Tambah
               </button>
 
               &nbsp
@@ -66,12 +66,12 @@
           <div class="box-body">
 
             <!-- Modal -->
-            <form action="user_proses.php" method="post" enctype="multipart/form-data">
+            <form action="unit_proses.php" method="post" enctype="multipart/form-data">
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title" id="exampleModalLabel">Tambah User</h4>
+                      <h4 class="modal-title" id="exampleModalLabel">Tambah Unit Kerja</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -79,27 +79,18 @@
                     <div class="modal-body">
 
                       <div class="form-group">
-                        <label>NAMA USER</label>
+                        <label>NAMA UNIT </label>
                         <input type="text" name="nama" required="required" class="form-control" placeholder="Masukkan Nama ..">
                       </div>
 
                       <div class="form-group">
-                        <label>ALAMAT</label>
-                        <input type="text" name="alamat" required="required" class="form-control" placeholder="Masukkan Alamat ..">
+                        <label>KODE UNIT</label>
+                        <input type="text" name="kode" required="required" class="form-control" placeholder="Masukkan Kode Unit ..">
                       </div>
 
                       <div class="form-group">
-                        <label>USERNAME</label>
-                        <input type="text" name="username" required="required" class="form-control" placeholder="Masukkan Username ..">
-                      </div>
-
-                      <div class="form-group">
-                        <label>PASSWORD</label>
-                        <input type="text" name="password" required="required" class="form-control" placeholder="Masukkan Password ..">
-                      </div>
-
-                      <div class="form-group">
-                        <input type="hidden" name="level" value="karyawan">
+                        <label>KONTAK</label>
+                        <input type="text" name="kontak" required="required" class="form-control" placeholder="Masukkan Kontak ..">
                       </div>
 
                     </div>
@@ -118,10 +109,9 @@
                 <thead>
                   <tr>
                     <th>NO</th>
-                    <th>NAMA USER</th>
-                    <th>ALAMAT</th>
-                    <th>USERNAME</th>
-                    <th>LEVEL</th>
+                    <th>KODE UNIT KERJA</th>
+                    <th>KONTAK</th>
+                    <th>NAMA UNIT</th>
                     <th>OPSI</th>
                   </tr>
                 </thead>
@@ -130,28 +120,24 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM master_user WHERE master_user.Level='Karyawan' order by Id_user desc");
+                  $data = mysqli_query($koneksi,"SELECT * FROM unit_kerja order by Id_unit_kerja desc");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++; ?></td>
-                      <td><?php echo $d['Nama']; ?></td>
-                      <td><?php echo $d['Alamat']; ?></td>
-                      <td><?php echo $d['Username']; ?></td>
-                      <td><?php echo $d['Level']; ?></td>
+                      <td><?php echo $d['Kode_unit_kerja']; ?></td>
+                      <td><?php echo $d['Kontak_unit_kerja']; ?></td>
+                      <td><?php echo $d['Nama_unit_kerja']; ?></td>
                       <td>    
-                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_user_<?php echo $d['Id_user'] ?>">
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_unit_<?php echo $d['Id_unit_kerja'] ?>">
                           <i class="fa fa-cog"></i>
                         </button>
-
-                        <?php if($d['Id_user'] != 1){ ?>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_user_<?php echo $d['Id_user'] ?>">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_unit_<?php echo $d['Id_unit_kerja'] ?>">
                           <i class="fa fa-trash"></i>
                         </button>
-                        <?php } ?>
 
-                        <form action="user_update.php" method="post" enctype="multipart/form-data">
-                          <div class="modal fade" id="edit_user_<?php echo $d['Id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form action="unit_update.php" method="post" enctype="multipart/form-data">
+                          <div class="modal fade" id="edit_unit_<?php echo $d['Id_unit_kerja'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -163,32 +149,22 @@
                                 <div class="modal-body">
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>NAMA</label>
-                                    <input type="hidden" name="id" value="<?php echo $d['Id_user'] ?>">
-                                    <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama'] ?>">
+                                    <label>NAMA UNIT</label>
+                                    <input type="hidden" name="id" value="<?php echo $d['Id_unit_kerja'] ?>">
+                                    <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Nama_unit_kerja'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>ALAMAT</label>
-                                    <input type="text" style="width:100%" name="alamat" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Alamat'] ?>">
+                                    <label>KODE UNIT</label>
+                                    <input type="text" style="width:100%" name="kode" required="required" class="form-control" placeholder="Masukkan Kode.." value="<?php echo $d['Kode_unit_kerja'] ?>">
                                   </div>
 
                                   <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>USERNAME</label>
-                                    <input type="text" style="width:100%" name="username" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Username'] ?>">
+                                    <label>KONTAK</label>
+                                    <input type="text" style="width:100%" name="kontak" required="required" class="form-control" placeholder="Masukkan Kontak .." value="<?php echo $d['Kontak_unit_kerja'] ?>">
                                   </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>PASSWORD</label>
-                                    <input type="text" style="width:100%" name="password" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Password'] ?>">
-                                  </div>
-
-                                  <div class="form-group" style="width:100%;margin-bottom:20px">
-                                    <label>LEVEL</label>
-                                    <input type="text" style="width:100%" name="level" required="required" class="form-control" placeholder="Masukkan Nama .." value="<?php echo $d['Level'] ?>">
-                                  </div>
-
                                 </div>
+
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                   <button type="submit" class="btn btn-primary">Simpan</button>
@@ -199,7 +175,7 @@
                         </form>
 
                         <!-- modal hapus -->
-                        <div class="modal fade" id="hapus_user_<?php echo $d['Id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapus_unit_<?php echo $d['Id_unit_kerja'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -215,7 +191,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <a href="user_hapus.php?id=<?php echo $d['Id_user'] ?>" class="btn btn-primary">Hapus</a>
+                                <a href="unit_hapus.php?id=<?php echo $d['Id_unit_kerja'] ?>" class="btn btn-primary">Hapus</a>
                               </div>
                             </div>
                           </div>

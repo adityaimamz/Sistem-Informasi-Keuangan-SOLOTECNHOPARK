@@ -157,8 +157,8 @@
               </span>
             </a>
             <ul class="treeview-menu" style="display: none;">
-              <li><a href="#.php"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
-              <li><a href="#.php"><i class="fa fa-circle-o"></i>Infografis Kinerja Karyawan</a></li>
+              <li><a href="../infografis_karyawan.php"><i class="fa fa-circle-o"></i>Infografis Database Karyawan</a></li>
+              <li><a href="../infografis_kinerja.php"><i class="fa fa-circle-o"></i>Infografis Kinerja Karyawan</a></li>
             </ul>
           </li>
           
