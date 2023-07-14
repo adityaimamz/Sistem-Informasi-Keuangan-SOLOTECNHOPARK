@@ -95,7 +95,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                       <select name="unit" class="form-control" required="required">
                         <option value="">- Pilih -</option>
                           <?php 
-                          $unit = mysqli_query($koneksi,"SELECT * FROM Unit_kerja ORDER BY Id_unit_kerja ASC");
+                          $unit = mysqli_query($koneksi,"SELECT * FROM unit_kerja ORDER BY Id_unit_kerja ASC");
                           while($k = mysqli_fetch_array($unit)){
                             ?>
                             <option <?php if($profil['Id_unit_kerja'] == $k['Id_unit_kerja']){echo "selected='selected'";} ?> value="<?php echo $k['Id_unit_kerja']; ?>"><?php echo $k['Nama_unit_kerja']; ?></option>
@@ -277,8 +277,18 @@ $profil = mysqli_fetch_assoc($karyawan);
                                       <label>Tingkat</label>
                                       <input type="hidden" name="id" value="<?php echo $pendidikan['Id_pendidikan'] ?>">
                                       <input type="hidden" name="idk" value="<?php echo $pendidikan['Id_karyawan'] ?>">
-                                      <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
-                                    </div>
+                                  <select name="tingkat" style="width:100%" class="form-control">
+                                      <option value="">- Pilih -</option>
+                                      <?php 
+                                      include 'koneksi.php';
+                                      $tingkat = mysqli_query($koneksi,"SELECT * FROM tingkat_pendidikan ORDER BY Id_tingkat_pendidikan ASC");
+                                      while($k = mysqli_fetch_array($tingkat)){
+                                        ?>
+                                        <option value="<?php echo $k['Id_tingkat_pendidikan']; ?>"><?php echo $k['Tingkat']; ?></option>
+                                        <?php 
+                                      }
+                                      ?>
+                                    </select>                                    </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Jurusan</label>

@@ -144,22 +144,22 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <div class="box-body no-padding">
                     <table class="table table-striped">
                       <tr>
-                        <th>TANGGAL LULUS</th>
                         <th>TINGKAT</th>
                         <th>JURUSAN</th>
                         <th>SEKOLAH/KAMPUS</th>
                         <th>GELAR</th>
+                        <th>TANGGAL LULUS</th>
                       </tr>
                       <?php 
                         $d = mysqli_query($koneksi,"SELECT * FROM karyawan, riwayat_pendidikan WHERE karyawan.Id_karyawan = riwayat_pendidikan.Id_karyawan AND karyawan.Id_karyawan = '$id_karyawan'");
                         while($pendidikan = mysqli_fetch_assoc($d)){
                       ?>
                       <tr>
-                        <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Tingkat']) ? $pendidikan['Tingkat'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Jurusan']) ? $pendidikan['Jurusan'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Nama_instansi']) ? $pendidikan['Nama_instansi'] : ''; ?></td>
                         <td><?php echo isset($pendidikan['Gelar']) ? $pendidikan['Gelar'] : ''; ?></td>
+                        <td><?php echo isset($pendidikan['Tahun_lulus']) ? $pendidikan['Tahun_lulus'] : ''; ?></td>
                       </tr>
                       <?php
                         }

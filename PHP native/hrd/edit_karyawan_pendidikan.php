@@ -44,38 +44,38 @@ $profil = mysqli_fetch_assoc($karyawan);
                 <form class="form-horizontal" action="edit_profil_proses.php" method="POST" enctype="multipart/form-data">
                     
                   <div class="form-group">
-                    <input type="hidden" name="id" required="required" class="form-control" value="<?php echo $profil['Id_karyawan']; ?>">
+                    <input type="hidden" name="id" class="form-control" value="<?php echo $profil['Id_karyawan']; ?>">
                     <label for="inputName" class="col-sm-2 control-label">Nomor Induk Karyawan</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan" required="required" value="<?php echo $profil['No_induk_karyawan'] ?>">
+                      <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan nomor induk Karyawan" value="<?php echo $profil['No_induk_karyawan'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Karyawan" required="required" value="<?php echo $profil['Nama'] ?>">
+                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Karyawan" value="<?php echo $profil['Nama'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Tempat Lahir</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukan Tempat Lahir Karyawan" required="required" value="<?php echo $profil['Tempat_lahir'] ?>">
+                      <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukan Tempat Lahir Karyawan" value="<?php echo $profil['Tempat_lahir'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control datepicker2" id="tgllahir" name="tgllahir" placeholder="Masukan Tanggal Lahir Karyawan" required="required" value="<?php echo $profil['Tgl_lahir'] ?>">
+                      <input type="text" class="form-control datepicker2" id="tgllahir" name="tgllahir" placeholder="Masukan Tanggal Lahir Karyawan" value="<?php echo $profil['Tgl_lahir'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Jabatan</label>
                     <div class="col-sm-10">
-                      <select name="jabatan" style="width:100%" class="form-control" required="required">
+                      <select name="jabatan" style="width:100%" class="form-control">
                         <option value="">- Pilih -</option>
                         <?php 
                         $jabatan = mysqli_query($koneksi,"SELECT * FROM jabatan ORDER BY Id_jabatan ASC");
@@ -92,10 +92,10 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Unit Kerja</label>
                     <div class="col-sm-10">
-                      <select name="unit" class="form-control" required="required">
+                      <select name="unit" class="form-control">
                         <option value="">- Pilih -</option>
                           <?php 
-                          $unit = mysqli_query($koneksi,"SELECT * FROM Unit_kerja ORDER BY Id_unit_kerja ASC");
+                          $unit = mysqli_query($koneksi,"SELECT * FROM unit_kerja ORDER BY Id_unit_kerja ASC");
                           while($k = mysqli_fetch_array($unit)){
                             ?>
                             <option <?php if($profil['Id_unit_kerja'] == $k['Id_unit_kerja']){echo "selected='selected'";} ?> value="<?php echo $k['Id_unit_kerja']; ?>"><?php echo $k['Nama_unit_kerja']; ?></option>
@@ -169,17 +169,17 @@ $profil = mysqli_fetch_assoc($karyawan);
                                       <label>TMT</label>
                                       <input type="hidden" name="id" value="<?php echo $jabatan['Id_riwayat_jabatan'] ?>">
                                       <input type="hidden" name="idk" value="<?php echo $jabatan['Id_karyawan'] ?>">
-                                      <input type="text" style="width:100%" name="tmt" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $jabatan['TMT'] ?>">
+                                      <input type="text" style="width:100%" name="tmt" class="form-control" placeholder="Ubah TMT .." value="<?php echo $jabatan['TMT'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>JABATAN</label>
-                                      <input type="text" style="width:100%" name="jabatan" required="required" class="form-control" placeholder="Ubah Jabatan .." value="<?php echo $jabatan['Jabatan'] ?>">
+                                      <input type="text" style="width:100%" name="jabatan" class="form-control" placeholder="Ubah Jabatan .." value="<?php echo $jabatan['Jabatan'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>UNIT KERJA</label>
-                                      <input type="text" style="width:100%" name="unit" required="required" class="form-control" placeholder="Ubah Unit Kerja .." value="<?php echo $jabatan['Unit_kerja'] ?>">
+                                      <input type="text" style="width:100%" name="unit" class="form-control" placeholder="Ubah Unit Kerja .." value="<?php echo $jabatan['Unit_kerja'] ?>">
                                     </div>
                                 
                                     <div class="form-group">
@@ -277,27 +277,38 @@ $profil = mysqli_fetch_assoc($karyawan);
                                   <label>Tingkat</label>
                                   <input type="hidden" name="id" value="<?php echo $pendidikan['Id_pendidikan'] ?>">
                                   <input type="hidden" name="idk" value="<?php echo $pendidikan['Id_karyawan'] ?>">
-                                  <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah TMT .." value="<?php echo $pendidikan['Tingkat'] ?>">
+                                  <select name="tingkat" style="width:100%" class="form-control">
+                                      <option value="">- Pilih -</option>
+                                      <?php 
+                                      include 'koneksi.php';
+                                      $tingkat = mysqli_query($koneksi,"SELECT * FROM tingkat_pendidikan ORDER BY Id_tingkat_pendidikan ASC");
+                                      while($k = mysqli_fetch_array($tingkat)){
+                                        ?>
+                                        <option value="<?php echo $k['Id_tingkat_pendidikan']; ?>"><?php echo $k['Tingkat']; ?></option>
+                                        <?php 
+                                      }
+                                      ?>
+                                    </select>
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>Jurusan</label>
-                                  <input type="text" style="width:100%" name="jurusan" required="required" class="form-control" placeholder="Ubah Jurusan .." value="<?php echo $pendidikan['Jurusan'] ?>">
+                                  <input type="text" style="width:100%" name="jurusan" class="form-control" placeholder="Ubah Jurusan .." value="<?php echo $pendidikan['Jurusan'] ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>Nama Instansi</label>
-                                  <input type="text" style="width:100%" name="instansi" required="required" class="form-control" placeholder="Ubah Nama Instansi .." value="<?php echo $pendidikan['Nama_instansi'] ?>">
+                                  <input type="text" style="width:100%" name="instansi" class="form-control" placeholder="Ubah Nama Instansi .." value="<?php echo $pendidikan['Nama_instansi'] ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>Gelar</label>
-                                  <input type="text" style="width:100%" name="gelar" required="required" class="form-control" placeholder="Ubah Gelar .." value="<?php echo $pendidikan['Gelar'] ?>">
+                                  <input type="text" style="width:100%" name="gelar" class="form-control" placeholder="Ubah Gelar .." value="<?php echo $pendidikan['Gelar'] ?>">
                                 </div>
 
                                 <div class="form-group" style="width:100%;margin-bottom:20px">
                                   <label>Tahun lulus</label>
-                                  <input type="text" style="width:100%" name="tahun" required="required" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
+                                  <input type="text" style="width:100%" name="tahun" class="form-control" placeholder="Ubah Tahun lulus .." value="<?php echo $pendidikan['Tahun_lulus'] ?>">
                                 </div>
                             
                                 <div class="form-group">
@@ -392,21 +403,21 @@ $profil = mysqli_fetch_assoc($karyawan);
                                           <label>Nama Diklat</label>
                                           <input type="hidden" name="id" value="<?php echo $pelatihan['Id_pelatihan'] ?>">
                                           <input type="hidden" name="idk" value="<?php echo $pelatihan['Id_karyawan'] ?>">
-                                          <input type="text" style="width:100%" name="nama" required="required" class="form-control" placeholder="Ubah Nama Diklat .." value="<?php echo $pelatihan['Nama_diklat'] ?>">
+                                          <input type="text" style="width:100%" name="nama" class="form-control" placeholder="Ubah Nama Diklat .." value="<?php echo $pelatihan['Nama_diklat'] ?>">
                                         </div>
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Tipe Diklat</label>
-                                      <input type="text" style="width:100%" name="tipe" required="required" class="form-control" placeholder="Ubah Tipe Diklat .." value="<?php echo $pelatihan['Tipe_diklat'] ?>">
+                                      <input type="text" style="width:100%" name="tipe" class="form-control" placeholder="Ubah Tipe Diklat .." value="<?php echo $pelatihan['Tipe_diklat'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Penyelenggara</label>
-                                      <input type="text" style="width:100%" name="penyelenggara" required="required" class="form-control" placeholder="Ubah Penyelenggara .." value="<?php echo $pelatihan['Penyelenggara'] ?>">
+                                      <input type="text" style="width:100%" name="penyelenggara" class="form-control" placeholder="Ubah Penyelenggara .." value="<?php echo $pelatihan['Penyelenggara'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Tanggal Lulus</label>
-                                      <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Ubah Tanggal Lulus .." value="<?php echo $pelatihan['Tgl_lulus'] ?>">
+                                      <input type="text" style="width:100%" name="tanggal" class="form-control" placeholder="Ubah Tanggal Lulus .." value="<?php echo $pelatihan['Tgl_lulus'] ?>">
                                     </div>
                                   
                                     <div class="form-group">
@@ -500,21 +511,21 @@ $profil = mysqli_fetch_assoc($karyawan);
                                           <label>Pelanggaran</label>
                                           <input type="hidden" name="id" value="<?php echo $hukuman['Id_hukuman'] ?>">
                                           <input type="hidden" name="idk" value="<?php echo $hukuman['Id_karyawan'] ?>">
-                                          <input type="text" style="width:100%" name="pelanggaran" required="required" class="form-control" placeholder="Ubah Pelanggaran .." value="<?php echo $hukuman['Pelanggaran'] ?>">
+                                          <input type="text" style="width:100%" name="pelanggaran" class="form-control" placeholder="Ubah Pelanggaran .." value="<?php echo $hukuman['Pelanggaran'] ?>">
                                         </div>
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Hukuman</label>
-                                      <input type="text" style="width:100%" name="hukuman" required="required" class="form-control" placeholder="Ubah Hukuman .." value="<?php echo $hukuman['Hukuman'] ?>">
+                                      <input type="text" style="width:100%" name="hukuman" class="form-control" placeholder="Ubah Hukuman .." value="<?php echo $hukuman['Hukuman'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Tingkat Hukuman</label>
-                                      <input type="text" style="width:100%" name="tingkat" required="required" class="form-control" placeholder="Ubah Tingkat Hukuman .." value="<?php echo $hukuman['Tingkat_hukuman'] ?>">
+                                      <input type="text" style="width:100%" name="tingkat" class="form-control" placeholder="Ubah Tingkat Hukuman .." value="<?php echo $hukuman['Tingkat_hukuman'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Tanggal SK</label>
-                                      <input type="text" class="form-control datepicker2"style="width:100%" name="tanggal_sk" required="required" class="form-control" placeholder="Ubah Tanggal SK .." value="<?php echo $hukuman['Tgl_sk'] ?>">
+                                      <input type="text" class="form-control datepicker2"style="width:100%" name="tanggal_sk" class="form-control" placeholder="Ubah Tanggal SK .." value="<?php echo $hukuman['Tgl_sk'] ?>">
                                     </div>
                                               
                                     <div class="form-group">
@@ -609,26 +620,26 @@ $profil = mysqli_fetch_assoc($karyawan);
                                           <label>Tanggal SK</label>
                                           <input type="hidden" name="id" value="<?php echo $cuti['Id_riwayatcuti'] ?>">
                                           <input type="hidden" name="idk" value="<?php echo $cuti['Id_karyawan'] ?>">
-                                          <input type="text" style="width:100%" name="tanggal" required="required" class="form-control" placeholder="Ubah Tanggal SK .." value="<?php echo $cuti['tgl_SK'] ?>">
+                                          <input type="text" style="width:100%" name="tanggal" class="form-control" placeholder="Ubah Tanggal SK .." value="<?php echo $cuti['tgl_SK'] ?>">
                                         </div>
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Jenis Cuti</label>
-                                      <input type="text" style="width:100%" name="jenis_cuti" required="required" class="form-control" placeholder="Ubah Jenis Cuti .." value="<?php echo $cuti['jenis_cuti'] ?>">
+                                      <input type="text" style="width:100%" name="jenis_cuti" class="form-control" placeholder="Ubah Jenis Cuti .." value="<?php echo $cuti['jenis_cuti'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Keperluan</label>
-                                      <input type="text" style="width:100%" name="keperluan" required="required" class="form-control" placeholder="Ubah Keperluan .." value="<?php echo $cuti['Keperluan'] ?>">
+                                      <input type="text" style="width:100%" name="keperluan" class="form-control" placeholder="Ubah Keperluan .." value="<?php echo $cuti['Keperluan'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Mulai Cuti</label>
-                                      <input type="text" style="width:100%" name="mulai_cuti" required="required" class="form-control" placeholder="Ubah Mulai Cuti .." value="<?php echo $cuti['mulai_cuti'] ?>">
+                                      <input type="text" style="width:100%" name="mulai_cuti" class="form-control" placeholder="Ubah Mulai Cuti .." value="<?php echo $cuti['mulai_cuti'] ?>">
                                     </div>
 
                                     <div class="form-group" style="width:100%;margin-bottom:20px">
                                       <label>Selesai Cuti</label>
-                                      <input type="text" style="width:100%" name="selesai_cuti" required="required" class="form-control" placeholder="Ubah Selesai Cuti .." value="<?php echo $cuti['selesai_cuti'] ?>">
+                                      <input type="text" style="width:100%" name="selesai_cuti" class="form-control" placeholder="Ubah Selesai Cuti .." value="<?php echo $cuti['selesai_cuti'] ?>">
                                     </div>
                                               
                                     <div class="form-group">
@@ -682,7 +693,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
                     <div class="col-sm-10">
-                      <select name="karyawan" class="form-control" required="required">
+                      <select name="karyawan" class="form-control">
                         <option value="">- Pilih -</option>
                         <?php 
                         include 'koneksi.php';
@@ -733,7 +744,7 @@ $profil = mysqli_fetch_assoc($karyawan);
                         <div class="form-group">
                           <label for="inputEmail" class="col-sm-2 control-label">Nama Pegawai</label>
                           <div class="col-sm-10">
-                            <select name="karyawan" class="form-control" required="required">
+                            <select name="karyawan" class="form-control">
                               <option value="">- Pilih -</option>
                               <?php 
                               include 'koneksi.php';

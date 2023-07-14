@@ -196,9 +196,20 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Tingkat Pendidikan</label>
+                    <label for="inputEmail" class="col-sm-2 control-label">Tingkat Pendidikan</label>
                     <div class="col-sm-10">
-                      <input type="teks" class="form-control" id="tingkat" name="tingkat" placeholder="Masukan Tingkat Pendidikan" required="required">
+                      <select name="tingkat" class="form-control" required="required">
+                        <option value="">- Pilih -</option>
+                        <?php 
+                        include 'koneksi.php';
+                        $tingkat = mysqli_query($koneksi,"SELECT * FROM tingkat_pendidikan ORDER BY Id_tingkat_pendidikan ASC");
+                        while($k = mysqli_fetch_array($tingkat)){
+                          ?>
+                          <option value="<?php echo $k['Id_tingkat_pendidikan']; ?>"><?php echo $k['Tingkat']; ?></option>
+                          <?php 
+                        }
+                        ?>
+                      </select>
                     </div>
                   </div>
 
